@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/Css/feed/secaoFeedPublicacao.css"; // Caminho relativo para o CSS
+import "../../assets/Css/feed/secaoFeedPublicacao.css"; 
 
 const SecaoFeedPublicacao = () => {
     return (
