@@ -1,16 +1,12 @@
 import { useState } from 'react'
-import SecaoFeedPublicacao from './components/SecaoFeedPublicacao'
-
-
+import SecaoFeedPublicacao from './components/feed/SecaoFeedPublicacao.jsx' // Caminho relativo correto
 
 function App() {
-
     return (
         <div>
-            <SecaoFeedPublicacao/>
+            <SecaoFeedPublicacao />
         </div>
     )
-
 }
 
-export default App
+export default App;
