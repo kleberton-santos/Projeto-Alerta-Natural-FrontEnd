@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './index.css';
-import FeedPage from './pages/FeedPage';
+import Feed from './pages/Feed';
 
 function App() {
     return (
         <div>
-            <FeedPage />
+            <Feed/>
         </div>
     )
 }
