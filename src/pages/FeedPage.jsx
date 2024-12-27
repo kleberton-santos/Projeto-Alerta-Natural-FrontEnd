@@ -2,6 +2,7 @@ import React from "react";
 import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
+import SecaoFeedNoticias from "../components/feed/SecaoFeedNoticias";
 import "../../src/assets/Css/feed/FeedPage.css";
 
 const FeedPage = () => {
@@ -28,19 +29,19 @@ const FeedPage = () => {
         <div className="row">
           {/* Primeira linha */}
           <div className="col-8">
-            <div className="w-full border border-secondary" style={{height: '100px'}}>
-              <p className="text-center">Div 1</p>
+            <div className="w-full " style={{height: '100px'}}>
+              <SecaoFeedPublicacao/>
             </div>
-            <div className="w-full border border-secondary mt-5" style={{height: '600px'}}>
-              <p className="text-center">Div 3</p>
+            <div className="w-full mt-5" style={{height: '600px'}}>
+              <SecaoFeedTimeLine/>
             </div>
           </div>
           <div className="col-4">
-            <div className="col-md-6 col-sm-12 border border-secondary me-5 ms-4" style={{height: '400px', width:'95%'}}>
-              <p className="text-center">Div 1</p>
+            <div className="col-md-6 col-sm-12 me-5 ms-4" style={{height: '400px', width:'95%'}}>
+              <SecaoFeedAmigos/>
             </div>
-            <div className="col-md-6 col-sm-12 border border-secondary me-5 ms-4 mt-5" style={{height: '300px', width:'95%'}}>
-              <p className="text-center">Div 3</p>
+            <div className="col-md-6 col-sm-12 me-5 ms-4 mt-5" style={{height: '300px', width:'95%'}}>
+              <SecaoFeedNoticias/>
             </div>
           </div>
         </div>
