@@ -1,0 +1,12 @@
+.logo {
+    position: absolute; /* Permite posicionar o logotipo de forma livre */
+    top: 4px; /* Ajuste a distância do topo */
+    left: 10px; /* Posiciona o logotipo no lado esquerdo */
+}
+
+.logo-banner {
+    width: 100px; /* Ajuste conforme necessário */
+    height: auto; /* Mantém a proporção do logotipo */
+    opacity: 0.4; /* Define 50% de transparência */
+    border-radius: 10px;
+}

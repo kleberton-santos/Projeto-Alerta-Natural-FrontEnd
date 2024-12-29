@@ -1,0 +1,52 @@
+.header-principal {
+    position: relative;
+}
+
+.header-banner {
+    height: 110px;
+    object-fit: cover;
+    filter: brightness(55%);
+    
+}
+
+.label-principal {
+    position: absolute; /* Permite posicionamento sobre o banner */
+    top: 50%; /* Move para o meio vertical */
+    left: 50%; /* Move para o meio horizontal */
+    transform: translate(-50%, -50%); /* Centraliza o elemento */
+    color: white; /* Ajuste a cor do texto, se necessário */
+    font-size: 35px; /* Ajuste o tamanho do texto conforme necessário */
+    font-weight: bold; /* Torna o texto mais destacado */
+    text-align: center; /* Centraliza o texto, caso haja mais de uma linha */
+}
+
+.login-principal {
+    position: absolute; /* Para posicionar o login fora do fluxo normal */
+    top: 30%; /* Posiciona verticalmente no meio */
+    right: 10px; /* Alinha à direita com um pequeno espaçamento */
+    transform: translateY(-50%); /* Ajusta para que fique perfeitamente centralizado no eixo vertical */
+    display: flex;
+    align-items: center; /* Alinha o texto e o círculo verticalmente */
+    gap: 10px; /* Espaçamento entre o texto e o círculo */
+}
+
+.login-text {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.login-text:hover {
+    text-decoration: underline;
+}
+
+.login-circle {
+    width: 35px; /* Tamanho do círculo */
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Cor de fundo do círculo */
+    overflow: hidden;
+    background-size: cover; /* Ajusta a imagem dentro do círculo */
+    background-position: center;
+}
