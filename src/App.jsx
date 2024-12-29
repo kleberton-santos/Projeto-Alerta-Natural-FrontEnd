@@ -6,7 +6,7 @@ import HeaderGlobal from './components/header/HeaderGlobal';
 function App() {
     return (
         <div>
-            <HeaderGlobal/>
+            <Feed/>
         </div>
     )
 }

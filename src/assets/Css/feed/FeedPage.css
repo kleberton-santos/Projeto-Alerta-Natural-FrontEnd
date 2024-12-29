@@ -3,8 +3,8 @@
     
   }
 .feed-principal {
-  width: 100vw;
-  height: 168vh;
   background-color: #3D475F;
+  padding: 0 !important;
+
 }
 

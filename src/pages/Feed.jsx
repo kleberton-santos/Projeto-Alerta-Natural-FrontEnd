@@ -3,24 +3,19 @@ import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
 import SecaoFeedNoticias from "../components/feed/SecaoFeedNoticias";
+import HeaderGlobal from "../components/header/HeaderGlobal";
 import "../../src/assets/Css/feed/FeedPage.css";
 
 const FeedPage = () => {
   return (
     <div className="feed-principal container-fluid p-3">
       {/* Header */}
-      <div
-        className="header d-flex justify-content-center align-items-center border border-primary"
-        style={{ height: "100px", width: "100%", borderStyle: "solid" }}
-      >
-        <h1>Header</h1>
+      <div className="header">
+        <HeaderGlobal/>
       </div>
 
       {/* NavBar */}
-      <div
-        className="nav-bar d-flex justify-content-center align-items-center border border-primary"
-        style={{ height: "55px", width: "100%", borderStyle: "solid" }}
-      >
+      <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
         <h2>NavBar</h2>
       </div>
 
