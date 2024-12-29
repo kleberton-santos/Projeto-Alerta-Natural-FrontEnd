@@ -1,0 +1,12 @@
+.previsao-principal {
+    width: 100%;
+    height: 160vh;
+    position: relative;
+    background-color: #3D475F;
+}
+
+.footer {
+    position: relative;
+    top: 70% !important;
+    
+}
