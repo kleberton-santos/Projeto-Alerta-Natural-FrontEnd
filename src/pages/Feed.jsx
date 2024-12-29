@@ -4,6 +4,7 @@ import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
 import SecaoFeedNoticias from "../components/feed/SecaoFeedNoticias";
 import HeaderGlobal from "../components/header/HeaderGlobal";
+import FooterGlobal from "../components/footer/FooterGlobal";
 import "../../src/assets/Css/feed/FeedPage.css";
 
 const FeedPage = () => {
@@ -32,10 +33,10 @@ const FeedPage = () => {
             </div>
           </div>
           <div className="col-4">
-            <div className="col-md-6 col-sm-12 me-5 ms-4" style={{height: '400px', width:'95%'}}>
+            <div className="col-md-6 col-sm-12 me-5 ms-3" style={{height: '400px', width:'95%'}}>
               <SecaoFeedAmigos/>
             </div>
-            <div className="col-md-6 col-sm-12 me-5 ms-4 mt-5" style={{height: '300px', width:'95%'}}>
+            <div className="col-md-6 col-sm-12 me-5 ms-3 mt-5" style={{height: '300px', width:'95%'}}>
               <SecaoFeedNoticias/>
             </div>
           </div>
@@ -43,11 +44,8 @@ const FeedPage = () => {
       </div>
 
       {/* Footer */}
-      <div
-        className="header d-flex justify-content-center align-items-center border border-primary mt-5"
-        style={{ height: "150px", width: "100%", borderStyle: "solid" }}
-      >
-        <h1>Footer</h1>
+      <div className="header mt-5" >
+        <FooterGlobal/>
       </div>
     </div>
   );

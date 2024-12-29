@@ -3,6 +3,7 @@ import bannerHeader from "../../assets/images/banner-header.jpg";
 import logo from "../../assets/images/logo.webp";
 import "../../assets/Css/header/Header.css"; 
 import "../../assets/Css/header/logo.css"; 
+import LabelFeed from "../../components/header/LabelFeed"; // ajuste o caminho conforme necessário
 
 const HeaderGlobal = () => {
     return (
@@ -12,14 +13,14 @@ const HeaderGlobal = () => {
                 <img src={logo} alt="Logotipo alerta natural" className="logo-banner" />
             </div>
             <div className="label-principal">
-                <label> Alerta Natural </label>
+                <LabelFeed />
             </div>
             <div className="login-principal">
-        <a href="#" className="login-text">Faça seu login</a>
-        <div className="login-circle">
-            {/* O círculo será estilizado e receberá a imagem futuramente */}
-        </div>
-    </div>
+                <a href="#" className="login-text">Faça seu login</a>
+                <div className="login-circle">
+                    {/* O círculo será estilizado e receberá a imagem futuramente */}
+                </div>
+            </div>
         </div>
     );
 };

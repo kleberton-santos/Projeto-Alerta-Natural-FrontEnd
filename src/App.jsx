@@ -7,7 +7,7 @@ import FooterGlobal from './components/footer/FooterGlobal';
 function App() {
     return (
         <div>
-            <FooterGlobal/>
+            <Feed/>
         </div>
     )
 }
