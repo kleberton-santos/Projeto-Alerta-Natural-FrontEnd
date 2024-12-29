@@ -53,8 +53,8 @@
     align-items: center; /* Centraliza o conteúdo horizontalmente */
 }
 
-.footer {
+.footer-home {
     position: relative;
-    top: 36% !important;
+    top: 36%;
     
 }

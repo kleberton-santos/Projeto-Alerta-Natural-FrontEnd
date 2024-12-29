@@ -59,7 +59,7 @@ const Home = () => {
             </div>
 
             {/* Footer */}
-            <div className="footer mt-5" >
+            <div className="footer-home mt-5" >
                 <FooterGlobal/>
             </div>
 
