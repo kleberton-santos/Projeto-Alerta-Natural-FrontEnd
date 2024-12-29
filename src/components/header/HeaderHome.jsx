@@ -4,8 +4,7 @@ import logo from "../../assets/images/logo.webp";
 import "../../assets/Css/header/Header.css"; 
 import "../../assets/Css/header/logo.css"; 
 
-
-const HeaderGlobal = () => {
+const HeaderHome = () => {
     return (
         <div className="header-principal">
             <img src={bannerHeader} alt="Banner Header" className="header-banner w-100"/>
@@ -13,7 +12,7 @@ const HeaderGlobal = () => {
                 <img src={logo} alt="Logotipo alerta natural" className="logo-banner" />
             </div>
             <div className="label-principal">
-                <label htmlFor="">Feed</label>
+                <label htmlFor="">Alerta Natural</label>
             </div>
             <div className="login-principal">
                 <a href="#" className="login-text">Faça seu login</a>
@@ -25,4 +24,4 @@ const HeaderGlobal = () => {
     );
 };
 
-export default HeaderGlobal;
+export default HeaderHome;
