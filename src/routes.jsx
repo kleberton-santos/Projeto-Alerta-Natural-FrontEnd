@@ -5,6 +5,7 @@ import Feed from "./pages/feed"
 import Contato from "./pages/Contato"
 import Login from "./pages/Login"
 import Cadastro from "./pages/Cadastro"
+import EditarPerfil from "./pages/EditarPerfil"
 
 const AppRoutes = () => {
     return (
@@ -16,6 +17,8 @@ const AppRoutes = () => {
                 <Route path="/contato" element={ <Contato />}></Route>
                 <Route path="/login" element={ <Login />}></Route>
                 <Route path="/cadastro" element={ <Cadastro />}></Route>
+                <Route path="/EditarPerfil" element={ <EditarPerfil />}></Route>
+
             </Routes>
         </BrowserRouter>
     )
