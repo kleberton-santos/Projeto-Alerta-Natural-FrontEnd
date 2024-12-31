@@ -5,6 +5,7 @@ import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
 import SecaoFeedNoticias from "../components/feed/SecaoFeedNoticias";
 import HeaderGlobal from "../components/header/HeaderGlobal";
 import FooterGlobal from "../components/footer/FooterGlobal";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 import "../../src/assets/Css/feed/FeedPage.css";
 
 const FeedPage = () => {
@@ -16,12 +17,12 @@ const FeedPage = () => {
       </div>
 
       {/* NavBar */}
-      <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-        <h2>NavBar</h2>
+      <div className="nav-bar">
+        <Secaonavbar/>
       </div>
 
       {/* Grade com 2 colunas e 2 linhas */}
-      <div className="container-fluid mt-5">
+      <div className="container-fluid mt-3 p-5">
         <div className="row">
           {/* Primeira linha */}
           <div className="col-8">
@@ -44,7 +45,7 @@ const FeedPage = () => {
       </div>
 
       {/* Footer */}
-      <div className="header mt-5" >
+      <div className="footer-feed" >
         <FooterGlobal/>
       </div>
     </div>

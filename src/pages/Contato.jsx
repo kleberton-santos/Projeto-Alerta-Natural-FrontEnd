@@ -3,18 +3,19 @@ import "../../src/index.css"
 import "../assets/Css/contato/Contato.css"
 import HeaderContato from "../components/header/HeaderContato";
 import FooterGlobal from "../components/footer/FooterGlobal";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Contato = () => {
     return (
-        <div className="home-principal ">
+        <div className="contato-principal ">
             {/* Header */}
             <div className="header">
                 <HeaderContato/>
             </div>
             
             {/* NavBar */}
-            <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-                <h2>NavBar</h2>
+            <div className="nav-bar">
+                <Secaonavbar/>
             </div>
             
           
@@ -22,7 +23,7 @@ const Contato = () => {
           
 
             {/* Footer */}
-            <div className="footer mt-5" >
+            <div className="footer-contato" >
                 <FooterGlobal/>
             </div>
 

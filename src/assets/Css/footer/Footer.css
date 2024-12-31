@@ -4,6 +4,7 @@
     height: 145px;
     filter: brightness(0.7); /* Escurece a cor */
     position: relative; /* Define um contexto de posicionamento */
+    
 }
 
 .conta-telefone {
