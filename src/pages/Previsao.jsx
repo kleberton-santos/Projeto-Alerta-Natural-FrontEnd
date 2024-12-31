@@ -3,6 +3,7 @@ import "../../src/index.css"
 import "../assets/Css/previsao/Previsao.css"
 import HeaderPrevisao from "../components/header/HeaderPrevisao";
 import FooterGlobal from "../components/footer/FooterGlobal";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Previsao = () => {
     return (
@@ -13,16 +14,18 @@ const Previsao = () => {
             </div>
             
             {/* NavBar */}
-            <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-                <h2>NavBar</h2>
+            <div className="nav-bar">
+                <Secaonavbar/>
             </div>
             
           
             {/* Conteudo da Pagina*/}
-          
+            <div className="content-previsao">
+                
+            </div>
 
             {/* Footer */}
-            <div className="footer mt-5" >
+            <div className="footer-previsao " >
                 <FooterGlobal/>
             </div>
 

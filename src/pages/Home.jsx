@@ -3,6 +3,7 @@ import "../../src/index.css"
 import "../assets/Css/home/Home.css"
 import HeaderHome from "../components/header/HeaderHome";
 import FooterGlobal from "../components/footer/FooterGlobal";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Home = () => {
     return (
@@ -13,8 +14,8 @@ const Home = () => {
             </div>
             
             {/* NavBar */}
-            <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-                <h2>NavBar</h2>
+            <div className="nav-bar">
+                <Secaonavbar/>
             </div>
             
             {/* Banner */}
@@ -59,7 +60,8 @@ const Home = () => {
             </div>
 
             {/* Footer */}
-            <div className="footer-home mt-5" >
+            <div className="footer-home">
+
                 <FooterGlobal/>
             </div>
 

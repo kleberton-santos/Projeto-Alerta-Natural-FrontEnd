@@ -4,6 +4,7 @@ import "../assets/Css/cadastro/Cadastro.css"
 import HeaderCadastro from "../components/header/HeaderCadastro";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import { CadastroForm } from "../components/cadastro/CadastroForm";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Cadastro = () => {
     return (
@@ -14,8 +15,8 @@ const Cadastro = () => {
             </div>
 
             {/* NavBar */}
-            <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-                <h2>NavBar</h2>
+            <div className="nav-bar">
+                <Secaonavbar/>
             </div>
 
 

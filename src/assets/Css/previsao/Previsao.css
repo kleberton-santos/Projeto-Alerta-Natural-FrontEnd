@@ -1,12 +1,15 @@
 .previsao-principal {
-    width: 100%;
-    height: 160vh;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o container principal ocupe a altura total da tela */
     background-color: #3D475F;
 }
 
-.footer {
-    position: relative;
-    top: 30%;
-    
+.content-previsao {
+    flex: 1; /* Faz o conteúdo expandir para preencher o espaço entre o header e o footer */
+}
+
+.footer-previsao {
+    margin-top: auto; /* Empurra o footer para o final do container */
+        
 }

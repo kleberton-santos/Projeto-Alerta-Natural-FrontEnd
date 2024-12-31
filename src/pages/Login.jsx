@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../src/index.css"
 import "../assets/Css/login/Login.css"
 import HeaderLogin from "../components/header/HeaderLogin";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import logo from "../assets/images/logo.webp";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Login = () => {
     return (
@@ -14,8 +16,8 @@ const Login = () => {
             </div>
             
             {/* NavBar */}
-            <div className="nav-bar d-flex justify-content-center align-items-center border border-primary" style={{ height: "55px", width: "100%", borderStyle: "solid" }}>
-                <h2>NavBar</h2>
+            <div className="nav-bar">
+                <Secaonavbar/>
             </div>
             
           
@@ -55,7 +57,7 @@ const Login = () => {
                                 Entrar
                             </button>
                             <div className="text-center mt-3">
-                                <a href="#">Cadastrar-se</a>
+                                <Link to="/cadastro">Cadastrar-se</Link> 
                             </div>
                             <button type="button" className="btn btn-outline-secondary w-100 mt-3 d-flex align-items-center justify-content-center">
                                 <i className="fab fa-google me-2"></i> {/* Ícone do Google */}
