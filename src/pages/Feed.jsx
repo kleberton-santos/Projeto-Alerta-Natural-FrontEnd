@@ -22,7 +22,7 @@ const FeedPage = () => {
       </div>
 
       {/* Grade com 2 colunas e 2 linhas */}
-      <div className="container-fluid mt-3 p-5">
+      <div className="container-principal container-fluid mt-3 p-5">
         <div className="row">
           {/* Primeira linha */}
           <div className="col-8">
