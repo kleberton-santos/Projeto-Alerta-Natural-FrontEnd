@@ -3,7 +3,7 @@ import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
 import SecaoFeedNoticias from "../components/feed/SecaoFeedNoticias";
-import HeaderGlobal from "../components/header/HeaderGlobal";
+import HeaderFeed from "../components/header/HeaderFeed";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import "../../src/assets/Css/feed/FeedPage.css";
@@ -13,7 +13,7 @@ const FeedPage = () => {
     <div className="feed-principal container-fluid p-3">
       {/* Header */}
       <div className="header">
-        <HeaderGlobal/>
+        <HeaderFeed/>
       </div>
 
       {/* NavBar */}

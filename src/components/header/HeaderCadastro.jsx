@@ -7,20 +7,20 @@ import "../../assets/Css/header/logo.css";
 
 const HeaderCadastro = () => {
     return (
-        <div className="header-principal">
-            <img src={bannerHeader} alt="Banner Header" className="header-banner w-100"/>
-            <div className="logo">
-                <img src={logo} alt="Logotipo alerta natural" className="logo-banner" />
-            </div>
-            <div className="label-principal">
-                <label htmlFor="">Cadastro</label>
-            </div>
-            <div className="login-principal">
-                <Link to="/login" className="login-text">Faça seu Login</Link> 
-                <div className="login-circle">
-                    {/* O círculo será estilizado e receberá a imagem futuramente */}
+        <div className="header-principal position-relative">
+            <img src={bannerHeader} alt="Banner Header" className="header-banner img-fluid w-100"/>
+                <div className="logo">
+                    <img src={logo} alt="Logotipo alerta natural" className="logo-banner" />
                 </div>
-            </div>
+                <div className="label-principal position-absolute top-50 start-50 translate-middle text-white text-center fs-1 fw-bold">
+                    <label htmlFor="">Cadastro</label>
+                </div>
+                <div className="login-principal position-absolute top-50 end-0 translate-middle-y d-flex align-items-center gap-2 me-3">
+                    <Link to="/login" className="login-text text-light text-decoration-none fs-5">
+                        Faça seu Login
+                    </Link>
+                <div className="login-circle"></div>
+                </div>
         </div>
     );
 };
