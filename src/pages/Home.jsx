@@ -4,6 +4,7 @@ import "../assets/Css/home/Home.css"
 import HeaderHome from "../components/header/HeaderHome";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
+import CarroselHome from "../components/home/CarroselHome";
 
 const Home = () => {
     return (
@@ -20,9 +21,8 @@ const Home = () => {
             
             {/* Banner */}
             <div className="banner-home">
-                <div className="banner-home-tela">
                     {/* Conteúdo do Banner */}
-                </div>
+                    <CarroselHome/>
             </div>
             
             {/* Texto Centralizado */}

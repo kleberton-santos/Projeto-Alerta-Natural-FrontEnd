@@ -13,17 +13,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid;
+    margin-top: 50px;
 }
 
-.banner-home-tela {
-    display: flex;
-    border: solid;
-    height: 400px;
-    width: 90%;
-    justify-content: center;
-    align-items: center;
-}
 
 .text-center-home {
     color: white;
@@ -57,5 +49,8 @@
 
 .footer-home {
     text-align: center; /* Centraliza o conteúdo horizontalmente */
-    
+  
 }
+
+
+  
