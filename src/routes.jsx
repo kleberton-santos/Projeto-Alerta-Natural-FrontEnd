@@ -18,7 +18,6 @@ const AppRoutes = () => {
                 <Route path="/login" element={ <Login />}></Route>
                 <Route path="/cadastro" element={ <Cadastro />}></Route>
                 <Route path="/EditarPerfil" element={ <EditarPerfil />}></Route>
-
             </Routes>
         </BrowserRouter>
     )

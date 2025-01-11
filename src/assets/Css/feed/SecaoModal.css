@@ -1,0 +1,18 @@
+.modal-content {
+    background-color: #27335C;
+    color: white;
+}
+
+.btn-close {
+    color: white;
+}
+
+.button-publicar {
+    background-color: #D9D9D9;
+    color: #5E1515;
+}
+
+.button-fechar {
+    background-color: #522828;
+    color: #e9bfbf;
+}
