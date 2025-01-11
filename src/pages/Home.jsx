@@ -5,6 +5,7 @@ import HeaderHome from "../components/header/HeaderHome";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import CarroselHome from "../components/home/CarroselHome";
+import { Cards } from "../components/home/Cards";
 
 const Home = () => {
   return (

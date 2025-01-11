@@ -6,8 +6,6 @@ import Contato from "./pages/Contato"
 import Login from "./pages/Login"
 import Cadastro from "./pages/Cadastro"
 import EditarPerfil from "./pages/EditarPerfil"
-import CarroselHome from "./components/home/CarroselHome"
-
 
 const AppRoutes = () => {
     return (
@@ -20,7 +18,6 @@ const AppRoutes = () => {
                 <Route path="/login" element={ <Login />}></Route>
                 <Route path="/cadastro" element={ <Cadastro />}></Route>
                 <Route path="/EditarPerfil" element={ <EditarPerfil />}></Route>
-                <Route path="/carrosel" element={ <CarroselHome />}></Route>
             </Routes>
         </BrowserRouter>
     )
