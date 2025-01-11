@@ -1,0 +1,27 @@
+.secao-navbar {
+    width: 100%;
+    height: 50px;
+    background-color: #498F9F;
+    filter: brightness(0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secao-navbar nav {
+    display: flex;
+    gap: 130px;
+}
+ 
+.secao-navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.secao-navbar a:hover {
+    background-color: rgba (255,255,255,0.2);
+    border-radius: 5px;
+}

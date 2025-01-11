@@ -1,47 +1,18 @@
 .footer-global {
     background-color: #498F9F;
-    width: 100%;
-    height: 145px;
-    filter: brightness(0.7); /* Escurece a cor */
-    position: relative; /* Define um contexto de posicionamento */
+    height: 150px;
+    filter: brightness(0.7); /* Escurece a cor */ 
 }
-
 .conta-telefone {
-    color: white !important;
-    position: absolute; /* Usa posição absoluta */
-    top: 35%; /* Posiciona a partir do meio da altura */
-    left: 50%; /* Posiciona a partir do meio da largura */
-    transform: translate(-50%, -50%); /* Ajusta para garantir que o centro seja o ponto de referência */
+    top: 30%;
 }
 
 .telefone {
-    color: white!important;
-    position: absolute;
-    top: 40%; /* Ajuste para ficar abaixo do "Contato no telefone" */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
+    top: 30%;
 }
 
-.direitos-autorais p {
-    position: absolute;
-    color: white;
-    left: 40%;
-    top: 80%;
-    
-}
-
-.conta-telefone label,
-.telefone label {
-    color: white !important; /* Adiciona !important para garantir que a cor branca seja aplicada */
-}
-
-.icons-social {
-    position: absolute;
-    left: 20px; /* Posiciona os ícones à esquerda com algum espaçamento */
-    bottom: 65px; /* Alinha os ícones um pouco acima da parte inferior do footer */
-    display: flex; /* Exibe os ícones em linha */
-    gap: 15px; /* Espaçamento entre os ícones */
-    
+.direitos-autorais {
+    margin-top: 110px; 
 }
 
 .icons-social img {
