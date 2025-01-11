@@ -26,12 +26,13 @@ export const CadastroForm = () => {
 
   return (
     <div
-      className="container-fluid min-vh-100 py-5"
+      className="container-fluid p-2"
       style={{ maxWidth: "800px" }}
     >
-      <form onSubmit={handleSubmit} >
+      <form className="shadow-none" onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-sm-6 mb-3">
+            <label className="text-white mb-2">Nome</label>
             <input
               type="text"
               name="name"
@@ -43,6 +44,7 @@ export const CadastroForm = () => {
             />
           </div>
           <div className="col-sm-6 mb-3">
+            <label className="text-white mb-2">Sobrenome</label>
             <input
               type="text"
               name="sobrenome"
@@ -57,6 +59,7 @@ export const CadastroForm = () => {
 
         <div className="row">
           <div className="col-sm-6 mb-3">
+            <label className="text-white mb-2">CPF</label>
             <input
               type="text"
               name="cpf"
@@ -68,6 +71,7 @@ export const CadastroForm = () => {
             />
           </div>
           <div className="col-sm-6 mb-3">
+            <label className="text-white mb-2">Senha</label>
             <input
               type="tel"
               name="telefone"
@@ -81,7 +85,8 @@ export const CadastroForm = () => {
         </div>
 
         <div className="row">
-          <div className="col-sm-6 mb-3">
+          <div className="col-sm-12 mb-3">
+            <label className="text-white mb-2">E-mail</label>
             <input
               type="email"
               name="email"
@@ -93,7 +98,8 @@ export const CadastroForm = () => {
             />
           </div>
 
-          <div className="col-sm-6">
+          <div className="col-sm-12">
+            <label className="text-white mb-2">Senha</label>
             <input
               type="password"
               name="senha"
@@ -106,38 +112,38 @@ export const CadastroForm = () => {
           </div>
         </div>
 
-        <div className="container-fluid">
-          <div className="row justify-content-center">
-            <button
-              type="submit"
-              className="btn btn-secondary col-sm-6 mt-4 "
-            >
-              Cadastrar
-            </button>
+        <div className="container-fluid my-4">
+          <div className="row">
+            <div className="col-md-6">
+              <button type="submit" className="btn btn-secondary w-100 mb-2">
+                Cadastrar
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  setFormData({
+                    name: "",
+                    sobrenome: "",
+                    cpf: "",
+                    telefone: "",
+                    email: "",
+                    senha: "",
+                  })
+                }
+                className="btn btn-secondary w-100"
+              >
+                Cancelar
+              </button>
+            </div>
 
-            <button
-              type="button"
-              onClick={() =>
-                setFormData({
-                  name: "",
-                  sobrenome: "",
-                  cpf: "",
-                  telefone: "",
-                  email: "",
-                  senha: "",
-                })
-              }
-              className="btn btn-secondary col-sm-6 m-2 "
-            >
-              Cancelar
-            </button>
-          </div>
-
-          <div className="text-center text-black">
-            Ao preencher o formulário acima você concorda com os nossos{" "}
-            <a href="#" className="text-primary small text-decoration-none">
-              Política de Privacidade
-            </a>
+            <div className="col-md-6 d-flex align-items-center mt-2">
+              <div className="bg-white text-black small p-2 w-100 rounded">
+                Ao preencher o formulário acima você concorda com os nossos{" "}
+                <a href="#" className="text-primary text-decoration-none">
+                  Política de Privacidade
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </form>
