@@ -3,7 +3,19 @@ import "../../assets/Css/home/CarroselHome.css"; // Certifique-se que está impo
 
 const CarroselHome = () => {
   return (
-    <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+    <div
+      id="carouselExampleCaptions"
+      className="carousel slide"
+      data-bs-ride="carousel"
+      style={{
+        maxWidth: "800px",
+        maxHeight: "400px",
+        width: "100%",
+        height: "auto",
+        margin: "0 auto",
+        overflow: "hidden",
+      }}
+    >
       <div className="carousel-indicators">
         <button
           type="button"
@@ -27,12 +39,13 @@ const CarroselHome = () => {
         ></button>
       </div>
 
-      <div className="carousel-inner">
+      <div className="carousel-inner" style={{ width: "100%", height: "100%" }}>
         <div className="carousel-item active">
           <img
-            src="https://via.placeholder.com/800x400"
-            className="d-block"
+            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            className="d-block w-100"
             alt="Primeiro Slide"
+            style={{ objectFit: "cover", height: "100%" }}
           />
           <div className="carousel-caption d-none d-md-block">
             <h5>Primeiro Slide</h5>
@@ -41,9 +54,10 @@ const CarroselHome = () => {
         </div>
         <div className="carousel-item">
           <img
-            src="https://via.placeholder.com/800x400"
-            className="d-block"
+            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            className="d-block w-100"
             alt="Segundo Slide"
+            style={{ objectFit: "cover", height: "100%" }}
           />
           <div className="carousel-caption d-none d-md-block">
             <h5>Segundo Slide</h5>
@@ -52,9 +66,10 @@ const CarroselHome = () => {
         </div>
         <div className="carousel-item">
           <img
-            src="https://via.placeholder.com/800x400"
-            className="d-block"
+            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            className="d-block w-100"
             alt="Terceiro Slide"
+            style={{ objectFit: "cover", height: "100%" }}
           />
           <div className="carousel-caption d-none d-md-block">
             <h5>Terceiro Slide</h5>
@@ -63,7 +78,6 @@ const CarroselHome = () => {
         </div>
       </div>
 
-      {/* Botões de controle */}
       <button
         className="carousel-control-prev"
         type="button"
