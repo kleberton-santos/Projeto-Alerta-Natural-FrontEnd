@@ -1,9 +1,9 @@
-import React from "react";
 import "../../src/index.css"
 import "../assets/Css/previsao/Previsao.css"
 import HeaderPrevisao from "../components/header/HeaderPrevisao";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
+import SecaoPrevisao from "../components/previsao/SecaoPrevisao";
 
 const Previsao = () => {
     return (
@@ -21,7 +21,7 @@ const Previsao = () => {
           
             {/* Conteudo da Pagina*/}
             <div className="content-previsao">
-                
+                <SecaoPrevisao></SecaoPrevisao>                                                               
             </div>
 
             {/* Footer */}

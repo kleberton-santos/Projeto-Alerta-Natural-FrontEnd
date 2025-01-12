@@ -1,0 +1,58 @@
+div.cards{
+    width: 500px;
+}
+
+div.cards div.cartao{
+    background-color: white;
+    border-radius: 5px;
+    width: 400px;
+    background-image: linear-gradient(to right bottom, #2a5081, #2a4c7b, #294875, #29446f, #284069);
+    color: white;
+    line-height: 15px;
+    letter-spacing: 0.2px;
+    font-size: 15px;
+    padding: 10px 6px;
+    border-radius: 15px;
+}
+
+div.cards div.cartao header.cartao-header{
+    margin-bottom: 10px;
+}
+
+div.cards div.cartao p.cartao-text{ 
+ margin: 0;
+ padding: 3px;
+
+}
+
+div.cards div.cartao div.cartao-body{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+div.cards div.cartao h2.cartao-title{
+    font-size: 70px;
+    margin: 0 30px;
+}
+
+
+
+div.cards div.cartao div.cartao-detalhes{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+div.cartao-footer ul.lista-footer{
+    display: flex;
+    list-style: none;
+    font-size: 13.5px;
+    padding: 0;
+    margin: 0;
+}
+
+div.cartao-footer ul.lista-footer li{
+    margin-right: 8px;
+}
