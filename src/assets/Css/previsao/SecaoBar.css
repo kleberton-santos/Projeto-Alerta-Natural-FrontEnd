@@ -1,0 +1,48 @@
+.secao-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f4d7d7;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .secao-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .secao-input::placeholder {
+    color: #333;
+    opacity: 0.8;
+  }
+  
+  .secao-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .secao-button span {
+    font-size: 18px;
+    color: #000;
+  }
+  
+  
+  .secao-button span {
+    font-size: 18px;
+    color: #000;
+  }
+  
+
+
+
+

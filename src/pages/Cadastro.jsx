@@ -8,7 +8,7 @@ import Secaonavbar from "../components/navbar/Secaonavbar";
 
 const Cadastro = () => {
     return (
-        <div className="home-principal ">
+        <div className="home-principal d-flex flex-column min-vh-100">
             {/* Header */}
             <div className="header">
                 <HeaderCadastro />
@@ -21,13 +21,13 @@ const Cadastro = () => {
 
 
             {/* Conteudo da Pagina*/}
-            <div>
+            <div className="flex-grow-1">
                 <CadastroForm />
             </div>
 
 
             {/* Footer */}
-            <div className="footer mt-5" >
+            <div className="footer" >
                 <FooterGlobal />
             </div>
 
