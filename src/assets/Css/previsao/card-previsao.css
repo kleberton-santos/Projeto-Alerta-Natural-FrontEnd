@@ -1,11 +1,7 @@
-div.cards{
-    width: 500px;
-}
-
 div.cards div.cartao{
     background-color: white;
     border-radius: 5px;
-    width: 400px;
+    min-width: 600px;
     background-image: linear-gradient(to right bottom, #2a5081, #2a4c7b, #294875, #29446f, #284069);
     color: white;
     line-height: 15px;
@@ -25,6 +21,10 @@ div.cards div.cartao p.cartao-text{
 
 }
 
+div.cards div.cartao p.cartao-text span.clima{ 
+    text-transform: capitalize;
+}
+
 div.cards div.cartao div.cartao-body{
     display: flex;
     flex-direction: column;
@@ -42,11 +42,15 @@ div.cards div.cartao h2.cartao-title{
 div.cards div.cartao div.cartao-detalhes{
     display: flex;
     align-items: center;
-    gap: 10px;
+}
+
+div.cards div.cartao div.cartao-detalhes img.cartao-icone{
+    width:8rem;
 }
 
 div.cartao-footer ul.lista-footer{
     display: flex;
+    justify-content: space-around;
     list-style: none;
     font-size: 13.5px;
     padding: 0;
