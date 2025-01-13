@@ -21,14 +21,46 @@ const Home = () => {
       </div>
 
       {/* Banner */}
-      <div className="banner-home">
+      <div className="my-4">
         {/* Conteúdo do Banner */}
         <CarroselHome />
       </div>
 
       {/* Texto Centralizado */}
-      <div>
-        <Cards />
+      <div className="text-center-home">
+        <p>
+          Fique Informado. Esteja Preparado.<br></br>
+          Explore as condições climáticas em tempo real e tome medidas para
+          enfrentar desastres <br></br>naturais.
+        </p>
+      </div>
+      <div className="card-home container mt-4">
+        <div className="row">
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">Card 1</h5>
+                <p className="card-text">Conteúdo do primeiro card.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">Card 2</h5>
+                <p className="card-text">Conteúdo do segundo card.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">Card 3</h5>
+                <p className="card-text">Conteúdo do terceiro card.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
