@@ -137,7 +137,26 @@ export default AppRoutes;
 
 ## Funcionalidades Planejadas
 
--
+-Monitoramento Climático em Tempo Real:
+O sistema permitirá que os usuários acessem informações atualizadas sobre as condições climáticas em diversas cidades, facilitando a tomada de decisões rápidas e informadas.
+
+Publicações de Conteúdo Multimídia:
+Os usuários poderão compartilhar fotos, vídeos e textos relacionados às condições climáticas ou eventos naturais em sua região.
+
+Interação Social:
+Será possível interagir com publicações de outros usuários por meio de curtidas e comentários, criando uma comunidade ativa e colaborativa.
+
+Sistema de Login e Cadastro:
+Para garantir segurança e personalização, o acesso às funcionalidades de postagem será restrito a usuários registrados e autenticados.
+
+Busca Personalizada:
+Os usuários poderão pesquisar o clima em cidades específicas e acompanhar previsões detalhadas.
+
+Notificações de Emergência:
+O sistema enviará alertas em tempo real sobre desastres naturais iminentes, como tempestades, enchentes e ondas de calor.
+
+Interface Intuitiva e Responsiva:
+O projeto será projetado para oferecer uma navegação simples e eficiente, com design adaptável para diferentes dispositivos.
 
 ---
 
