@@ -1,0 +1,53 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f2d6d3;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-input {
+    border: none;
+    background: none;
+    flex: 1;
+    font-size: 14px;
+    color: #000;
+    outline: none;
+    padding: 5px;
+  }
+  
+  .search-input::placeholder {
+    color: #000;
+    opacity: 0.6;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #000;
+    font-size: 18px;
+  }
+  
+  .search-button i {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f002"; /* Ícone da lupa */
+  }
+  
+  .search-button:hover {
+    color: #555;
+  }
+  
+  body {
+    background-color: #3d4451;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  

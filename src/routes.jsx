@@ -6,7 +6,7 @@ import Contato from "./pages/Contato";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import { EditarPerfil } from "./pages/EditarPerfil";
-
+import Buscaprevisao from "./components/secaobusca/buscaprevisao";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -18,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/cadastro" element={<Cadastro />}></Route>
         <Route path="/EditarPerfil" element={<EditarPerfil />}></Route>
+        <Route path="/Busca" element={<Buscaprevisao />}></Route>
       </Routes>
     </BrowserRouter>
   );
