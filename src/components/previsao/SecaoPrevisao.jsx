@@ -55,22 +55,22 @@ const SecaoPrevisao = () =>{
             </div>
 
             <div className="previsao-cards">
-              {/* Pagina hoje  info principal*/}
+              {/* Filtro hoje  info principal*/}
               {pagina === 'hoje' && infosHoje &&  <div>
                  <CardPrevisao data={infosHoje} ></CardPrevisao>
                 </div>}
 
-              {/* pagina hoje info secundária */}
+              {/* Filtro hoje info secundária */}
               {pagina === 'hoje' && infosHoje && <div>
                 {infosHoje.days[0].hours.filter(info=>{
                     return infosHoje.currentConditions.datetime < info.datetime
                 }).slice(0,3).map((info, index)=>(
                     <CardPrevisaoSecundario index={0} key={index} diaAtual={infosHoje} horaAtual={info}></CardPrevisaoSecundario>
-                ))}
+                ))}S
                 </div>}
 
 
-                {/* Pagina amanhã */}           
+                {/* Filtro amanhã            */}
                 {pagina === "amanha" && infosHoje && <div>
                    {infosHoje.days[1].hours.slice(0, 12).map((info,index)=>(
                     <CardPrevisaoSecundario index={1} key={index} horaAtual={info} diaAtual={infosHoje}></CardPrevisaoSecundario>
@@ -78,6 +78,26 @@ const SecaoPrevisao = () =>{
                    }
 
                 </div> }
+
+                {/*Filtro 7 dias*/}
+                {pagina === "sete" && infosHoje && <div> 
+                {infosHoje.days.slice(2,9).map((info, index)=>(
+                    <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
+                    
+                ))}                
+                
+                </div>}
+
+                {/*Filtro 15 dias  */}
+                {pagina === "quinze" && infosHoje && <div> 
+                {infosHoje.days.slice(2,19).map((info, index)=>(
+                    <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
+                    
+                ))}                
+                
+                </div>}
+                
+
             </div>
 
        </div>

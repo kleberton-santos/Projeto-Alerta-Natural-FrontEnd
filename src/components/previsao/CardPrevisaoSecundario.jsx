@@ -2,10 +2,13 @@
 import "../../assets/Css/previsao/card-previsao-secundario.css"
 
 const CardPrevisaoSecundario = ({index, diaAtual, horaAtual}) =>{  
-    const infoHora = horaAtual
+    const infoHora =  horaAtual === null? diaAtual: horaAtual 
     const infoDia = diaAtual
     const infoIndex = index         
-    console.log(diaAtual);
+    
+    
+
+    
                 
         
        
@@ -20,12 +23,12 @@ const CardPrevisaoSecundario = ({index, diaAtual, horaAtual}) =>{
                             <div className="cartao-sec-detalhes">
                                 <div>
                                     <i><img src={`https://openweathermap.org/img/wn/$.png`} alt={`Icone ${infoHora.conditions}`} /></i>
-                                    <p>{infoDia.days[infoIndex].tempmax}C <br /> 
+                                    {/* <p>{infoDia.days[infoIndex].tempmax}C <br /> 
                                        {infoDia.days[infoIndex].tempmin}C    
-                                    </p>
+                                    </p> */}
                                 </div>
                                 <div>
-                                    <p>{infoHora.conditions}</p>
+                                    <p>{horaAtual === null? infoHora.description: infoHora.conditions}</p>
                                     <p>{infoHora.humidity}%</p>
                                 </div>
 
