@@ -56,23 +56,24 @@ const SecaoPrevisao = () =>{
 
             <div className="previsao-cards">
               {/* Filtro hoje  info principal*/}
-              {pagina === 'hoje' && infosHoje &&  <div>
+              {pagina === 'hoje' && infosHoje &&  <div className="card-principal"> 
+                <p style={{color: "white" ,textAlign: "center"}}>Hoje</p>
                  <CardPrevisao data={infosHoje} ></CardPrevisao>
                 </div>}
 
               {/* Filtro hoje info secundária */}
-              {pagina === 'hoje' && infosHoje && <div>
+              {pagina === 'hoje' && infosHoje && <div className="card-secundario">
                 {infosHoje.days[0].hours.filter(info=>{
                     return infosHoje.currentConditions.datetime < info.datetime
                 }).slice(0,3).map((info, index)=>(
                     <CardPrevisaoSecundario index={0} key={index} diaAtual={infosHoje} horaAtual={info}></CardPrevisaoSecundario>
-                ))}S
+                ))}
                 </div>}
 
 
-                {/* Filtro amanhã            */}
-                {pagina === "amanha" && infosHoje && <div>
-                   {infosHoje.days[1].hours.slice(0, 12).map((info,index)=>(
+                {/* Filtro amanhã*/}
+                {pagina === "amanha" && infosHoje && <div className="duas-colunas">
+                   {infosHoje.days[1].hours.slice(0, 24).map((info,index)=>(
                     <CardPrevisaoSecundario index={1} key={index} horaAtual={info} diaAtual={infosHoje}></CardPrevisaoSecundario>
                 ))
                    }
@@ -80,7 +81,7 @@ const SecaoPrevisao = () =>{
                 </div> }
 
                 {/*Filtro 7 dias*/}
-                {pagina === "sete" && infosHoje && <div> 
+                {pagina === "sete" && infosHoje && <div className="duas-colunas"> 
                 {infosHoje.days.slice(2,9).map((info, index)=>(
                     <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
                     
@@ -88,8 +89,8 @@ const SecaoPrevisao = () =>{
                 
                 </div>}
 
-                {/*Filtro 15 dias  */}
-                {pagina === "quinze" && infosHoje && <div> 
+                {/*Filtro 15 dias*/}
+                {pagina === "quinze" && infosHoje && <div className="duas-colunas"> 
                 {infosHoje.days.slice(2,19).map((info, index)=>(
                     <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
                     

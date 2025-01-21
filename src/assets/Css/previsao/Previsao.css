@@ -83,3 +83,32 @@ button{
     background-color: inherit;
 }
 
+div.previsao-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    min-height: 500px;
+}
+
+
+
+div.previsao-cards div.card-secundario{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+div.previsao-cards div.duas-colunas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0;
+}
+
+div.previsao-cards div.duas-colunas > *:only-child{
+    flex-basis: auto;
+}

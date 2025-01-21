@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import "../../assets/Css/previsao/card-previsao-secundario.css"
-
+import clearDay from "../../assets/images/previsao-icones/2nd-set-color/clear-day.png"
 const CardPrevisaoSecundario = ({index, diaAtual, horaAtual}) =>{  
     const infoHora =  horaAtual === null? diaAtual: horaAtual 
     const infoDia = diaAtual
@@ -22,7 +22,7 @@ const CardPrevisaoSecundario = ({index, diaAtual, horaAtual}) =>{
                     <div className="cartao-sec-body">
                             <div className="cartao-sec-detalhes">
                                 <div>
-                                    <i><img src={`https://openweathermap.org/img/wn/$.png`} alt={`Icone ${infoHora.conditions}`} /></i>
+                                    <i><img src={clearDay} alt={`Icone ${infoHora.conditions}`} /></i>
                                     {/* <p>{infoDia.days[infoIndex].tempmax}C <br /> 
                                        {infoDia.days[infoIndex].tempmin}C    
                                     </p> */}

@@ -1,9 +1,11 @@
 import "../../assets/Css/previsao/card-previsao.css"
+import clearDay from "../../assets/images/previsao-icones/2nd-set-color/clear-day.png"
+
+
 
 
 const CardPrevisao = (data) =>{
         const infos = data.data        
-        console.log(infos);
               
         return (
             
@@ -18,7 +20,7 @@ const CardPrevisao = (data) =>{
                     
                     
                     <div className="cartao-detalhes">
-                     <i><img className="cartao-icone"  src={`https://openweathermap.org/img/wn/${infos.icone}.png`} alt={`icone ${infos.currentConditions.conditions}`} /></i>
+                     <i><img className="cartao-icone"  src={clearDay} alt={`icone ${infos.currentConditions.conditions}`} /></i>
                      <h2 className="cartao-title">{infos.currentConditions.temp}ºC</h2> 
                          <p className="cartao-text"><span className="clima">{infos.conditions}</span><br />
                         Sensação Térmica: {infos.currentConditions.feelslike}ºC<br />
