@@ -1,7 +1,8 @@
 div.cards div.cartao{
     background-color: white;
     border-radius: 5px;
-    min-width: 600px;
+    min-width: 400px;
+    max-width: 500px;
     background-image: linear-gradient(to right bottom, #2a5081, #2a4c7b, #294875, #29446f, #284069);
     color: white;
     line-height: 15px;

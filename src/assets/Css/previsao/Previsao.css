@@ -83,8 +83,3 @@ button{
     background-color: inherit;
 }
 
-div.previsao-cards{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}

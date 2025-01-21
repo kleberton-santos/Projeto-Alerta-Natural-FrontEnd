@@ -2,13 +2,7 @@ import "../../assets/Css/previsao/card-previsao.css"
 
 
 const CardPrevisao = (data) =>{
-    const infos = data.data
-    const hora = new Date()
-
-    
-    
-    if(!data.paralelo){
-
+        const infos = data.data              
         return (
             
             
@@ -16,18 +10,20 @@ const CardPrevisao = (data) =>{
            <div className="cartao">
                 <header className="cartao-header">
                     <p className="cartao-text">Clima Atual</p>
-                    <p className="cartao-text">{hora.getHours()}:{hora.getMinutes()}</p>
+                    <p className="cartao-text">{infos.currentConditions.datetime}</p>
                 </header>
                 <div className="cartao-body">
                     
                     
                     <div className="cartao-detalhes">
-                     <i><img className="cartao-icone"  src={`https://openweathermap.org/img/wn/${infos.icone}.png`} alt="icone" /></i>
-                     <h2 className="cartao-title">{Math.round(infos.temperatura)}ºC</h2> 
-                         <p className="cartao-text"><span className="clima">{infos.clima}</span><br />
-                        Sensação Térmica: {Math.round(infos.sensacaoTermica)}ºC<br />
-                        A Mínima Será de: {Math.round(infos.minima)}ºC   
-                     </p>
+                     <i><img className="cartao-icone"  src={`https://openweathermap.org/img/wn/${infos.icone}.png`} alt="icone do clima atual" /></i>
+                     <h2 className="cartao-title">{infos.currentConditions.temp}ºC</h2> 
+                         <p className="cartao-text"><span className="clima">{infos.conditions}</span><br />
+                        Sensação Térmica: {infos.currentConditions.feelslike}ºC<br />
+                        </p>
+                        <p>
+                           {infos.days[0].description} A mínima será de: {Math.round(infos.days[0].tempmin)}ºC   
+                        </p>
                      
                     </div>
                     
@@ -39,12 +35,12 @@ const CardPrevisao = (data) =>{
                 <div className="cartao-footer">
                     <ul className="lista-footer">
                        
-                        <li>Vento <br /> {infos.vento} km/h</li>
-                        <li>Umidade <br /> {infos.umidade}%</li>
-                        <li>Visibiliade <br />{infos.visibilidade/1000} Km</li>
-                        <li>Pressão <br /> {infos.pressao} hPa</li>
-                        <li>Nuvens <br />{infos.nuvens}%</li>
-                        <li>Chuva <br />{infos.chuva}mmh</li>
+                        <li>Vento <br /> {infos.currentConditions.windspeed} km/h</li>
+                        <li>Umidade <br /> {infos.currentConditions.humidity}%</li>
+                        <li>Visibiliade <br />{infos.currentConditions.visibility} Km</li>
+                        <li>Pressão <br /> {infos.currentConditions.pressure} hPa</li>
+                        <li>Nuvens <br />{infos.currentConditions.cloudcover}%</li>
+                        <li>Chuva <br />{infos.currentConditions.precip!== null + "mpp" && infos.currentConditions.precip }{infos.currentConditions.precip === null && "Sem previsão"}</li>
                     </ul>
 
                 </div>
@@ -55,12 +51,6 @@ const CardPrevisao = (data) =>{
           
         </div>
     )
-
-}else{
-    return (
-        <button>Aqui</button>
-    )
-}
 
 }
 export default CardPrevisao

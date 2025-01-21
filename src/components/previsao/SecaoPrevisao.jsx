@@ -2,43 +2,26 @@ import "../../assets/Css/previsao/Previsao.css"
 import CardPrevisao from "./CardPrevisao"
 import { useRef, useState } from "react"
 import axios from "axios"
+import CardPrevisaoSecundario from "./CardPrevisaoSecundario"
 
 
 
 const SecaoPrevisao = () =>{
     const inputRef = useRef()
-    const [infos, setInfos] = useState()
- 
+    const [infosHoje, setInfosHoje] = useState()
+    const [pagina, setPagina] = useState('hoje')
 
     async function buscarCidade(){    
+        
         const cidade = inputRef.current.value
-        const apiKey = "5c282d19dbd62712573de627a2c455a0"
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&lang=pt_br&units=metric`
+        // QUERY de 15 dias
+        const urlTempoDiario = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cidade}?unitGroup=metric&key=EDQLVXGZ22RG6STQJXDADP5K9&contentType=json&lang=pt`
         
-        const data = await axios.get(url)         
-         setInfos( await filtrarDados(data.data))
-         console.log(infos);      
-        
-    }   
+        const infosDiario = await axios.get(urlTempoDiario)      
+         setInfosHoje(infosDiario.data) 
+       
+    } 
 
-    async function filtrarDados(data) {
-        return {
-            paralelo:false,
-            icone: data.weather[0].icon,
-            temperatura: data.main.temp,
-            clima: data.weather[0].description,
-            sensacaoTermica: data.main.feels_like,
-            maxima: data.main.temp_max,
-            minima: data.main.temp_min,
-            vento: data.wind.speed,
-            umidade: data.main.humidity,
-            visibilidade: data.visibility,
-            nuvens: data.clouds.all,
-            chuva: "",
-            pressao: data.main.pressure
-        }    
-                
-    }
 
     return (
         <div>
@@ -63,20 +46,38 @@ const SecaoPrevisao = () =>{
             <div className="secao-previsao">
                 <nav>
                     <ul className="nav-previsao">
-                        <li className="list-item"><button>Hoje</button></li>
-                        <li className="list-item"><button>Amanhã</button></li>
-                        <li className="list-item"><button>7 Dias</button></li>
-                        <li className="list-item"><button>15 Dias</button></li>
+                        <li className="list-item" onClick={()=>{setPagina("hoje")}}><button>Hoje</button></li>
+                        <li className="list-item" onClick={()=>{setPagina("amanha")}}><button>Amanhã</button></li>
+                        <li className="list-item" onClick={()=>{setPagina("sete")}}><button>7 Dias</button></li>
+                        <li className="list-item" onClick={()=>{setPagina("quinze")}} ><button>15 Dias</button></li>
                     </ul>
                 </nav>
             </div>
 
             <div className="previsao-cards">
-                <div>
-                   {infos &&  <CardPrevisao data={infos}></CardPrevisao>}
-                </div>
-                <div>
-                </div>
+              {/* Pagina hoje  info principal*/}
+              {pagina === 'hoje' && infosHoje &&  <div>
+                 <CardPrevisao data={infosHoje} ></CardPrevisao>
+                </div>}
+
+              {/* pagina hoje info secundária */}
+              {pagina === 'hoje' && infosHoje && <div>
+                {infosHoje.days[0].hours.filter(info=>{
+                    return infosHoje.currentConditions.datetime < info.datetime
+                }).slice(0,3).map((info, index)=>(
+                    <CardPrevisaoSecundario index={0} key={index} diaAtual={infosHoje} horaAtual={info}></CardPrevisaoSecundario>
+                ))}
+                </div>}
+
+
+                {/* Pagina amanhã */}           
+                {pagina === "amanha" && infosHoje && <div>
+                   {infosHoje.days[1].hours.slice(0, 12).map((info,index)=>(
+                    <CardPrevisaoSecundario index={1} key={index} horaAtual={info} diaAtual={infosHoje}></CardPrevisaoSecundario>
+                ))
+                   }
+
+                </div> }
             </div>
 
        </div>
