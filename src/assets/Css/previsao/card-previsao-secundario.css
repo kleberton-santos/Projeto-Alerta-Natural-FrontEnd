@@ -1,0 +1,21 @@
+
+
+div.cards-sec div.cartao-sec{
+    width: 1rem;
+    border: 1px solid red;
+}
+
+div.cartao-sec div.cartao-body-sec{
+    display: flex;
+    border: 1px solid red;
+}
+
+div.cartao-sec div.cartao-body-sec div.cartao-detalhes-sec{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-align-end{
+    text-align: end;
+}
