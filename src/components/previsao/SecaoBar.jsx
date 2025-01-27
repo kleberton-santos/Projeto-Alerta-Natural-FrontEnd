@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../assets/Css/SecaoBar.css"
+import "../../assets/Css/previsao/SecaoBar.css"
 
 const SecaoBar = () => {
   return (
