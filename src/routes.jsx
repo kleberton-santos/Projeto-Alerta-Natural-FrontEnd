@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import { EditarPerfil } from "./pages/EditarPerfil";
 
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
