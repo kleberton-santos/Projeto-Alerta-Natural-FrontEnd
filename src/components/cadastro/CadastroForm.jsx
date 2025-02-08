@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/Css/cadastro/Cadastro.css";
-import ApiUsuarios from "../../service/ApiUsuarios"; // Nome corrigido
+import Api from "../../service/Api"; // Nome corrigido
 
 export const CadastroForm = () => {
 
@@ -34,7 +34,7 @@ export const CadastroForm = () => {
     setErro("");
 
     try {
-      await ApiUsuarios.post("/usuarios", formData);
+      await Api.post("/usuarios", formData);
       setMensagem("Cadastro realizado com sucesso!");
       setFormData({
         nome: "",
