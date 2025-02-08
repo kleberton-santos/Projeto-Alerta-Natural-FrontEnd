@@ -1,7 +1,8 @@
 import React from "react";
 
-import { HeaderEditarPerfil } from "../components/header/HeaderEditarPerfil";
+import HeaderEditarPerfil from "../components/header/HeaderEditarPerfil";
 import FooterGlobal from "../components/footer/FooterGlobal";
+import Secaonavbar from "../components/navbar/Secaonavbar";
 import { SecaoEditarPerfil } from "../components/editarPerfil/SecaoEditarPerfil";
 
 export const EditarPerfil = () => {
@@ -12,13 +13,10 @@ export const EditarPerfil = () => {
         <HeaderEditarPerfil />
       </div>
 
-      {/* NavBar */}
-      <div
-        className="nav-bar d-flex justify-content-center align-items-center border border-primary"
-        style={{ height: "55px" }}
-      >
-        <h2>NavBar</h2>
-      </div>
+     {/* NavBar */}
+     <div className="nav-bar">
+                <Secaonavbar/>
+            </div>
 
       {/* Conteudo da Pagina*/}
       <div className="flex-grow-1">
