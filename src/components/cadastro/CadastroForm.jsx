@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../assets/Css/cadastro/Cadastro.css";
+import ApiUsuarios from "../../service/ApiUsuarios"; // Nome corrigido
 
 export const CadastroForm = () => {
+
+  const navigate = useNavigate();
+
+
   const [formData, setFormData] = useState({
-    name: "",
-    sobrenome: "",
+    nome: "",
+    sobreNome: "",
     cpf: "",
     telefone: "",
     email: "",
     senha: "",
   });
+
+  const [mensagem, setMensagem] = useState("");
+  const [erro, setErro] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,24 +28,40 @@ export const CadastroForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dados do formulário:", formData);
+    setMensagem("");
+    setErro("");
+
+    try {
+      await ApiUsuarios.post("/usuarios", formData);
+      setMensagem("Cadastro realizado com sucesso!");
+      setFormData({
+        nome: "",
+        sobreNome: "",
+        cpf: "",
+        telefone: "",
+        email: "",
+        senha: "",
+      });
+    } catch (error) {
+      setErro(
+        error.response?.data?.message ||
+          "Erro ao cadastrar. Tente novamente mais tarde."
+      );
+    }
   };
 
   return (
-    <div
-      className="container-fluid p-2"
-      style={{ maxWidth: "800px" }}
-    >
+    <div className="container-fluid p-2" style={{ maxWidth: "800px" }}>
       <form className="shadow-none" onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-sm-6 mb-3">
             <label className="text-white mb-2">Nome</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="nome"
+              value={formData.nome}
               onChange={handleChange}
               placeholder="Nome"
               className="bg-cinza-custom form-control"
@@ -47,8 +72,8 @@ export const CadastroForm = () => {
             <label className="text-white mb-2">Sobrenome</label>
             <input
               type="text"
-              name="sobrenome"
-              value={formData.sobrenome}
+              name="sobreNome"
+              value={formData.sobreNome}
               onChange={handleChange}
               placeholder="Sobrenome"
               className="bg-cinza-custom form-control"
@@ -71,7 +96,7 @@ export const CadastroForm = () => {
             />
           </div>
           <div className="col-sm-6 mb-3">
-            <label className="text-white mb-2">Senha</label>
+            <label className="text-white mb-2">Telefone</label>
             <input
               type="tel"
               name="telefone"
@@ -98,7 +123,7 @@ export const CadastroForm = () => {
             />
           </div>
 
-          <div className="col-sm-12">
+          <div className="col-sm-12 mb-3">
             <label className="text-white mb-2">Senha</label>
             <input
               type="password"
@@ -112,29 +137,34 @@ export const CadastroForm = () => {
           </div>
         </div>
 
+        {mensagem && <div className="alert alert-success">{mensagem}</div>}
+        {erro && <div className="alert alert-danger">{erro}</div>}
+
         <div className="container-fluid my-4">
           <div className="row">
-            <div className="col-md-6">
-              <button type="submit" className="btn btn-secondary w-100 mb-2">
-                Cadastrar
-              </button>
-              <button
-                type="button"
-                onClick={() =>
-                  setFormData({
-                    name: "",
-                    sobrenome: "",
-                    cpf: "",
-                    telefone: "",
-                    email: "",
-                    senha: "",
-                  })
-                }
-                className="btn btn-secondary w-100"
-              >
-                Cancelar
-              </button>
-            </div>
+          <div className="col-md-6">
+            <button type="submit" className="btn btn-secondary w-100 mb-2">
+              Cadastrar
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({
+                  nome: "",
+                  sobreNome: "",
+                  cpf: "",
+                  telefone: "",
+                  email: "",
+                  senha: "",
+                });
+                navigate("/");
+              }}
+              className="btn btn-secondary w-100"
+            >
+              Cancelar
+            </button>
+          </div>
+
 
             <div className="col-md-6 d-flex align-items-center mt-2">
               <div className="bg-white text-black small p-2 w-100 rounded">
