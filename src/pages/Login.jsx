@@ -16,23 +16,38 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Limpa erros anteriores
-
+  
     try {
       const response = await axios.post("http://localhost:8080/api/auth/login", formData);
-      
+      console.log("Resposta completa da API:", response);
+  
       // Salva o token JWT no localStorage
       localStorage.setItem("token", response.data.token);
-      
+  
+      // Supondo que a resposta contenha os dados do usuário
+      const userData = {
+        nome: response.data.nome, // Substitua com os dados reais
+        foto: response.data.foto || "url-da-foto-generica.jpg", // Substitua com a foto real ou genérica
+        id: response.data.id // Supondo que o ID do usuário seja retornado da API
+      };
+  
+      // Armazenando os dados do usuário
+      localStorage.setItem("user", JSON.stringify(userData));
+      console.log("Dados do usuário no localStorage:", userData);
+  
       // Redireciona para a Home
-      navigate("/");
+      navigate("/"); 
     } catch (error) {
       setError("Email ou senha inválidos. Tente novamente.");
     }
   };
+  
+  
+  
 
   return (
     <div className="home-principal">

@@ -6,6 +6,7 @@ import Secaonavbar from "../components/navbar/Secaonavbar";
 import { SecaoEditarPerfil } from "../components/editarPerfil/SecaoEditarPerfil";
 
 export const EditarPerfil = () => {
+  
   return (
     <div className="home-principal d-flex flex-column min-vh-100">
       {/* Header */}

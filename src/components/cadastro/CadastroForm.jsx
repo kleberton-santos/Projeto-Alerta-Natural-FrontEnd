@@ -32,7 +32,9 @@ export const CadastroForm = () => {
     e.preventDefault();
     setMensagem("");
     setErro("");
-
+  
+    console.log("Enviando dados para a API:", formData); // Log para verificar os dados enviados
+  
     try {
       await Api.post("/usuarios", formData);
       setMensagem("Cadastro realizado com sucesso!");
@@ -51,6 +53,7 @@ export const CadastroForm = () => {
       );
     }
   };
+  
 
   return (
     <div className="container-fluid p-2" style={{ maxWidth: "800px" }}>

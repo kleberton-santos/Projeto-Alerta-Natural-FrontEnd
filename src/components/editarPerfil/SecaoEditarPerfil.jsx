@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export const SecaoEditarPerfil = () => {
   const [formData, setFormData] = useState({
     name: "",
-    sobrenome: "",
+    sobreNome: "",
     cpf: "",
     telefone: "",
     email: "",
@@ -11,6 +12,38 @@ export const SecaoEditarPerfil = () => {
     foto: null,
     previewFoto: null,
   });
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const usuarioId = userData?.id; // Recupera o ID do usuário logado
+
+    if (!usuarioId) {
+      console.error("ID de usuário não encontrado.");
+      return;
+    }
+
+    const carregarDadosUsuario = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/usuarios/${usuarioId}`);
+        console.log("Dados do usuário:", response.data);
+
+        setFormData({
+          name: response.data.nome,
+          sobreNome: response.data.sobreNome,
+          cpf: response.data.cpf,
+          telefone: response.data.telefone,
+          email: response.data.email,
+          senha: "",
+          foto: response.data.foto,
+          previewFoto: response.data.foto ? `http://localhost:8080/${response.data.foto}` : null,
+        });
+      } catch (error) {
+        console.error("Erro ao carregar dados do usuário:", error);
+      }
+    };
+
+    carregarDadosUsuario();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,15 +64,56 @@ export const SecaoEditarPerfil = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dados do formulário:", formData);
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("usuario", JSON.stringify({
+      nome: formData.name,
+      sobreNome: formData.sobreNome,
+      cpf: formData.cpf,
+      telefone: formData.telefone,
+      email: formData.email,
+      senha: formData.senha,
+    }));
+
+    // Adiciona a foto ao FormData, se existir
+    if (formData.foto) {
+      formDataToSend.append("foto", formData.foto);
+    }
+
+    try {
+      const usuarioId = JSON.parse(localStorage.getItem("user"))?.id;
+      if (!usuarioId) {
+        console.error("ID de usuário não encontrado.");
+        return;
+      }
+
+      const response = await axios.put(`http://localhost:8080/usuarios/${usuarioId}`, formDataToSend, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (response.status === 200) {
+        alert("Perfil atualizado com sucesso!");
+        if (formData.foto) {
+          setFormData((prevState) => ({
+            ...prevState,
+            previewFoto: URL.createObjectURL(formData.foto),
+          }));
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao editar perfil:", error);
+      alert("Erro ao editar perfil. Tente novamente.");
+    }
   };
 
   const handleReset = () => {
     setFormData({
       name: "",
-      sobrenome: "",
+      sobreNome: "",
       cpf: "",
       telefone: "",
       email: "",
@@ -96,8 +170,8 @@ export const SecaoEditarPerfil = () => {
             <label className="text-white mb-2">Sobrenome</label>
             <input
               type="text"
-              name="sobrenome"
-              value={formData.sobrenome}
+              name="sobreNome"
+              value={formData.sobreNome}
               onChange={handleChange}
               placeholder="Sobrenome"
               className="bg-cinza-custom form-control"
@@ -157,7 +231,6 @@ export const SecaoEditarPerfil = () => {
               onChange={handleChange}
               placeholder="Senha"
               className="bg-cinza-custom form-control"
-              required
             />
           </div>
         </div>
@@ -177,13 +250,8 @@ export const SecaoEditarPerfil = () => {
                 Cancelar
               </button>
             </div>
-
-
-
           </div>
         </div>
-
-
       </form>
     </div>
   );
