@@ -35,7 +35,7 @@ export const SecaoEditarPerfil = () => {
           email: response.data.email,
           senha: "",
           foto: response.data.foto,
-          previewFoto: response.data.foto ? `http://localhost:8080/${response.data.foto}` : null,
+          previewFoto: response.data.foto ? `http://localhost:8080/foto/${response.data.foto}` : null,
         });
       } catch (error) {
         console.error("Erro ao carregar dados do usuário:", error);
