@@ -1,12 +1,13 @@
 .secao-bar {
     display: flex;
     align-items: center;
-    background-color: #f4d7d7;
+    background-color: #f5dcdc;
     border-radius: 25px;
     padding: 5px 10px;
     width: 100%;
     max-width: 500px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    align-content: center;
   }
   
   .secao-input {
@@ -17,11 +18,15 @@
     padding: 10px;
     font-size: 16px;
     color: #333;
+
+  
   }
   
   .secao-input::placeholder {
     color: #333;
     opacity: 0.8;
+    justify-content: center;
+  
   }
   
   .secao-button {
@@ -29,6 +34,8 @@
     border: none;
     cursor: pointer;
     padding: 5px;
+    justify-content: center;
+
   }
   
   .secao-button span {
