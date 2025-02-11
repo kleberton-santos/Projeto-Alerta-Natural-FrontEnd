@@ -34,34 +34,41 @@ const Home = () => {
           enfrentar desastres <br></br>naturais.
         </p>
       </div>
-      <div className="card-home container mt-4">
+      <div className="card-home container mt-4 mb-4">
         <div className="row">
           <div className="col-md-4">
             <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Card 1</h5>
-                <p className="card-text">Conteúdo do primeiro card.</p>
-              </div>
+              <img src="./src/assets/images/Previsao_Tempo.webp" alt="Previsão do Tempo" id="previsaoCard" />
+            </div>
+            <div className="card-body">
+              <h5 className="card-title text-white">Previsão do Tempo</h5>
+              <h6 className="card-text mb-2 text-white">Informações atualizadas sobre o clima em sua região.</h6>
             </div>
           </div>
           <div className="col-md-4">
             <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Card 2</h5>
-                <p className="card-text">Conteúdo do segundo card.</p>
-              </div>
+              <img src="./src/assets/images/DESASTRES_EDIT.jpg" alt="Alerta de Desastres Naturais" id="desastreCard" />
             </div>
+            <div className="card-body">
+              <h5 className="card-title text-white">Alerta de Desastres</h5>
+              <p className="card-text text-white">Receba alerta de desastres, furacões e mais.</p>
+            </div>
+
           </div>
           <div className="col-md-4">
             <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Card 3</h5>
-                <p className="card-text">Conteúdo do terceiro card.</p>
-              </div>
+              <img src="./src/assets/images/Localização.jpg" alt="Busca por Localização" id="LocalCard" />
             </div>
+            <div className="card-body">
+              <h5 className="card-title text-white">Busca por localização</h5>
+              <p className="card-text text-white">Encontre dados climáticos usando seu CEP ou coordenadas.</p>
+            </div>
+           
           </div>
         </div>
       </div>
+
+      
 
       {/* Footer */}
       <div className="footer-home">

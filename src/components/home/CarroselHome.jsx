@@ -42,7 +42,7 @@ const CarroselHome = () => {
       <div className="carousel-inner" style={{ width: "100%", height: "100%" }}>
         <div className="carousel-item active">
           <img
-            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://conhecerseguros.com.br/wp-content/uploads/2023/02/Imagem-Ilustrativa-de-post-2.jpg"
             className="d-block w-100"
             alt="Primeiro Slide"
             style={{ objectFit: "cover", height: "100%" }}
@@ -54,7 +54,7 @@ const CarroselHome = () => {
         </div>
         <div className="carousel-item">
           <img
-            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://media.investnews.com.br/uploads/2025/01/incendios_los_angeles_.jpg"
             className="d-block w-100"
             alt="Segundo Slide"
             style={{ objectFit: "cover", height: "100%" }}
@@ -66,7 +66,7 @@ const CarroselHome = () => {
         </div>
         <div className="carousel-item">
           <img
-            src="https://images.unsplash.com/photo-1667372393138-3a5dc3ba517d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://img.odcdn.com.br/wp-content/uploads/2024/06/Destaque-Enchente-no-Rio-Grande-do-Sul-1-1920x1080.jpg"
             className="d-block w-100"
             alt="Terceiro Slide"
             style={{ objectFit: "cover", height: "100%" }}

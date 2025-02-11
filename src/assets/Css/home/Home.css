@@ -38,6 +38,17 @@
     background-color: white; /* Mantém o fundo do card distinto */
     border: none; /* Remove a borda do card (opcional) */
     border-radius: 8px; /* Bordas arredondadas para os cards */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card img{
+    min-width: 450px;
+    object-fit: contain;
+}
+
+.card #desastreCard{
+    min-width: 500px;
 }
 
 .card-body {
