@@ -33,7 +33,7 @@ export const SecaoEditarPerfil = () => {
           cpf: response.data.cpf,
           telefone: response.data.telefone,
           email: response.data.email,
-          senha: "",
+          senha: "", // Mantém senha vazia para não sobrescrever no backend
           foto: response.data.foto,
           previewFoto: response.data.foto ? `http://localhost:8080/foto/${response.data.foto}` : null,
         });
@@ -67,15 +67,21 @@ export const SecaoEditarPerfil = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();
-    formDataToSend.append("usuario", JSON.stringify({
+    const usuarioAtualizado = {
       nome: formData.name,
       sobreNome: formData.sobreNome,
       cpf: formData.cpf,
       telefone: formData.telefone,
-      email: formData.email,
-      senha: formData.senha,
-    }));
+      email: formData.email.trim(), // Remove espaços extras no e-mail
+    };
+
+    // Só adiciona a senha se o usuário digitou uma nova
+    if (formData.senha.trim() !== "") {
+      usuarioAtualizado.senha = formData.senha;
+    }
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("usuario", JSON.stringify(usuarioAtualizado));
 
     // Adiciona a foto ao FormData, se existir
     if (formData.foto) {
