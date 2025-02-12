@@ -16,6 +16,18 @@ const Header = ({ label }) => {
     if (storedUser) {
       setUser(storedUser);
     }
+  
+    // 🚀 Ouve o evento de atualização do usuário
+    const handleUserUpdate = () => {
+      const updatedUser = JSON.parse(localStorage.getItem("user"));
+      setUser(updatedUser);
+    };
+  
+    window.addEventListener("userUpdate", handleUserUpdate);
+  
+    return () => {
+      window.removeEventListener("userUpdate", handleUserUpdate);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -43,7 +55,7 @@ const Header = ({ label }) => {
             <div
               className="login-circle"
               style={{
-                backgroundImage: `url(${user.foto})`,
+                backgroundImage: `url(${user.foto ? `http://localhost:8080/fotos/${user.foto}` : imagemGenerica})`,
                 backgroundSize: "cover",
               }}
             ></div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import imagemGenerica from "../../assets/images/img-default.png"; // Imagem padrão para quando não houver foto
 
 export const SecaoEditarPerfil = () => {
   const [formData, setFormData] = useState({
@@ -10,12 +11,12 @@ export const SecaoEditarPerfil = () => {
     email: "",
     senha: "",
     foto: null,
-    previewFoto: null,
+    previewFoto: imagemGenerica, // Usa a imagem genérica por padrão
   });
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
-    const usuarioId = userData?.id; // Recupera o ID do usuário logado
+    const usuarioId = userData?.id;
 
     if (!usuarioId) {
       console.error("ID de usuário não encontrado.");
@@ -28,14 +29,16 @@ export const SecaoEditarPerfil = () => {
         console.log("Dados do usuário:", response.data);
 
         setFormData({
-          name: response.data.nome,
-          sobreNome: response.data.sobreNome,
-          cpf: response.data.cpf,
-          telefone: response.data.telefone,
-          email: response.data.email,
-          senha: "", // Mantém senha vazia para não sobrescrever no backend
-          foto: response.data.foto,
-          previewFoto: response.data.foto ? `http://localhost:8080/foto/${response.data.foto}` : null,
+          name: response.data.nome || "",
+          sobreNome: response.data.sobreNome || "",
+          cpf: response.data.cpf || "",
+          telefone: response.data.telefone || "",
+          email: response.data.email || "",
+          senha: "",
+          foto: response.data.foto || null,
+          previewFoto: response.data.foto
+            ? `http://localhost:8080/fotos/${response.data.foto}`
+            : imagemGenerica, // Usa a imagem genérica se não houver foto
         });
       } catch (error) {
         console.error("Erro ao carregar dados do usuário:", error);
@@ -66,49 +69,59 @@ export const SecaoEditarPerfil = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const usuarioAtualizado = {
       nome: formData.name,
       sobreNome: formData.sobreNome,
       cpf: formData.cpf,
       telefone: formData.telefone,
-      email: formData.email.trim(), // Remove espaços extras no e-mail
+      email: formData.email.trim(),
     };
-
-    // Só adiciona a senha se o usuário digitou uma nova
+  
     if (formData.senha.trim() !== "") {
       usuarioAtualizado.senha = formData.senha;
     }
-
+  
     const formDataToSend = new FormData();
     formDataToSend.append("usuario", JSON.stringify(usuarioAtualizado));
-
-    // Adiciona a foto ao FormData, se existir
-    if (formData.foto) {
+  
+    if (formData.foto && formData.foto !== imagemGenerica) {
       formDataToSend.append("foto", formData.foto);
     }
-
+  
     try {
       const usuarioId = JSON.parse(localStorage.getItem("user"))?.id;
       if (!usuarioId) {
         console.error("ID de usuário não encontrado.");
         return;
       }
-
-      const response = await axios.put(`http://localhost:8080/usuarios/${usuarioId}`, formDataToSend, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      if (response.status === 200) {
-        alert("Perfil atualizado com sucesso!");
-        if (formData.foto) {
-          setFormData((prevState) => ({
-            ...prevState,
-            previewFoto: URL.createObjectURL(formData.foto),
-          }));
+  
+      const response = await axios.put(
+        `http://localhost:8080/usuarios/${usuarioId}`,
+        formDataToSend,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
         }
+      );
+  
+      if (response.status === 200) {
+        const novoUsuario = response.data;
+        const fotoUrl = novoUsuario.foto
+          ? `http://localhost:8080/fotos/${novoUsuario.foto}`
+          : imagemGenerica;
+  
+        // ✅ Atualiza o localStorage com a nova foto
+        const usuarioLocal = JSON.parse(localStorage.getItem("user"));
+        usuarioLocal.foto = novoUsuario.foto;
+        localStorage.setItem("user", JSON.stringify(usuarioLocal));
+  
+        // ✅ Atualiza o estado para refletir a mudança no Header
+        setFormData((prev) => ({ ...prev, previewFoto: fotoUrl }));
+  
+        alert("Perfil atualizado com sucesso!");
+  
+        // 🚀 Dispara evento para atualizar o Header imediatamente
+        window.dispatchEvent(new Event("userUpdate"));
       }
     } catch (error) {
       console.error("Erro ao editar perfil:", error);
@@ -125,7 +138,7 @@ export const SecaoEditarPerfil = () => {
       email: "",
       senha: "",
       foto: null,
-      previewFoto: null,
+      previewFoto: imagemGenerica, // Reseta para a imagem genérica
     });
   };
 
@@ -136,26 +149,14 @@ export const SecaoEditarPerfil = () => {
         <div className="mb-3 text-center">
           <label className="text-white my-2">Foto</label>
           <div className="d-flex justify-content-center align-items-center flex-column mb-4">
-            {formData.previewFoto ? (
-              <img
-                src={formData.previewFoto}
-                alt="Pré-visualização"
-                className="rounded-circle mb-2"
-                style={{ width: "100px", height: "100px", objectFit: "cover" }}
-              />
-            ) : (
-              <div
-                className="bg-light rounded-circle"
-                style={{ width: "150px", height: "150px" }}
-              />
-            )}
+            <img
+              src={formData.previewFoto}
+              alt="Pré-visualização"
+              className="rounded-circle mb-2"
+              style={{ width: "100px", height: "100px", objectFit: "cover" }}
+            />
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFotoChange}
-            className="form-control"
-          />
+          <input type="file" accept="image/*" onChange={handleFotoChange} className="form-control" />
         </div>
 
         {/* Nome e Sobrenome */}
@@ -248,11 +249,7 @@ export const SecaoEditarPerfil = () => {
               <button type="submit" className="btn btn-secondary w-50">
                 Atualizar
               </button>
-              <button
-                type="button"
-                onClick={handleReset}
-                className="btn btn-secondary w-50"
-              >
+              <button type="button" onClick={handleReset} className="btn btn-secondary w-50">
                 Cancelar
               </button>
             </div>
