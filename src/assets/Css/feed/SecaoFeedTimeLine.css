@@ -1,12 +1,30 @@
-.bg-custom {
+.bg-custom-timeline {
     background-color: #27335C;
     border-color: #27335C;
     
   }
 
 .user-image {
-  width: 51px;
-  height: 51px;
+  width: 63px;
+  height: 40px;
   border-radius: 50%;
-  object-fit: cover;
+}
+
+
+
+.secao-feed-time-line {
+  height: 75%;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.texto-publicacao-timeline {
+  font-size: 15px;
+  margin-left: -7px;
+  margin-top: 15px;
+}
+.galeria-feed img {
+  width: 70%;
+  margin-top: 20px;
+  margin-left: 60px;
 }

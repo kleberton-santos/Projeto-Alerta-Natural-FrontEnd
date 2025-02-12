@@ -11,6 +11,8 @@
 }
 
 .login-text {
+    display: flex;
+    align-items: center;  /* Alinha os itens verticalmente no centro */
     cursor: pointer;
 }
 
@@ -26,4 +28,10 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    margin-right: 10px;
 }
+
+.login-text span {
+    font-size: 1.25rem; /* Ajuste o tamanho da fonte conforme necessário */
+    margin-left: 10px; /* Pode ser usado para garantir que o texto não fique muito colado à imagem */
+  }

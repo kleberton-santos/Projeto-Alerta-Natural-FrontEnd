@@ -8,6 +8,7 @@ import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import "../../src/assets/Css/feed/FeedPage.css";
 import SecaoFeedFotos from "../components/feed/SecaoFeedFotos";
+import SecaoFeedConfig from "../components/feed/SecaoFeedConfig";
 
 const FeedPage = () => {
   // Estado para controlar a visibilidade das seções
@@ -37,7 +38,7 @@ const FeedPage = () => {
           <div className="col-md-3 col-sm-12">
             {isContentVisible && (
               <div className="content-noticias" style={{ height: '300px', width: '100%' }}>
-                <SecaoFeedInfo />
+                <SecaoFeedConfig />
               </div>
             )}
           </div>

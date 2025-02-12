@@ -12,7 +12,17 @@
 .secao-publicacao {
   width: 100%;
   
-  
+}
+
+.img-user {
+  height: 40px;
+  width: 63px;
+  margin-top: 30px;
+}
+
+.texto-publicacao:hover {
+  color: white;
+  background-color: rgba(10, 23, 79, 0.225);
 }
 
 .foto-Perfil {
