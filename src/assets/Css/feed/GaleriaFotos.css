@@ -1,0 +1,40 @@
+.conteudo-galeria {
+  display: flex;
+  flex-direction: column; /* Garante que a foto principal fique acima */
+  align-items: center; /* Centraliza o conteúdo */
+  margin-top: 20px;
+}
+
+.foto-principal {
+  width: 60%;  /* Reduz o tamanho da foto principal */
+  margin-bottom: 20px; /* Espaço entre a foto principal e as miniaturas */
+  display: flex;
+  justify-content: center; /* Centraliza a imagem dentro do contêiner */
+}
+
+.foto-principal img {
+  max-width: 100%;
+  height: auto;
+}
+
+.miniaturas {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as miniaturas "quebrem" para a linha de baixo */
+  justify-content: center; /* Centraliza as miniaturas */
+  gap: 10px; /* Espaçamento entre as miniaturas */
+  width: 60%; /* Controla o tamanho das miniaturas */
+  margin-bottom: 20px; /* Espaço inferior */
+}
+
+.miniatura img {
+  width: 60px; /* Tamanho reduzido para as miniaturas */
+  height: 60px;
+  cursor: pointer;
+  border-radius: 8px; /* Bordas arredondadas */
+  transition: transform 0.3s ease;
+}
+
+.miniatura img:hover {
+  opacity: 0.8; /* Diminui a opacidade ao passar o mouse */
+  transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
+}

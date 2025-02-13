@@ -7,7 +7,7 @@ import "../../assets/Css/header/Header.css";
 import "../../assets/Css/header/logo.css";
 import imagemGenerica from "../../assets/images/img-default.png";
 import PropTypes from "prop-types"; 
-import { EditarPerfil } from "../../pages/EditarPerfil";
+
 
 const Header = ({ label }) => {
   const [user, setUser] = useState(null);

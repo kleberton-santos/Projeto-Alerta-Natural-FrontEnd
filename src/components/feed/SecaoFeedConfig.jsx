@@ -11,8 +11,8 @@ const SecaoFeedConfig = () => {
                 <span className="login">Meu nome</span>
             </div>
             <div className="config-fotos d-flex flex-column w-100 mt-3 text-center">
-                <a href="#" className="link-custom text-white mb-2">Configurações</a>
-                <a href="#" className="link-custom text-white mb-2">Fotos</a>
+                <a href="/EditarPerfil" className="link-custom text-white mb-2">Editar Perfil</a>
+                <a href="/galeriaFotos" className="link-custom text-white mb-2">Fotos</a>
                 <span className="text-custom text-white mt-2">Quem sou eu</span>
             </div>
             <div className="form-quem-sou-eu d-flex flex-column align-items-center w-100 mt-2 px-3">
