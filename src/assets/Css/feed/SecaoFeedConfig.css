@@ -3,6 +3,10 @@
   border-color: #27335C;
 }
 
+.seca-feed-config {
+  height: 360px !important;
+}
+
 .topo img {
   width: 28%;
   height: 51px;

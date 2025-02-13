@@ -5,6 +5,10 @@
     filter: brightness(55%);
     
 }
+.header-principal {
+    position: relative;
+    z-index: 101; /* Maior que o z-index da .secao-navbar */
+}
 
 .label-principal {
     height: auto; 

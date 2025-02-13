@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative; /* Adicionado */
+    z-index: 100; /* Adicionado */
 }
 
 .secao-navbar nav {
@@ -22,6 +24,6 @@
 }
 
 .secao-navbar a:hover {
-    background-color: rgba (255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* Corrigido: removido espaço após "rgba" */
     border-radius: 5px;
 }
