@@ -33,6 +33,7 @@ const Header = ({ label }) => {
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
+    window.location.reload(); // Recarrega a página ao fazer logout
   };
 
   return (

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Para redirecionar o usuário
 import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
@@ -11,12 +12,43 @@ import SecaoFeedFotos from "../components/feed/SecaoFeedFotos";
 import SecaoFeedConfig from "../components/feed/SecaoFeedConfig";
 
 const FeedPage = () => {
-  // Estado para controlar a visibilidade das seções
-  const [isContentVisible, setIsContentVisible] = useState(true);
+  const navigate = useNavigate(); // Hook para redirecionamento
 
-  // Função para alternar a visibilidade
-  const toggleContentVisibility = () => {
-    setIsContentVisible(!isContentVisible);
+  // Estado para controlar a visibilidade das seções (inicialmente false)
+  const [isContentVisible, setIsContentVisible] = useState(false);
+
+  // Estado para verificar se o usuário está logado
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Efeito para carregar o estado do localStorage ao montar o componente
+  useEffect(() => {
+    const savedVisibility = localStorage.getItem("isContentVisible");
+    if (savedVisibility !== null) {
+      setIsContentVisible(JSON.parse(savedVisibility));
+    }
+
+    // Verificar se o usuário está logado
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setIsLoggedIn(true);
+      setIsContentVisible(true); // Mostrar as seções automaticamente ao logar
+    }
+  }, []);
+
+  // Efeito para salvar o estado no localStorage sempre que ele mudar
+  useEffect(() => {
+    localStorage.setItem("isContentVisible", JSON.stringify(isContentVisible));
+  }, [isContentVisible]);
+
+  // Função para redirecionar para a tela de login
+  const redirectToLogin = () => {
+    navigate("/login"); // Redireciona para a rota de login
+  };
+
+  // Função para recarregar a página ao fazer logout
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.reload(); // Recarrega a página
   };
 
   return (
@@ -81,14 +113,20 @@ const FeedPage = () => {
         </div>
       </div>
 
-      {/* Botão para ocultar/mostrar as seções */}
-      <button 
-        onClick={toggleContentVisibility} 
-        className="btn btn-primary"
-        style={{ margin: '20px auto', display: 'block' }}
-      >
-        {isContentVisible ? "Ocultar Seções" : "Mostrar Seções"}
-      </button>
+      {/* Mensagem para fazer login (só aparece se não estiver logado) */}
+      {!isLoggedIn && (
+        <div style={{ textAlign: "center", margin: "20px" }}>
+          <p style={{ color: "white", fontSize: "18px" }}>
+            Faça login para publicar.{" "}
+            <span
+              onClick={redirectToLogin}
+              style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
+            >
+              Clique aqui para fazer login.
+            </span>
+          </p>
+        </div>
+      )}
 
       {/* Footer */}
       <div className="footer-feed">
