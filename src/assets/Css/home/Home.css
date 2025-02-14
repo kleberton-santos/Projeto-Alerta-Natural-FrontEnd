@@ -27,11 +27,10 @@
 
 }
 
+/* Ajustando o espaço entre os elementos */
 .row{
     display: flex;
     justify-content: space-around;
-    /*gap: 50px; /* Adiciona espaçamento entre os elementos */
-
 }
 
 .card-home {
