@@ -23,32 +23,48 @@
     text-align: center; /* Centraliza o texto */
     width: 90%; /* Garante que o texto não ultrapasse os limites */
     margin: 20px auto; /* Centraliza horizontalmente */
+    padding-inline: 20%;
+
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+    /*gap: 50px; /* Adiciona espaçamento entre os elementos */
+
 }
 
 .card-home {
     width: 90%; /* Ajusta a largura para manter o conteúdo alinhado */
-    margin: 20px auto; /* Espaçamento automático acima e abaixo */
+    margin-top: 20px;/* Espaçamento automático acima e abaixo */
     background-color: #3D475F; /* Cor de fundo desejada */
     padding: 20px; /* Adiciona espaçamento interno */
+    padding-left: 5%; /* Ajustando a posição dos cards no centro */
     border-radius: 8px; /* Bordas arredondadas (opcional) */
 }
 
 .card {
-    height: 250px; /* Define a altura fixa para os cards */
+    height: auto; /* Define a altura fixa para os cards */
+    width: 100%; /* Definindo uma largura */
     background-color: white; /* Mantém o fundo do card distinto */
     border: none; /* Remove a borda do card (opcional) */
     border-radius: 8px; /* Bordas arredondadas para os cards */
-    overflow: hidden;
-    cursor: pointer;
+    overflow: hidden; /* Ajustando a imagem dentro dos cards */
+    cursor: pointer; 
+    box-shadow: 0px 3px 7px 2px rgba(5, 3, 22, 0.15); /* Adicionando uma box-shadow aos cards */
+    
 }
 
+/* Definindo a altura e largura dos cards */
 .card img{
-    min-width: 450px;
-    object-fit: contain;
+    width: 100%; 
+    height: auto; 
 }
 
-.card #desastreCard{
-    min-width: 500px;
+
+#desastreCard{
+    min-width: 110%;    
+   
 }
 
 .card-body {
@@ -58,10 +74,17 @@
     align-items: center; /* Centraliza o conteúdo horizontalmente */
 }
 
+
 .footer-home {
     text-align: center; /* Centraliza o conteúdo horizontalmente */
   
 }
+
+
+
+
+
+
 
 
   
