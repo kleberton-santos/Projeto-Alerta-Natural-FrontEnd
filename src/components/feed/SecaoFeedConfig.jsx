@@ -22,14 +22,9 @@ const SecaoFeedConfig = () => {
       <div className="config-fotos d-flex flex-column w-100 mt-3 text-center">
         <a href="/EditarPerfil" className="link-custom text-white mb-2">Editar Perfil</a>
         <a href="/galeriaFotos" className="link-custom text-white mb-2">Fotos</a>
-        <span className="text-custom text-white mt-2">Quem sou eu</span>
+       
       </div>
-      <div className="form-quem-sou-eu d-flex flex-column align-items-center w-100 mt-2 px-3">
-        <form className="w-100">
-          <textarea className="bg-transparent text-white w-100 p-2" style={{ border: 'none', outline: 'none', resize: 'none' }}></textarea>
-          <input type="submit" name="btn" value="Salvar" className="btn-salvar mt-2" />
-        </form>
-      </div>
+      
     </div>
   );
 };
