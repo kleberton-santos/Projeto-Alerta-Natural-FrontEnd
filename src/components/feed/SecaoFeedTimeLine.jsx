@@ -10,13 +10,21 @@ const SecaoFeedTimeLine = () => {
 
   console.log("Renderizando SecaoFeedTimeLine..."); // Log de renderização
 
-  // Função para buscar as publicações do backend
+  // Função para buscar as publicações do usuário
   const fetchPublicacoes = async () => {
     try {
-      console.log("Buscando publicações...");
-      const response = await axios.get("http://localhost:8080/publicacoes");
+      console.log("Buscando publicações do usuário...");
+      const idUsuario = user?.idusuario || user?.id; // Acessa o ID do usuário corretamente
+      console.log("ID do usuário:", idUsuario); // Log do ID do usuário
+
+      if (!idUsuario) {
+        console.error("ID do usuário não encontrado no localStorage.");
+        return;
+      }
+
+      const response = await axios.get(`http://localhost:8080/publicacoes/usuario/${idUsuario}`);
       console.log("Dados recebidos:", response.data); // Log dos dados recebidos
-      setPublicacoes([...response.data]); // Força uma nova referência
+      setPublicacoes([...response.data]); // Atualiza o estado com as publicações do usuário
     } catch (error) {
       console.error("Erro ao carregar as publicações:", error);
     }
@@ -31,6 +39,11 @@ const SecaoFeedTimeLine = () => {
   useEffect(() => {
     fetchPublicacoes();
   }, []);
+
+  // Log do estado publicacoes
+  useEffect(() => {
+    console.log("Publicações atualizadas:", publicacoes);
+  }, [publicacoes]);
 
   return (
     <div className="secao-feed-time-line d-flex flex-column">
