@@ -47,3 +47,20 @@
 .footer-feed {
   margin-top: auto; /* Empurra o footer para o final da página */
 }
+
+.SecaoBar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Ajuste este valor conforme necessário */
+}
+
+/* Estilo para a SecaoBar */
+.SecaoBar {
+  width: 80%; /* Ajuste a largura conforme necessário */
+  max-width: 1200px; /* Defina um valor máximo para a largura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -38px;
+}

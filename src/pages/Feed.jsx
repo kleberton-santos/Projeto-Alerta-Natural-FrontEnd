@@ -10,6 +10,7 @@ import Secaonavbar from "../components/navbar/Secaonavbar";
 import "../../src/assets/Css/feed/FeedPage.css";
 import SecaoFeedFotos from "../components/feed/SecaoFeedFotos";
 import SecaoFeedConfig from "../components/feed/SecaoFeedConfig";
+import SecaoBar from "../components/previsao/SecaoBar";
 
 const FeedPage = () => {
   const navigate = useNavigate(); // Hook para redirecionamento
@@ -56,12 +57,19 @@ const FeedPage = () => {
       {/* Header */}
       <div className="header">
         <HeaderFeed />
-      </div>
+      </div>   
 
       {/* NavBar */}
       <div className="nav-bar">
         <Secaonavbar />
       </div>
+
+      {/* buscar */}
+      <div className="SecaoBar-container">
+      <div className="SecaoBar">
+        <SecaoBar />
+      </div>
+    </div>
 
       {/* Grade com 3 colunas */}
       <div className="container-principal container-fluid mt-1">
