@@ -92,7 +92,7 @@ const FeedPage = () => {
             >
               Publicações
             </div>
-            <div className="content-pubicacoes mt-2" style={{ height: '600px', width: '100%' }}>
+            <div className="content-pubicacoes mt-2">
               <SecaoFeedTimeLine />
             </div>
           </div>

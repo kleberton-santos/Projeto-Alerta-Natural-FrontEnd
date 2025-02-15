@@ -27,3 +27,23 @@
   margin-top: 13px;
 }
 
+.content-pubicacoes {
+  height: 600px; /* Altura fixa para a seção de publicações */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 8px; /* Borda arredondada (opcional) */
+}
+
+.feed-principal {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o container ocupe pelo menos a altura da tela */
+}
+
+.container-principal {
+  flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+}
+
+.footer-feed {
+  margin-top: auto; /* Empurra o footer para o final da página */
+}
