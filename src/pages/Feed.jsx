@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Para redirecionar o usuário
+import { useNavigate } from "react-router-dom";
 import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
 import SecaoFeedTimeLine from "../components/feed/SecaoFeedTimeLine";
@@ -10,16 +10,25 @@ import Secaonavbar from "../components/navbar/Secaonavbar";
 import "../../src/assets/Css/feed/FeedPage.css";
 import SecaoFeedFotos from "../components/feed/SecaoFeedFotos";
 import SecaoFeedConfig from "../components/feed/SecaoFeedConfig";
-import SecaoBar from "../components/previsao/SecaoBar";
+import SecaoBarAmigo from "../components/previsao/SecaoBarAmigo";
 
 const FeedPage = () => {
-  const navigate = useNavigate(); // Hook para redirecionamento
+  const navigate = useNavigate();
 
-  // Estado para controlar a visibilidade das seções (inicialmente false)
+  // Estado para controlar a visibilidade das seções
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   // Estado para verificar se o usuário está logado
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Estado para controlar qual componente deve ser exibido
+  const [showConfig, setShowConfig] = useState(true);
+
+  // Estado para armazenar os dados do usuário buscado
+  const [searchedUser, setSearchedUser] = useState(null);
+
+  // Estado para armazenar o ID do usuário logado
+  const [loggedUserId, setLoggedUserId] = useState(null);
 
   // Efeito para carregar o estado do localStorage ao montar o componente
   useEffect(() => {
@@ -33,6 +42,7 @@ const FeedPage = () => {
     if (user) {
       setIsLoggedIn(true);
       setIsContentVisible(true); // Mostrar as seções automaticamente ao logar
+      setLoggedUserId(user.idusuario); // Armazena o ID do usuário logado
     }
   }, []);
 
@@ -41,15 +51,24 @@ const FeedPage = () => {
     localStorage.setItem("isContentVisible", JSON.stringify(isContentVisible));
   }, [isContentVisible]);
 
-  // Função para redirecionar para a tela de login
-  const redirectToLogin = () => {
-    navigate("/login"); // Redireciona para a rota de login
-  };
-
-  // Função para recarregar a página ao fazer logout
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.reload(); // Recarrega a página
+  // Função para buscar usuários pelo nome
+  const handleSearch = async (searchValue) => {
+    try {
+      const response = await fetch(`http://localhost:8080/usuarios/buscarPorNome?nome=${searchValue}`);
+      if (!response.ok) {
+        throw new Error("Usuário não encontrado");
+      }
+      const userData = await response.json();
+      if (userData.length > 0) {
+        setSearchedUser(userData[0]); // Armazena o primeiro usuário encontrado
+        setShowConfig(false); // Exibe as informações do usuário buscado automaticamente
+      } else {
+        alert("Nenhum usuário encontrado com esse nome.");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar usuário:", error);
+      alert("Erro ao buscar usuário");
+    }
   };
 
   return (
@@ -57,28 +76,39 @@ const FeedPage = () => {
       {/* Header */}
       <div className="header">
         <HeaderFeed />
-      </div>   
+      </div>
 
       {/* NavBar */}
       <div className="nav-bar">
         <Secaonavbar />
       </div>
 
-      {/* buscar */}
+      {/* Buscar */}
       <div className="SecaoBar-container">
-      <div className="SecaoBar">
-        <SecaoBar />
+        <div className="SecaoBar">
+          <SecaoBarAmigo onSearch={handleSearch} />
+          {/* Botão para voltar ao perfil do usuário logado */}
+          <button
+            onClick={() => setShowConfig(true)}
+            style={{ marginLeft: "10px", padding: "5px 10px", cursor: "pointer" }}
+          >
+            Voltar ao meu perfil
+          </button>
+        </div>
       </div>
-    </div>
 
       {/* Grade com 3 colunas */}
       <div className="container-principal container-fluid mt-1">
         <div className="row">
-          {/* Coluna da esquerda (SecaoFeedInfo) */}
+          {/* Coluna da esquerda (SecaoFeedInfo ou SecaoFeedConfig) */}
           <div className="col-md-3 col-sm-12">
             {isContentVisible && (
               <div className="content-noticias" style={{ height: '300px', width: '100%' }}>
-                <SecaoFeedConfig />
+                {showConfig ? (
+                  <SecaoFeedConfig />
+                ) : (
+                  <SecaoFeedInfo user={searchedUser} />
+                )}
               </div>
             )}
           </div>
@@ -101,7 +131,9 @@ const FeedPage = () => {
               Publicações
             </div>
             <div className="content-pubicacoes mt-2">
-              <SecaoFeedTimeLine />
+              <SecaoFeedTimeLine
+                idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario}
+              />
             </div>
           </div>
 
@@ -110,7 +142,7 @@ const FeedPage = () => {
             {isContentVisible && (
               <>
                 <div className="content-amigos" style={{ height: '400px', width: '100%' }}>
-                  <SecaoFeedFotos />
+                  <SecaoFeedFotos idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario} />
                 </div>
                 <div className="content-amigos mt-3" style={{ height: '400px', width: '100%' }}>
                   <SecaoFeedAmigos />
@@ -127,7 +159,7 @@ const FeedPage = () => {
           <p style={{ color: "white", fontSize: "18px" }}>
             Faça login para publicar.{" "}
             <span
-              onClick={redirectToLogin}
+              onClick={() => navigate("/login")}
               style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
             >
               Clique aqui para fazer login.

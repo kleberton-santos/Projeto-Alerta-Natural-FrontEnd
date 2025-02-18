@@ -3,29 +3,28 @@ import axios from "axios";
 import "../../assets/Css/feed/SecaoFeedLine.css";
 import imgDefault from "../../assets/images/img-default.png";
 
-const SecaoFeedFotos = () => {
+const SecaoFeedFotos = ({ idUsuario }) => {
   const [fotos, setFotos] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user")); // Obtém o usuário logado
 
   // Função para buscar as fotos do usuário
   const fetchFotos = async () => {
-    if (!user || !user.id) {
-      console.error("Usuário não está logado.");
+    if (!idUsuario) {
+      console.error("ID do usuário não fornecido.");
       return;
     }
 
     try {
-      const response = await axios.get(`http://localhost:8080/fotos/usuario/${user.id}`);
+      const response = await axios.get(`http://localhost:8080/fotos/usuario/${idUsuario}`);
       setFotos(response.data);
     } catch (error) {
       console.error("Erro ao carregar as fotos:", error);
     }
   };
 
-  // Carrega as fotos ao montar o componente
+  // Carrega as fotos ao montar o componente ou quando o idUsuario muda
   useEffect(() => {
     fetchFotos();
-  }, [user?.id]); // Atualiza as fotos quando o id do usuário muda
+  }, [idUsuario]); // Atualiza as fotos quando o idUsuario muda
 
   return (
     <div className="seca-feed-time-line d-flex flex-column align-items-center rounded bg-custom-foto-line" style={{ height: '400px', width: '100%', borderStyle: 'solid' }}>

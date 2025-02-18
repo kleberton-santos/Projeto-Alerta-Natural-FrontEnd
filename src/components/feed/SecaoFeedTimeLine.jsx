@@ -4,7 +4,7 @@ import "../../assets/Css/feed/SecaoFeedTimeLine.css";
 import imgUser from "../../assets/images/icon_user.png";
 import ModalFeed from "./ModalFeed";
 
-const SecaoFeedTimeLine = () => {
+const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [publicacoes, setPublicacoes] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -14,15 +14,15 @@ const SecaoFeedTimeLine = () => {
   const fetchPublicacoes = async () => {
     try {
       console.log("Buscando publicações do usuário...");
-      const idUsuario = user?.idusuario || user?.id; // Acessa o ID do usuário corretamente
-      console.log("ID do usuário:", idUsuario); // Log do ID do usuário
+      const userId = idUsuario || user?.idusuario || user?.id; // Acessa o ID do usuário corretamente
+      console.log("ID do usuário:", userId); // Log do ID do usuário
 
-      if (!idUsuario) {
+      if (!userId) {
         console.error("ID do usuário não encontrado no localStorage.");
         return;
       }
 
-      const response = await axios.get(`http://localhost:8080/publicacoes/usuario/${idUsuario}`);
+      const response = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
       console.log("Dados recebidos:", response.data); // Log dos dados recebidos
       setPublicacoes([...response.data]); // Atualiza o estado com as publicações do usuário
     } catch (error) {
@@ -38,7 +38,7 @@ const SecaoFeedTimeLine = () => {
 
   useEffect(() => {
     fetchPublicacoes();
-  }, []);
+  }, [idUsuario]); // Atualiza as publicações quando o idUsuario muda
 
   // Log do estado publicacoes
   useEffect(() => {
