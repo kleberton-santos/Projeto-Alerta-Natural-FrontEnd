@@ -87,13 +87,7 @@ const FeedPage = () => {
       <div className="SecaoBar-container">
         <div className="SecaoBar">
           <SecaoBarAmigo onSearch={handleSearch} />
-          {/* Botão para voltar ao perfil do usuário logado */}
-          <button
-            onClick={() => setShowConfig(true)}
-            style={{ marginLeft: "10px", padding: "5px 10px", cursor: "pointer" }}
-          >
-            Voltar ao meu perfil
-          </button>
+          
         </div>
       </div>
 
