@@ -30,6 +30,9 @@ const FeedPage = () => {
   // Estado para armazenar o ID do usuário logado
   const [loggedUserId, setLoggedUserId] = useState(null);
 
+  // Estado para armazenar a lista de amigos
+  const [amigos, setAmigos] = useState([]);
+
   // Efeito para carregar o estado do localStorage ao montar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem("isContentVisible");
@@ -39,10 +42,22 @@ const FeedPage = () => {
 
     // Verificar se o usuário está logado
     const user = JSON.parse(localStorage.getItem("user"));
+    console.log("Usuário do localStorage:", user); // Depuração
+
     if (user) {
       setIsLoggedIn(true);
       setIsContentVisible(true); // Mostrar as seções automaticamente ao logar
-      setLoggedUserId(user.idusuario); // Armazena o ID do usuário logado
+
+      // Verifica se o campo é `idusuario` ou `id`
+      const userId = user.idusuario || user.id;
+      setLoggedUserId(userId); // Armazena o ID do usuário logado
+      console.log("ID do usuário logado:", userId); // Depuração
+
+      if (userId) {
+        fetchAmigos(userId); // Carrega a lista de amigos ao logar
+      } else {
+        console.error("ID do usuário não está disponível no localStorage.");
+      }
     }
   }, []);
 
@@ -71,6 +86,55 @@ const FeedPage = () => {
     }
   };
 
+  // Função para buscar a lista de amigos
+  const fetchAmigos = async (idUsuario) => {
+    try {
+      const response = await fetch(`http://localhost:8080/amigos/seguindo/${idUsuario}`);
+      if (!response.ok) {
+        throw new Error("Erro ao buscar amigos");
+      }
+      const amigosData = await response.json();
+      setAmigos(amigosData);
+    } catch (error) {
+      console.error("Erro ao buscar amigos:", error);
+    }
+  };
+
+  // Função para adicionar um amigo
+  const handleFollow = async (idAmigoUsuario) => {
+    try {
+      console.log("ID do usuário logado:", loggedUserId); // Depuração
+      console.log("ID do amigo a seguir:", idAmigoUsuario); // Depuração
+
+      if (!loggedUserId) {
+        throw new Error("ID do usuário logado não está disponível.");
+      }
+
+      const response = await fetch(
+        `http://localhost:8080/amigos/adicionar?idUsuario=${loggedUserId}&idAmigoUsuario=${idAmigoUsuario}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao seguir usuário");
+      }
+
+      // Atualiza a lista de amigos após seguir
+      const newAmigo = await response.json();
+      setAmigos((prevAmigos) => [...prevAmigos, newAmigo]);
+
+      alert("Agora você está seguindo este usuário!"); // Feedback para o usuário
+    } catch (error) {
+      console.error("Erro ao seguir usuário:", error);
+      alert("Erro ao seguir usuário");
+    }
+  };
+
   return (
     <div className="feed-principal container-fluid p-3">
       {/* Header */}
@@ -87,7 +151,6 @@ const FeedPage = () => {
       <div className="SecaoBar-container">
         <div className="SecaoBar">
           <SecaoBarAmigo onSearch={handleSearch} />
-          
         </div>
       </div>
 
@@ -101,7 +164,7 @@ const FeedPage = () => {
                 {showConfig ? (
                   <SecaoFeedConfig />
                 ) : (
-                  <SecaoFeedInfo user={searchedUser} />
+                  <SecaoFeedInfo user={searchedUser} onFollow={handleFollow} />
                 )}
               </div>
             )}
@@ -139,7 +202,7 @@ const FeedPage = () => {
                   <SecaoFeedFotos idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario} />
                 </div>
                 <div className="content-amigos mt-3" style={{ height: '400px', width: '100%' }}>
-                  <SecaoFeedAmigos />
+                  <SecaoFeedAmigos amigos={amigos} />
                 </div>
               </>
             )}
