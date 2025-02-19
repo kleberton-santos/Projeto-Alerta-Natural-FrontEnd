@@ -15,7 +15,7 @@ const SecaoFeedInfo = ({ user, onFollow }) => {
       <div className="topo d-flex align-items-center w-100">
         <img
           src={user?.foto ? `http://localhost:8080/fotos/${user.foto}` : imgUser}
-          alt=""
+          alt="Foto do usuário"
           className="img-user"
         />
         <div className="info">

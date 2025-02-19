@@ -10,10 +10,10 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
   console.log("Renderizando SecaoFeedTimeLine..."); // Log de renderização
 
-  // Função para buscar as publicações do usuário
+  // Função para buscar as publicações do usuário e dos amigos
   const fetchPublicacoes = async () => {
     try {
-      console.log("Buscando publicações do usuário...");
+      console.log("Buscando publicações do usuário e dos amigos...");
       const userId = idUsuario || user?.idusuario || user?.id; // Acessa o ID do usuário corretamente
       console.log("ID do usuário:", userId); // Log do ID do usuário
 
@@ -22,9 +22,21 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
         return;
       }
 
-      const response = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
-      console.log("Dados recebidos:", response.data); // Log dos dados recebidos
-      setPublicacoes([...response.data]); // Atualiza o estado com as publicações do usuário
+      // Busca as publicações do usuário logado
+      const responseUsuario = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
+      console.log("Publicações do usuário:", responseUsuario.data);
+
+      // Busca as publicações dos amigos
+      const responseAmigos = await axios.get(`http://localhost:8080/publicacoes/amigos/${userId}`);
+      console.log("Publicações dos amigos:", responseAmigos.data);
+
+      // Combina as publicações do usuário e dos amigos
+      const todasPublicacoes = [...responseUsuario.data, ...responseAmigos.data];
+
+      // Ordena as publicações por data (se necessário)
+      todasPublicacoes.sort((a, b) => new Date(b.dataPublicacao) - new Date(a.dataPublicacao));
+
+      setPublicacoes(todasPublicacoes);
     } catch (error) {
       console.error("Erro ao carregar as publicações:", error);
     }
