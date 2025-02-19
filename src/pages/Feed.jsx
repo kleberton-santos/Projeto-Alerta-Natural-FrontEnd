@@ -54,7 +54,9 @@ const FeedPage = () => {
       console.log("ID do usuário logado:", userId); // Depuração
 
       if (userId) {
-        fetchAmigos(userId); // Carrega a lista de amigos ao logar
+        fetchAmigos(userId).then((amigosData) => {
+          setAmigos(amigosData); // Carrega a lista de amigos ao logar
+        });
       } else {
         console.error("ID do usuário não está disponível no localStorage.");
       }
@@ -75,8 +77,13 @@ const FeedPage = () => {
       }
       const userData = await response.json();
       if (userData.length > 0) {
-        setSearchedUser(userData[0]); // Armazena o primeiro usuário encontrado
+        const usuarioBuscado = userData[0]; // Armazena o primeiro usuário encontrado
+        setSearchedUser(usuarioBuscado); // Atualiza o estado do usuário buscado
         setShowConfig(false); // Exibe as informações do usuário buscado automaticamente
+
+        // Busca os amigos do usuário buscado
+        const amigosDoUsuarioBuscado = await fetchAmigos(usuarioBuscado.idusuario || usuarioBuscado.id);
+        setAmigos(amigosDoUsuarioBuscado); // Atualiza a lista de amigos com os amigos do usuário buscado
       } else {
         alert("Nenhum usuário encontrado com esse nome.");
       }
@@ -94,9 +101,10 @@ const FeedPage = () => {
         throw new Error("Erro ao buscar amigos");
       }
       const amigosData = await response.json();
-      setAmigos(amigosData);
+      return amigosData; // Retorna a lista de amigos
     } catch (error) {
       console.error("Erro ao buscar amigos:", error);
+      return []; // Retorna uma lista vazia em caso de erro
     }
   };
 
