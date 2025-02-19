@@ -5,7 +5,7 @@ import imgUser from "../../assets/images/icon_user.png";
 const SecaoFeedInfo = ({ user, onFollow }) => {
   const handleSeguir = () => {
     if (onFollow && user?.idusuario) {
-      onFollow(user.idusuario); // Passa o ID do usuário a ser seguido
+      onFollow(user.idusuario); // Passa o ID do usuário a ser seguido/deixado de seguir
     }
   };
 
@@ -20,7 +20,9 @@ const SecaoFeedInfo = ({ user, onFollow }) => {
         />
         <div className="info">
           <p>{user?.nome || "Fulano de Tal"}</p>
-          <button className="btn-seguir" onClick={handleSeguir}>Seguir</button>
+          <button className="btn-seguir" onClick={handleSeguir}>
+            {user?.estaSeguindo ? "Deixar de seguir" : "Seguir"}
+          </button>
         </div>
       </div>
     </div>

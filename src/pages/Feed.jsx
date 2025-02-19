@@ -15,47 +15,35 @@ import SecaoBarAmigo from "../components/previsao/SecaoBarAmigo";
 const FeedPage = () => {
   const navigate = useNavigate();
 
-  // Estado para controlar a visibilidade das seções
   const [isContentVisible, setIsContentVisible] = useState(false);
-
-  // Estado para verificar se o usuário está logado
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Estado para controlar qual componente deve ser exibido
   const [showConfig, setShowConfig] = useState(true);
-
-  // Estado para armazenar os dados do usuário buscado
   const [searchedUser, setSearchedUser] = useState(null);
-
-  // Estado para armazenar o ID do usuário logado
   const [loggedUserId, setLoggedUserId] = useState(null);
-
-  // Estado para armazenar a lista de amigos
   const [amigos, setAmigos] = useState([]);
 
-  // Efeito para carregar o estado do localStorage ao montar o componente
   useEffect(() => {
     const savedVisibility = localStorage.getItem("isContentVisible");
     if (savedVisibility !== null) {
       setIsContentVisible(JSON.parse(savedVisibility));
     }
 
-    // Verificar se o usuário está logado
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log("Usuário do localStorage:", user); // Depuração
+    console.log("Usuário do localStorage:", user);
 
     if (user) {
       setIsLoggedIn(true);
-      setIsContentVisible(true); // Mostrar as seções automaticamente ao logar
+      setIsContentVisible(true);
 
-      // Verifica se o campo é `idusuario` ou `id`
       const userId = user.idusuario || user.id;
-      setLoggedUserId(userId); // Armazena o ID do usuário logado
-      console.log("ID do usuário logado:", userId); // Depuração
+      setLoggedUserId(userId);
+      console.log("ID do usuário logado:", userId);
 
       if (userId) {
         fetchAmigos(userId).then((amigosData) => {
-          setAmigos(amigosData); // Carrega a lista de amigos ao logar
+          // Adiciona o campo `estaSeguindo` para cada amigo
+          const amigosComEstado = amigosData.map(amigo => ({ ...amigo, estaSeguindo: true }));
+          setAmigos(amigosComEstado);
         });
       } else {
         console.error("ID do usuário não está disponível no localStorage.");
@@ -63,12 +51,24 @@ const FeedPage = () => {
     }
   }, []);
 
-  // Efeito para salvar o estado no localStorage sempre que ele mudar
   useEffect(() => {
     localStorage.setItem("isContentVisible", JSON.stringify(isContentVisible));
   }, [isContentVisible]);
 
-  // Função para buscar usuários pelo nome
+  const fetchAmigos = async (idUsuario) => {
+    try {
+      const response = await fetch(`http://localhost:8080/amigos/seguindo/${idUsuario}`);
+      if (!response.ok) {
+        throw new Error("Erro ao buscar amigos");
+      }
+      const amigosData = await response.json();
+      return amigosData;
+    } catch (error) {
+      console.error("Erro ao buscar amigos:", error);
+      return [];
+    }
+  };
+
   const handleSearch = async (searchValue) => {
     try {
       const response = await fetch(`http://localhost:8080/usuarios/buscarPorNome?nome=${searchValue}`);
@@ -77,13 +77,18 @@ const FeedPage = () => {
       }
       const userData = await response.json();
       if (userData.length > 0) {
-        const usuarioBuscado = userData[0]; // Armazena o primeiro usuário encontrado
-        setSearchedUser(usuarioBuscado); // Atualiza o estado do usuário buscado
-        setShowConfig(false); // Exibe as informações do usuário buscado automaticamente
+        const usuarioBuscado = userData[0];
+
+        // Verifica se o usuário buscado já está na lista de amigos
+        const estaSeguindo = amigos.some(amigo => amigo.idAmigoUsuario === usuarioBuscado.idusuario);
+
+        // Adiciona o campo `estaSeguindo` ao usuário buscado
+        setSearchedUser({ ...usuarioBuscado, estaSeguindo });
+        setShowConfig(false);
 
         // Busca os amigos do usuário buscado
         const amigosDoUsuarioBuscado = await fetchAmigos(usuarioBuscado.idusuario || usuarioBuscado.id);
-        setAmigos(amigosDoUsuarioBuscado); // Atualiza a lista de amigos com os amigos do usuário buscado
+        setAmigos(amigosDoUsuarioBuscado);
       } else {
         alert("Nenhum usuário encontrado com esse nome.");
       }
@@ -93,79 +98,63 @@ const FeedPage = () => {
     }
   };
 
-  // Função para buscar a lista de amigos
-  const fetchAmigos = async (idUsuario) => {
-    try {
-      const response = await fetch(`http://localhost:8080/amigos/seguindo/${idUsuario}`);
-      if (!response.ok) {
-        throw new Error("Erro ao buscar amigos");
-      }
-      const amigosData = await response.json();
-      return amigosData; // Retorna a lista de amigos
-    } catch (error) {
-      console.error("Erro ao buscar amigos:", error);
-      return []; // Retorna uma lista vazia em caso de erro
-    }
-  };
-
-  // Função para adicionar um amigo
   const handleFollow = async (idAmigoUsuario) => {
     try {
-      console.log("ID do usuário logado:", loggedUserId); // Depuração
-      console.log("ID do amigo a seguir:", idAmigoUsuario); // Depuração
-
       if (!loggedUserId) {
         throw new Error("ID do usuário logado não está disponível.");
       }
-
+  
+      // Verifica se o usuário buscado já está sendo seguido
+      const estaSeguindo = searchedUser?.estaSeguindo;
+  
       const response = await fetch(
-        `http://localhost:8080/amigos/adicionar?idUsuario=${loggedUserId}&idAmigoUsuario=${idAmigoUsuario}`,
+        estaSeguindo
+          ? `http://localhost:8080/amigos/remover?idUsuario=${loggedUserId}&idAmigoUsuario=${idAmigoUsuario}`
+          : `http://localhost:8080/amigos/adicionar?idUsuario=${loggedUserId}&idAmigoUsuario=${idAmigoUsuario}`,
         {
-          method: "POST",
+          method: estaSeguindo ? "DELETE" : "POST",
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-
+  
       if (!response.ok) {
-        throw new Error("Erro ao seguir usuário");
+        throw new Error(estaSeguindo ? "Erro ao deixar de seguir usuário" : "Erro ao seguir usuário");
       }
-
-      // Atualiza a lista de amigos após seguir
-      const newAmigo = await response.json();
-      setAmigos((prevAmigos) => [...prevAmigos, newAmigo]);
-
-      alert("Agora você está seguindo este usuário!"); // Feedback para o usuário
+  
+      // Atualiza o estado `estaSeguindo` do usuário buscado
+      setSearchedUser(prevUser => ({ ...prevUser, estaSeguindo: !estaSeguindo }));
+  
+      // Atualiza a lista de amigos
+      const novosAmigos = await fetchAmigos(loggedUserId);
+      setAmigos(novosAmigos);
+  
+      alert(estaSeguindo ? "Você deixou de seguir este usuário!" : "Agora você está seguindo este usuário!");
     } catch (error) {
-      console.error("Erro ao seguir usuário:", error);
-      alert("Erro ao seguir usuário");
+      console.error("Erro ao seguir/deixar de seguir usuário:", error);
+      alert("Erro ao seguir/deixar de seguir usuário");
     }
   };
 
   return (
     <div className="feed-principal container-fluid p-3">
-      {/* Header */}
       <div className="header">
         <HeaderFeed />
       </div>
 
-      {/* NavBar */}
       <div className="nav-bar">
         <Secaonavbar />
       </div>
 
-      {/* Buscar */}
       <div className="SecaoBar-container">
         <div className="SecaoBar">
           <SecaoBarAmigo onSearch={handleSearch} />
         </div>
       </div>
 
-      {/* Grade com 3 colunas */}
       <div className="container-principal container-fluid mt-1">
         <div className="row">
-          {/* Coluna da esquerda (SecaoFeedInfo ou SecaoFeedConfig) */}
           <div className="col-md-3 col-sm-12">
             {isContentVisible && (
               <div className="content-noticias" style={{ height: '300px', width: '100%' }}>
@@ -178,7 +167,6 @@ const FeedPage = () => {
             )}
           </div>
 
-          {/* Coluna do meio (SecaoFeedPublicacao e SecaoFeedTimeLine) */}
           <div className="col-md-6 col-sm-12">
             {isContentVisible && (
               <div className="content-fazer-publicacao" style={{ height: '100px' }}>
@@ -202,7 +190,6 @@ const FeedPage = () => {
             </div>
           </div>
 
-          {/* Coluna da direita (SecaoFeedFotos e SecaoFeedAmigos) */}
           <div className="col-md-3 col-sm-12">
             {isContentVisible && (
               <>
@@ -218,7 +205,6 @@ const FeedPage = () => {
         </div>
       </div>
 
-      {/* Mensagem para fazer login (só aparece se não estiver logado) */}
       {!isLoggedIn && (
         <div style={{ textAlign: "center", margin: "20px" }}>
           <p style={{ color: "white", fontSize: "18px" }}>
@@ -233,7 +219,6 @@ const FeedPage = () => {
         </div>
       )}
 
-      {/* Footer */}
       <div className="footer-feed">
         <FooterGlobal />
       </div>
