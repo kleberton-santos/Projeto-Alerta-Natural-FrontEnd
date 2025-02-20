@@ -1,11 +1,202 @@
-.contato-principal {
+.contato-container {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Garante que o container principal ocupe a altura total da tela */
-    background-color: #3D475F;
+    justify-content: flex-start; /* Corrigido */
+    align-items: flex-start; /* Corrigido */
+    gap: 5px; /* Espaçamento entre os blocos */
+    padding: 50px;
+    background-color: #59636e;
 }
 
-.footer-contato {
-    margin-top: auto; /* Empurra o footer para o final do container */
-        
+.contato-layout {
+    display: flex;
+    gap: 20px; /* Adiciona espaçamento entre os elementos */
+    max-width: 900px; /* Define uma largura máxima para o conteúdo */
+    width: 100%; /* Melhor responsividade */
+}
+
+.formulario-contato {
+    background-color: #445464;
+    padding: 20px;  /*Reduzido para melhor proporção */
+    border-radius: 10px;
+    max-width: 600px;  /*melh6or reponsividade*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: rgb(236, 225, 225);
+    margin: 0;
+}
+
+.formulario-contato h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.formulario-contato label {
+    display: flex; /* Alinha os rótulos ao lado dos inputs */
+    justify-content: flex-start;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 8px; /* Espaçamento entre o rótulo e o campo */
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.formulario-contato input {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px !important;
+    border: 1px solid #ccc;
+}
+
+.formulario-contato textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px !important;
+    height: 150px;
+    background-color: #fcf8f8;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 80px; /* Largura fixa para os rótulos */
+    margin-right: 0%;
+    text-align: right; /* Alinha o texto à direita para melhor espaçamento */
+}
+
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    height: 100px; /* Altura padrão para o textarea */
+}
+#mensagem {
+    width: 99%; /* Largura total do contêiner pai */
+    height: 100px; /* Altura de 150 pixels */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 4px; /* Bordas arredondadas */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.form-group.mensagem {
+    display: flex;
+    flex-direction: column; /* Alinha o rótulo acima do campo de texto */
+    margin-bottom: 10px; /* Espaçamento inferior entre os grupos de formulário */
+}
+
+.form-group.mensagem label {
+    margin-bottom: 5px; /* Espaçamento entre o rótulo e o campo de texto */
+}
+
+.form-group.mensagem textarea {
+    padding: 5px; /* Espaçamento interno do campo de texto */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Permite que o usuário ajuste a altura do campo */
+}
+
+.btn-enviar {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario-contato button {
+    width: 40%;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #fcf8f8;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.formulario-contato button:hover {
+    background-color: #217dbb;
+}
+.info-contato p {
+    font-weight: bold;
+    margin-bottom: 5px;  /* Espaço entre o rótulo e a informação */
+    display: "flex";
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 5px; /* Reduz o espaço entre a palavra e o número do CEP */
+}
+
+.info-contato p span {
+    display: inline; /* Mantém o número na mesma linha */
+}
+
+/* Aumentar o espaço entre @seuinsta e Nosso Endereço */
+.info-contato .instagram + span {
+    margin-bottom: 20px; /* Aumenta o espaço depois do @seuinsta */
+}
+
+.info-contato .endereco {
+    margin-top: 50px;   /* Aumenta o espaço antes do Nosso Endereço */
+}
+
+.info-contato span {
+    display: block; /* Faz os valores ficarem abaixo dos rótulos */
+    margin-bottom: 5px;  /* Espaço entre os blocos de informação */
+}
+
+.info-contato {
+    max-width: 250px;
+    color: #fcf8f8;
+    text-align: center; /*alinha ao centro*/
+    margin-left: auto; /* Empurra a seção para a direita */
+}
+
+.info-contato h2 {
+    margin-bottom: 10px;
+}
+
+.info-contato button {
+    padding: 10px;
+    background-color: #fcf8f8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.info-contato button:hover {
+    background-color: #fcf8f8
+}
+/* Estilo para o botão de ver no mapa */
+.info-contato .ver-no-mapa {
+    margin-top: 15px; /* Espaço entre o endereço e o botão */
+    padding: 8px 35px;   /* Aumenta o tamanho do botão */
+    background-color: #fafbfc; /* Cor do botão */
+    color: rgb(13, 0, 0); /* Cor do texto */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.info-contato .ver-no-mapa:hover {
+    background-color: #0986da; /* Muda a cor ao passar o mouse */
 }
