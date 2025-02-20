@@ -136,7 +136,6 @@ const FeedPage = () => {
       alert("Erro ao seguir/deixar de seguir usuário");
     }
   };
-
   return (
     <div className="feed-principal container-fluid p-3">
       <div className="header">

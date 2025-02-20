@@ -55,12 +55,23 @@ const SecaoFeedInfo = ({ user, onFollow, idUsuarioLogado }) => {
       // Atualiza o estado após a ação
       const novoEstado = !estaSeguindo;
       setEstaSeguindo(novoEstado);
+
+      // **Persistência do estado após recarregar**
+      localStorage.setItem(`seguindo_${idUsuarioLogado}_${user.idusuario}`, JSON.stringify(novoEstado));
     } catch (erro) {
       console.error("Erro ao seguir/deixar de seguir:", erro);
     } finally {
       setCarregando(false); // Finaliza o estado de carregamento
     }
   };
+
+  // **Verifica o estado salvo no localStorage para evitar atrasos na renderização**
+  useEffect(() => {
+    const estadoSalvo = localStorage.getItem(`seguindo_${idUsuarioLogado}_${user.idusuario}`);
+    if (estadoSalvo !== null) {
+      setEstaSeguindo(JSON.parse(estadoSalvo));
+    }
+  }, [idUsuarioLogado, user?.idusuario]);
 
   return (
     <div className="seca-feed-noticia d-flex flex-column align-items-center rounded bg-custom" style={{ height: '300px', width: '100%', borderStyle: 'solid' }}>
