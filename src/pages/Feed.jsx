@@ -136,6 +136,7 @@ const FeedPage = () => {
       alert("Erro ao seguir/deixar de seguir usuário");
     }
   };
+
   return (
     <div className="feed-principal container-fluid p-3">
       <div className="header">
@@ -154,8 +155,9 @@ const FeedPage = () => {
 
       <div className="container-principal container-fluid mt-1">
         <div className="row">
+          {/* Coluna da esquerda (configurações/info do usuário) */}
           <div className="col-md-3 col-sm-12">
-            {isContentVisible && (
+            {isLoggedIn && isContentVisible && (
               <div className="content-noticias" style={{ height: '300px', width: '100%' }}>
                 {showConfig ? (
                   <SecaoFeedConfig />
@@ -166,8 +168,9 @@ const FeedPage = () => {
             )}
           </div>
 
+          {/* Coluna central (publicações) */}
           <div className="col-md-6 col-sm-12">
-            {isContentVisible && (
+            {isLoggedIn && isContentVisible && (
               <div className="content-fazer-publicacao" style={{ height: '100px' }}>
                 <SecaoFeedPublicacao />
               </div>
@@ -184,13 +187,14 @@ const FeedPage = () => {
             </div>
             <div className="content-pubicacoes mt-2">
               <SecaoFeedTimeLine
-                idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario}
+                idUsuario={isLoggedIn ? (showConfig ? loggedUserId : searchedUser?.idusuario) : null}
               />
             </div>
           </div>
 
+          {/* Coluna da direita (fotos e amigos) */}
           <div className="col-md-3 col-sm-12">
-            {isContentVisible && (
+            {isLoggedIn && isContentVisible && (
               <>
                 <div className="content-amigos" style={{ height: '400px', width: '100%' }}>
                   <SecaoFeedFotos idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario} />

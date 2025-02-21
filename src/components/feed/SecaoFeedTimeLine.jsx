@@ -12,31 +12,35 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
   console.log("Renderizando SecaoFeedTimeLine..."); // Log de renderização
 
-  // Função para buscar as publicações do usuário e dos amigos
+  // Função para buscar as publicações
   const fetchPublicacoes = async () => {
     try {
-      console.log("Buscando publicações do usuário e dos amigos...");
+      console.log("Buscando publicações...");
       console.log("ID do usuário:", userId); // Log do ID do usuário
 
-      if (!userId) {
-        console.error("ID do usuário não encontrado no localStorage.");
-        return;
+      let todasPublicacoes = [];
+
+      if (userId) {
+        // Busca as publicações do usuário logado e dos amigos
+        const responseUsuario = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
+        const responseAmigos = await axios.get(`http://localhost:8080/publicacoes/amigos/${userId}`);
+        todasPublicacoes = [...responseUsuario.data, ...responseAmigos.data];
+      } else {
+        // Busca todas as publicações (quando o usuário não está logado)
+        const responseTodas = await axios.get(`http://localhost:8080/publicacoes`);
+        todasPublicacoes = responseTodas.data;
       }
 
-      // Busca as publicações do usuário logado
-      const responseUsuario = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
-      console.log("Publicações do usuário:", responseUsuario.data);
+      // Log das publicações antes da ordenação
+      console.log("Publicações antes da ordenação:", todasPublicacoes);
 
-      // Busca as publicações dos amigos
-      const responseAmigos = await axios.get(`http://localhost:8080/publicacoes/amigos/${userId}`);
-      console.log("Publicações dos amigos:", responseAmigos.data);
+      // Ordena as publicações pelo ID em ordem decrescente
+      todasPublicacoes.sort((a, b) => b.idPublicacao - a.idPublicacao);
 
-      // Combina as publicações do usuário e dos amigos
-      const todasPublicacoes = [...responseUsuario.data, ...responseAmigos.data];
+      // Log das publicações após a ordenação
+      console.log("Publicações após a ordenação:", todasPublicacoes);
 
-      // Ordena as publicações por data (se necessário)
-      todasPublicacoes.sort((a, b) => new Date(b.dataPublicacao) - new Date(a.dataPublicacao));
-
+      // Atualiza o estado com as publicações ordenadas
       setPublicacoes(todasPublicacoes);
     } catch (error) {
       console.error("Erro ao carregar as publicações:", error);
@@ -44,9 +48,15 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   };
 
   // Função para adicionar uma nova publicação ao feed
-  const handleNovaPublicacao = () => {
-    console.log("handleNovaPublicacao chamada!"); // Log da função
-    fetchPublicacoes();
+  const handleNovaPublicacao = (novaPublicacao) => {
+    console.log("Nova publicação recebida:", novaPublicacao); // Log da nova publicação
+
+    // Adiciona a nova publicação ao topo da lista
+    setPublicacoes((prevPublicacoes) => {
+      const novasPublicacoes = [novaPublicacao, ...prevPublicacoes];
+      // Ordena as publicações pelo ID em ordem decrescente
+      return novasPublicacoes.sort((a, b) => b.idPublicacao - a.idPublicacao);
+    });
   };
 
   // Função para remover uma publicação com confirmação
