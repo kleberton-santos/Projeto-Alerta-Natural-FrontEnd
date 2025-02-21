@@ -6,7 +6,9 @@ import ModalFeed from "./ModalFeed";
 
 const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [publicacoes, setPublicacoes] = useState([]);
+  const [editarPublicacao, setEditarPublicacao] = useState(null); // Estado para controlar a edição
   const user = JSON.parse(localStorage.getItem("user"));
+  const userId = idUsuario || user?.idusuario || user?.id; // ID do usuário logado
 
   console.log("Renderizando SecaoFeedTimeLine..."); // Log de renderização
 
@@ -14,7 +16,6 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   const fetchPublicacoes = async () => {
     try {
       console.log("Buscando publicações do usuário e dos amigos...");
-      const userId = idUsuario || user?.idusuario || user?.id; // Acessa o ID do usuário corretamente
       console.log("ID do usuário:", userId); // Log do ID do usuário
 
       if (!userId) {
@@ -48,6 +49,67 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
     fetchPublicacoes();
   };
 
+  // Função para remover uma publicação com confirmação
+  const handleRemoverPublicacao = async (idPublicacao) => {
+    try {
+      // Confirmação antes de remover
+      const confirmacao = window.confirm("Tem certeza que deseja remover a publicação?");
+      if (!confirmacao) return;
+
+      console.log("ID da publicação a ser removida:", idPublicacao); // Verifique o valor aqui
+
+      // Verifica se o ID da publicação é válido
+      if (!idPublicacao) {
+        console.error("ID da publicação é inválido:", idPublicacao);
+        return;
+      }
+
+      if (!userId) {
+        console.error("ID do usuário não encontrado no localStorage.");
+        return;
+      }
+
+      // Faz a requisição DELETE para o endpoint
+      await axios.delete(`http://localhost:8080/publicacoes/usuario/${userId}/${idPublicacao}`);
+      console.log("Publicação removida com sucesso!");
+
+      // Atualiza a lista de publicações após a remoção
+      fetchPublicacoes();
+    } catch (error) {
+      console.error("Erro ao remover a publicação:", error);
+    }
+  };
+
+  // Função para editar uma publicação
+  const handleEditarPublicacao = async (idPublicacao, novoTexto) => {
+    try {
+      console.log("Editando publicação com ID:", idPublicacao);
+
+      const publicacaoDTO = {
+        texto: novoTexto, // Novo texto da publicação
+      };
+
+      // Faz a requisição PUT para o endpoint de edição
+      await axios.put(`http://localhost:8080/publicacoes/${idPublicacao}`, publicacaoDTO);
+      console.log("Publicação editada com sucesso!");
+
+      // Atualiza a lista de publicações após a edição
+      fetchPublicacoes();
+    } catch (error) {
+      console.error("Erro ao editar a publicação:", error);
+    }
+  };
+
+  // Função para abrir o modal de edição
+  const abrirModalEdicao = (publicacao) => {
+    setEditarPublicacao(publicacao); // Define a publicação a ser editada
+  };
+
+  // Função para fechar o modal de edição
+  const fecharModalEdicao = () => {
+    setEditarPublicacao(null); // Limpa a publicação em edição
+  };
+
   useEffect(() => {
     fetchPublicacoes();
   }, [idUsuario]); // Atualiza as publicações quando o idUsuario muda
@@ -62,9 +124,42 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       {/* Modal para nova publicação */}
       <ModalFeed onPublicacaoCriada={handleNovaPublicacao} />
 
+      {/* Modal para editar publicação */}
+      {editarPublicacao && (
+        <div className="modal-edicao">
+          <div className="modal-conteudo">
+            <h3>Editar Publicação</h3>
+            <textarea
+              defaultValue={editarPublicacao.texto}
+              onChange={(e) =>
+                setEditarPublicacao({ ...editarPublicacao, texto: e.target.value })
+              }
+            />
+            <div className="botoes-modal">
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  handleEditarPublicacao(editarPublicacao.idPublicacao, editarPublicacao.texto);
+                  fecharModalEdicao();
+                }}
+              >
+                Salvar
+              </button>
+              <button className="btn btn-secondary" onClick={fecharModalEdicao}>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Lista de publicações */}
       {publicacoes.map((publicacao) => {
-        console.log("Renderizando publicação:", publicacao.idPublicacao); // Log de cada publicação
+        console.log("Publicação completa:", publicacao); // Inspecione o objeto completo
+
+        // Verifica se a publicação pertence ao usuário logado
+        const isPublicacaoDoUsuario = publicacao.idUsuario === userId;
+
         return (
           <div key={publicacao.idPublicacao} className="item w-100 p-3">
             <div className="topo-timeLine d-flex align-items-center justify-content-start">
@@ -74,6 +169,23 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
                 className="user-image me-2"
               />
               <p className="text-white mb-0">{publicacao.nomeUsuario || "Fulano de Tal"}</p>
+              {/* Exibe os botões apenas se a publicação for do usuário logado */}
+              {isPublicacaoDoUsuario && (
+                <div className="ms-auto">
+                  <button
+                    className="btn btn-danger btn-sm me-2"
+                    onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}
+                  >
+                    Remover
+                  </button>
+                  <button
+                    className="btn btn-warning btn-sm"
+                    onClick={() => abrirModalEdicao(publicacao)}
+                  >
+                    Editar
+                  </button>
+                </div>
+              )}
             </div>
             <div className="info">
               <div className="texto-publicacao-timeline">
