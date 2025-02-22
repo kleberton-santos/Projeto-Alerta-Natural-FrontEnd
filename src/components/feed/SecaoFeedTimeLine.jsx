@@ -6,17 +6,17 @@ import ModalFeed from "./ModalFeed";
 
 const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [publicacoes, setPublicacoes] = useState([]);
-  const [editarPublicacao, setEditarPublicacao] = useState(null); // Estado para controlar a edição
+  const [editarPublicacao, setEditarPublicacao] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
-  const userId = idUsuario || user?.idusuario || user?.id; // ID do usuário logado
+  const userId = idUsuario || user?.idusuario || user?.id;
 
-  console.log("Renderizando SecaoFeedTimeLine..."); // Log de renderização
+  console.log("Renderizando SecaoFeedTimeLine...");
 
   // Função para buscar as publicações
   const fetchPublicacoes = async () => {
     try {
       console.log("Buscando publicações...");
-      console.log("ID do usuário:", userId); // Log do ID do usuário
+      console.log("ID do usuário:", userId);
 
       let todasPublicacoes = [];
 
@@ -35,7 +35,12 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       console.log("Publicações antes da ordenação:", todasPublicacoes);
 
       // Ordena as publicações pelo ID em ordem decrescente
-      todasPublicacoes.sort((a, b) => b.idPublicacao - a.idPublicacao);
+      todasPublicacoes.sort((a, b) => {
+        // Se o idPublicacao for null, atribui um valor temporário (ex: 0)
+        const idA = a.idPublicacao || 0;
+        const idB = b.idPublicacao || 0;
+        return idB - idA; // Ordenação decrescente
+      });
 
       // Log das publicações após a ordenação
       console.log("Publicações após a ordenação:", todasPublicacoes);
@@ -49,26 +54,28 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
   // Função para adicionar uma nova publicação ao feed
   const handleNovaPublicacao = (novaPublicacao) => {
-    console.log("Nova publicação recebida:", novaPublicacao); // Log da nova publicação
+    console.log("Nova publicação recebida:", novaPublicacao);
 
     // Adiciona a nova publicação ao topo da lista
     setPublicacoes((prevPublicacoes) => {
       const novasPublicacoes = [novaPublicacao, ...prevPublicacoes];
       // Ordena as publicações pelo ID em ordem decrescente
-      return novasPublicacoes.sort((a, b) => b.idPublicacao - a.idPublicacao);
+      return novasPublicacoes.sort((a, b) => {
+        const idA = a.idPublicacao || 0;
+        const idB = b.idPublicacao || 0;
+        return idB - idA;
+      });
     });
   };
 
   // Função para remover uma publicação com confirmação
   const handleRemoverPublicacao = async (idPublicacao) => {
     try {
-      // Confirmação antes de remover
       const confirmacao = window.confirm("Tem certeza que deseja remover a publicação?");
       if (!confirmacao) return;
 
-      console.log("ID da publicação a ser removida:", idPublicacao); // Verifique o valor aqui
+      console.log("ID da publicação a ser removida:", idPublicacao);
 
-      // Verifica se o ID da publicação é válido
       if (!idPublicacao) {
         console.error("ID da publicação é inválido:", idPublicacao);
         return;
@@ -79,11 +86,9 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
         return;
       }
 
-      // Faz a requisição DELETE para o endpoint
       await axios.delete(`http://localhost:8080/publicacoes/usuario/${userId}/${idPublicacao}`);
       console.log("Publicação removida com sucesso!");
 
-      // Atualiza a lista de publicações após a remoção
       fetchPublicacoes();
     } catch (error) {
       console.error("Erro ao remover a publicação:", error);
@@ -96,14 +101,12 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       console.log("Editando publicação com ID:", idPublicacao);
 
       const publicacaoDTO = {
-        texto: novoTexto, // Novo texto da publicação
+        texto: novoTexto,
       };
 
-      // Faz a requisição PUT para o endpoint de edição
       await axios.put(`http://localhost:8080/publicacoes/${idPublicacao}`, publicacaoDTO);
       console.log("Publicação editada com sucesso!");
 
-      // Atualiza a lista de publicações após a edição
       fetchPublicacoes();
     } catch (error) {
       console.error("Erro ao editar a publicação:", error);
@@ -112,17 +115,17 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
   // Função para abrir o modal de edição
   const abrirModalEdicao = (publicacao) => {
-    setEditarPublicacao(publicacao); // Define a publicação a ser editada
+    setEditarPublicacao(publicacao);
   };
 
   // Função para fechar o modal de edição
   const fecharModalEdicao = () => {
-    setEditarPublicacao(null); // Limpa a publicação em edição
+    setEditarPublicacao(null);
   };
 
   useEffect(() => {
     fetchPublicacoes();
-  }, [idUsuario]); // Atualiza as publicações quando o idUsuario muda
+  }, [idUsuario]);
 
   // Log do estado publicacoes
   useEffect(() => {
@@ -165,13 +168,12 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
       {/* Lista de publicações */}
       {publicacoes.map((publicacao) => {
-        console.log("Publicação completa:", publicacao); // Inspecione o objeto completo
+        console.log("Publicação completa:", publicacao);
 
-        // Verifica se a publicação pertence ao usuário logado
         const isPublicacaoDoUsuario = publicacao.idUsuario === userId;
 
         return (
-          <div key={publicacao.idPublicacao} className="item w-100 p-3">
+          <div key={publicacao.idPublicacao || publicacao.idUsuario} className="item w-100 p-3">
             <div className="topo-timeLine d-flex align-items-center justify-content-start">
               <img
                 src={publicacao.fotoUsuario ? `http://localhost:8080/fotos/${publicacao.fotoUsuario}` : imgUser}
@@ -179,7 +181,6 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
                 className="user-image me-2"
               />
               <p className="text-white mb-0">{publicacao.nomeUsuario || "Fulano de Tal"}</p>
-              {/* Exibe os botões apenas se a publicação for do usuário logado */}
               {isPublicacaoDoUsuario && (
                 <div className="ms-auto">
                   <button
@@ -208,7 +209,7 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
                   return (
                     <img
-                      key={index} // Use o índice como key para as imagens
+                      key={index}
                       src={`http://localhost:8080/fotos/${nomeArquivo}`}
                       alt={`Foto ${index}`}
                       style={{ maxWidth: "100%", height: "auto", margin: "5px" }}

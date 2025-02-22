@@ -149,7 +149,7 @@ const FeedPage = () => {
 
       <div className="SecaoBar-container">
         <div className="SecaoBar">
-          <SecaoBarAmigo onSearch={handleSearch} />
+          <SecaoBarAmigo onSearch={handleSearch} isLoggedIn={isLoggedIn} />
         </div>
       </div>
 
