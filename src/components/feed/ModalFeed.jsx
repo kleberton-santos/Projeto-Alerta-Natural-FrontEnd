@@ -119,14 +119,14 @@ const ModalFeed = ({ onPublicacaoCriada }) => {
               {/* Área de upload */}
               <div className="upload-buttons">
                 <label htmlFor="uploadImage" className="upload-label">
-                  <div className="upload-icon-container">
-                    <i className="fas fa-image upload-icon"></i> {/* Ícone de imagem */}
+                  <div className="upload-icon-container-modal">
+                    <i className="fas fa-image upload-icon-modal"></i> {/* Ícone de imagem */}
                   </div>
                   <span className="upload-text">Imagem</span>
                 </label>
                 <label htmlFor="uploadVideo" className="upload-label">
-                  <div className="upload-icon-container">
-                    <i className="fas fa-video upload-icon"></i> {/* Ícone de vídeo */}
+                  <div className="upload-icon-container-modal">
+                    <i className="fas fa-video upload-icon-modal"></i> {/* Ícone de vídeo */}
                   </div>
                   <span className="upload-text">Vídeo</span>
                 </label>

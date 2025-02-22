@@ -97,55 +97,61 @@
 
 /* Estilo para os botões de ação (remover e editar) */
 .acoes-publicacao {
-  margin-left: auto;
   display: flex;
-  gap: 10px;
+  justify-content: space-between; /* Distribui os ícones igualmente com espaçamento entre eles */
+  margin-top: 15px; /* Espaçamento acima dos botões */
+  gap: 355px;
 }
 
-/* Esconde a barra de rolagem dentro do contêiner da timeline */
-.secao-feed-time-line {
-  scrollbar-width: none; /* Para Firefox */
-  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
-  overflow-y: scroll; /* Garante que a rolagem funcione */
+.upload-buttons {
+  display: flex;
+  gap: 1.5rem; /* Espaçamento entre os botões */
 }
 
-.secao-feed-time-line::-webkit-scrollbar {
-  display: none; /* Esconde a barra de rolagem no Chrome, Safari e Opera */
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Efeito de zoom ao passar o mouse */
 }
 
-/* Estilo para o carrossel */
-.carousel {
-  margin-top: 15px;
-  border-radius: 10px;
-  overflow: hidden;
+.upload-label:hover {
+  transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
 }
 
-.carousel-item img,
-.carousel-item video {
+.upload-icon-container-line {
+  width: 35px; /* Tamanho do círculo */
+  height: 35px; /* Tamanho do círculo */
+  background-color: #1a2035; /* Cor de fundo */
+  border-radius: 50%; /* Formato circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-icon-container-line:hover {
+  background-color: #2a324f; /* Cor de fundo ao passar o mouse */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+}
+
+.upload-icon-line {
+  color: #ffffff; /* Cor do ícone */
+  font-size: 14px; /* Tamanho do ícone */
+}
+
+.upload-text {
+  margin-top: 5px; /* Espaçamento entre o ícone e o texto */
+  font-size: 14px; /* Tamanho do texto */
+  color: #ffffff; /* Cor do texto */
+}
+
+/* Linha divisória */
+.linha-divisoria {
   width: 100%;
-  height: auto;
-  max-height: 400px; /* Ajuste a altura máxima conforme necessário */
-  object-fit: cover;
-}
-
-/* Estilo para os controles do carrossel (setas) */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
-  background-color: transparent; /* Fundo transparente */
-  border: none; /* Remove o contorno preto */
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1); /* Torna os ícones brancos */
-  background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
-  border-radius: 50%; /* Deixa as setas redondas */
-  padding: 10px; /* Espaçamento interno */
-}
-
-/* Efeito hover nas setas */
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Fundo semi-transparente ao passar o mouse */
+  height: 1px;
+  background-color: #3a3f58; /* Cor da linha */
+  margin: 15px 0; /* Espaçamento acima e abaixo da linha */
 }
