@@ -6,6 +6,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: scroll; /* Permite rolagem */
+  scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+  -ms-overflow-style: none; /* Oculta a barra de rolagem no IE e Edge */
+}
+
+/* Oculta a barra de rolagem no Chrome, Safari e Opera */
+.secao-feed-time-line::-webkit-scrollbar {
+  display: none;
 }
 
 /* Estilo para cada item de publicação */
@@ -34,6 +42,7 @@
 .texto-publicacao-timeline {
   font-size: 15px;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* Estilo para a galeria de fotos e vídeos */
@@ -100,7 +109,6 @@
   display: flex;
   justify-content: space-between; /* Distribui os ícones igualmente com espaçamento entre eles */
   margin-top: 15px; /* Espaçamento acima dos botões */
-  gap: 355px;
 }
 
 .upload-buttons {

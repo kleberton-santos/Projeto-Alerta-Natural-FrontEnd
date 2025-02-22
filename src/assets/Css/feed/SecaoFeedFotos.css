@@ -1,0 +1,55 @@
+/* Estilo do container principal da seção de fotos */
+.seca-feed-time-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #272c3ff5;
+  border: solid #272c3ff5;
+  border-radius: 8px;
+  height: 400px;
+  width: 100%;
+}
+
+/* Estilo do texto "Galeria de fotos" */
+.secao-feed-text-foto {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;
+}
+
+/* Estilo da galeria de fotos */
+.galeria-fotos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px; /* Espaçamento reduzido entre os quadros */
+  padding: 10px;
+  overflow-y: scroll; /* Permite rolagem */
+  max-height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  /* Oculta a barra de rolagem */
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+
+/* Oculta a barra de rolagem no Chrome, Safari e Opera */
+.galeria-fotos::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilo de cada item de foto */
+.foto-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  overflow: hidden; /* Garante que a imagem não ultrapasse o quadro */
+}
+
+/* Estilo das imagens dentro dos itens de foto */
+.foto-item img {
+  width: 100%; /* Ocupa 100% da largura do quadro */
+  height: 100%; /* Ocupa 100% da altura do quadro */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
