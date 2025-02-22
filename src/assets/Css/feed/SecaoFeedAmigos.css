@@ -1,10 +1,56 @@
-.bg-custom-amigo {
-    background-color: #27335C;
-    border-color: #27335C;
-  }
+/* Estilo do container principal da seção de amigos */
+.secao-feed-amigos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #272c3ff5;
+  border: solid #272c3ff5;
+  border-radius: 8px;
+  height: 400px;
+  width: 100%;
+}
 
-  .secao-feed-text-amigo {
-    font-size: 20px; /* Define o tamanho da fonte */
-    font-weight: bold;
-    margin-top: 10px;
-  }
+/* Estilo do texto "Amigos" */
+.secao-feed-amigos-titulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;
+}
+
+/* Estilo da galeria de amigos */
+.secao-feed-amigos-galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  overflow-y: auto; /* Permite rolagem */
+  max-height: 300px;
+  scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+  -ms-overflow-style: none; /* Oculta a barra de rolagem no IE e Edge */
+}
+
+/* Oculta a barra de rolagem no Chrome, Safari e Opera */
+.secao-feed-amigos-galeria::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilo de cada item de foto (agora redondo) */
+.secao-feed-amigos-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%; /* Transforma o quadro em um círculo */
+  border: 2px solid #212839; /* Adiciona borda branca */
+  overflow: hidden; /* Garante que a imagem não ultrapasse o quadro */
+}
+
+/* Estilo das imagens dentro dos itens de foto */
+.secao-feed-amigos-item img {
+  width: 100%; /* Ocupa 100% da largura do quadro */
+  height: 100%; /* Ocupa 100% da altura do quadro */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}

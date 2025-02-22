@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/Css/feed/SecaoFeedAmigos.css"; 
+import "../../assets/Css/feed/SecaoFeedAmigos.css";
 import imgamigo from "../../assets/images/icon_user.png";
 
 const SecaoFeedAmigos = ({ amigos }) => {
@@ -66,19 +66,17 @@ const SecaoFeedAmigos = ({ amigos }) => {
     }, [amigos]);
 
     return (
-        <div className="secao-feed-amigo d-flex flex-column align-items-center rounded bg-custom-amigo" style={{ height: '400px', width: '100%', borderStyle: 'solid' }}>
-            <p className="secao-feed-text-amigo text-white">Amigos</p>
-            <div className="galeria-fotos d-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', padding: '10px' }}>
+        <div className="secao-feed-amigos-container">
+            <p className="secao-feed-amigos-titulo">Amigos</p>
+            <div className="secao-feed-amigos-galeria">
                 {amigosComFotos.map((amigo, index) => {
                     const fotoUrl = amigo?.foto ? `http://localhost:8080/fotos/${amigo.foto}` : imgamigo;
 
                     return (
-                        <div key={index} className="foto-item d-flex justify-content-center align-items-center" style={{ height: '100px', border: '1px solid white' }}>
+                        <div key={index} className="secao-feed-amigos-item">
                             <img
                                 src={fotoUrl} // Usando a URL correta da foto
                                 alt="Amigo"
-                                className="img-fluid"
-                                style={{ maxHeight: '80%', maxWidth: '80%' }}
                                 onError={(e) => { e.target.src = imgamigo; }} // Fallback para imagem padrão em caso de erro
                             />
                         </div>
