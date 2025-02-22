@@ -1,30 +1,151 @@
-.bg-custom-timeline {
-    background-color: #27335C;
-    border-color: #27335C;
-    
-  }
-
-.user-image {
-  width: 63px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-
-
+/* Estilos gerais para a seção de timeline */
 .secao-feed-time-line {
   height: 75%;
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* Estilo para cada item de publicação */
+.item {
+  background-color: #272c3ff5;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+}
+
+/* Estilo para o topo da publicação (foto do usuário e nome) */
+.topo-timeLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilo para a imagem do usuário */
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Estilo para o texto da publicação */
 .texto-publicacao-timeline {
   font-size: 15px;
-  margin-left: -7px;
   margin-top: 15px;
 }
-.galeria-feed img {
-  width: 70%;
+
+/* Estilo para a galeria de fotos e vídeos */
+.galeria-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 20px;
-  margin-left: 60px;
+  justify-content: center;
+}
+
+.galeria-feed img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilo para os vídeos */
+.video-feed video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilo para o modal de edição */
+.modal-edicao {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-conteudo {
+  background-color: #27335C;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  color: white;
+}
+
+.modal-conteudo textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.botoes-modal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Estilo para os botões de ação (remover e editar) */
+.acoes-publicacao {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+/* Esconde a barra de rolagem dentro do contêiner da timeline */
+.secao-feed-time-line {
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+  overflow-y: scroll; /* Garante que a rolagem funcione */
+}
+
+.secao-feed-time-line::-webkit-scrollbar {
+  display: none; /* Esconde a barra de rolagem no Chrome, Safari e Opera */
+}
+
+/* Estilo para o carrossel */
+.carousel {
+  margin-top: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carousel-item img,
+.carousel-item video {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* Ajuste a altura máxima conforme necessário */
+  object-fit: cover;
+}
+
+/* Estilo para os controles do carrossel (setas) */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  background-color: transparent; /* Fundo transparente */
+  border: none; /* Remove o contorno preto */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Torna os ícones brancos */
+  background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+  border-radius: 50%; /* Deixa as setas redondas */
+  padding: 10px; /* Espaçamento interno */
+}
+
+/* Efeito hover nas setas */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo semi-transparente ao passar o mouse */
 }

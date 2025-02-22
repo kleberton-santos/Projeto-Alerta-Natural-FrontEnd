@@ -185,7 +185,7 @@ const FeedPage = () => {
             >
               Publicações
             </div>
-            <div className="content-pubicacoes mt-2">
+            <div className="content-pubicacoes mt-3">
               <SecaoFeedTimeLine
                 idUsuario={isLoggedIn ? (showConfig ? loggedUserId : searchedUser?.idusuario) : null}
               />
