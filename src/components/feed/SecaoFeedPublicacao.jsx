@@ -8,14 +8,16 @@ const SecaoFeedPublicacao = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="secao-feed-publicacao d-flex rounded bg-custom" style={{ height: "100px", width: "100%" }}>
+    <div className="secao-feed-publicacao">
       {/* Exibe a foto do usuário ou uma imagem padrão se não houver foto */}
       <img
         src={user?.foto ? `http://localhost:8080/fotos/${user.foto}` : imgUser}
-        alt=""
-        className="img-user ms-3"
+        alt="Foto do usuário"
+        className="img-user"
       />
-      <div className="secao-publicacao m-auto ms-4 me-5 rounded bg-custom-publicacao d-flex justify-content-center align-items-center">
+      
+      {/* Área de publicação com botão para abrir o modal */}
+      <div className="secao-publicacao">
         <button
           type="button"
           className="texto-publicacao btn"

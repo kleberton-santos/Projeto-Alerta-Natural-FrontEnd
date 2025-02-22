@@ -1,31 +1,52 @@
-.texto-publicacao {
-  height: 40%;
-  width: 100%; /* Ajuste a largura como necessário */
-  background-color: #B4A6A6; /* Altera a cor do botão */
-  border-color: #B4A6A6; /* Cor da borda combinando com o fundo */
-  color: white; /* Cor do texto para melhor contraste */
-  
-  border-radius: 5px; /* Arredonda os cantos do botão */
-  font-size: 30px;
+/* Estilos gerais para a seção de publicação */
+.secao-feed-publicacao {
+  height: 100px;
+  width: 100%;
+ /* background-color: #272c3ff5;*/
+  border-radius: 10px;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente os itens */
+  padding-left: 1rem; /* Espaçamento à esquerda */
 }
 
+/* Estilo para a imagem do usuário */
+.img-user {
+  width: 10%;
+  height: 45px;
+  border-radius: 50%; /* Deixa a imagem redonda */
+  margin-right: 1rem; /* Espaçamento entre a imagem e a área de publicação */
+}
+
+/* Estilo para a área de publicação */
 .secao-publicacao {
   width: 100%;
-  
+  background-color: #272c3ff5;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center; /* Centraliza o botão horizontalmente */
+  align-items: center; /* Centraliza o botão verticalmente */
+  padding: 0.5rem; /* Espaçamento interno */
+  margin-right: 25px;
 }
 
-.img-user {
+/* Estilo para o botão de publicação */
+.texto-publicacao {
   height: 40px;
-  width: 63px;
-  margin-top: 30px;
-}
-
-.texto-publicacao:hover {
+  width: 100%;
+  background-color: #654f4f;
+  border: none; /* Remove a borda padrão */
+  border-radius: 30px;
   color: white;
-  background-color: rgba(10, 23, 79, 0.225);
+  font-size: 16px; /* Tamanho da fonte ajustado */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.foto-Perfil {
-  margin-top: 30px;
-  margin-left: 20px;
+/* Efeito hover para o botão de publicação */
+.texto-publicacao:hover {
+  background-color: rgba(10, 23, 79, 0.225);
+  color: white;
 }
