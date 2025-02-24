@@ -1,0 +1,46 @@
+.secao-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f5dcdc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative; /* Adicionado para garantir que o input fique acima de outros elementos */
+    height: 60%;
+  }
+  
+  .secao-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    text-align: center; /* Centraliza o texto no input */
+    width: 100%;
+    z-index: 1; /* Garante que o input fique acima de outros elementos */
+  }
+  
+  .secao-input::placeholder {
+    color: #333;
+    opacity: 0.8;
+  }
+  
+  .secao-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Garante que o botão fique acima do input */
+  }
+  
+  .secao-button span {
+    font-size: 18px;
+    color: #000;
+  }
