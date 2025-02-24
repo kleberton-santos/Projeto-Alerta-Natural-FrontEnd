@@ -6,6 +6,8 @@ import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import CarroselHome from "../components/home/CarroselHome";
 import { Cards } from "../components/home/Cards";
+import { Outlet, Link } from "react-router-dom";
+
 
 const Home = () => {
   return (
@@ -40,7 +42,9 @@ const Home = () => {
           <div className="col-md-4">
             <div className="card">
                               {/* Imagem representando a previsão do tempo */}
-              <img src="./src/assets/images/Previsao_Tempo.webp" alt="Previsão do Tempo" id="previsaoCard" />
+              <Link to="/Previsao">     
+                       <img src="./src/assets/images/Previsao_Tempo.webp" alt="Previsão do Tempo" id="previsaoCard" />
+              </Link>
             </div>
             <div className="card-body">
                               {/* Título e descrição da previsão do tempo */}
@@ -53,29 +57,17 @@ const Home = () => {
           <div className="col-md-4">
             <div className="card">
                               {/* Imagem representando alertas de desastres naturais */}
-              <img src="./src/assets/images/DESASTRES_EDIT.jpg" alt="Alerta de Desastres Naturais" id="desastreCard" />
+               <a href="http://localhost:5173"> 
+                  <img src="./src/assets/images/DESASTRES_EDIT.jpg" alt="Alerta de Desastres Naturais" id="desastreCard" />
+                </a>
+            
             </div>
             <div className="card-body">
                               {/* Título e descrição sobre alertas de desastres */}
               <h5 className="card-title text-white">Alerta de Desastres</h5>
               <p className="card-text text-white">Receba alerta de desastres, furacões e mais.</p>
             </div>
-
-          </div>
-
-                  {/* Terceira coluna: Busca por Localização */}
-          <div className="col-md-4">
-            <div className="card">
-                            {/* Imagem representando a funcionalidade de busca por localização */}
-              <img src="./src/assets/images/Localização.jpg" alt="Busca por Localização" id="LocalCard" />
-            </div>
-            <div className="card-body">
-                              {/* Título e descrição sobre a busca por localização */}
-              <h5 className="card-title text-white">Busca por localização</h5>
-              <p className="card-text text-white">Encontre dados climáticos usando seu CEP ou coordenadas.</p>
-            </div>
-           
-          </div>
+          </div>        
         </div>
       </div>
 
