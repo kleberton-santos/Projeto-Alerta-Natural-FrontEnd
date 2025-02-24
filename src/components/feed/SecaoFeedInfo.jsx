@@ -45,6 +45,7 @@ const SecaoFeedInfo = ({ user, onFollow, idUsuarioLogado }) => {
     carregarEstadoAmizade();
   }, [user?.idusuario, idUsuarioLogado]);
 
+  // Função para seguir/deixar de seguir o usuário
   const handleSeguir = async () => {
     if (!onFollow || !user?.idusuario || carregando) return;
 
@@ -56,7 +57,7 @@ const SecaoFeedInfo = ({ user, onFollow, idUsuarioLogado }) => {
       const novoEstado = !estaSeguindo;
       setEstaSeguindo(novoEstado);
 
-      // **Persistência do estado após recarregar**
+      // Persistência do estado após recarregar
       localStorage.setItem(`seguindo_${idUsuarioLogado}_${user.idusuario}`, JSON.stringify(novoEstado));
     } catch (erro) {
       console.error("Erro ao seguir/deixar de seguir:", erro);
@@ -65,7 +66,7 @@ const SecaoFeedInfo = ({ user, onFollow, idUsuarioLogado }) => {
     }
   };
 
-  // **Verifica o estado salvo no localStorage para evitar atrasos na renderização**
+  // Verifica o estado salvo no localStorage para evitar atrasos na renderização
   useEffect(() => {
     const estadoSalvo = localStorage.getItem(`seguindo_${idUsuarioLogado}_${user.idusuario}`);
     if (estadoSalvo !== null) {
@@ -74,20 +75,22 @@ const SecaoFeedInfo = ({ user, onFollow, idUsuarioLogado }) => {
   }, [idUsuarioLogado, user?.idusuario]);
 
   return (
-    <div className="seca-feed-noticia d-flex flex-column align-items-center rounded bg-custom" style={{ height: '300px', width: '100%', borderStyle: 'solid' }}>
-      <p className="secao-feed-text-info text-white mt-2">Informações do usuário</p>
-      <div className="topo d-flex align-items-center w-100">
+    <div className="seca-feed-info">
+      <p className="secao-feed-text-info">Informações do usuário</p>
+      <div className="topo-info">
         <img
           src={user?.foto ? `http://localhost:8080/fotos/${user.foto}` : imgUser}
           alt="Foto do usuário"
-          className="img-user"
+          className="img-user-info"
         />
         <div className="info">
-          <p>{user?.nome || "Fulano de Tal"}</p>
-          <button className="btn-seguir" onClick={handleSeguir} disabled={carregando}>
-            {carregando ? "Carregando..." : estaSeguindo ? "Deixar de seguir" : "Seguir"}
-          </button>
+          <span>{user?.nome || "Fulano de Tal"}</span>
         </div>
+      </div>
+      <div className="botao-seguir">
+        <button className="btn-seguir" onClick={handleSeguir} disabled={carregando}>
+          {carregando ? "Carregando..." : estaSeguindo ? "Deixar de seguir" : "Seguir"}
+        </button>
       </div>
     </div>
   );

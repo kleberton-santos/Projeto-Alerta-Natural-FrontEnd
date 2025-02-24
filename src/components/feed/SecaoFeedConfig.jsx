@@ -9,10 +9,10 @@ const SecaoFeedConfig = () => {
   return (
     <div className="seca-feed-config">
       {/* Título da seção */}
-      <p className="secao-feed-text-amigo">Informações</p>
+      <p className="secao-feed-text-amigo">Configurações</p>
       
       {/* Topo da seção com a foto e nome do usuário */}
-      <div className="topo">
+      <div className="topo-config">
         {/* Exibe a foto do usuário ou uma imagem padrão se não houver foto */}
         <img
           src={user?.foto ? `http://localhost:8080/fotos/${user.foto}` : imgUser}
@@ -20,7 +20,7 @@ const SecaoFeedConfig = () => {
           className="img-user"
         />
         {/* Exibe o nome do usuário ou "User" se não houver nome */}
-        <span className="login">{user?.nome || "User"}</span>
+        <span className="login-config">{user?.nome || "User"}</span>
       </div>
 
       {/* Links para editar perfil e galeria de fotos */}

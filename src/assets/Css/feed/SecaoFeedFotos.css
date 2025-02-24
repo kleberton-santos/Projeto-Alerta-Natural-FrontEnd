@@ -22,7 +22,7 @@
 .galeria-fotos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5px; /* Espaçamento reduzido entre os quadros */
+  gap: 5px ; /* Espaçamento reduzido entre os quadros */
   padding: 10px;
   overflow-y: scroll; /* Permite rolagem */
   max-height: 300px;

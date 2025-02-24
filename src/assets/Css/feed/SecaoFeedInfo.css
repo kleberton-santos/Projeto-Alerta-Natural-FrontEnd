@@ -1,62 +1,71 @@
-.bg-custom {
-  background-color: #27335C;
-  border-color: #27335C;
+/* Estilo para o container principal da seção de informações */
+.seca-feed-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  background-color: #272c3ff5; /* Cor de fundo escura */
+  border: solid #272c3ff5; /* Cor da borda */
+  border-radius: 10px; /* Bordas arredondadas */
+  height: 60%; /* Altura fixa */
+  width: 80%; /* Largura total */
+  padding: 20px; /* Adiciona um pouco de padding para espaçamento interno */
+  margin-left: 63px;
 }
 
+/* Estilo para o texto "Informações do usuário" */
 .secao-feed-text-info {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 20px; /* Tamanho da fonte */
+  font-weight: bold; /* Texto em negrito */
+  color: white; /* Cor branca */
+  margin-bottom: 24px;
 }
 
-
-
-.topo {
+/* Estilo para o topo da seção (foto e nome do usuário) */
+.topo-info {
   display: flex;
   align-items: center;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
   width: 100%;
-  margin-left: 70px;
+  margin-bottom: 40px; /* Margem inferior para separar do botão */
 }
 
-.topo img {
-  width: 28%;
-  height: 51px;
-  border-radius: 50%;
+/* Estilo para a imagem do usuário */
+.topo-info img {
+  width: 17%;
+  height: 35px;
+  border-radius: 50%; /* Imagem redonda */
+  margin-right: 10px; /* Margem à direita para separar do nome */
 }
 
+/* Estilo para a seção de informações (nome) */
 .info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  color: white;
-  margin-left: 20px;
+  align-items: flex-start; /* Alinha o nome à esquerda */
+  color: white; /* Cor branca para o texto */
+}
+
+/* Estilo para o botão "Seguir" */
+.botao-seguir {
+  display: flex;
+  justify-content: center; /* Centraliza o botão horizontalmente */
+  width: 100%;
 }
 
 .btn-seguir {
-  margin-top: -13px;
-  width: 77px;
-  border-radius: 5px;
-  background-color: rgba(93, 4, 4, 0.748);
-  color: white;
+  margin-top: -24px; /* Margem superior */
+  width: 100px; /* Largura fixa */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #5b72bd; /* Cor de fundo azul */
+  color: white; /* Cor branca para o texto */
+  border: none; /* Remove a borda */
+  cursor: pointer; /* Cursor de ponteiro */
+  padding: 5px 10px; /* Espaçamento interno */
 }
 
-.form-quem-sou-eu {
-  margin-top: 15px;
-}
-
-textarea {
-  width: 100%;
-  height: 110px;
-  padding: 10px;
-  border-radius: 5px;
-
-}
-
-input[type="submit"] {
-  width: 100%;
-
-  background-color: #5b72bd;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+/* Estilo para o botão "Seguir" quando desabilitado */
+.btn-seguir:disabled {
+  background-color: #ccc; /* Cor de fundo cinza */
+  cursor: not-allowed; /* Cursor de não permitido */
 }

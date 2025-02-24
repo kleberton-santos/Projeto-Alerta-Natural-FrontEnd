@@ -49,11 +49,11 @@ const SecaoFeedAmigos = ({ amigos }) => {
 
                         const dadosUsuario = await resposta.json();
                         // Supondo que a foto do usuário esteja no campo "foto"
-                        return { ...amigo, foto: dadosUsuario.foto ? dadosUsuario.foto : null };
+                        return { ...amigo, foto: dadosUsuario.foto ? dadosUsuario.foto : null, nome: dadosUsuario.nome };
 
                     } catch (erro) {
                         console.error("Erro ao buscar foto do amigo:", erro);
-                        return { ...amigo, foto: null };
+                        return { ...amigo, foto: null, nome: null };
                     }
                 })
             );
@@ -79,6 +79,7 @@ const SecaoFeedAmigos = ({ amigos }) => {
                                 alt="Amigo"
                                 onError={(e) => { e.target.src = imgamigo; }} // Fallback para imagem padrão em caso de erro
                             />
+                            <p className="secao-feed-amigos-nome">{amigo.nome}</p> {/* Exibe o nome do amigo */}
                         </div>
                     );
                 })}

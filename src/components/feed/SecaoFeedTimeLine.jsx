@@ -269,6 +269,8 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       {publicacoes.map((publicacao) => {
         const isPublicacaoDoUsuario = publicacao.idUsuario === userId;
 
+        
+
         return (
           <div key={publicacao.idPublicacao || publicacao.idUsuario} className="item">
             <div className="topo-timeLine">

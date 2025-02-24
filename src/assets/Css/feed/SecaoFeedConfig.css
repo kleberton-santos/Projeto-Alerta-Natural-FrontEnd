@@ -1,40 +1,46 @@
 /* Estilos gerais para a seção de configuração do feed */
 .seca-feed-config {
   height: 70%;
-  width: 100%;
+  width: 80%;
   background-color: #272c3ff5;
-  border-color: #27335C;
+  border-color: #272c3ff5;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  margin-left: 63px;
 }
 
 /* Estilo para o texto "Informações" */
 .secao-feed-text-amigo {
-  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;;
 }
 
 /* Estilo para o topo da seção, onde a foto e o nome do usuário são exibidos */
-.topo {
+.topo-config {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
 /* Estilo para a imagem do usuário */
-.topo img {
+.topo-config img {
   width: 15%;
-  height: 45px;
+  height: 35px;
   border-radius: 50%;
   margin-top: 10px;
-  margin-left: 20%;
+  margin-left: 30%;
 }
 
 /* Estilo para o nome do usuário */
-.login {
+.login-config {
   color: aliceblue;
-  margin-left: 10px;
+  margin-left: -10px;
+  margin-top: 8px;
+
 }
 
 /* Estilo para os links de edição de perfil e galeria de fotos */

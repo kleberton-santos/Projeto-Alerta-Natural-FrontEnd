@@ -39,18 +39,31 @@
 /* Estilo de cada item de foto (agora redondo) */
 .secao-feed-amigos-item {
   display: flex;
+  flex-direction: column; /* Alinha a imagem e o nome verticalmente */
   justify-content: center;
   align-items: center;
-  height: 70px;
-  width: 70px;
-  border-radius: 50%; /* Transforma o quadro em um círculo */
-  border: 2px solid #212839; /* Adiciona borda branca */
+  height: auto; /* Ajusta a altura automaticamente */
+  width: 70px; /* Largura fixa */
+  margin-left: 10px;
   overflow: hidden; /* Garante que a imagem não ultrapasse o quadro */
 }
 
 /* Estilo das imagens dentro dos itens de foto */
 .secao-feed-amigos-item img {
-  width: 100%; /* Ocupa 100% da largura do quadro */
-  height: 100%; /* Ocupa 100% da altura do quadro */
+  width: 70px; /* Largura fixa */
+  height: 70px; /* Altura fixa */
+  border-radius: 50%; /* Imagem redonda */
   object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
+
+/* Estilo do nome do amigo */
+.secao-feed-amigos-nome {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: white; /* Cor branca para o nome */
+  width: 100%; /* Ocupa toda a largura do item */
+  white-space: nowrap; /* Impede que o nome quebre em várias linhas */
+  overflow: hidden; /* Esconde o texto que ultrapassar */
+  text-overflow: ellipsis; /* Adiciona "..." se o nome for muito longo */
 }

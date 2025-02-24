@@ -1,66 +1,92 @@
+/* Estilos globais */
 .bg-custom-body {
-    background-color: #3D475F;
-    
-  }
-
-.container-principal {
-  padding: 3% 15%;
- 
+  background-color: #3d475f;
 }
+
 .feed-principal {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garante que o container principal ocupe a altura total da tela */
+  min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
   background-color: #212839;
   padding: 0 !important;
-
-}
-
-.footer-feed {
-  margin-top: auto; /* Empurra o footer para o final do container */
-  
-      
-}
-
-
-.publicacoes-titulo {
-  margin-top: 13px;
-}
-
-.content-pubicacoes {
-  height: 600px; /* Altura fixa para a seção de publicações */
-  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
-  padding: 10px; /* Espaçamento interno */
-  border-radius: 8px; /* Borda arredondada (opcional) */
-}
-
-.feed-principal {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Garante que o container ocupe pelo menos a altura da tela */
 }
 
 .container-principal {
   flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+  padding: 3% 15%;
 }
 
 .footer-feed {
-  margin-top: auto; /* Empurra o footer para o final da página */
+  margin-top: auto; /* Empurra o footer para o final do container */
 }
 
+/* Estilos para a seção de publicações */
+.publicacoes-titulo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -2px;
+}
+
+.content-pubicacoes {
+  height: 900px; /* Altura fixa para a seção de publicações */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando necessário */
+  padding: 10px;
+  border-radius: 8px;
+  padding-top: 0px;
+}
+
+/* Estilos para a seção de busca */
 .SecaoBar-container {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Ajuste este valor conforme necessário */
+  margin-top: 20px;
 }
 
-/* Estilo para a SecaoBar */
 .SecaoBar {
-  width: 80%; /* Ajuste a largura conforme necessário */
-  max-width: 1200px; /* Defina um valor máximo para a largura */
+  width: 80%;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: -38px;
+}
+
+/* Estilos para o prompt de login */
+.login-prompt {
+  text-align: center;
+  margin: 20px;
+}
+
+.login-prompt p {
+  color: white;
+  font-size: 18px;
+  margin-top: -30px;
+}
+
+.login-prompt span {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Estilos para as seções de conteúdo */
+.content-noticias,
+.content-fazer-publicacao,
+.content-amigos {
+  width: 100%;
+}
+
+.content-noticias {
+  height: 300px;
+}
+
+.content-fazer-publicacao {
+  height: 100px;
+}
+
+.content-amigos {
+  height: 400px;
 }
