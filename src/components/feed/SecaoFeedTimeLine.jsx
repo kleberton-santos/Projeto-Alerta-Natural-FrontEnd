@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axios from "../../config/axiosConfig"; // Importa o Axios configurado
 import "../../assets/Css/feed/SecaoFeedTimeLine.css";
 import imgUser from "../../assets/images/icon_user.png";
 import ModalFeed from "./ModalFeed";

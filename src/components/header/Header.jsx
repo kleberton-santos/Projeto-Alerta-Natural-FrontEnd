@@ -6,8 +6,7 @@ import logo from "../../assets/images/logo.webp";
 import "../../assets/Css/header/Header.css";
 import "../../assets/Css/header/logo.css";
 import imagemGenerica from "../../assets/images/img-default.png";
-import PropTypes from "prop-types"; 
-
+import PropTypes from "prop-types";
 
 const Header = ({ label }) => {
   const [user, setUser] = useState(null);
@@ -32,6 +31,7 @@ const Header = ({ label }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
     window.location.reload(); // Recarrega a página ao fazer logout
   };

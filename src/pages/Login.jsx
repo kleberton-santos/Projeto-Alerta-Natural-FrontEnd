@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../config/axiosConfig"; // Importa o Axios configurado
 import "../../src/index.css";
 import "../assets/Css/login/Login.css";
 import HeaderLogin from "../components/header/HeaderLogin";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import logo from "../assets/images/logo.webp";
 import Secaonavbar from "../components/navbar/Secaonavbar";
-import ModalEsqueciSenha from "../components/modal/ModalEsqueciSenha"; // Importação corrigida
+import ModalEsqueciSenha from "../components/modal/ModalEsqueciSenha";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: "", senha: "" }); // Estado para armazenar os dados do formulário
-  const [error, setError] = useState(""); // Estado para exibir mensagens de erro
-  const [showModal, setShowModal] = useState(false); // Estado para controlar a visibilidade do modal
-  const navigate = useNavigate(); // Hook para navegação programática
+  const [formData, setFormData] = useState({ email: "", senha: "" });
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   // Função para abrir o modal
   const handleShowModal = () => setShowModal(true);
@@ -30,28 +30,38 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Limpa erros anteriores
-
+  
     try {
       // Faz a requisição POST para a API de login
-      const response = await axios.post("http://localhost:8080/api/auth/login", formData);
+      const response = await axios.post("http://localhost:8080/api/auth/login", formData, {
+        headers: {
+          "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+        },
+        withCredentials: true, // Envia credenciais (cookies, tokens)
+      });
+  
       console.log("Resposta completa da API:", response);
-
+  
       // Salva o token JWT no localStorage
-      localStorage.setItem("token", response.data.token);
-
+      localStorage.setItem("token", response.data.accessToken);
+  
       // Armazena os dados do usuário no localStorage
       const userData = {
-        nome: response.data.nome, // Nome do usuário
-        foto: response.data.foto || "url-da-foto-generica.jpg", // Foto do usuário ou uma genérica
-        id: response.data.id, // ID do usuário
+        nome: response.data.nome,
+        foto: response.data.foto || "url-da-foto-generica.jpg",
+        id: response.data.id,
       };
       localStorage.setItem("user", JSON.stringify(userData));
       console.log("Dados do usuário no localStorage:", userData);
-
+  
+      // Dispara um evento personalizado para atualizar o header
+      window.dispatchEvent(new Event("userUpdate"));
+  
       // Redireciona para a página de feed
       navigate("/feed");
     } catch (error) {
-      setError("Email ou senha inválidos. Tente novamente."); // Exibe mensagem de erro
+      setError("Email ou senha inválidos. Tente novamente.");
+      console.error("Erro ao fazer login:", error);
     }
   };
 
@@ -139,7 +149,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="btn btn-link"
-                  onClick={handleShowModal} // Abre o modal ao clicar
+                  onClick={handleShowModal}
                 >
                   Esqueceu sua senha?
                 </button>

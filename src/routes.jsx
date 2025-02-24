@@ -9,22 +9,22 @@ import { EditarPerfil } from "./pages/EditarPerfil";
 import SecaoBar from "./components/previsao/SecaoBar";
 import GaleriaFoto from "./pages/GaleriaFoto";
 
-
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/previsao" element={<Previsao />}></Route>
-        <Route path="/feed" element={<Feed />}></Route>
-        <Route path="/contato" element={<Contato />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/cadastro" element={<Cadastro />}></Route>
-        <Route path="/EditarPerfil" element={<EditarPerfil />}></Route>
-        <Route path="/buscar" element={<SecaoBar />}></Route>
-        <Route path="/galeriaFotos" element={<GaleriaFoto />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/previsao" element={<Previsao />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/contato" element={<Contato />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/EditarPerfil" element={<EditarPerfil />} />
+        <Route path="/buscar" element={<SecaoBar />} />
+        <Route path="/galeriaFotos" element={<GaleriaFoto />} />
       </Routes>
     </BrowserRouter>
   );
 };
+
 export default AppRoutes;
