@@ -168,7 +168,7 @@ const FeedPage = () => {
                   <SecaoFeedFotos idUsuario={showConfig ? loggedUserId : searchedUser?.idusuario} />
                 </div>
                 <div className="content-amigos mt-3">
-                  <SecaoFeedAmigos amigos={amigos} />
+                  <SecaoFeedAmigos amigos={amigos} onAmigoClick={handleSearch}/>
                 </div>
               </>
             )}

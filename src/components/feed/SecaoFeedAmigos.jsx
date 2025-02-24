@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../assets/Css/feed/SecaoFeedAmigos.css";
 import imgamigo from "../../assets/images/icon_user.png";
 
-const SecaoFeedAmigos = ({ amigos }) => {
+const SecaoFeedAmigos = ({ amigos, onAmigoClick }) => { // Adiciona a prop onAmigoClick
     const [amigosComFotos, setAmigosComFotos] = useState([]);
 
     useEffect(() => {
@@ -73,7 +73,12 @@ const SecaoFeedAmigos = ({ amigos }) => {
                     const fotoUrl = amigo?.foto ? `http://localhost:8080/fotos/${amigo.foto}` : imgamigo;
 
                     return (
-                        <div key={index} className="secao-feed-amigos-item">
+                        <div
+                            key={index}
+                            className="secao-feed-amigos-item"
+                            onClick={() => onAmigoClick(amigo.nome)} // Chama a função onAmigoClick ao clicar no quadro
+                            style={{ cursor: "pointer" }} // Muda o cursor para indicar que é clicável
+                        >
                             <img
                                 src={fotoUrl} // Usando a URL correta da foto
                                 alt="Amigo"
