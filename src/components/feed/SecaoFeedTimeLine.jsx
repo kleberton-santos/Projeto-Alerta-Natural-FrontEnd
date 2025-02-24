@@ -205,18 +205,18 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
                 ></textarea>
 
                 {/* Área de upload */}
-                <div className="upload-buttons-right">
-                  <label htmlFor="uploadImage" className="upload-label">
-                    <div className="upload-icon-container">
-                      <i className="fas fa-image upload-icon"></i> {/* Ícone de imagem */}
+                <div className="upload-buttons-modalEdit">
+                  <label htmlFor="uploadImage" className="upload-labelEdit">
+                    <div className="upload-icon-container-modalEdit">
+                      <i className="fas fa-image upload-iconEdit"></i> {/* Ícone de imagem */}
                     </div>
-                    <span className="upload-text">Imagem</span>
+                    <span className="upload-textEdit">Imagem</span>
                   </label>
-                  <label htmlFor="uploadVideo" className="upload-label">
-                    <div className="upload-icon-container">
-                      <i className="fas fa-video upload-icon"></i> {/* Ícone de vídeo */}
+                  <label htmlFor="uploadVideo" className="upload-labelEdit">
+                    <div className="upload-icon-container-modalEdit">
+                      <i className="fas fa-video upload-iconEdit"></i> {/* Ícone de vídeo */}
                     </div>
-                    <span className="upload-text">Vídeo</span>
+                    <span className="upload-textEdit">Vídeo</span>
                   </label>
                   <input type="file" id="uploadImage" accept="image/*" onChange={handleFileChange} multiple />
                   <input type="file" id="uploadVideo" accept="video/*" onChange={handleFileChange} multiple />
