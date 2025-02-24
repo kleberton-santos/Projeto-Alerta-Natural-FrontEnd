@@ -67,9 +67,9 @@
 }
 
 .login-prompt span {
-  color: blue;
+  color: rgb(120, 142, 189);
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Estilos para as seções de conteúdo */

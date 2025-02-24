@@ -1,0 +1,94 @@
+/* Estilos gerais para o modal */
+.modal-content {
+    background-color: #212839;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  /* Estilo para o cabeçalho do modal */
+  .modal-header {
+    border-bottom: 1px solid #444;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  .modal-title {
+    font-size: 1.25rem;
+    margin-left: 35%;
+  }
+  
+  /* Estilo para o botão de fechar */
+  .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: invert(1); /* Torna o ícone branco */
+  }
+  
+  /* Estilo para o corpo do modal */
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-body p {
+    margin-left: 30%;
+  }
+  
+  /* Estilo para o input de email */
+  .form-control {
+    background-color: white; /* Fundo branco */
+    color: black; /* Texto preto */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease; /* Transição suave para a borda */
+  }
+  
+  /* Efeito de hover no input */
+  .form-control:hover {
+    border-color: #888; /* Borda mais escura ao passar o mouse */
+  }
+  
+  /* Efeito de focus no input */
+  .form-control:focus {
+    border-color: #5e1515; /* Borda vermelha ao focar */
+    box-shadow: 0 0 0 2px rgba(94, 21, 21, 0.2); /* Sombra sutil ao focar */
+    outline: none; /* Remove o outline padrão */
+  }
+  
+  /* Estilo para o placeholder do input */
+  .form-control::placeholder {
+    color: #666; /* Placeholder cinza */
+    opacity: 1; /* Remove transparência */
+  }
+  
+  /* Estilo para o rodapé do modal */
+  .modal-footer {
+    padding: 1rem; /* Mantém o padding */
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    border-top: none; /* Remove a linha superior */
+  }
+  
+  /* Estilo para o botão de enviar */
+  .btn-publicar {
+    background-color: #d9d9d9;
+    width: 100%;
+    height: 38px;
+    color: #5e1515;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave para o hover */
+  }
+  
+  /* Remove o efeito de transparência no hover */
+  .btn-publicar:hover {
+    background-color: #d9d9d9; /* Mantém a mesma cor de fundo */
+    opacity: 1; /* Garante que não haja transparência */
+  }

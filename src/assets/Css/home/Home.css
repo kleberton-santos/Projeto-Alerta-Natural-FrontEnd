@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh; /* Garante que ocupe ao menos a altura da tela */
     position: relative;
-    background-color: #3D475F;
+    background-color: #212839;
     display: flex;
     flex-direction: column; /* Alinha o conteúdo de forma vertical */
 }
