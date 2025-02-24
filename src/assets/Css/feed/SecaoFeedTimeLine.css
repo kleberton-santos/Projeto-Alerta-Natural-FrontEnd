@@ -108,10 +108,16 @@
 .acoes-publicacao {
   display: flex;
   justify-content: space-between; /* Distribui os ícones igualmente com espaçamento entre eles */
-  margin-top: 15px; /* Espaçamento acima dos botões */
+
 }
 
-.upload-buttons {
+.upload-buttons-left {
+  display: flex;
+  gap: 1.5rem; /* Espaçamento entre os botões */
+  
+}
+
+.upload-buttons-right {
   display: flex;
   gap: 1.5rem; /* Espaçamento entre os botões */
 }

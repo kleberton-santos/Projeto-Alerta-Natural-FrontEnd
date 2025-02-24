@@ -43,7 +43,7 @@
   }
   
   /* Estilo para os ícones de upload */
-  .upload-buttons {
+  .upload-buttons-modal {
     display: flex;
     gap: 1rem;
   }
@@ -83,6 +83,7 @@
   .upload-buttons {
     display: flex;
     gap: 1.5rem; /* Espaçamento entre os botões */
+    margin-left: 190%;
   }
   
   .upload-label {

@@ -117,7 +117,7 @@ const ModalFeed = ({ onPublicacaoCriada }) => {
               ></textarea>
 
               {/* Área de upload */}
-              <div className="upload-buttons">
+              <div className="upload-buttons-modal">
                 <label htmlFor="uploadImage" className="upload-label">
                   <div className="upload-icon-container-modal">
                     <i className="fas fa-image upload-icon-modal"></i> {/* Ícone de imagem */}

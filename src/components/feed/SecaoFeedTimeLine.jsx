@@ -205,7 +205,7 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
                 ></textarea>
 
                 {/* Área de upload */}
-                <div className="upload-buttons">
+                <div className="upload-buttons-right">
                   <label htmlFor="uploadImage" className="upload-label">
                     <div className="upload-icon-container">
                       <i className="fas fa-image upload-icon"></i> {/* Ícone de imagem */}
@@ -268,9 +268,6 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       {/* Lista de publicações */}
       {publicacoes.map((publicacao) => {
         const isPublicacaoDoUsuario = publicacao.idUsuario === userId;
-
-        
-
         return (
           <div key={publicacao.idPublicacao || publicacao.idUsuario} className="item">
             <div className="topo-timeLine">
@@ -323,20 +320,22 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
             {/* Botões de ação na parte inferior */}
             <div className="acoes-publicacao">
               {/* Ícones de curtir e comentar (sem funcionalidade) */}
-              <div className="upload-buttons">
-                <div className="upload-label">
-                  <div className="upload-icon-container-line">
-                    <i className="fas fa-heart upload-icon-line"></i> {/* Ícone de curtir */}
+              {userId && (
+                <div className="upload-buttons-left">
+                  <div className="upload-label">
+                    <div className="upload-icon-container-line">
+                      <i className="fas fa-heart upload-icon-line"></i> {/* Ícone de curtir */}
+                    </div>
+                    <span className="upload-text">Curtir</span>
                   </div>
-                  <span className="upload-text">Curtir</span>
-                </div>
-                <div className="upload-label">
-                  <div className="upload-icon-container-line">
-                    <i className="fas fa-comment upload-icon-line"></i> {/* Ícone de comentar */}
+                  <div className="upload-label">
+                    <div className="upload-icon-container-line">
+                      <i className="fas fa-comment upload-icon-line"></i> {/* Ícone de comentar */}
+                    </div>
+                    <span className="upload-text">Comentar</span>
                   </div>
-                  <span className="upload-text">Comentar</span>
                 </div>
-              </div>
+              )}
 
               {/* Botões de editar e remover (apenas para o dono da publicação) */}
               {isPublicacaoDoUsuario && (
