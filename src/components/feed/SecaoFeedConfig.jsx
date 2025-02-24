@@ -7,24 +7,27 @@ const SecaoFeedConfig = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="seca-feed-config d-flex flex-column align-items-center rounded bg-custom" style={{ height: '300px', width: '100%' }}>
-      <p className="secao-feed-text-amigo text-white">Informações</p>
-      <div className="topo d-flex align-items-center w-100">
+    <div className="seca-feed-config">
+      {/* Título da seção */}
+      <p className="secao-feed-text-amigo">Informações</p>
+      
+      {/* Topo da seção com a foto e nome do usuário */}
+      <div className="topo">
         {/* Exibe a foto do usuário ou uma imagem padrão se não houver foto */}
         <img
           src={user?.foto ? `http://localhost:8080/fotos/${user.foto}` : imgUser}
-          alt=""
+          alt="Foto do usuário"
           className="img-user"
         />
-        {/* Exibe o nome do usuário ou "Meu nome" se não houver nome */}
-        <span className="login">{user?.nome || "Meu nome"}</span>
+        {/* Exibe o nome do usuário ou "User" se não houver nome */}
+        <span className="login">{user?.nome || "User"}</span>
       </div>
-      <div className="config-fotos d-flex flex-column w-100 mt-3 text-center">
-        <a href="/EditarPerfil" className="link-custom text-white mb-2">Editar Perfil</a>
-        <a href="/galeriaFotos" className="link-custom text-white mb-2">Fotos</a>
-       
+
+      {/* Links para editar perfil e galeria de fotos */}
+      <div className="config-fotos">
+        <a href="/EditarPerfil" className="link-custom">Editar Perfil</a>
+        <a href="/galeriaFotos" className="link-custom">Fotos</a>
       </div>
-      
     </div>
   );
 };

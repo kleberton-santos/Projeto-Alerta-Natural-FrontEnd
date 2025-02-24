@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../../assets/Css/previsao/SecaoBar.css";
 
-const SecaoBarAmigo = ({ onSearch }) => {
+const SecaoBarAmigo = ({ onSearch, isLoggedIn }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
@@ -15,6 +15,11 @@ const SecaoBarAmigo = ({ onSearch }) => {
     }
     onSearch(inputValue); // Passa o valor da busca para o componente pai
   };
+
+  // Se o usuário não estiver logado, não renderiza o campo de busca
+  if (!isLoggedIn) {
+    return null;
+  }
 
   return (
     <div className="secao-bar">

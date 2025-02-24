@@ -1,30 +1,165 @@
-.bg-custom-timeline {
-    background-color: #27335C;
-    border-color: #27335C;
-    
-  }
-
-.user-image {
-  width: 63px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-
-
+/* Estilos gerais para a seção de timeline */
 .secao-feed-time-line {
   height: 75%;
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: scroll; /* Permite rolagem */
+  scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+  -ms-overflow-style: none; /* Oculta a barra de rolagem no IE e Edge */
 }
 
+/* Oculta a barra de rolagem no Chrome, Safari e Opera */
+.secao-feed-time-line::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilo para cada item de publicação */
+.item {
+  background-color: #272c3ff5;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+}
+
+/* Estilo para o topo da publicação (foto do usuário e nome) */
+.topo-timeLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilo para a imagem do usuário */
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Estilo para o texto da publicação */
 .texto-publicacao-timeline {
   font-size: 15px;
-  margin-left: -7px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Estilo para a galeria de fotos e vídeos */
+.galeria-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.galeria-feed img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilo para os vídeos */
+.video-feed video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilo para o modal de edição */
+.modal-edicao {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-conteudo {
+  background-color: #27335C;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  color: white;
+}
+
+.modal-conteudo textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.botoes-modal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 15px;
 }
-.galeria-feed img {
-  width: 70%;
-  margin-top: 20px;
-  margin-left: 60px;
+
+/* Estilo para os botões de ação (remover e editar) */
+.acoes-publicacao {
+  display: flex;
+  justify-content: space-between; /* Distribui os ícones igualmente com espaçamento entre eles */
+  margin-top: 15px; /* Espaçamento acima dos botões */
+}
+
+.upload-buttons {
+  display: flex;
+  gap: 1.5rem; /* Espaçamento entre os botões */
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Efeito de zoom ao passar o mouse */
+}
+
+.upload-label:hover {
+  transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}
+
+.upload-icon-container-line {
+  width: 35px; /* Tamanho do círculo */
+  height: 35px; /* Tamanho do círculo */
+  background-color: #1a2035; /* Cor de fundo */
+  border-radius: 50%; /* Formato circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-icon-container-line:hover {
+  background-color: #2a324f; /* Cor de fundo ao passar o mouse */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+}
+
+.upload-icon-line {
+  color: #ffffff; /* Cor do ícone */
+  font-size: 14px; /* Tamanho do ícone */
+}
+
+.upload-text {
+  margin-top: 5px; /* Espaçamento entre o ícone e o texto */
+  font-size: 14px; /* Tamanho do texto */
+  color: #ffffff; /* Cor do texto */
+}
+
+/* Linha divisória */
+.linha-divisoria {
+  width: 100%;
+  height: 1px;
+  background-color: #3a3f58; /* Cor da linha */
+  margin: 15px 0; /* Espaçamento acima e abaixo da linha */
 }
