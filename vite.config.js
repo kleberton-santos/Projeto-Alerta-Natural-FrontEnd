@@ -5,10 +5,17 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
+      // Proxy para a Visual Crossing
+      '/visualcrossing-api': {
+        target: 'https://weather.visualcrossing.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/visualcrossing-api/, ''),
+      },
+      // Proxy para o OpenWeatherMap
+      '/openweather-api': {
         target: 'https://api.openweathermap.org/data/2.5', // URL da API do OpenWeatherMap
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/openweather-api/, ''),
         secure: false, // Desativa a verificação de certificado SSL (opcional)
       },
     },

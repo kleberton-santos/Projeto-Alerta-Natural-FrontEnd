@@ -15,7 +15,8 @@ const SecaoPrevisao = () =>{
         
         const cidade = inputRef.current.value
         // QUERY de 15 dias
-        const urlTempoDiario = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cidade}?unitGroup=metric&key=EDQLVXGZ22RG6STQJXDADP5K9&contentType=json&lang=pt`
+        const urlTempoDiario = `/visualcrossing-api/VisualCrossingWebServices/rest/services/timeline/${cidade}?unitGroup=metric&key=EDQLVXGZ22RG6STQJXDADP5K9&contentType=json&lang=pt`;
+
         
         const infosDiario = await axios.get(urlTempoDiario)      
          setInfosHoje(infosDiario.data) 

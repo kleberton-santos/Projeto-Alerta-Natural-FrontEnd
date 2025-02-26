@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import "../../assets/Css/home/CarroselHome.css"; // Importação do CSS
 
@@ -17,6 +17,8 @@ import tornadoImage from "../../assets/images/tornado.jpg";
 const CarroselHome = () => {
   const [alerts, setAlerts] = useState([]);
   const [forecastData, setForecastData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const API_KEY = import.meta.env.VITE_API_KEY; // Chave da API via variável de ambiente
 
   // Lista de cidades e estados do Brasil
@@ -130,9 +132,12 @@ const CarroselHome = () => {
 
   // Função para buscar alertas climáticos
   const fetchAlerts = async () => {
+    setIsLoading(true);
+    setError(null);
+
     try {
       const alertPromises = cities.map(city =>
-        axios.get(`/api/weather?q=${city.name}&appid=${API_KEY}`)
+        axios.get(`/openweather-api/weather?q=${city.name}&appid=${API_KEY}`)
       );
       const responses = await Promise.all(alertPromises);
 
@@ -149,18 +154,39 @@ const CarroselHome = () => {
       setAlerts(alertsData.slice(0, 3)); // Limita a exibição a 3 alertas
     } catch (error) {
       console.error("Erro ao buscar alertas climáticos:", error);
+      setError("Erro ao buscar alertas climáticos.");
       setAlerts([]);
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  // Função para buscar previsão do tempo em lotes
+  const fetchForecastInBatches = async (cities, batchSize = 5) => {
+    const results = [];
+    for (let i = 0; i < cities.length; i += batchSize) {
+      const batch = cities.slice(i, i + batchSize);
+      const batchPromises = batch.map(city =>
+        axios.get(`/openweather-api/forecast?q=${city.name},BR&appid=${API_KEY}`)
+          .catch(error => {
+            console.error(`Erro ao buscar dados para ${city.name}:`, error);
+            return null;
+          })
+      );
+      const batchResponses = await Promise.all(batchPromises);
+      results.push(...batchResponses.filter(response => response && response.data));
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Delay de 1 segundo entre lotes
+    }
+    return results;
   };
 
   // Função para buscar previsão do tempo
   const fetchForecast = async () => {
-    try {
-      const forecastPromises = cities.map(city =>
-        axios.get(`/api/forecast?q=${city.name}&appid=${API_KEY}`)
-      );
-      const responses = await Promise.all(forecastPromises);
+    setIsLoading(true);
+    setError(null);
 
+    try {
+      const responses = await fetchForecastInBatches(cities);
       const forecastData = responses.map((response, index) => ({
         city: response.data.city.name,
         state: cities[index].state,
@@ -180,23 +206,23 @@ const CarroselHome = () => {
       setForecastData(heavyRainCities);
     } catch (error) {
       console.error("Erro ao buscar previsão do tempo:", error);
+      setError("Erro ao buscar previsão do tempo.");
       setForecastData([]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Efeito para buscar dados iniciais e atualizar a cada 1 minuto
+  // Efeito para buscar dados iniciais e atualizar a cada 5 minutos
   useEffect(() => {
-    // Busca os dados imediatamente ao carregar o componente
     fetchAlerts();
     fetchForecast();
 
-    // Configura um intervalo para buscar os dados a cada 1 minuto
     const intervalId = setInterval(() => {
       fetchAlerts();
       fetchForecast();
-    }, 60000); // 60.000 milissegundos = 1 minuto
+    }, 300000); // 300.000 milissegundos = 5 minutos
 
-    // Limpa o intervalo quando o componente é desmontado
     return () => clearInterval(intervalId);
   }, []);
 
@@ -238,15 +264,25 @@ const CarroselHome = () => {
     return slides;
   };
 
-  // Slides a serem exibidos
-  const slides = prioritizeSlides(alerts, forecastData);
+  // Slides a serem exibidos (usando useMemo para evitar recálculos desnecessários)
+  const slides = useMemo(() => prioritizeSlides(alerts, forecastData), [alerts, forecastData]);
 
   return (
-    <div
-      id="carouselExampleCaptions"
-      className="carousel slide"
-      data-bs-ride="carousel"
-    >
+    <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+      {isLoading && (
+        <div className="loading-spinner">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Carregando...</span>
+          </div>
+        </div>
+      )}
+
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
+
       <div className="carousel-indicators">
         {slides.map((_, index) => (
           <button
@@ -265,15 +301,8 @@ const CarroselHome = () => {
           const { headline = "N/A", areas = [], severity = "N/A", description = "Descrição não disponível.", image, state, city } = slide;
 
           return (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              <img
-                src={image || getAlertImage(headline)}
-                className="d-block w-100"
-                alt={`Slide ${index + 1}`}
-              />
+            <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+              <img src={image || getAlertImage(headline)} className="d-block w-100" alt={`Slide ${index + 1}`} />
               <div className="carousel-caption d-none d-md-block">
                 <h5>{headline}</h5>
                 <p>{`Cidade: ${city}`}</p>
@@ -286,21 +315,11 @@ const CarroselHome = () => {
         })}
       </div>
 
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
+      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Anterior</span>
       </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
+      <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Próximo</span>
       </button>
