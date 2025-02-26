@@ -36,7 +36,7 @@
 .card-home {
     width: 90%; /* Ajusta a largura para manter o conteúdo alinhado */
     margin-top: 20px;/* Espaçamento automático acima e abaixo */
-    background-color: #3D475F; /* Cor de fundo desejada */
+    background-color: #272c3ff5; /* Cor de fundo desejada */
     padding: 20px; /* Adiciona espaçamento interno */
     padding-left: 5%; /* Ajustando a posição dos cards no centro */
     border-radius: 8px; /* Bordas arredondadas (opcional) */
