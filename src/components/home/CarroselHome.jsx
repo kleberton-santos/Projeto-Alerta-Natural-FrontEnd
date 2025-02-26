@@ -3,57 +3,123 @@ import axios from "axios";
 import "../../assets/Css/home/CarroselHome.css"; // Certifique-se que está importando o CSS corretamente
 
 // Importe as imagens locais
-import floodImage from "../../assets/images/flood.jpg";
-import stormImage from "../../assets/images/storm.jpg";
-import fireImage from "../../assets/images/fire.jpg";
-import defaultImage from "../../assets/images/default.jpg";
-import rainImage from "../../assets/images/chuva.jpg"; // Imagem para previsão de chuvas
+import floodImage from "../../assets/images/flood.jpg"; // Imagem para alagamentos
+import stormImage from "../../assets/images/storm.jpg"; // Imagem para tempestades
+import fireImage from "../../assets/images/fire.jpg"; // Imagem para incêndios
+import defaultImage from "../../assets/images/default.jpg"; // Imagem padrão
+import rainImage from "../../assets/images/chuva.jpg"; // Imagem para chuvas
+import cloudsImage from "../../assets/images/clouds.jpg"; // Imagem para nuvens
+import clearSkyImage from "../../assets/images/clear-sky.jpg"; // Imagem para céu limpo
+import snowImage from "../../assets/images/snow.jpg"; // Imagem para neve
+import mistImage from "../../assets/images/mist.jpg"; // Imagem para névoa
+import tornadoImage from "../../assets/images/tornado.jpg"; // Imagem para tornados
 
 const CarroselHome = () => {
   const [alerts, setAlerts] = useState([]);
   const [forecastData, setForecastData] = useState([]);
   const [nextEvent, setNextEvent] = useState(null); // Próximo evento (alerta ou chuva)
-  const API_KEY = "092ed86ddb49407d80f164549252502"; // Chave da WeatherAPI
+  const API_KEY = "da002ceb24aa1c9199ca1e4109e591a1"; // Chave da OpenWeatherMap
 
   // Mapeamento de tipos de alerta para imagens
   const alertImageMap = {
-    flood: floodImage,
-    storm: stormImage,
-    fire: fireImage,
-    default: defaultImage,
-    rain: rainImage, // Imagem para previsão de chuvas
+    flood: floodImage, // Alagamentos
+    storm: stormImage, // Tempestades
+    fire: fireImage, // Incêndios
+    rain: rainImage, // Chuvas
+    clouds: cloudsImage, // Nuvens
+    clear: clearSkyImage, // Céu limpo
+    snow: snowImage, // Neve
+    mist: mistImage, // Névoa
+    tornado: tornadoImage, // Tornados
+    default: defaultImage, // Imagem padrão
+  };
+
+  // Objeto de tradução
+  const translations = {
+    Rain: "Chuva",
+    Clouds: "Grande volume de nuvens risco de chuvas",
+    Clear: "Céu limpo",
+    Thunderstorm: "Risco de Tempestade",
+    Snow: "Neve",
+    Mist: "Névoa",
+    Smoke: "Fumaça",
+    Haze: "Neblina",
+    Dust: "Poeira",
+    Fog: "Nevoeiro",
+    Sand: "Areia",
+    Ash: "Cinzas",
+    Squall: "Rajada de vento",
+    Tornado: "Tornado",
+    Drizzle: "Chuvisco",
+  };
+
+  // Função para traduzir termos
+  const translate = (term) => {
+    return translations[term] || term; // Retorna a tradução ou o próprio termo se não houver tradução
   };
 
   // Função para obter a imagem com base no tipo de alerta
   const getAlertImage = (headline) => {
+    if (!headline) return alertImageMap.default; // Retorna a imagem padrão se headline for undefined ou null
+
     const lowerCaseHeadline = headline.toLowerCase();
-    if (lowerCaseHeadline.includes("flood")) return alertImageMap.flood;
-    if (lowerCaseHeadline.includes("storm")) return alertImageMap.storm;
-    if (lowerCaseHeadline.includes("fire")) return alertImageMap.fire;
-    if (lowerCaseHeadline.includes("rain")) return alertImageMap.rain; // Chuvas fortes
-    return alertImageMap.default; // Imagem padrão
+
+    // Mapeia os eventos para as imagens correspondentes
+    if (lowerCaseHeadline.includes("flood")) return alertImageMap.flood; // Alagamentos
+    if (lowerCaseHeadline.includes("storm")) return alertImageMap.storm; // Tempestades
+    if (lowerCaseHeadline.includes("fire")) return alertImageMap.fire; // Incêndios
+    if (lowerCaseHeadline.includes("rain")) return alertImageMap.rain; // Chuvas
+    if (lowerCaseHeadline.includes("clouds")) return alertImageMap.clouds; // Nuvens
+    if (lowerCaseHeadline.includes("clear")) return alertImageMap.clear; // Céu limpo
+    if (lowerCaseHeadline.includes("snow")) return alertImageMap.snow; // Neve
+    if (lowerCaseHeadline.includes("mist")) return alertImageMap.mist; // Névoa
+    if (lowerCaseHeadline.includes("tornado")) return alertImageMap.tornado; // Tornados
+
+    return alertImageMap.default; // Imagem padrão para outros eventos
+  };
+
+  // Função para classificar o risco
+  const getRiskLevel = (headline) => {
+    const lowerCaseHeadline = headline.toLowerCase();
+
+    if (lowerCaseHeadline.includes("tempestade") || lowerCaseHeadline.includes("alagamento") || lowerCaseHeadline.includes("chuva forte")) {
+      return "Alto";
+    } else if (lowerCaseHeadline.includes("chuva") || lowerCaseHeadline.includes("nuvens")) {
+      return "Moderado";
+    } else {
+      return "Baixo";
+    }
   };
 
   // Busca alertas climáticos
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
-        const cities = ["São Paulo", "Rio de Janeiro", "Brasília"];
+        const cities = [
+          "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
+          "Manaus", "Curitiba", "Recife", "Porto Alegre", "Belém", "Goiânia", "Guarulhos",
+          "Campinas", "São Luís", "São Gonçalo", "Maceió", "Duque de Caxias", "Natal", "Teresina"
+        ];
         const alertPromises = cities.map(city =>
-          axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=1&alerts=yes`)
+          axios.get(`/api/weather?q=${city}&appid=${API_KEY}`)
         );
         const responses = await Promise.all(alertPromises);
-        const alertsData = responses.map(response => response.data.alerts.alert);
+        console.log("Respostas da API (Alerta Climático):", responses);
 
-        // Filtra alertas ativos
-        const activeAlerts = alertsData
-          .filter(alerts => alerts && alerts.length > 0)
-          .flatMap(alerts => alerts);
+        const alertsData = responses.map(response => ({
+          headline: translate(response.data.weather[0].main), // Traduz a condição principal
+          areas: [response.data.name],
+          severity: getRiskLevel(response.data.weather[0].main), // Classifica o risco
+          description: translate(response.data.weather[0].description), // Traduz a descrição
+          image: getAlertImage(response.data.weather[0].main), // Obtém a imagem correspondente
+        }));
 
-        setAlerts(activeAlerts.slice(0, 3)); // Limita a exibição a 3 alertas
+        console.log("Dados dos Alertas Mapeados:", alertsData);
+
+        setAlerts(alertsData.slice(0, 3)); // Limita a exibição a 3 alertas
       } catch (error) {
         console.error("Erro ao buscar alertas climáticos:", error);
-        setAlerts([]); // Limpa os alertas em caso de erro
+        setAlerts([]);
       }
     };
 
@@ -64,30 +130,40 @@ const CarroselHome = () => {
   useEffect(() => {
     const fetchForecast = async () => {
       try {
-        const cities = ["São Paulo", "Rio de Janeiro", "Brasília"];
+        const cities = [
+          "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
+          "Manaus", "Curitiba", "Recife", "Porto Alegre", "Belém", "Goiânia", "Guarulhos",
+          "Campinas", "São Luís", "São Gonçalo", "Maceió", "Duque de Caxias", "Natal", "Teresina"
+        ];
         const forecastPromises = cities.map(city =>
-          axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=4`) // Busca previsão para 4 dias
+          axios.get(`/api/forecast?q=${city}&appid=${API_KEY}`)
         );
         const responses = await Promise.all(forecastPromises);
+        console.log("Respostas da API (Previsão do Tempo):", responses);
+
         const forecastData = responses.map(response => ({
-          city: response.data.location.name,
-          forecast: response.data.forecast.forecastday.map(day => ({
-            date: day.date,
-            rain: day.day.totalprecip_mm, // Chuva total em mm
-            condition: day.day.condition.text,
+          city: response.data.city.name,
+          forecast: response.data.list.map(day => ({
+            date: day.dt_txt,
+            rain: day.rain ? day.rain["3h"] || 0 : 0, // Chuva total em mm
+            condition: translate(day.weather[0].description), // Traduz a descrição
           })),
         }));
 
-        // Filtra cidades com previsão de chuvas fortes (ex.: mais de 10mm) nos próximos 4 dias
+        console.log("Dados da Previsão Mapeados:", forecastData);
+
+        // Filtra cidades com previsão de chuvas fortes (ex.: mais de 10mm) nos próximos 5 dias
         const heavyRainCities = forecastData.map(city => ({
           ...city,
           forecast: city.forecast.filter(day => day.rain > 10), // Filtra dias com chuva forte
         }));
 
+        console.log("Cidades com Chuva Forte:", heavyRainCities);
+
         setForecastData(heavyRainCities);
       } catch (error) {
         console.error("Erro ao buscar previsão do tempo:", error);
-        setForecastData([]); // Limpa os dados em caso de erro
+        setForecastData([]);
       }
     };
 
@@ -127,35 +203,47 @@ const CarroselHome = () => {
     }
   }, [alerts, forecastData]);
 
-  // Slides a serem exibidos
-  const slides = [];
+  // Função para priorizar os slides
+  const prioritizeSlides = (alerts, forecastData) => {
+    const highPriorityKeywords = ["tempestade", "alagamento", "chuva forte"];
+    const mediumPriorityKeywords = ["chuva", "tempestade"];
 
-  if (alerts.length > 0) {
-    // Se houver alertas, exibe os alertas
-    slides.push(...alerts.slice(0, 3));
-  } else if (nextEvent) {
-    // Se não houver alertas, mas houver um próximo evento (alerta ou chuva)
-    if (nextEvent.type === "alert") {
-      slides.push(nextEvent.data);
-    } else if (nextEvent.type === "rain") {
-      slides.push({
-        headline: `Previsão de chuvas fortes em ${nextEvent.data.city}`,
-        areas: [nextEvent.data.city],
-        severity: "Alta",
-        description: `Chuva intensa prevista para ${nextEvent.data.date}: ${nextEvent.data.rain}mm. Condição: ${nextEvent.data.condition}.`,
+    // Filtra alertas de alta prioridade
+    const highPriorityAlerts = alerts.filter(alert =>
+      highPriorityKeywords.some(keyword => alert.headline.toLowerCase().includes(keyword))
+    );
+
+    // Filtra previsões de média prioridade
+    const mediumPriorityForecasts = forecastData.flatMap(city =>
+      city.forecast.filter(day =>
+        mediumPriorityKeywords.some(keyword => day.condition.toLowerCase().includes(keyword))
+      )
+    );
+
+    // Combina os slides com base na prioridade
+    const slides = [];
+    if (highPriorityAlerts.length > 0) {
+      slides.push(...highPriorityAlerts.slice(0, 3));
+    } else if (mediumPriorityForecasts.length > 0) {
+      slides.push(...mediumPriorityForecasts.slice(0, 3).map(day => ({
+        headline: `Previsão de ${day.condition.toLowerCase().includes("chuva") ? "chuvas" : "tempestades"} em ${day.city}`,
+        areas: [day.city],
+        severity: getRiskLevel(day.condition), // Classifica o risco
+        description: `Previsão para ${day.date}: ${day.rain}mm. Condição: ${day.condition}.`,
         image: alertImageMap.rain,
-      });
+      })));
+    } else {
+      // Se não houver eventos prioritários, exibe os alertas normais
+      slides.push(...alerts.slice(0, 3));
     }
-  } else {
-    // Se não houver nada, exibe um slide padrão
-    slides.push({
-      headline: "Nenhum alerta climático no momento",
-      areas: ["N/A"],
-      severity: "N/A",
-      description: "Não há alertas climáticos ou previsão de chuvas fortes nos próximos dias.",
-      image: defaultImage,
-    });
-  }
+
+    return slides;
+  };
+
+  // Slides a serem exibidos
+  const slides = prioritizeSlides(alerts, forecastData);
+
+  console.log("Slides a serem exibidos:", slides);
 
   return (
     <div
@@ -186,7 +274,7 @@ const CarroselHome = () => {
 
       <div className="carousel-inner" style={{ width: "100%", height: "100%" }}>
         {slides.map((slide, index) => {
-          const { headline, areas, severity, description, image } = slide;
+          const { headline = "N/A", areas = [], severity = "N/A", description = "Descrição não disponível.", image } = slide;
 
           return (
             <div
@@ -199,11 +287,15 @@ const CarroselHome = () => {
                 alt={`Slide ${index + 1}`}
                 style={{ objectFit: "cover", height: "100%" }}
               />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>{headline || "Previsão do Tempo"}</h5>
-                <p>{`Áreas afetadas: ${areas ? areas.join(", ") : "N/A"}`}</p>
-                <p>{`Gravidade: ${severity || "N/A"}`}</p>
-                <p>{description || "Descrição não disponível."}</p>
+              <div className="carousel-caption d-none d-md-block" style={{
+                backgroundColor: "rgba(0, 0, 0, 0.5)", // Fundo escuro semi-transparente
+                padding: "10px",
+                borderRadius: "5px",
+              }}>
+                <h5 style={{ fontSize: "24px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{headline}</h5>
+                <p style={{ fontSize: "18px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{`Áreas afetadas: ${areas.join(", ") || "N/A"}`}</p>
+                <p style={{ fontSize: "18px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{`Gravidade: ${severity}`}</p>
+                <p style={{ fontSize: "16px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{description}</p>
               </div>
             </div>
           );
