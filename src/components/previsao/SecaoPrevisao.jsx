@@ -1,108 +1,81 @@
-import "../../assets/Css/previsao/Previsao.css"
-import CardPrevisao from "./CardPrevisao"
-import { useRef, useState } from "react"
-import axios from "axios"
-import CardPrevisaoSecundario from "./CardPrevisaoSecundario"
+import React, { useState } from "react";
+import CardPrevisao from "./CardPrevisao";
+import CardPrevisaoSecundario from "./CardPrevisaoSecundario";
+import NavPrevisao from "./NavPrevisao";
+import CardMapaDados from "./CardMapaDados";
+import "../../assets/Css/previsao/Previsao.css";
 
-
-
-const SecaoPrevisao = () =>{
-    const inputRef = useRef()
-    const [infosHoje, setInfosHoje] = useState()
-    const [pagina, setPagina] = useState('hoje')
-
-    async function buscarCidade(){    
-        
-        const cidade = inputRef.current.value
-        // QUERY de 15 dias
-        const urlTempoDiario = `/visualcrossing-api/VisualCrossingWebServices/rest/services/timeline/${cidade}?unitGroup=metric&key=EDQLVXGZ22RG6STQJXDADP5K9&contentType=json&lang=pt`;
-
-        
-        const infosDiario = await axios.get(urlTempoDiario)      
-         setInfosHoje(infosDiario.data) 
-       
-    } 
-
+const SecaoPrevisao = ({ infosHoje }) => {
+    const [pagina, setPagina] = useState("hoje");
 
     return (
         <div>
+            {/* Usando o componente NavPrevisao */}
+            <NavPrevisao setPagina={setPagina} />
 
-            <div className="previsao-busca">
-
-                <div className="busca-group">
-
-                    <input
-                     className="" 
-                     ref={inputRef}
-                     placeholder="Buscar por cidade" 
-                     type="text" 
-                     name="cidade" 
-                     id="cidade" 
-                     
-                     />
-                    <button onClick={buscarCidade}>Buscar</button>
+            <div className="container previsao-container">
+                {/* Primeira linha: CardPrevisao e CardMapaDados */}
+                <div className="row primeira-linha mb-4">
+                    <div className="col-md-6 card-principal">
+                        {pagina === "hoje" && infosHoje && (
+                            <>
+                                <p style={{ color: "white", textAlign: "center" }}>Hoje</p>
+                                <CardPrevisao data={infosHoje} />
+                            </>
+                        )}
+                    </div>
+                    <div className="col-md-6 card-mapa-dados">
+                        {pagina === "hoje" && infosHoje && <CardMapaDados infos={infosHoje} />}
+                    </div>
                 </div>
+
+                {/* Segunda linha: CardPrevisaoSecundario */}
+                {pagina === "hoje" && infosHoje && (
+                    <div className="row segunda-linha mb-4">
+                        {infosHoje.days[0].hours
+                            .filter((info) => infosHoje.currentConditions.datetime < info.datetime)
+                            .slice(0, 2) // Apenas 2 cards na segunda linha
+                            .map((info, index) => (
+                                <div className="col-md-6" key={index}>
+                                    <CardPrevisaoSecundario diaAtual={infosHoje} horaAtual={info} />
+                                </div>
+                            ))}
+                    </div>
+                )}
+
+                {/* Outras páginas (amanhã, 7 dias, 15 dias) */}
+                {pagina === "amanha" && infosHoje && (
+                    <div className="row duas-colunas">
+                        {infosHoje.days[1].hours.slice(0, 24).map((info, index) => (
+                            <div className="col-md-6" key={index}>
+                                <CardPrevisaoSecundario horaAtual={info} diaAtual={infosHoje} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {pagina === "sete" && infosHoje && (
+                    <div className="row duas-colunas">
+                        {infosHoje.days.slice(2, 9).map((info, index) => (
+                            <div className="col-md-6" key={index}>
+                                <CardPrevisaoSecundario horaAtual={null} diaAtual={info} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {pagina === "quinze" && infosHoje && (
+                    <div className="row duas-colunas">
+                        {infosHoje.days.slice(2, 19).map((info, index) => (
+                            <div className="col-md-6" key={index}>
+                                <CardPrevisaoSecundario horaAtual={null} diaAtual={info} />
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
+        </div>
+    );
+};
 
-            <div className="secao-previsao">
-                <nav>
-                    <ul className="nav-previsao">
-                        <li className="list-item" onClick={()=>{setPagina("hoje")}}><button>Hoje</button></li>
-                        <li className="list-item" onClick={()=>{setPagina("amanha")}}><button>Amanhã</button></li>
-                        <li className="list-item" onClick={()=>{setPagina("sete")}}><button>7 Dias</button></li>
-                        <li className="list-item" onClick={()=>{setPagina("quinze")}} ><button>15 Dias</button></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div className="previsao-cards">
-              {/* Filtro hoje  info principal*/}
-              {pagina === 'hoje' && infosHoje &&  <div className="card-principal"> 
-                <p style={{color: "white" ,textAlign: "center"}}>Hoje</p>
-                 <CardPrevisao data={infosHoje} ></CardPrevisao>
-                </div>}
-
-              {/* Filtro hoje info secundária */}
-              {pagina === 'hoje' && infosHoje && <div className="card-secundario">
-                {infosHoje.days[0].hours.filter(info=>{
-                    return infosHoje.currentConditions.datetime < info.datetime
-                }).slice(0,3).map((info, index)=>(
-                    <CardPrevisaoSecundario index={0} key={index} diaAtual={infosHoje} horaAtual={info}></CardPrevisaoSecundario>
-                ))}
-                </div>}
-
-
-                {/* Filtro amanhã*/}
-                {pagina === "amanha" && infosHoje && <div className="duas-colunas">
-                   {infosHoje.days[1].hours.slice(0, 24).map((info,index)=>(
-                    <CardPrevisaoSecundario index={1} key={index} horaAtual={info} diaAtual={infosHoje}></CardPrevisaoSecundario>
-                ))
-                   }
-
-                </div> }
-
-                {/*Filtro 7 dias*/}
-                {pagina === "sete" && infosHoje && <div className="duas-colunas"> 
-                {infosHoje.days.slice(2,9).map((info, index)=>(
-                    <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
-                    
-                ))}                
-                
-                </div>}
-
-                {/*Filtro 15 dias*/}
-                {pagina === "quinze" && infosHoje && <div className="duas-colunas"> 
-                {infosHoje.days.slice(2,19).map((info, index)=>(
-                    <CardPrevisaoSecundario key={index} index={0} horaAtual={null} diaAtual={info}></CardPrevisaoSecundario>
-                    
-                ))}                
-                
-                </div>}
-                
-
-            </div>
-
-       </div>
-    )
-}
-export default SecaoPrevisao
+export default SecaoPrevisao;

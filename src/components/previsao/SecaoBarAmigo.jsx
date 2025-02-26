@@ -31,16 +31,16 @@ const SecaoBarAmigo = ({ onSearch, isLoggedIn }) => {
   }
 
   return (
-    <div className="secao-bar">
+    <div className="secao-bar-amigo">
       <input
         type="text"
         placeholder="Buscar por nome"
-        className="secao-input"
+        className="secao-input-amigo"
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown} // Adiciona o evento de escuta para o teclado
       />
-      <button className="secao-button" onClick={handleSearch}>
+      <button className="secao-button-amigo" onClick={handleSearch}>
         <span role="img" aria-label="secao">🔍</span>
       </button>
     </div>

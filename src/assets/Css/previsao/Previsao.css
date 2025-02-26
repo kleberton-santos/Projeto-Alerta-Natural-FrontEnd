@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Garante que o container principal ocupe a altura total da tela */
-    background-color: #3D475F;
+    background-color: #212839;
 }
 
 .content-previsao {
@@ -11,15 +11,22 @@
 
 .footer-previsao {
     margin-top: auto; /* Empurra o footer para o final do container */
-        
 }
 
-.previsao-busca{
+.busca-previsao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.previsao-busca {
     text-align: center;
     margin: 1.5rem;
 }
 
-div.previsao-busca div.busca-group input{
+div.previsao-busca div.busca-group input {
     width: 30rem;
     border-radius: 5px 0 0px 5px;
     outline: none;
@@ -28,7 +35,7 @@ div.previsao-busca div.busca-group input{
     text-align: center;
 }
 
-button{
+button {
     text-decoration: none;
     color: white;
     font-size: 17px;
@@ -38,77 +45,41 @@ button{
     background-color: inherit;
 }
 
-.button-busca{
+.button-busca {
     background-color: white;
 }
 
-.secao-previsao{
-    width: 100%;
-    height: 50px;
-    background-color: #498F9F;
-    filter: brightness(0.7);
-    display: flex;
+/* Container principal com grid */
+.previsao-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.secao-previsao nav{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Primeira linha: CardPrevisao e CardMapaDados */
+.primeira-linha {
+    border: 2px solid green; /* Borda verde para visualização */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço entre as linhas */
 }
 
-.secao-previsao nav ul{
-    display: flex;
-    width: 90%;
-    justify-content: space-around;
-    list-style: none;
-    margin: 0;
-    
+/* Segunda linha: CardPrevisaoSecundario */
+.segunda-linha {
+    margin-bottom: 20px; /* Espaço entre as linhas */
 }
 
-.secao-previsao nav ul li{
-    text-decoration: none;
-    color: white;
-    font-size: 17px;
-    transition: all 0.3s ease;
+/* Estilos para os cards */
+.card-principal, .card-secundario, .card-mapa-dados {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-.secao-previsao nav ul button{
-    text-decoration: none;
-    color: white;
-    font-size: 17px;
-    transition: all 0.3s ease;
-    outline: none;
-    border: none;
-    background-color: inherit;
-}
-
-div.previsao-cards{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-    min-height: 500px;
-}
-
-
-
-div.previsao-cards div.card-secundario{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    gap: 10px;
-}
-
-div.previsao-cards div.duas-colunas{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin: 40px 0;
-}
-
-div.previsao-cards div.duas-colunas > *:only-child{
-    flex-basis: auto;
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+    .primeira-linha, .segunda-linha {
+        flex-direction: column; /* Uma coluna em telas menores */
+    }
 }

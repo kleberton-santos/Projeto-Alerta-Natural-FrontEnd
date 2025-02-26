@@ -1,60 +1,57 @@
-import "../../assets/Css/previsao/card-previsao.css"
-import clearDay from "../../assets/images/previsao-icones/2nd-set-color/clear-day.png"
+import "../../assets/Css/previsao/card-previsao.css";
+import clearDay from "../../assets/images/previsao-icones/2nd-set-color/clear-day.png";
 
+const CardPrevisao = (data) => {
+    const infos = data.data;
 
-
-
-const CardPrevisao = (data) =>{
-        const infos = data.data        
-              
-        return (
-            
-            
-            <div className="cards">
-           <div className="cartao">
-                <header className="cartao-header">
-                    <p className="cartao-text">Clima Atual</p>
-                    <p className="cartao-text">{infos.currentConditions.datetime}</p>
-                </header>
-                <div className="cartao-body">
-                    
-                    
-                    <div className="cartao-detalhes">
-                     <i><img className="cartao-icone"  src={clearDay} alt={`icone ${infos.currentConditions.conditions}`} /></i>
-                     <h2 className="cartao-title">{infos.currentConditions.temp}ºC</h2> 
-                         <p className="cartao-text"><span className="clima">{infos.conditions}</span><br />
-                        Sensação Térmica: {infos.currentConditions.feelslike}ºC<br />
-                        </p>
-                        <p>
-                           {infos.days[0].description} A mínima será de: {Math.round(infos.days[0].tempmin)}ºC   
-                        </p>
-                     
-                    </div>
-                    
-              
-                 
-                            
-                  
+    return (
+        <div className="card-moderno">
+            <div className="card-header">
+                <p className="card-localizacao">São Paulo, Brasil</p>
+                <p className="card-data">{infos.currentConditions.datetime}</p>
+            </div>
+            <div className="card-body">
+                <div className="card-temperatura">
+                    <img className="card-icone" src={clearDay} alt={`icone ${infos.currentConditions.conditions}`} />
+                    <h2 className="card-temp">{infos.currentConditions.temp}ºC</h2>
                 </div>
-                <div className="cartao-footer">
-                    <ul className="lista-footer">
-                       
-                        <li>Vento <br /> {infos.currentConditions.windspeed} km/h</li>
-                        <li>Umidade <br /> {infos.currentConditions.humidity}%</li>
-                        <li>Visibiliade <br />{infos.currentConditions.visibility} Km</li>
-                        <li>Pressão <br /> {infos.currentConditions.pressure} hPa</li>
-                        <li>Nuvens <br />{infos.currentConditions.cloudcover}%</li>
-                        <li>Chuva <br />{infos.currentConditions.precip!== null + "mpp" && infos.currentConditions.precip }{infos.currentConditions.precip === null && "Sem previsão"}</li>
-                    </ul>
-
+                <p className="card-condicao">{infos.currentConditions.conditions}</p>
+                <p className="card-descricao">{infos.days[0].description}</p>
+                <div className="card-detalhes">
+                    <p>Sensação Térmica: {infos.currentConditions.feelslike}ºC</p>
+                    <p>Mínima: {Math.round(infos.days[0].tempmin)}ºC</p>
                 </div>
-           </div>
-           <div>
-
-           </div>
-          
+            </div>
+            <div className="card-footer">
+                <ul className="lista-detalhes">
+                    <li>
+                        <span>Vento</span>
+                        <span>{infos.currentConditions.windspeed} km/h</span>
+                    </li>
+                    <li>
+                        <span>Umidade</span>
+                        <span>{infos.currentConditions.humidity}%</span>
+                    </li>
+                    <li>
+                        <span>Visibilidade</span>
+                        <span>{infos.currentConditions.visibility} km</span>
+                    </li>
+                    <li>
+                        <span>Pressão</span>
+                        <span>{infos.currentConditions.pressure} hPa</span>
+                    </li>
+                    <li>
+                        <span>Nuvens</span>
+                        <span>{infos.currentConditions.cloudcover}%</span>
+                    </li>
+                    <li>
+                        <span>Chuva</span>
+                        <span>{infos.currentConditions.precip !== null ? `${infos.currentConditions.precip} mm` : "Sem previsão"}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-    )
+    );
+};
 
-}
-export default CardPrevisao
+export default CardPrevisao;

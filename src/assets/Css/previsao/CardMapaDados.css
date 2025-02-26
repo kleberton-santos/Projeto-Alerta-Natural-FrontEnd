@@ -1,0 +1,54 @@
+/* Adicione ao arquivo card-previsao.css */
+
+/* Container principal para os cards */
+.previsao-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilo para o card do mapa e dados */
+.card-mapa-dados {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.mapa-container {
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dados-adicionais {
+    padding: 20px;
+}
+
+.dados-adicionais h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #2a5081;
+}
+
+.dados-adicionais ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dados-adicionais li {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #444;
+}
+
+.dados-adicionais li strong {
+    color: #2a5081;
+}

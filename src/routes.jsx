@@ -6,7 +6,7 @@ import Contato from "./pages/Contato";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import { EditarPerfil } from "./pages/EditarPerfil";
-import SecaoBar from "./components/previsao/SecaoBar";
+import SecaoBarPrevisao from "./components/previsao/SecaoBarPrevisao";
 import GaleriaFoto from "./pages/GaleriaFoto";
 
 const AppRoutes = () => {
@@ -20,7 +20,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/EditarPerfil" element={<EditarPerfil />} />
-        <Route path="/buscar" element={<SecaoBar />} />
+        <Route path="/buscar" element={<SecaoBarPrevisao />} />
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
       </Routes>
     </BrowserRouter>

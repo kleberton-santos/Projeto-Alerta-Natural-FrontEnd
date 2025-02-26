@@ -308,7 +308,7 @@ const CarroselHome = () => {
                 <p>{`Cidade: ${city}`}</p>
                 <p>{`Estado: ${state}`}</p>
                 <p>{`Gravidade: ${severity}`}</p>
-                <p>{description}</p>
+                
               </div>
             </div>
           );
