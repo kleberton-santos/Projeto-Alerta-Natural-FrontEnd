@@ -1,40 +1,78 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../assets/Css/home/CarroselHome.css"; // Certifique-se que está importando o CSS corretamente
+import "../../assets/Css/home/CarroselHome.css"; // Importação do CSS
 
-// Importe as imagens locais
-import floodImage from "../../assets/images/flood.jpg"; // Imagem para alagamentos
-import stormImage from "../../assets/images/storm.jpg"; // Imagem para tempestades
-import fireImage from "../../assets/images/fire.jpg"; // Imagem para incêndios
-import defaultImage from "../../assets/images/default.jpg"; // Imagem padrão
-import rainImage from "../../assets/images/chuva.jpg"; // Imagem para chuvas
-import cloudsImage from "../../assets/images/clouds.jpg"; // Imagem para nuvens
-import clearSkyImage from "../../assets/images/clear-sky.jpg"; // Imagem para céu limpo
-import snowImage from "../../assets/images/snow.jpg"; // Imagem para neve
-import mistImage from "../../assets/images/mist.jpg"; // Imagem para névoa
-import tornadoImage from "../../assets/images/tornado.jpg"; // Imagem para tornados
+// Importação das imagens locais
+import floodImage from "../../assets/images/flood.jpg";
+import stormImage from "../../assets/images/storm.jpg";
+import fireImage from "../../assets/images/fire.jpg";
+import defaultImage from "../../assets/images/default.jpg";
+import rainImage from "../../assets/images/chuva.jpg";
+import cloudsImage from "../../assets/images/clouds.jpg";
+import clearSkyImage from "../../assets/images/clear-sky.jpg";
+import snowImage from "../../assets/images/snow.jpg";
+import mistImage from "../../assets/images/mist.jpg";
+import tornadoImage from "../../assets/images/tornado.jpg";
 
 const CarroselHome = () => {
   const [alerts, setAlerts] = useState([]);
   const [forecastData, setForecastData] = useState([]);
-  const [nextEvent, setNextEvent] = useState(null); // Próximo evento (alerta ou chuva)
-  const API_KEY = "da002ceb24aa1c9199ca1e4109e591a1"; // Chave da OpenWeatherMap
+  const API_KEY = import.meta.env.VITE_API_KEY; // Chave da API via variável de ambiente
+
+  // Lista de cidades e estados do Brasil
+  const cities = [
+    { name: "São Paulo", state: "SP" },
+    { name: "Rio de Janeiro", state: "RJ" },
+    { name: "Brasília", state: "DF" },
+    { name: "Salvador", state: "BA" },
+    { name: "Fortaleza", state: "CE" },
+    { name: "Belo Horizonte", state: "MG" },
+    { name: "Manaus", state: "AM" },
+    { name: "Curitiba", state: "PR" },
+    { name: "Recife", state: "PE" },
+    { name: "Porto Alegre", state: "RS" },
+    { name: "Belém", state: "PA" },
+    { name: "Goiânia", state: "GO" },
+    { name: "Guarulhos", state: "SP" },
+    { name: "Campinas", state: "SP" },
+    { name: "São Luís", state: "MA" },
+    { name: "São Gonçalo", state: "RJ" },
+    { name: "Maceió", state: "AL" },
+    { name: "Duque de Caxias", state: "RJ" },
+    { name: "Natal", state: "RN" },
+    { name: "Teresina", state: "PI" },
+    { name: "Florianópolis", state: "SC" },
+    { name: "João Pessoa", state: "PB" },
+    { name: "Aracaju", state: "SE" },
+    { name: "Cuiabá", state: "MT" },
+    { name: "Campo Grande", state: "MS" },
+    { name: "Vitória", state: "ES" },
+    { name: "Palmas", state: "TO" },
+    { name: "Boa Vista", state: "RR" },
+    { name: "Porto Velho", state: "RO" },
+    { name: "Rio Branco", state: "AC" },
+    { name: "Macapá", state: "AP" },
+    { name: "Santos", state: "SP" },
+    { name: "Olinda", state: "PE" },
+    { name: "Caxias do Sul", state: "RS" },
+    { name: "Blumenau", state: "SC" }
+  ];
 
   // Mapeamento de tipos de alerta para imagens
   const alertImageMap = {
-    flood: floodImage, // Alagamentos
-    storm: stormImage, // Tempestades
-    fire: fireImage, // Incêndios
-    rain: rainImage, // Chuvas
-    clouds: cloudsImage, // Nuvens
-    clear: clearSkyImage, // Céu limpo
-    snow: snowImage, // Neve
-    mist: mistImage, // Névoa
-    tornado: tornadoImage, // Tornados
-    default: defaultImage, // Imagem padrão
+    flood: floodImage,
+    storm: stormImage,
+    fire: fireImage,
+    rain: rainImage,
+    clouds: cloudsImage,
+    clear: clearSkyImage,
+    snow: snowImage,
+    mist: mistImage,
+    tornado: tornadoImage,
+    default: defaultImage,
   };
 
-  // Objeto de tradução
+  // Tradução dos termos climáticos
   const translations = {
     Rain: "Chuva",
     Clouds: "Grande volume de nuvens risco de chuvas",
@@ -53,29 +91,28 @@ const CarroselHome = () => {
     Drizzle: "Chuvisco",
   };
 
-  // Função para traduzir termos
+  // Função para traduzir termos climáticos
   const translate = (term) => {
-    return translations[term] || term; // Retorna a tradução ou o próprio termo se não houver tradução
+    return translations[term] || term;
   };
 
   // Função para obter a imagem com base no tipo de alerta
   const getAlertImage = (headline) => {
-    if (!headline) return alertImageMap.default; // Retorna a imagem padrão se headline for undefined ou null
+    if (!headline) return alertImageMap.default;
 
     const lowerCaseHeadline = headline.toLowerCase();
 
-    // Mapeia os eventos para as imagens correspondentes
-    if (lowerCaseHeadline.includes("flood")) return alertImageMap.flood; // Alagamentos
-    if (lowerCaseHeadline.includes("storm")) return alertImageMap.storm; // Tempestades
-    if (lowerCaseHeadline.includes("fire")) return alertImageMap.fire; // Incêndios
-    if (lowerCaseHeadline.includes("rain")) return alertImageMap.rain; // Chuvas
-    if (lowerCaseHeadline.includes("clouds")) return alertImageMap.clouds; // Nuvens
-    if (lowerCaseHeadline.includes("clear")) return alertImageMap.clear; // Céu limpo
-    if (lowerCaseHeadline.includes("snow")) return alertImageMap.snow; // Neve
-    if (lowerCaseHeadline.includes("mist")) return alertImageMap.mist; // Névoa
-    if (lowerCaseHeadline.includes("tornado")) return alertImageMap.tornado; // Tornados
+    if (lowerCaseHeadline.includes("flood")) return alertImageMap.flood;
+    if (lowerCaseHeadline.includes("storm")) return alertImageMap.storm;
+    if (lowerCaseHeadline.includes("fire")) return alertImageMap.fire;
+    if (lowerCaseHeadline.includes("rain")) return alertImageMap.rain;
+    if (lowerCaseHeadline.includes("clouds")) return alertImageMap.clouds;
+    if (lowerCaseHeadline.includes("clear")) return alertImageMap.clear;
+    if (lowerCaseHeadline.includes("snow")) return alertImageMap.snow;
+    if (lowerCaseHeadline.includes("mist")) return alertImageMap.mist;
+    if (lowerCaseHeadline.includes("tornado")) return alertImageMap.tornado;
 
-    return alertImageMap.default; // Imagem padrão para outros eventos
+    return alertImageMap.default;
   };
 
   // Função para classificar o risco
@@ -91,117 +128,77 @@ const CarroselHome = () => {
     }
   };
 
-  // Busca alertas climáticos
-  useEffect(() => {
-    const fetchAlerts = async () => {
-      try {
-        const cities = [
-          "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
-          "Manaus", "Curitiba", "Recife", "Porto Alegre", "Belém", "Goiânia", "Guarulhos",
-          "Campinas", "São Luís", "São Gonçalo", "Maceió", "Duque de Caxias", "Natal", "Teresina"
-        ];
-        const alertPromises = cities.map(city =>
-          axios.get(`/api/weather?q=${city}&appid=${API_KEY}`)
-        );
-        const responses = await Promise.all(alertPromises);
-        console.log("Respostas da API (Alerta Climático):", responses);
+  // Função para buscar alertas climáticos
+  const fetchAlerts = async () => {
+    try {
+      const alertPromises = cities.map(city =>
+        axios.get(`/api/weather?q=${city.name}&appid=${API_KEY}`)
+      );
+      const responses = await Promise.all(alertPromises);
 
-        const alertsData = responses.map(response => ({
-          headline: translate(response.data.weather[0].main), // Traduz a condição principal
-          areas: [response.data.name],
-          severity: getRiskLevel(response.data.weather[0].main), // Classifica o risco
-          description: translate(response.data.weather[0].description), // Traduz a descrição
-          image: getAlertImage(response.data.weather[0].main), // Obtém a imagem correspondente
-        }));
+      const alertsData = responses.map((response, index) => ({
+        headline: translate(response.data.weather[0].main),
+        areas: [response.data.name],
+        severity: getRiskLevel(response.data.weather[0].main),
+        description: translate(response.data.weather[0].description),
+        image: getAlertImage(response.data.weather[0].main),
+        state: cities[index].state,
+        city: cities[index].name,
+      }));
 
-        console.log("Dados dos Alertas Mapeados:", alertsData);
-
-        setAlerts(alertsData.slice(0, 3)); // Limita a exibição a 3 alertas
-      } catch (error) {
-        console.error("Erro ao buscar alertas climáticos:", error);
-        setAlerts([]);
-      }
-    };
-
-    fetchAlerts();
-  }, []);
-
-  // Busca previsão do tempo (chuvas fortes)
-  useEffect(() => {
-    const fetchForecast = async () => {
-      try {
-        const cities = [
-          "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
-          "Manaus", "Curitiba", "Recife", "Porto Alegre", "Belém", "Goiânia", "Guarulhos",
-          "Campinas", "São Luís", "São Gonçalo", "Maceió", "Duque de Caxias", "Natal", "Teresina"
-        ];
-        const forecastPromises = cities.map(city =>
-          axios.get(`/api/forecast?q=${city}&appid=${API_KEY}`)
-        );
-        const responses = await Promise.all(forecastPromises);
-        console.log("Respostas da API (Previsão do Tempo):", responses);
-
-        const forecastData = responses.map(response => ({
-          city: response.data.city.name,
-          forecast: response.data.list.map(day => ({
-            date: day.dt_txt,
-            rain: day.rain ? day.rain["3h"] || 0 : 0, // Chuva total em mm
-            condition: translate(day.weather[0].description), // Traduz a descrição
-          })),
-        }));
-
-        console.log("Dados da Previsão Mapeados:", forecastData);
-
-        // Filtra cidades com previsão de chuvas fortes (ex.: mais de 10mm) nos próximos 5 dias
-        const heavyRainCities = forecastData.map(city => ({
-          ...city,
-          forecast: city.forecast.filter(day => day.rain > 10), // Filtra dias com chuva forte
-        }));
-
-        console.log("Cidades com Chuva Forte:", heavyRainCities);
-
-        setForecastData(heavyRainCities);
-      } catch (error) {
-        console.error("Erro ao buscar previsão do tempo:", error);
-        setForecastData([]);
-      }
-    };
-
-    fetchForecast();
-  }, []);
-
-  // Determina o próximo evento (alerta ou chuva)
-  useEffect(() => {
-    if (alerts.length > 0) {
-      // Se houver alertas, usa o primeiro alerta como próximo evento
-      setNextEvent({
-        type: "alert",
-        data: alerts[0],
-      });
-    } else if (forecastData.length > 0) {
-      // Se não houver alertas, busca a próxima previsão de chuva forte
-      const nextRainEvent = forecastData
-        .flatMap(city =>
-          city.forecast.map(day => ({
-            city: city.city,
-            date: day.date,
-            rain: day.rain,
-            condition: day.condition,
-          }))
-        .sort((a, b) => new Date(a.date) - new Date(b.date))[0]); // Ordena por data e pega o primeiro
-
-      if (nextRainEvent) {
-        setNextEvent({
-          type: "rain",
-          data: nextRainEvent,
-        });
-      } else {
-        setNextEvent(null); // Não há eventos futuros
-      }
-    } else {
-      setNextEvent(null); // Não há eventos futuros
+      setAlerts(alertsData.slice(0, 3)); // Limita a exibição a 3 alertas
+    } catch (error) {
+      console.error("Erro ao buscar alertas climáticos:", error);
+      setAlerts([]);
     }
-  }, [alerts, forecastData]);
+  };
+
+  // Função para buscar previsão do tempo
+  const fetchForecast = async () => {
+    try {
+      const forecastPromises = cities.map(city =>
+        axios.get(`/api/forecast?q=${city.name}&appid=${API_KEY}`)
+      );
+      const responses = await Promise.all(forecastPromises);
+
+      const forecastData = responses.map((response, index) => ({
+        city: response.data.city.name,
+        state: cities[index].state,
+        forecast: response.data.list.map(day => ({
+          date: day.dt_txt,
+          rain: day.rain ? day.rain["3h"] || 0 : 0,
+          condition: translate(day.weather[0].description),
+        })),
+      }));
+
+      // Filtra cidades com previsão de chuvas fortes (ex.: mais de 10mm) nos próximos 5 dias
+      const heavyRainCities = forecastData.map(city => ({
+        ...city,
+        forecast: city.forecast.filter(day => day.rain > 10),
+      }));
+
+      setForecastData(heavyRainCities);
+    } catch (error) {
+      console.error("Erro ao buscar previsão do tempo:", error);
+      setForecastData([]);
+    }
+  };
+
+  // Efeito para buscar dados iniciais e atualizar a cada 1 minuto
+  useEffect(() => {
+    // Busca os dados imediatamente ao carregar o componente
+    fetchAlerts();
+    fetchForecast();
+
+    // Configura um intervalo para buscar os dados a cada 1 minuto
+    const intervalId = setInterval(() => {
+      fetchAlerts();
+      fetchForecast();
+    }, 60000); // 60.000 milissegundos = 1 minuto
+
+    // Limpa o intervalo quando o componente é desmontado
+    return () => clearInterval(intervalId);
+  }, []);
 
   // Função para priorizar os slides
   const prioritizeSlides = (alerts, forecastData) => {
@@ -228,9 +225,10 @@ const CarroselHome = () => {
       slides.push(...mediumPriorityForecasts.slice(0, 3).map(day => ({
         headline: `Previsão de ${day.condition.toLowerCase().includes("chuva") ? "chuvas" : "tempestades"} em ${day.city}`,
         areas: [day.city],
-        severity: getRiskLevel(day.condition), // Classifica o risco
+        severity: getRiskLevel(day.condition),
         description: `Previsão para ${day.date}: ${day.rain}mm. Condição: ${day.condition}.`,
         image: alertImageMap.rain,
+        state: day.state,
       })));
     } else {
       // Se não houver eventos prioritários, exibe os alertas normais
@@ -243,21 +241,11 @@ const CarroselHome = () => {
   // Slides a serem exibidos
   const slides = prioritizeSlides(alerts, forecastData);
 
-  console.log("Slides a serem exibidos:", slides);
-
   return (
     <div
       id="carouselExampleCaptions"
       className="carousel slide"
       data-bs-ride="carousel"
-      style={{
-        maxWidth: "800px",
-        maxHeight: "400px",
-        width: "100%",
-        height: "auto",
-        margin: "0 auto",
-        overflow: "hidden",
-      }}
     >
       <div className="carousel-indicators">
         {slides.map((_, index) => (
@@ -272,9 +260,9 @@ const CarroselHome = () => {
         ))}
       </div>
 
-      <div className="carousel-inner" style={{ width: "100%", height: "100%" }}>
+      <div className="carousel-inner">
         {slides.map((slide, index) => {
-          const { headline = "N/A", areas = [], severity = "N/A", description = "Descrição não disponível.", image } = slide;
+          const { headline = "N/A", areas = [], severity = "N/A", description = "Descrição não disponível.", image, state, city } = slide;
 
           return (
             <div
@@ -285,17 +273,13 @@ const CarroselHome = () => {
                 src={image || getAlertImage(headline)}
                 className="d-block w-100"
                 alt={`Slide ${index + 1}`}
-                style={{ objectFit: "cover", height: "100%" }}
               />
-              <div className="carousel-caption d-none d-md-block" style={{
-                backgroundColor: "rgba(0, 0, 0, 0.5)", // Fundo escuro semi-transparente
-                padding: "10px",
-                borderRadius: "5px",
-              }}>
-                <h5 style={{ fontSize: "24px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{headline}</h5>
-                <p style={{ fontSize: "18px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{`Áreas afetadas: ${areas.join(", ") || "N/A"}`}</p>
-                <p style={{ fontSize: "18px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{`Gravidade: ${severity}`}</p>
-                <p style={{ fontSize: "16px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)" }}>{description}</p>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>{headline}</h5>
+                <p>{`Cidade: ${city}`}</p>
+                <p>{`Estado: ${state}`}</p>
+                <p>{`Gravidade: ${severity}`}</p>
+                <p>{description}</p>
               </div>
             </div>
           );
