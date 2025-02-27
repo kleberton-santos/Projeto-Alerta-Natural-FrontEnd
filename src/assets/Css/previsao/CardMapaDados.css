@@ -1,14 +1,3 @@
-/* Adicione ao arquivo card-previsao.css */
-
-/* Container principal para os cards */
-.previsao-container {
-    display: flex;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Estilo para o card do mapa e dados */
 .card-mapa-dados {
     flex: 1;
@@ -18,6 +7,8 @@
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    position: relative; /* Adicionado */
+    height: 400px; /* Defina uma altura fixa ou ajuste conforme necessário */
 }
 
 .mapa-container {
@@ -25,30 +16,62 @@
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Defina uma altura fixa para o mapa */
+    width: 100%; /* Ocupa toda a largura do card */
+    position: relative; /* Adicionado para garantir que o mapa seja o contexto de posicionamento */
 }
+
 
 .dados-adicionais {
-    padding: 20px;
-}
-
-.dados-adicionais h3 {
-    margin-top: 0;
-    font-size: 18px;
-    color: #2a5081;
+    padding: 10px 20px; /* Reduzi o padding para economizar espaço */
+    border-radius: 0 0 15px 15px; /* Arredonda apenas as bordas inferiores */
+    position: absolute; /* Posiciona absolutamente em relação ao .mapa-container */
+    bottom: 10px; /* Alinha na parte inferior */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Garante que fique acima do mapa */
 }
 
 .dados-adicionais ul {
-    list-style: none;
+    list-style: none; /* Remove os marcadores da lista */
     padding: 0;
     margin: 0;
+    display: flex; /* Coloca os itens da lista em linha */
+    justify-content: space-between; /* Distribui os itens igualmente */
+    align-items: center; /* Centraliza verticalmente os itens */
+    gap: 20px; /* Adiciona um espaçamento entre os itens */
 }
 
 .dados-adicionais li {
     font-size: 14px;
-    margin: 10px 0;
-    color: #444;
+    margin: 0; /* Remove a margem padrão dos itens da lista */
+    color: #f8f7f7;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
 
 .dados-adicionais li strong {
     color: #2a5081;
+}
+
+@media (max-width: 768px) {
+    .card-mapa-dados {
+        height: 300px; /* Ajuste a altura para telas menores */
+    }
+
+    .mapa-container {
+        height: 200px; /* Ajuste a altura do mapa para telas menores */
+    }
+
+    .dados-adicionais {
+        padding: 10px; /* Reduza o padding para telas menores */
+    }
+
+    .dados-adicionais ul {
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+        gap: 10px; /* Reduz o espaçamento entre os itens */
+    }
+
+    .dados-adicionais li {
+        font-size: 12px; /* Reduza o tamanho da fonte para telas menores */
+    }
 }

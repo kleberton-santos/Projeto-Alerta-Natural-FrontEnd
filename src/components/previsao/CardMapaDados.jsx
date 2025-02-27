@@ -38,7 +38,6 @@ const CardMapaDados = ({ infos }) => {
 
             {/* Dados Climáticos Adicionais */}
             <div className="dados-adicionais">
-                <h3>Dados Climáticos Adicionais</h3>
                 <ul>
                     <li><strong>Nascer do Sol:</strong> {infos.days[0].sunrise}</li>
                     <li><strong>Pôr do Sol:</strong> {infos.days[0].sunset}</li>

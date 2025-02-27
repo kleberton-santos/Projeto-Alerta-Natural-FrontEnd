@@ -49,28 +49,68 @@ button {
     background-color: white;
 }
 
-/* Container principal com grid */
+/* Container principal */
 .previsao-container {
-    max-width: 1200px;
+    max-width: 65%;
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Primeira linha: CardPrevisao e CardMapaDados */
 .primeira-linha {
-    border: 2px solid green; /* Borda verde para visualização */
-    padding: 10px; /* Espaçamento interno */
-    border-radius: 10px; /* Bordas arredondadas */
+    display: flex;
+    gap: 16px; /* Espaçamento entre os cards */
     margin-bottom: 20px; /* Espaço entre as linhas */
+    
+}
+
+.primeira-linha .card-principal,
+.primeira-linha .card-mapa-dados {
+    flex: 1; /* Cada card ocupa metade do espaço */
+    background-color: #272c3ff5;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Reduzi o padding para diminuir a altura */
+    height: auto; /* Altura automática */
+}
+
+/* Ajustes para o conteúdo interno dos cards */
+.primeira-linha .card-principal p {
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: -10px;
+}
+
+/* Ajustes para o CardMapaDados */
+.primeira-linha .card-mapa-dados {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
 }
 
 /* Segunda linha: CardPrevisaoSecundario */
 .segunda-linha {
+    display: flex;
+    gap: 16px; /* Espaçamento entre os cards */
     margin-bottom: 20px; /* Espaço entre as linhas */
 }
 
-/* Estilos para os cards */
-.card-principal, .card-secundario, .card-mapa-dados {
+.segunda-linha .card-secundario {
+    flex: 1; /* Cada card ocupa metade do espaço */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Outras páginas (amanhã, 7 dias, 15 dias) */
+.outras-paginas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Espaçamento entre os cards */
+}
+
+.outras-paginas .card-secundario {
+    flex: 1 1 calc(50% - 8px); /* Dois cards por linha */
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -79,7 +119,14 @@ button {
 
 /* Ajustes para responsividade */
 @media (max-width: 768px) {
-    .primeira-linha, .segunda-linha {
+    .primeira-linha, .segunda-linha, .outras-paginas {
         flex-direction: column; /* Uma coluna em telas menores */
+    }
+
+    .primeira-linha .card-principal,
+    .primeira-linha .card-mapa-dados,
+    .segunda-linha .card-secundario,
+    .outras-paginas .card-secundario {
+        flex: 1 1 100%; /* Cards ocupam 100% da largura em telas menores */
     }
 }

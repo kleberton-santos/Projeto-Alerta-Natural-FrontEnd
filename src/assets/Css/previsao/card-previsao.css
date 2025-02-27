@@ -1,19 +1,19 @@
 .card-moderno {
-    background-color: #ffffff;
+    background-color: #272c3ff5;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: white;
 }
 
 .card-header {
-    background: linear-gradient(135deg, #2a5081, #284069);
     color: white;
-    padding: 15px;
+    padding: 5px;
     text-align: center;
+    margin-top: 48px;
 }
 
 .card-localizacao {
@@ -29,16 +29,18 @@
 }
 
 .card-body {
-    padding: 20px;
-    text-align: center;
+    display: flex; /* Ativa o flexbox */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 20px; /* Espaço entre os elementos */
 }
 
 .card-temperatura {
+    flex: 1; 
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-left: -60%;
+    margin-top: 20px;
 }
 
 .card-icone {
@@ -47,9 +49,20 @@
 }
 
 .card-temp {
-    font-size: 48px;
+    font-size: 55px;
     margin: 0;
     font-weight: bold;
+}
+
+.card-info-direita {
+    flex: 1; /* Ocupa o espaço restante */
+    text-align: right; /* Alinha o conteúdo à direita */
+    margin-left: 55%;
+    margin-top: -13%;
+}
+
+.card-info-direita p {
+    font-size: 30px !important;
 }
 
 .card-condicao {
@@ -58,38 +71,54 @@
     text-transform: capitalize;
 }
 
-.card-descricao {
-    font-size: 14px;
-    color: #666;
+.card-descricao-principal {
+    display: flex;
+    gap: 8px;
+    color: white;
+    margin-left: -11%;
+    margin-top: 25px;
+}
+
+.card-descricao-sub {
+    font-size: 18px !important;
+    color: white;
     margin: 10px 0;
 }
 
+.card-descricao-sub p {
+    
+}
+
 .card-detalhes {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     font-size: 14px;
     color: #444;
     margin-top: 15px;
-}
+}d
 
 .card-footer {
     background-color: #f7f7f7;
     padding: 15px;
 }
 
+.card-detalhes p {
+    font-size: 18px !important;
+    color: white;
+}
+
 .lista-detalhes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    display: flex;
+    justify-content: space-evenly; /* Distribui os itens igualmente */
+    flex-wrap: nowrap; /* Garante que os itens não quebrem para uma nova linha */
+    gap: 20px; /* Espaço entre os itens */
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 .lista-detalhes li {
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .lista-detalhes li span {
