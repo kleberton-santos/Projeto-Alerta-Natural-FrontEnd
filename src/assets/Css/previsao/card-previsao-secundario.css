@@ -1,21 +1,76 @@
+/* Estilos para o CardPrevisaoSecundario */
+div.cards {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 
-
-div.cards-sec div.cartao-sec{
-    width: 1rem;
-    border: 1px solid red;
 }
 
-div.cartao-sec div.cartao-body-sec{
+div.cartao {
     display: flex;
-    border: 1px solid red;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
-div.cartao-sec div.cartao-body-sec div.cartao-detalhes-sec{
-    border: 1px solid red;
+header.cartao-sec-header {
+    text-align: center;
+    margin-bottom: -46px;
+}
+
+
+div.cartao-sec-body {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
 }
 
-.text-align-end{
-    text-align: end;
+div.cartao-sec-detalhes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+div.cartao-temperatura {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre o ícone e a temperatura */
+}
+
+img.cartao-icone {
+    width: 40px; /* Tamanho do ícone */
+    height: 40px;
+}
+
+h2.cartao-temp {
+    margin: 0;
+    font-size: 24px; /* Tamanho da temperatura */
+}
+
+div.cartao-info-direita {
+    text-align: right;
+}
+
+p.cartao-condicao {
+    margin: 0;
+    font-size: 16px;
+}
+
+div.cartao-detalhes p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    div.cartao-sec-detalhes {
+        flex-direction: column; /* Altera para coluna em telas menores */
+        align-items: flex-start; /* Alinha os elementos à esquerda */
+    }
+
+    div.cartao-info-direita {
+        text-align: left; /* Alinha os detalhes à esquerda */
+        margin-top: 10px; /* Espaçamento entre os elementos */
+    }
 }

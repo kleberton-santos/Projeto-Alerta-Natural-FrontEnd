@@ -1,0 +1,50 @@
+/* Estilos para a grade */
+.grade-previsao {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaçamento entre as linhas */
+    margin-top: 20px; /* Espaçamento acima da grade */
+}
+
+.linha {
+    display: flex;
+    gap: 16px; /* Espaçamento entre as colunas */
+}
+
+.coluna {
+    flex: 1; /* Cada coluna ocupa o mesmo espaço */
+}
+
+.card-grade {
+    background: linear-gradient(135deg, #272c3f, #3b435a); /* Degradê suave */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 150px; /* Altura fixa para o card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.card-grade p {
+    margin-left: 20px;
+}
+
+.card-grade-icone img {
+    width: 45px; /* Ajuste o tamanho conforme necessário */
+    height: 45px;
+    margin-bottom: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .linha {
+        flex-direction: column; /* Altera para coluna em telas menores */
+    }
+
+    .coluna {
+        flex: 1 1 100%; /* Cada coluna ocupa 100% da largura em telas menores */
+    }
+}

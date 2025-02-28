@@ -2,7 +2,6 @@
 .card-mapa-dados {
     flex: 1;
     background-color: #ffffff;
-    border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +15,7 @@
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: 300px; /* Defina uma altura fixa para o mapa */
+    height: 257px; /* Defina uma altura fixa para o mapa */
     width: 100%; /* Ocupa toda a largura do card */
     position: relative; /* Adicionado para garantir que o mapa seja o contexto de posicionamento */
 }
@@ -30,6 +29,7 @@
     left: 0;
     right: 0;
     z-index: 1000; /* Garante que fique acima do mapa */
+    background-color: #272c3ff5;
 }
 
 .dados-adicionais ul {
@@ -50,7 +50,7 @@
 }
 
 .dados-adicionais li strong {
-    color: #2a5081;
+    color: #498F9F;
 }
 
 @media (max-width: 768px) {

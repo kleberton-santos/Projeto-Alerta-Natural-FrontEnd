@@ -59,19 +59,18 @@ button {
 /* Primeira linha: CardPrevisao e CardMapaDados */
 .primeira-linha {
     display: flex;
-    gap: 16px; /* Espaçamento entre os cards */
-    margin-bottom: 20px; /* Espaço entre as linhas */
-    
+    margin-bottom: 20px;
+    border: 5px solid #272c3ff5;
+    border-radius: 10px;
 }
 
 .primeira-linha .card-principal,
 .primeira-linha .card-mapa-dados {
     flex: 1; /* Cada card ocupa metade do espaço */
     background-color: #272c3ff5;
-    border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 10px; /* Reduzi o padding para diminuir a altura */
-    height: auto; /* Altura automática */
+    height: 100%; /* Altura automática */
 }
 
 /* Ajustes para o conteúdo interno dos cards */
@@ -90,16 +89,18 @@ button {
 /* Segunda linha: CardPrevisaoSecundario */
 .segunda-linha {
     display: flex;
-    gap: 16px; /* Espaçamento entre os cards */
+    justify-content: space-around;
     margin-bottom: 20px; /* Espaço entre as linhas */
 }
 
 .segunda-linha .card-secundario {
-    flex: 1; /* Cada card ocupa metade do espaço */
-    background-color: #ffffff;
+    width: 35%;
+    background: linear-gradient(135deg, #272c3f, #3b435a); /* Degradê suave */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    height: 105px;
+    color: white;
 }
 
 /* Outras páginas (amanhã, 7 dias, 15 dias) */

@@ -13,7 +13,7 @@
     color: white;
     padding: 5px;
     text-align: center;
-    margin-top: 48px;
+    margin-top: 5px;
 }
 
 .card-localizacao {
@@ -44,12 +44,12 @@
 }
 
 .card-icone {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .card-temp {
-    font-size: 55px;
+    font-size: 45px;
     margin: 0;
     font-weight: bold;
 }
@@ -62,7 +62,7 @@
 }
 
 .card-info-direita p {
-    font-size: 30px !important;
+    font-size: 25px !important;
 }
 
 .card-condicao {
@@ -75,18 +75,14 @@
     display: flex;
     gap: 8px;
     color: white;
-    margin-left: -11%;
+    margin-left: -17%;
     margin-top: 25px;
 }
 
 .card-descricao-sub {
-    font-size: 18px !important;
+    font-size: 16px !important;
     color: white;
     margin: 10px 0;
-}
-
-.card-descricao-sub p {
-    
 }
 
 .card-detalhes {
@@ -112,7 +108,6 @@
     gap: 20px; /* Espaço entre os itens */
     list-style: none;
     padding: 0;
-    margin-bottom: 30px;
     margin-top: 15px;
 }
 
@@ -127,5 +122,5 @@
 
 .lista-detalhes li span:first-child {
     font-weight: bold;
-    color: #2a5081;
+    color: #498F9F;
 }

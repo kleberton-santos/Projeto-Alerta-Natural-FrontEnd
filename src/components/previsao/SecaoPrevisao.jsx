@@ -4,6 +4,7 @@ import CardPrevisaoSecundario from "./CardPrevisaoSecundario";
 import NavPrevisao from "./NavPrevisao";
 import CardMapaDados from "./CardMapaDados";
 import "../../assets/Css/previsao/Previsao.css";
+import GradePrevisao from "./GradePrevisao";
 
 const SecaoPrevisao = ({ infosHoje }) => {
     const [pagina, setPagina] = useState("hoje");
@@ -41,6 +42,10 @@ const SecaoPrevisao = ({ infosHoje }) => {
                                 </div>
                             ))}
                     </div>
+                )}
+
+                {pagina === "hoje" && infosHoje && (
+                    <GradePrevisao dados={infosHoje} />
                 )}
 
                 {/* Outras páginas (amanhã, 7 dias, 15 dias) */}

@@ -151,7 +151,7 @@ const CarroselHome = () => {
         city: cities[index].name,
       }));
 
-      setAlerts(alertsData.slice(0, 3)); // Limita a exibição a 3 alertas
+      setAlerts(alertsData.slice(0, 5)); // Limita a exibição a 3 alertas
     } catch (error) {
       console.error("Erro ao buscar alertas climáticos:", error);
       setError("Erro ao buscar alertas climáticos.");
@@ -258,7 +258,7 @@ const CarroselHome = () => {
       })));
     } else {
       // Se não houver eventos prioritários, exibe os alertas normais
-      slides.push(...alerts.slice(0, 3));
+      slides.push(...alerts.slice(0, 5));
     }
 
     return slides;
