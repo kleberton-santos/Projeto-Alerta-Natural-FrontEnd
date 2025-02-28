@@ -112,10 +112,11 @@ button {
 
 .outras-paginas .card-secundario {
     flex: 1 1 calc(50% - 8px); /* Dois cards por linha */
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #272c3f, #3b435a);
+    color: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 15px;
 }
 
 /* Ajustes para responsividade */

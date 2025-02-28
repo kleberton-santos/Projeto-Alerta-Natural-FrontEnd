@@ -61,7 +61,7 @@ const SecaoPrevisao = ({ infosHoje }) => {
 
                 {pagina === "sete" && infosHoje && (
                     <div className="outras-paginas">
-                        {infosHoje.days.slice(2, 9).map((info, index) => (
+                        {infosHoje.days.slice(0, 7).map((info, index) => (
                             <div className="card-secundario" key={index}>
                                 <CardPrevisaoSecundario horaAtual={null} diaAtual={info} />
                             </div>
@@ -71,7 +71,7 @@ const SecaoPrevisao = ({ infosHoje }) => {
 
                 {pagina === "quinze" && infosHoje && (
                     <div className="outras-paginas">
-                        {infosHoje.days.slice(2, 19).map((info, index) => (
+                        {infosHoje.days.slice(0, 15).map((info, index) => (
                             <div className="card-secundario" key={index}>
                                 <CardPrevisaoSecundario horaAtual={null} diaAtual={info} />
                             </div>

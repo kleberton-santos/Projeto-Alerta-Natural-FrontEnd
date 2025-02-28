@@ -23,7 +23,6 @@ div.cartao-sec-body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
 }
 
 div.cartao-sec-detalhes {
@@ -39,8 +38,8 @@ div.cartao-temperatura {
 }
 
 img.cartao-icone {
-    width: 40px; /* Tamanho do ícone */
-    height: 40px;
+    width: 60px;
+    height: 60px;
 }
 
 h2.cartao-temp {

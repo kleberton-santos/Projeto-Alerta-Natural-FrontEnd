@@ -14,8 +14,12 @@ import hail from "../../assets/images/icones-previsao/hail.png";
 import wind from "../../assets/images/icones-previsao/wind.png";
 
 const CardPrevisaoSecundario = ({ diaAtual, horaAtual }) => {
-    console.log("Dados recebidos da API:", horaAtual);
-    if (!diaAtual || !horaAtual) {
+    console.log("Dados recebidos da API:", diaAtual, horaAtual);
+
+    // Se horaAtual for null, usamos os dados de diaAtual
+    const dados = horaAtual || diaAtual;
+
+    if (!dados) {
         return <p>Carregando dados...</p>; // Evita erro caso os dados sejam undefined
     }
 
@@ -57,29 +61,41 @@ const CardPrevisaoSecundario = ({ diaAtual, horaAtual }) => {
     };
 
     // 🔹 Normaliza a condição climática e converte para inglês
-    const condicaoNormalizada = normalizarCondicao(horaAtual.conditions);
+    const condicaoNormalizada = normalizarCondicao(dados.conditions);
     const condicaoIngles = traducaoCondicoes[condicaoNormalizada] || "clear-day";
 
     // 🔹 Obtendo o ícone correspondente
     const iconeAtual = iconesPrevisao[condicaoIngles] || clearDay;
 
+    // 🔹 Função para formatar a data no formato brasileiro (DD/MM/AAAA)
+    const formatarDataBrasileira = (dataString) => {
+        const data = new Date(dataString);
+        return data.toLocaleDateString("pt-BR"); // Formato brasileiro
+    };
+
     return (
         <div className="cards">
             <div className="cartao">
                 <header className="cartao-sec-header">
-                <p className="cartao-sec-text"> {horaAtual.datetime.substring(0, 5)}</p>
+                    {/* Exibe a data ou hora dependendo dos dados */}
+                    <p className="cartao-sec-text">
+                        {horaAtual
+                            ? horaAtual.datetime.substring(0, 5) // Exibe a hora (HH:MM)
+                            : formatarDataBrasileira(diaAtual.datetime) // Exibe a data formatada
+                        }
+                    </p>
                 </header>
                 <div className="cartao-sec-body">
                     <div className="cartao-sec-detalhes">
                         <div className="cartao-temperatura">
                             <img src={iconeAtual} alt={`Ícone ${condicaoIngles}`} className="cartao-icone" />
-                            <h2 className="cartao-temp">{horaAtual.temp}ºC</h2>
+                            <h2 className="cartao-temp">{dados.temp}ºC</h2>
                         </div>
                         <div className="cartao-info-direita">
-                            <p className="cartao-condicao">{horaAtual.conditions}</p>
+                            <p className="cartao-condicao">{dados.conditions}</p>
                             <div className="cartao-detalhes">
-                                <p>Umidade: {horaAtual.humidity}%</p>
-                                <p>Vento: {horaAtual.windspeed} km/h</p>
+                                <p>Umidade: {dados.humidity}%</p>
+                                <p>Vento: {dados.windspeed} km/h</p>
                             </div>
                         </div>
                     </div>
