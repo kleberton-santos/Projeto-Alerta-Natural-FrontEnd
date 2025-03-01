@@ -1,0 +1,54 @@
+.app-container {
+    min-height: 100vh; /* Garante que a altura cubra toda a tela */
+    width: 100%; /* Garante que a largura seja total */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-left: 4%;
+    padding-right: 4%;
+    background: linear-gradient(135deg, #272c3f, #3b435a);
+    overflow: hidden; /* Evita qualquer transbordamento que possa estar escondendo os efeitos */
+}
+
+/* Faixas laterais */
+.app-container::before,
+.app-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px; /* Ajuste a largura se precisar */
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(39, 44, 63, 0.9), rgba(59, 67, 90, 0.8));
+    filter: blur(6px);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 10; /* Garante que fique sobre outros elementos */
+}
+
+/* Lateral esquerda */
+.app-container::before {
+    left: 0;
+}
+
+/* Lateral direita */
+.app-container::after {
+    right: 0;
+}
+
+/* Animação de brilho sutil */
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+    }
+    50% {
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+    }
+}
+
+.app-container::before,
+.app-container::after {
+    animation: glow 3s infinite alternate;
+}

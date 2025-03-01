@@ -1,20 +1,20 @@
 .secao-navbar {
     width: 100%;
     height: 50px;
-    background-color: #498F9F;
+    background-color: #246878;
     filter: brightness(0.7);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Adicionado */
-    z-index: 100; /* Adicionado */
+    position: relative;
+    z-index: 100;
 }
 
 .secao-navbar nav {
     display: flex;
     gap: 130px;
 }
- 
+
 .secao-navbar a {
     text-decoration: none;
     color: white;
@@ -24,6 +24,5 @@
 }
 
 .secao-navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Corrigido: removido espaço após "rgba" */
-    border-radius: 5px;
+    opacity: 0.8; /* Efeito simples de opacidade */
 }

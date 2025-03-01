@@ -1,21 +1,41 @@
 .footer-global {
-    background-color: #498F9F;
-    height: 150px;
-    filter: brightness(0.7); /* Escurece a cor */ 
+    background-color: #246878;
+    height: 98px;
+    filter: brightness(0.7); /* Escurece a cor */
 }
+
 .conta-telefone {
-    top: 30%;
+    top: 25%;
 }
 
 .telefone {
-    top: 30%;
+    top: 21%;
 }
 
 .direitos-autorais {
-    margin-top: 110px; 
+    margin-top: 75px;
+}
+
+.icons-social {
+    display: flex;
+    justify-content: flex-start; /* Alinha os ícones à esquerda */
+    gap: 25px;
+    margin-left: 10%; /* Ajuste a margem para deslocar os ícones um pouco para a direita */
+    margin-bottom: 25px;
+}
+
+.icon-item {
+    text-align: center;
+    
+}
+
+.icon-item p {
+    margin: 0;
+    font-size: 14px;  /* Ajusta o tamanho da fonte conforme necessário */
+    margin-bottom: 7px;
 }
 
 .icons-social img {
-    width: 30px; /* Ajusta o tamanho dos ícones */
+    width: 23px; /* Ajusta o tamanho dos ícones */
     height: auto;
 }

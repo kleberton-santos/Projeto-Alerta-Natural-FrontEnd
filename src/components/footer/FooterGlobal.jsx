@@ -5,7 +5,6 @@ import instagram from "../../assets/images/footer/instagram.png"
 import twiter from "../../assets/images/footer/twiter.png"
 
 const FooterGlobal = () => {
-
     return (
         <div className="footer-global text-white position-relative w-100">
             <div className="conta-telefone position-absolute start-50 translate-middle text-center">
@@ -17,20 +16,28 @@ const FooterGlobal = () => {
             <div className="direitos-autorais position-absolute start-50 translate-middle-x text-center">
                 <p>© 2024 Desastres Climáticos. Todos os direitos reservados.</p>
             </div>
-            <div className="icons-social position-absolute bottom-0 start-0 mb-3 ms-3 d-flex gap-3 mb-5">
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} alt="Facebook" className="img-fluid" />
-                </a>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                    <img src={instagram} alt="Instagram" className="img-fluid" />
-                </a>
-                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                    <img src={twiter} alt="Twitter" className="img-fluid" />
-                </a>
+            <div className="icons-social position-absolute bottom-0 start-0 d-flex gap-3">
+                <div className="icon-item text-center">
+                    <p>Facebook</p>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img src={facebook} alt="Facebook" className="img-fluid" />
+                    </a>
+                </div>
+                <div className="icon-item text-center">
+                    <p>Instagram</p>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img src={instagram} alt="Instagram" className="img-fluid" />
+                    </a>
+                </div>
+                <div className="icon-item text-center">
+                    <p>Twitter</p>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                        <img src={twiter} alt="Twitter" className="img-fluid" />
+                    </a>
+                </div>
             </div>
         </div>
     )
-
 }
 
 export default FooterGlobal;

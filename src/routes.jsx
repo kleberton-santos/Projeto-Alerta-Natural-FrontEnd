@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "../src/assets/Css/AppRoutes.css";
 import Home from "./pages/Home";
 import Previsao from "./pages/Previsao";
 import Feed from "./pages/feed";
@@ -12,6 +13,7 @@ import GaleriaFoto from "./pages/GaleriaFoto";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+    <div className="app-container">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/previsao" element={<Previsao />} />
@@ -23,6 +25,7 @@ const AppRoutes = () => {
         <Route path="/buscar" element={<SecaoBarPrevisao />} />
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
       </Routes>
+      </div>
     </BrowserRouter>
   );
 };
