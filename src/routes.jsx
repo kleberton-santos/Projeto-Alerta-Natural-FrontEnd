@@ -9,6 +9,8 @@ import Cadastro from "./pages/Cadastro";
 import { EditarPerfil } from "./pages/EditarPerfil";
 import SecaoBarPrevisao from "./components/previsao/SecaoBarPrevisao";
 import GaleriaFoto from "./pages/GaleriaFoto";
+import Mapa from './mapa/Mapa'; 
+
 
 const AppRoutes = () => {
   return (
@@ -24,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/EditarPerfil" element={<EditarPerfil />} />
         <Route path="/buscar" element={<SecaoBarPrevisao />} />
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
+        <Route path="/mapa" element={<Mapa />} />
       </Routes>
       </div>
     </BrowserRouter>
