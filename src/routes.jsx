@@ -8,6 +8,8 @@ import Cadastro from "./pages/Cadastro";
 import { EditarPerfil } from "./pages/EditarPerfil";
 import SecaoBar from "./components/previsao/SecaoBar";
 import GaleriaFoto from "./pages/GaleriaFoto";
+import Mapa from './mapa/Mapa'; 
+
 
 const AppRoutes = () => {
   return (
@@ -22,6 +24,7 @@ const AppRoutes = () => {
         <Route path="/EditarPerfil" element={<EditarPerfil />} />
         <Route path="/buscar" element={<SecaoBar />} />
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
+        <Route path="/mapa" element={<Mapa />} />
       </Routes>
     </BrowserRouter>
   );
