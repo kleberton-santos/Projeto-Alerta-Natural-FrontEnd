@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import SecaoFeedPublicacao from "../components/feed/SecaoFeedPublicacao";
 import SecaoFeedAmigos from "../components/feed/SecaoFeedAmigos";
@@ -15,6 +15,7 @@ import "../../src/assets/Css/feed/FeedPage.css";
 
 const FeedPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [isContentVisible, setIsContentVisible] = useState(false); // Controla a visibilidade do conteúdo
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Verifica se o usuário está logado
@@ -25,21 +26,44 @@ const FeedPage = () => {
 
   // Verifica se o usuário está logado ao carregar a página
   useEffect(() => {
-    const savedVisibility = localStorage.getItem("isContentVisible");
-    if (savedVisibility !== null) {
-      setIsContentVisible(JSON.parse(savedVisibility));
+    // Captura o token e os dados do usuário da URL (se existirem)
+    const queryParams = new URLSearchParams(location.search);
+    const token = queryParams.get("token");
+    const userData = queryParams.get("user");
+
+    if (token && userData) {
+      // Armazena o token no localStorage
+      localStorage.setItem("token", token);
+
+      // Armazena os dados do usuário no localStorage
+      const user = JSON.parse(decodeURIComponent(userData));
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Remove o token e os dados do usuário da URL para evitar exposição
+      navigate("/feed", { replace: true });
+
+      // Dispara o evento para atualizar o Header
+      window.dispatchEvent(new Event("userUpdate"));
+
+      // Recarrega a página para garantir que os dados sejam atualizados
+      window.location.reload();
     }
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log("Usuário do localStorage:", user);
+    // Verifica se o usuário já está autenticado
+    checkAuthentication();
+  }, [location, navigate]);
 
-    if (user) {
+  // Função para verificar se o usuário está autenticado
+  const checkAuthentication = () => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (token && user) {
       setIsLoggedIn(true);
       setIsContentVisible(true);
 
       const userId = user.idusuario || user.id;
       setLoggedUserId(userId);
-      console.log("ID do usuário logado:", userId);
 
       if (userId) {
         fetchAmigos(userId).then((amigosData) => {
@@ -49,8 +73,11 @@ const FeedPage = () => {
       } else {
         console.error("ID do usuário não está disponível no localStorage.");
       }
+    } else {
+      setIsLoggedIn(false);
+      setIsContentVisible(false);
     }
-  }, []);
+  };
 
   // Salva o estado de visibilidade no localStorage
   useEffect(() => {

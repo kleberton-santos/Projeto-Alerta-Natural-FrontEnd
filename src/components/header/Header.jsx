@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Adicione useNavigate
 import { Dropdown } from "react-bootstrap";
 import bannerHeader from "../../assets/images/banner-header.jpg";
 import logo from "../../assets/images/logo.webp";
@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 
 const Header = ({ label }) => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate(); // Adicione useNavigate
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -30,10 +31,21 @@ const Header = ({ label }) => {
   }, []);
 
   const handleLogout = () => {
+    // Remove os dados do usuário e o token do localStorage
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+  
+    // Atualiza o estado do usuário para null
     setUser(null);
-    window.location.reload(); // Recarrega a página ao fazer logout
+  
+    // Dispara o evento userUpdate para atualizar outros componentes
+    window.dispatchEvent(new Event("userUpdate"));
+  
+  
+    // Redireciona o usuário para a página de login após o logout do Google
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000); // 1 segundo de atraso
   };
 
   return (

@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Limpa erros anteriores
-  
+
     try {
       // Faz a requisição POST para a API de login
       const response = await axios.post("http://localhost:8080/api/auth/login", formData, {
@@ -39,12 +39,12 @@ const Login = () => {
         },
         withCredentials: true, // Envia credenciais (cookies, tokens)
       });
-  
+
       console.log("Resposta completa da API:", response);
-  
+
       // Salva o token JWT no localStorage
       localStorage.setItem("token", response.data.accessToken);
-  
+
       // Armazena os dados do usuário no localStorage
       const userData = {
         nome: response.data.nome,
@@ -53,16 +53,22 @@ const Login = () => {
       };
       localStorage.setItem("user", JSON.stringify(userData));
       console.log("Dados do usuário no localStorage:", userData);
-  
+
       // Dispara um evento personalizado para atualizar o header
       window.dispatchEvent(new Event("userUpdate"));
-  
+
       // Redireciona para a página de feed
       navigate("/feed");
     } catch (error) {
       setError("Email ou senha inválidos. Tente novamente.");
       console.error("Erro ao fazer login:", error);
     }
+  };
+
+  // Função para redirecionar para o login com Google
+  const handleGoogleLogin = () => {
+    // Redireciona para o endpoint de autenticação do Google com o parâmetro prompt=select_account
+    window.location.href = "http://localhost:8080/oauth2/authorization/google?prompt=select_account";
   };
 
   return (
@@ -139,6 +145,7 @@ const Login = () => {
               <button
                 type="button"
                 className="btn btn-outline-secondary w-100 mt-3 d-flex align-items-center justify-content-center"
+                onClick={handleGoogleLogin}
               >
                 <i className="fab fa-google me-2"></i>
                 Entrar com Google
