@@ -27,13 +27,20 @@
 .login-circle {
     width: 35px;
     height: 35px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
     overflow: hidden;
+    border-radius: 50%;
     background-size: cover;
     background-position: center;
     margin-right: 10px;
+    transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
+
+.foto-padrao {
+    width: 65px !important;
+    height: 40px !important;
+    margin-right: -10px;
+}
+
 
 .login-text span {
     font-size: 1.25rem; /* Ajuste o tamanho da fonte conforme necessário */

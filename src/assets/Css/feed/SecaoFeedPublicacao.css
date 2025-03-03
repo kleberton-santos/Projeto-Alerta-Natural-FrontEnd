@@ -17,6 +17,10 @@
   margin-right: 1rem; /* Espaçamento entre a imagem e a área de publicação */
 }
 
+.img-user.padrao-feed {
+  width: 12%;
+}
+
 /* Estilo para a área de publicação */
 .secao-publicacao {
   width: 100%;

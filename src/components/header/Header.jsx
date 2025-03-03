@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Adicione useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import bannerHeader from "../../assets/images/banner-header.jpg";
 import logo from "../../assets/images/logo.webp";
 import "../../assets/Css/header/Header.css";
 import "../../assets/Css/header/logo.css";
-import imagemGenerica from "../../assets/images/img-default.png";
 import PropTypes from "prop-types";
 
 const Header = ({ label }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); // Adicione useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -31,22 +30,19 @@ const Header = ({ label }) => {
   }, []);
 
   const handleLogout = () => {
-    // Remove os dados do usuário e o token do localStorage
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-  
-    // Atualiza o estado do usuário para null
     setUser(null);
-  
-    // Dispara o evento userUpdate para atualizar outros componentes
     window.dispatchEvent(new Event("userUpdate"));
-  
-  
-    // Redireciona o usuário para a página de login após o logout do Google
     setTimeout(() => {
       navigate("/login");
-    }, 1000); // 1 segundo de atraso
+    }, 1000);
   };
+
+  // Define a URL da foto do usuário ou a imagem padrão
+  const userFoto = user?.foto
+    ? `http://localhost:8080/fotos/${user.foto}` // Foto do usuário
+    : "http://localhost:8080/fotos/padrao"; // Imagem padrão
 
   return (
     <div className="header-principal position-relative">
@@ -64,16 +60,23 @@ const Header = ({ label }) => {
       <div className="login-principal position-absolute top-50 end-0 translate-middle-y d-flex align-items-center gap-2 me-3">
         {user ? (
           <>
-            <div
-              className="login-circle"
-              style={{
-                backgroundImage: `url(${user.foto ? `http://localhost:8080/fotos/${user.foto}` : imagemGenerica})`,
-                backgroundSize: "cover",
-                width: "40px",
-                height: "40px",
-                borderRadius: "50%",
-              }}
-            ></div>
+            {/* Exibe a foto do usuário ou a imagem padrão */}
+            <img
+  src={userFoto}
+  alt="Foto do usuário"
+  className="login-circle"
+  onError={(e) => {
+    e.target.src = "http://localhost:8080/fotos/padrao";
+    e.target.classList.add("foto-padrao"); // Adiciona a classe quando a imagem padrão for carregada
+  }}
+  onLoad={(e) => {
+    if (e.target.src.includes("padrao")) {
+      e.target.classList.add("foto-padrao");
+    } else {
+      e.target.classList.remove("foto-padrao");
+    }
+  }}
+/>
             <span className="text-light fs-5">{user.nome}</span>
             <Dropdown>
               <Dropdown.Toggle variant="link" className="text-light border-0">
