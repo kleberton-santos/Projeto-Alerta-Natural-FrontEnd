@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../../assets/Css/cadastro/EditarPerfil.css";
 import imagemGenerica from "../../assets/images/img-default.png"; // Imagem padrão para quando não houver foto
 
 export const SecaoEditarPerfil = () => {
@@ -155,8 +156,22 @@ export const SecaoEditarPerfil = () => {
               className="rounded-circle mb-2"
               style={{ width: "100px", height: "100px", objectFit: "cover" }}
             />
+            {/* Botão personalizado para selecionar a foto */}
+            <label
+            htmlFor="fotoInput"
+            className="custom-file-button mt-2"
+            style={{ cursor: "pointer", display: "inline-block" }}
+          >
+            Selecionar Foto
+          </label>
+          <input
+            id="fotoInput"
+            type="file"
+            accept="image/*"
+            onChange={handleFotoChange}
+            style={{ display: "none" }} // Oculta o input de arquivo padrão
+          />
           </div>
-          <input type="file" accept="image/*" onChange={handleFotoChange} className="form-control" />
         </div>
 
         {/* Nome e Sobrenome */}

@@ -1,0 +1,18 @@
+.custom-file-button {
+    background-color: #6c757d; /* Cor do botão */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-file-button:hover {
+    background-color: #5a6268; /* Tom mais escuro ao passar o mouse */
+  }
+  
+  .custom-file-button:active {
+    background-color: #495057; /* Cor ao clicar */
+  }
+  
