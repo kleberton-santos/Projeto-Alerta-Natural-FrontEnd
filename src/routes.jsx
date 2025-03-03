@@ -10,6 +10,7 @@ import { EditarPerfil } from "./pages/EditarPerfil";
 import SecaoBarPrevisao from "./components/previsao/SecaoBarPrevisao";
 import GaleriaFoto from "./pages/GaleriaFoto";
 import Mapa from './mapa/Mapa'; 
+import NovaSenha from "./pages/NovaSenha";
 
 
 const AppRoutes = () => {
@@ -27,6 +28,7 @@ const AppRoutes = () => {
         <Route path="/buscar" element={<SecaoBarPrevisao />} />
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
         <Route path="/mapa" element={<Mapa />} />
+        <Route path="/redefinir-senha" element={<NovaSenha />} />
       </Routes>
       </div>
     </BrowserRouter>
