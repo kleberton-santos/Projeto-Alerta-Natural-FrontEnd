@@ -36,34 +36,36 @@
   }
   
   /* Estilo para o input de email */
-  .form-control {
-    background-color: white; /* Fundo branco */
-    color: black; /* Texto preto */
-    border: 1px solid #ccc; /* Borda cinza */
-    border-radius: 5px;
-    padding: 0.5rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    transition: border-color 0.3s ease; /* Transição suave para a borda */
-  }
-  
-  /* Efeito de hover no input */
-  .form-control:hover {
-    border-color: #888; /* Borda mais escura ao passar o mouse */
-  }
-  
-  /* Efeito de focus no input */
-  .form-control:focus {
-    border-color: #5e1515; /* Borda vermelha ao focar */
-    box-shadow: 0 0 0 2px rgba(94, 21, 21, 0.2); /* Sombra sutil ao focar */
-    outline: none; /* Remove o outline padrão */
-  }
-  
-  /* Estilo para o placeholder do input */
-  .form-control::placeholder {
-    color: #666; /* Placeholder cinza */
-    opacity: 1; /* Remove transparência */
-  }
+.form-control {
+  background-color: white; /* Fundo branco */
+  color: black; /* Texto preto */
+  border: 1px solid #ccc; /* Borda cinza */
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease; /* Transição suave para a borda */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Efeito de hover no input */
+.form-control:hover {
+  border-color: #888; /* Borda mais escura ao passar o mouse */
+}
+
+/* Efeito de focus no input */
+.form-control:focus {
+  border-color: #5e1515; /* Borda vermelha ao focar */
+  box-shadow: 0 0 0 2px rgba(94, 21, 21, 0.2); /* Sombra sutil ao focar */
+  outline: none; /* Remove o outline padrão */
+}
+
+/* Estilo para o placeholder do input */
+.form-control::placeholder {
+  color: #666; /* Placeholder cinza */
+  opacity: 1; /* Remove transparência */
+  text-align: center; /* Centraliza o placeholder */
+}
   
   /* Estilo para o rodapé do modal */
   .modal-footer {

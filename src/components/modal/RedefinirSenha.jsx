@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import "../../assets/Css/login/RedefinirSenha.css";
 
 const RedefinirSenha = () => {
   const [novaSenha, setNovaSenha] = useState("");
@@ -37,15 +38,37 @@ const RedefinirSenha = () => {
   };
 
   return (
-    <div>
-      <h1>Redefinir Senha</h1>
-      <input
-        type="password"
-        placeholder="Nova Senha"
-        value={novaSenha}
-        onChange={(e) => setNovaSenha(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Redefinir Senha</button>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="content-senha-redefinir col-lg-4">
+          <div className="card-redefinir-senha shadow">
+            <div className="card-senha-redefinir card-body">
+              <h1 className="card-title text-center">Redefinir Senha</h1>
+              <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                <div className="form-redefinir-senha mb-3">
+                  <label htmlFor="novaSenha" className="label-redefinir form-label">
+                    Digite sua nova Senha
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="novaSenha"
+                    placeholder="Digite sua nova senha"
+                    value={novaSenha}
+                    onChange={(e) => setNovaSenha(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="d-grid">
+                  <button type="submit" className="btn btn-primary">
+                    Redefinir Senha
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

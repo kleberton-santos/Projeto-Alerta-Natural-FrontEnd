@@ -20,6 +20,7 @@ const ModalEsqueciSenha = ({ show, onClose }) => {
 
       if (response.ok) {
         alert("E-mail de redefinição de senha enviado com sucesso.");
+        setEmail(""); // Limpa o campo de e-mail
         onClose();
       } else {
         const errorData = await response.text(); // Captura a mensagem de erro do backend
@@ -45,7 +46,7 @@ const ModalEsqueciSenha = ({ show, onClose }) => {
             <p>Digite seu email para recuperação</p>
             <input
               type="email"
-              className="form-control"
+              className="form-control text-center" // Centraliza o texto
               placeholder="Seu email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
