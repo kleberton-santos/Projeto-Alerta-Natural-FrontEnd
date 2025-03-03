@@ -1,10 +1,10 @@
 .home-principal {
     width: 100%;
-    min-height: 100vh; /* Garante que ocupe ao menos a altura da tela */
+    min-height: 100vh;
     position: relative;
     background-color: #212839;
     display: flex;
-    flex-direction: column; /* Alinha o conteúdo de forma vertical */
+    flex-direction: column;
 }
 
 .banner-home {
@@ -16,74 +16,203 @@
     margin-top: 50px;
 }
 
-
 .text-center-home {
     color: white;
-    margin-top: 20px; /* Espaço entre o banner e o texto */
-    text-align: center; /* Centraliza o texto */
-    width: 90%; /* Garante que o texto não ultrapasse os limites */
-    margin: 20px auto; /* Centraliza horizontalmente */
+    margin-top: 20px;
+    text-align: center;
+    width: 90%;
+    margin: 20px auto;
     padding-inline: 20%;
-
+    font-size: 1.2rem; /* Tamanho da fonte padrão */
+    line-height: 1.6; /* Espaçamento entre linhas */
 }
 
-/* Ajustando o espaço entre os elementos */
-.row{
+.row {
     display: flex;
     justify-content: space-around;
 }
 
 .card-home {
-    width: 90%; /* Ajusta a largura para manter o conteúdo alinhado */
-    margin-top: 20px;/* Espaçamento automático acima e abaixo */
-    background-color: #272c3ff5; /* Cor de fundo desejada */
-    padding: 20px; /* Adiciona espaçamento interno */
-    padding-left: 5%; /* Ajustando a posição dos cards no centro */
-    border-radius: 8px; /* Bordas arredondadas (opcional) */
+    width: 90%;
+    margin-top: 20px;
+    background-color: #272c3ff5;
+    padding: 20px;
+    padding-left: 5%;
+    border-radius: 8px;
 }
 
 .card {
-    height: auto; /* Define a altura fixa para os cards */
-    width: 100%; /* Definindo uma largura */
-    background-color: white; /* Mantém o fundo do card distinto */
-    border: none; /* Remove a borda do card (opcional) */
-    border-radius: 8px; /* Bordas arredondadas para os cards */
-    overflow: hidden; /* Ajustando a imagem dentro dos cards */
-    cursor: pointer; 
-    box-shadow: 0px 3px 7px 2px rgba(5, 3, 22, 0.15); /* Adicionando uma box-shadow aos cards */
-    
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 3px 7px 2px rgba(5, 3, 22, 0.15);
 }
 
-/* Definindo a altura e largura dos cards */
-.card img{
-    width: 100%; 
-    height: auto; 
+.card img {
+    width: 100%;
+    height: auto;
 }
 
-
-#desastreCard{
-    min-width: 110%;    
-   
+#desastreCard {
+    min-width: 110%;
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Espaçamento interno para o conteúdo do card */
+    text-align: center; /* Centraliza o texto */
 }
 
+.card-body h3 {
+    font-size: 1.5rem; /* Tamanho da fonte do título */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.card-body p {
+    font-size: 1rem; /* Tamanho da fonte do parágrafo */
+    line-height: 1.5; /* Espaçamento entre linhas */
+}
 
 .footer-home {
-    text-align: center; /* Centraliza o conteúdo horizontalmente */
-  
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
 }
 
+/* Media Queries para telas menores que 1280px */
+@media (max-width: 1280px) {
+    .navbar {
+        padding: 15px 5%; /
+    }
 
+    .banner-home {
+        height: 300px;
+        margin-top: 30px;
+    }
 
+    .text-center-home {
+        padding-inline: 10%;
+        font-size: 1.1rem; 
+    }
 
+    .card-home {
+        width: 100%;
+        padding-left: 2%;
+    }
 
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 
+    #desastreCard {
+        min-width: 100%;
+    }
 
-  
+    .card-body h3 {
+        font-size: 1.3rem; 
+    }
+
+    .card-body p {
+        font-size: 0.9rem; 
+    }
+}
+
+/* Media Queries para telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .row {
+        justify-content: center;
+    }
+    
+
+    .banner-home {
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    .text-center-home {
+        padding-inline: 5%;
+        font-size: 1rem; 
+        line-height: 1.5; 
+    }
+
+    .card-home {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card-body h3 {
+        font-size: 1.2rem; 
+    }
+
+    .card-body p {
+        font-size: 0.85rem; 
+    }
+
+    .footer-home {
+        font-size: 0.9rem; 
+    }
+
+    #desastreCard {
+        width: 100%;
+        max-width: 400px; 
+    }
+    
+}
+
+/* Media Queries para telas menores que 480px (smartphones pequenos) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 3%; 
+    }
+
+    .banner-home {
+        height: 150px;
+    }
+
+    .text-center-home {
+        padding-inline: 2%;
+        font-size: 0.9rem; 
+        line-height: 1.4; 
+    }
+
+    .card-home {
+        padding: 5px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card-body h3 {
+        font-size: 1.1rem; 
+    }
+
+    .card-body p {
+        font-size: 0.8rem; 
+    }
+
+    .footer-home {
+        font-size: 0.8rem; 
+    }
+}
