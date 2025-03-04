@@ -58,7 +58,8 @@ const CardPrevisao = ({ data }) => {
     return (
         <div className="card-moderno">
             <div className="card-header">
-                <p className="card-localizacao">São Paulo, Brasil</p>
+                {/* Exibe o nome da cidade e o país */}
+                <p className="card-localizacao">{infos.resolvedAddress}</p>
                 <p className="card-data">{infos.currentConditions.datetime}</p>
             </div>
             <div className="card-body">
@@ -76,7 +77,6 @@ const CardPrevisao = ({ data }) => {
                     <p className="card-descricao-sub">{infos.days[0].description}</p>
                     <p className="card-descricao-sub">Mínima: {Math.round(infos.days[0].tempmin)}ºC</p>
                 </div>
-                
             </div>
             <div className="card-footer">
                 <ul className="lista-detalhes">
