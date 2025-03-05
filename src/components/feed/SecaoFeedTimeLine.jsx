@@ -20,6 +20,7 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [mostrarListaComentarios, setMostrarListaComentarios] = useState({}); // Estado para controlar a visibilidade da lista de comentários
   const [editarComentarioId, setEditarComentarioId] = useState(null); // Estado para controlar o comentário sendo editado
   const [textoComentarioEditado, setTextoComentarioEditado] = useState(""); // Estado para o texto do comentário sendo editado
+  const [curtidas, setCurtidas] = useState({}); 
   const textareaRef = useRef(null);
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = idUsuario || user?.idusuario || user?.id;
@@ -45,8 +46,37 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       });
 
       setPublicacoes(todasPublicacoes);
+
+      // Buscar a quantidade de curtidas para cada publicação
+      todasPublicacoes.forEach(async (publicacao) => {
+        const responseCurtidas = await axios.get(`http://localhost:8080/publicacoes/${publicacao.idPublicacao}/curtidas`);
+        setCurtidas((prevCurtidas) => ({
+          ...prevCurtidas,
+          [publicacao.idPublicacao]: responseCurtidas.data,
+        }));
+      });
     } catch (error) {
       console.error("Erro ao carregar as publicações:", error);
+    }
+  };
+
+  // Função para curtir uma publicação
+  const handleCurtirPublicacao = async (idPublicacao) => {
+    try {
+      await axios.post(`http://localhost:8080/publicacoes/${idPublicacao}/curtir`, null, {
+        params: {
+          idUsuario: userId,
+        },
+      });
+
+      // Atualizar a quantidade de curtidas
+      const responseCurtidas = await axios.get(`http://localhost:8080/publicacoes/${idPublicacao}/curtidas`);
+      setCurtidas((prevCurtidas) => ({
+        ...prevCurtidas,
+        [idPublicacao]: responseCurtidas.data,
+      }));
+    } catch (error) {
+      console.error("Erro ao curtir a publicação:", error);
     }
   };
 
@@ -428,102 +458,115 @@ const removerComentario = async (idPublicacao, idComentario) => {
               <div className="linha-divisoria"></div>
 
               {/* Botão para mostrar/ocultar a lista de comentários */}
-              <div className="acoes-publicacao">
-                {userId && (
-                  <div className="upload-buttons-left">
-                    <div className="upload-label">
-                      <div className="upload-icon-container-line">
-                        <i className="fas fa-heart upload-icon-line"></i>
-                      </div>
-                      <span className="upload-text">Curtir</span>
-                    </div>
-                    <div className="upload-label" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
-                      <div className="upload-icon-container-line">
-                        <i className="fas fa-comment upload-icon-line"></i>
-                      </div>
-                      <span className="upload-text">
-                        {mostrarListaComentarios[publicacao.idPublicacao] ? "Ocultar Comentários" : "Comentários"}
-                      </span>
-                    </div>
-                  </div>
-                )}
-
-                {isPublicacaoDoUsuario && (
-                  <div className="upload-buttons">
-                    <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
-                      <div className="upload-icon-container-line">
-                        <i className="fas fa-trash upload-icon-line"></i>
-                      </div>
-                      <span className="upload-text">Remover</span>
-                    </div>
-                    <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
-                      <div className="upload-icon-container-line">
-                        <i className="fas fa-edit upload-icon-line"></i>
-                      </div>
-                      <span className="upload-text">Editar</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-               {/* Lista de comentários (exibida apenas se mostrarListaComentarios for true) */}
-{mostrarListaComentarios[publicacao.idPublicacao] && (
-  <div className="comentarios">
-    <h5>Comentários:</h5>
-    {comentarios[publicacao.idPublicacao]?.map((comentario) => (
-      <div key={comentario.id} className="comentario">
-        <div className="comentario-texto">
-          <strong>{comentario.nomeUsuario}</strong>
-          {editarComentarioId === comentario.idComentario ? (
-            <>
-              <textarea
-                className="form-control"
-                rows="2"
-                value={textoComentarioEditado}
-                onChange={(e) => setTextoComentarioEditado(e.target.value)}
-              ></textarea>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={() => editarComentario(publicacao.idPublicacao, comentario.id)}
-              >
-                Salvar
-              </button>
-              <button
-                className="btn btn-secondary btn-sm"
-                onClick={() => setEditarComentarioId(null)}
-              >
-                Cancelar
-              </button>
-            </>
+              {/* Botão para mostrar/ocultar a lista de comentários */}
+<div className="acoes-publicacao">
+  {userId && (
+    <div className="upload-buttons-left">
+      {/* Botão de curtir/descurtir */}
+      <div className="upload-label" onClick={() => handleCurtirPublicacao(publicacao.idPublicacao)}>
+        <div className="upload-icon-container-line">
+          {curtidas[publicacao.idPublicacao] ? (
+            <i className="fas fa-heart-broken upload-icon-line"></i> // Ícone de "Deixar de curtir"
           ) : (
-            <>
-              <p>{comentario.texto}</p>
-              {comentario.idUsuario === userId && (
-                <div className="acoes-comentario">
-                  <button
-                    className="btn btn-link"
-                    onClick={() => {
-                      setEditarComentarioId(comentario.idComentario);
-                      setTextoComentarioEditado(comentario.texto);
-                    }}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="btn btn-link"
-                    onClick={() => removerComentario(publicacao.idPublicacao, comentario.id)}
-                  >
-                    Remover
-                  </button>
-                </div>
-              )}
-            </>
+            <i className="fas fa-heart upload-icon-line"></i> // Ícone de "Curtir"
           )}
         </div>
+        <span className="upload-text">
+          {curtidas[publicacao.idPublicacao] ? "Deixar de curtir" : "Curtir"} ({curtidas[publicacao.idPublicacao] || 0})
+        </span>
       </div>
-    ))}
-  </div>
-)}
+
+      {/* Botão de comentários */}
+      <div className="upload-label" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
+        <div className="upload-icon-container-line">
+          <i className="fas fa-comment upload-icon-line"></i>
+        </div>
+        <span className="upload-text">
+          {mostrarListaComentarios[publicacao.idPublicacao] ? "Ocultar Comentários" : "Comentários"}
+        </span>
+      </div>
+    </div>
+  )}
+
+  {isPublicacaoDoUsuario && (
+    <div className="upload-buttons">
+      {/* Botão de remover publicação */}
+      <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
+        <div className="upload-icon-container-line">
+          <i className="fas fa-trash upload-icon-line"></i>
+        </div>
+        <span className="upload-text">Remover</span>
+      </div>
+
+      {/* Botão de editar publicação */}
+      <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
+        <div className="upload-icon-container-line">
+          <i className="fas fa-edit upload-icon-line"></i>
+        </div>
+        <span className="upload-text">Editar</span>
+      </div>
+    </div>
+  )}
+</div>
+
+              {/* Lista de comentários (exibida apenas se mostrarListaComentarios for true) */}
+              {mostrarListaComentarios[publicacao.idPublicacao] && (
+                <div className="comentarios">
+                  <h5>Comentários:</h5>
+                  {comentarios[publicacao.idPublicacao]?.map((comentario) => (
+                    <div key={comentario.id} className="comentario">
+                      <div className="comentario-texto">
+                        <strong>{comentario.nomeUsuario}</strong>
+                        {editarComentarioId === comentario.idComentario ? (
+                          <>
+                            <textarea
+                              className="form-control"
+                              rows="2"
+                              value={textoComentarioEditado}
+                              onChange={(e) => setTextoComentarioEditado(e.target.value)}
+                            ></textarea>
+                            <button
+                              className="btn btn-primary btn-sm"
+                              onClick={() => editarComentario(publicacao.idPublicacao, comentario.id)}
+                            >
+                              Salvar
+                            </button>
+                            <button
+                              className="btn btn-secondary btn-sm"
+                              onClick={() => setEditarComentarioId(null)}
+                            >
+                              Cancelar
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <p>{comentario.texto}</p>
+                            {comentario.idUsuario === userId && (
+                              <div className="acoes-comentario">
+                                <button
+                                  className="btn btn-link"
+                                  onClick={() => {
+                                    setEditarComentarioId(comentario.idComentario);
+                                    setTextoComentarioEditado(comentario.texto);
+                                  }}
+                                >
+                                  Editar
+                                </button>
+                                <button
+                                  className="btn btn-link"
+                                  onClick={() => removerComentario(publicacao.idPublicacao, comentario.id)}
+                                >
+                                  Remover
+                                </button>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Caixa de comentário (exibida apenas se mostrarCaixaComentario for true) */}
               {mostrarCaixaComentario[publicacao.idPublicacao] && (
