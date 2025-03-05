@@ -208,3 +208,78 @@
   background-color: #3a3f58; /* Cor da linha */
   margin: 15px 0; /* Espaçamento acima e abaixo da linha */
 }
+
+.comentarios {
+  margin-top: 10px;
+}
+
+.comentario {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.user-image-comentario {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comentarios {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.comentario {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-image-comentario {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comentario-texto {
+  flex: 1;
+}
+
+.acoes-comentario {
+  margin-top: 5px;
+}
+
+.acoes-comentario button {
+  margin-right: 5px;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.adicionar-comentario {
+  margin-top: 10px;
+}
+
+.adicionar-comentario textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.adicionar-comentario button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.adicionar-comentario button:hover {
+  background-color: #0056b3;
+}

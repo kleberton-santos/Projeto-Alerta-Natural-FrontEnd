@@ -10,7 +10,7 @@
     height: 400px; /* Defina uma altura fixa ou ajuste conforme necessário */
 }
 
-.mapa-container {
+.mapa-container-mapa {
     background-color: #f7f7f7;
     border-radius: 15px;
     overflow: hidden;

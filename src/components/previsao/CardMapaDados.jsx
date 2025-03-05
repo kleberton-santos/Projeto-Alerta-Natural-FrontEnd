@@ -24,7 +24,7 @@ const CardMapaDados = ({ infos }) => {
     return (
         <div className="card-mapa-dados">
             {/* Mapa Interativo */}
-            <div className="mapa-container">
+            <div className="mapa-container-mapa">
                 <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{ height: "215px", width: "100%" }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

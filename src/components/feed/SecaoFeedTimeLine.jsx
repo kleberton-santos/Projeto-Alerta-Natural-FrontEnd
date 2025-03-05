@@ -8,13 +8,19 @@ import Carousel from "react-bootstrap/Carousel"; // Importe o Carousel do Bootst
 const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [publicacoes, setPublicacoes] = useState([]);
   const [editarPublicacao, setEditarPublicacao] = useState(null);
-  const [showModalEdicao, setShowModalEdicao] = useState(false); // Estado para controlar a visibilidade do modal de edição
-  const [previewFotos, setPreviewFotos] = useState([]); // URLs temporários para pré-visualização de fotos
-  const [previewVideos, setPreviewVideos] = useState([]); // URLs temporários para pré-visualização de vídeos
-  const [novasFotos, setNovasFotos] = useState([]); // Novas fotos adicionadas durante a edição
-  const [novosVideos, setNovosVideos] = useState([]); // Novos vídeos adicionados durante a edição
-  const [textoEditado, setTextoEditado] = useState(""); // Estado para o texto editado
-  const textareaRef = useRef(null); // Referência para o textarea
+  const [showModalEdicao, setShowModalEdicao] = useState(false);
+  const [previewFotos, setPreviewFotos] = useState([]);
+  const [previewVideos, setPreviewVideos] = useState([]);
+  const [novasFotos, setNovasFotos] = useState([]);
+  const [novosVideos, setNovosVideos] = useState([]);
+  const [textoEditado, setTextoEditado] = useState("");
+  const [comentarios, setComentarios] = useState({}); // Estado para armazenar comentários por publicação
+  const [novoComentario, setNovoComentario] = useState(""); // Estado para o novo comentário
+  const [mostrarCaixaComentario, setMostrarCaixaComentario] = useState({}); // Estado para controlar a visibilidade da caixa de comentário
+  const [mostrarListaComentarios, setMostrarListaComentarios] = useState({}); // Estado para controlar a visibilidade da lista de comentários
+  const [editarComentarioId, setEditarComentarioId] = useState(null); // Estado para controlar o comentário sendo editado
+  const [textoComentarioEditado, setTextoComentarioEditado] = useState(""); // Estado para o texto do comentário sendo editado
+  const textareaRef = useRef(null);
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = idUsuario || user?.idusuario || user?.id;
 
@@ -24,21 +30,18 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       let todasPublicacoes = [];
 
       if (userId) {
-        // Busca as publicações do usuário logado e dos amigos
         const responseUsuario = await axios.get(`http://localhost:8080/publicacoes/usuario/${userId}`);
         const responseAmigos = await axios.get(`http://localhost:8080/publicacoes/amigos/${userId}`);
         todasPublicacoes = [...responseUsuario.data, ...responseAmigos.data];
       } else {
-        // Busca todas as publicações (quando o usuário não está logado)
         const responseTodas = await axios.get(`http://localhost:8080/publicacoes`);
         todasPublicacoes = responseTodas.data;
       }
 
-      // Ordena as publicações pelo ID em ordem decrescente
       todasPublicacoes.sort((a, b) => {
         const idA = a.idPublicacao || 0;
         const idB = b.idPublicacao || 0;
-        return idB - idA; // Ordenação decrescente
+        return idB - idA;
       });
 
       setPublicacoes(todasPublicacoes);
@@ -84,10 +87,8 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
         texto: novoTexto,
       };
 
-      // Atualiza o texto da publicação
       await axios.put(`http://localhost:8080/publicacoes/${idPublicacao}`, publicacaoDTO);
 
-      // Se houver novas fotos ou vídeos, faz o upload
       if (novasFotos.length > 0 || novosVideos.length > 0) {
         const formData = new FormData();
         novasFotos.forEach((foto) => formData.append("fotos", foto));
@@ -117,17 +118,15 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   // Função para abrir o modal de edição
   const abrirModalEdicao = (publicacao) => {
     setEditarPublicacao(publicacao);
-    setTextoEditado(publicacao.texto); // Define o texto da publicação no estado
-    setShowModalEdicao(true); // Abre o modal de edição
+    setTextoEditado(publicacao.texto);
+    setShowModalEdicao(true);
 
-    // Gera URLs temporários para pré-visualização das fotos e vídeos existentes
     const fotosPreviews = publicacao.fotos?.map((foto) => `http://localhost:8080/fotos/${foto.split("\\").pop()}`) || [];
     const videosPreviews = publicacao.videos?.map((video) => `http://localhost:8080/videos/${video}`) || [];
 
     setPreviewFotos(fotosPreviews);
     setPreviewVideos(videosPreviews);
 
-    // Foca no textarea ao abrir o modal
     setTimeout(() => {
       if (textareaRef.current) {
         textareaRef.current.focus();
@@ -138,12 +137,12 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   // Função para fechar o modal de edição
   const fecharModalEdicao = () => {
     setEditarPublicacao(null);
-    setShowModalEdicao(false); // Fecha o modal de edição
-    setPreviewFotos([]); // Limpa as pré-visualizações
-    setPreviewVideos([]); // Limpa as pré-visualizações
-    setNovasFotos([]); // Limpa as novas fotos
-    setNovosVideos([]); // Limpa os novos vídeos
-    setTextoEditado(""); // Limpa o texto editado
+    setShowModalEdicao(false);
+    setPreviewFotos([]);
+    setPreviewVideos([]);
+    setNovasFotos([]);
+    setNovosVideos([]);
+    setTextoEditado("");
   };
 
   // Função para lidar com o upload de arquivos (imagens e vídeos)
@@ -152,11 +151,9 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
     const imageFiles = files.filter((file) => file.type.startsWith("image/"));
     const videoFiles = files.filter((file) => file.type.startsWith("video/"));
 
-    // Atualiza os estados das novas fotos e vídeos
     setNovasFotos((prevFotos) => [...prevFotos, ...imageFiles]);
     setNovosVideos((prevVideos) => [...prevVideos, ...videoFiles]);
 
-    // Gera URLs temporários para pré-visualização
     const imagePreviews = imageFiles.map((file) => URL.createObjectURL(file));
     const videoPreviews = videoFiles.map((file) => URL.createObjectURL(file));
 
@@ -172,6 +169,119 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
         <br />
       </React.Fragment>
     ));
+  };
+
+  // Função para adicionar um comentário
+  const adicionarComentario = async (idPublicacao) => {
+    try {
+      if (!novoComentario.trim()) {
+        alert("O comentário não pode estar vazio.");
+        return;
+      }
+
+      const response = await axios.post(
+        `http://localhost:8080/publicacoes/${idPublicacao}/comentarios`,
+        null,
+        {
+          params: {
+            idUsuario: userId,
+            texto: novoComentario,
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        setNovoComentario(""); // Limpa o campo de comentário
+        fetchComentarios(idPublicacao); // Atualiza a lista de comentários
+        setMostrarCaixaComentario((prevState) => ({
+          ...prevState,
+          [idPublicacao]: false, // Oculta a caixa de comentário após o envio
+        }));
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar comentário:", error);
+    }
+  };
+
+  // Função para buscar comentários de uma publicação
+  const fetchComentarios = async (idPublicacao) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/publicacoes/${idPublicacao}/comentarios`);
+      setComentarios((prevComentarios) => ({
+        ...prevComentarios,
+        [idPublicacao]: response.data,
+      }));
+    } catch (error) {
+      console.error("Erro ao buscar comentários:", error);
+    }
+  };
+
+// Função para editar um comentário
+const editarComentario = async (idPublicacao, idComentario) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
+      null,
+      {
+        params: {
+          novoTexto: textoComentarioEditado,
+          idUsuario: userId,
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      fetchComentarios(idPublicacao);
+      setEditarComentarioId(null);
+      setTextoComentarioEditado("");
+    }
+  } catch (error) {
+    console.error("Erro ao editar o comentário:", error);
+  }
+};
+
+// Função para remover um comentário
+const removerComentario = async (idPublicacao, idComentario) => {
+  try {
+    const confirmacao = window.confirm("Tem certeza que deseja remover o comentário?");
+    if (!confirmacao) return;
+
+    await axios.delete(
+      `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
+      {
+        params: {
+          idUsuario: userId,
+        },
+      }
+    );
+
+    // Recarrega a página após a remoção bem-sucedida
+    window.location.reload();
+  } catch (error) {
+    console.error("Erro ao remover o comentário:", error);
+  }
+};
+
+
+  // Função para alternar a visibilidade da lista de comentários
+  const toggleListaComentarios = (idPublicacao) => {
+    setMostrarListaComentarios((prevState) => ({
+      ...prevState,
+      [idPublicacao]: !prevState[idPublicacao],
+    }));
+
+    // Se a lista de comentários estiver sendo exibida, busca os comentários
+    if (!mostrarListaComentarios[idPublicacao]) {
+      fetchComentarios(idPublicacao);
+    }
+  };
+
+  // Função para alternar a visibilidade da caixa de comentário
+  const toggleCaixaComentario = (idPublicacao) => {
+    setMostrarCaixaComentario((prevState) => ({
+      ...prevState,
+      [idPublicacao]: !prevState[idPublicacao],
+    }));
   };
 
   // Busca as publicações ao carregar o componente ou quando o idUsuario muda
@@ -201,20 +311,20 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
                   placeholder="Escreva seu comentário aqui..."
                   value={textoEditado}
                   onChange={(e) => setTextoEditado(e.target.value)}
-                  autoFocus // Foca automaticamente no textarea
+                  autoFocus
                 ></textarea>
 
                 {/* Área de upload */}
                 <div className="upload-buttons-modalEdit">
                   <label htmlFor="uploadImage" className="upload-labelEdit">
                     <div className="upload-icon-container-modalEdit">
-                      <i className="fas fa-image upload-iconEdit"></i> {/* Ícone de imagem */}
+                      <i className="fas fa-image upload-iconEdit"></i>
                     </div>
                     <span className="upload-textEdit">Imagem</span>
                   </label>
                   <label htmlFor="uploadVideo" className="upload-labelEdit">
                     <div className="upload-icon-container-modalEdit">
-                      <i className="fas fa-video upload-iconEdit"></i> {/* Ícone de vídeo */}
+                      <i className="fas fa-video upload-iconEdit"></i>
                     </div>
                     <span className="upload-textEdit">Vídeo</span>
                   </label>
@@ -317,44 +427,134 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
               {/* Linha divisória */}
               <div className="linha-divisoria"></div>
 
-            {/* Botões de ação na parte inferior */}
-            <div className="acoes-publicacao">
-              {/* Ícones de curtir e comentar (sem funcionalidade) */}
-              {userId && (
-                <div className="upload-buttons-left">
-                  <div className="upload-label">
-                    <div className="upload-icon-container-line">
-                      <i className="fas fa-heart upload-icon-line"></i> {/* Ícone de curtir */}
+              {/* Botão para mostrar/ocultar a lista de comentários */}
+              <div className="acoes-publicacao">
+                {userId && (
+                  <div className="upload-buttons-left">
+                    <div className="upload-label">
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-heart upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">Curtir</span>
                     </div>
-                    <span className="upload-text">Curtir</span>
+                    <div className="upload-label" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-comment upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">
+                        {mostrarListaComentarios[publicacao.idPublicacao] ? "Ocultar Comentários" : "Comentários"}
+                      </span>
+                    </div>
                   </div>
-                  <div className="upload-label">
+                )}
+
+                {isPublicacaoDoUsuario && (
+                  <div className="upload-buttons">
+                    <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-trash upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">Remover</span>
+                    </div>
+                    <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-edit upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">Editar</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+               {/* Lista de comentários (exibida apenas se mostrarListaComentarios for true) */}
+{mostrarListaComentarios[publicacao.idPublicacao] && (
+  <div className="comentarios">
+    <h5>Comentários:</h5>
+    {comentarios[publicacao.idPublicacao]?.map((comentario) => (
+      <div key={comentario.id} className="comentario">
+        <div className="comentario-texto">
+          <strong>{comentario.nomeUsuario}</strong>
+          {editarComentarioId === comentario.idComentario ? (
+            <>
+              <textarea
+                className="form-control"
+                rows="2"
+                value={textoComentarioEditado}
+                onChange={(e) => setTextoComentarioEditado(e.target.value)}
+              ></textarea>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={() => editarComentario(publicacao.idPublicacao, comentario.id)}
+              >
+                Salvar
+              </button>
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => setEditarComentarioId(null)}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <p>{comentario.texto}</p>
+              {comentario.idUsuario === userId && (
+                <div className="acoes-comentario">
+                  <button
+                    className="btn btn-link"
+                    onClick={() => {
+                      setEditarComentarioId(comentario.idComentario);
+                      setTextoComentarioEditado(comentario.texto);
+                    }}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    onClick={() => removerComentario(publicacao.idPublicacao, comentario.id)}
+                  >
+                    Remover
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+              {/* Caixa de comentário (exibida apenas se mostrarCaixaComentario for true) */}
+              {mostrarCaixaComentario[publicacao.idPublicacao] && (
+                <div className="novo-comentario">
+                  <textarea
+                    className="form-control"
+                    rows="2"
+                    placeholder="Adicione um comentário..."
+                    value={novoComentario}
+                    onChange={(e) => setNovoComentario(e.target.value)}
+                  ></textarea>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => adicionarComentario(publicacao.idPublicacao)}
+                  >
+                    Comentar
+                  </button>
+                </div>
+              )}
+
+              {/* Botão para mostrar/ocultar a caixa de comentário */}
+              {userId && !mostrarCaixaComentario[publicacao.idPublicacao] && (
+                <div className="upload-buttons-left">
+                  <div className="upload-label" onClick={() => toggleCaixaComentario(publicacao.idPublicacao)}>
                     <div className="upload-icon-container-line">
-                      <i className="fas fa-comment upload-icon-line"></i> {/* Ícone de comentar */}
+                      <i className="fas fa-comment upload-icon-line"></i>
                     </div>
                     <span className="upload-text">Comentar</span>
                   </div>
                 </div>
               )}
-
-              {/* Botões de editar e remover (apenas para o dono da publicação) */}
-              {isPublicacaoDoUsuario && (
-                <div className="upload-buttons">
-                  <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
-                    <div className="upload-icon-container-line">
-                      <i className="fas fa-trash upload-icon-line"></i> {/* Ícone de lixeira */}
-                    </div>
-                    <span className="upload-text">Remover</span>
-                  </div>
-                  <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
-                    <div className="upload-icon-container-line">
-                      <i className="fas fa-edit upload-icon-line"></i> {/* Ícone de edição */}
-                    </div>
-                    <span className="upload-text">Editar</span>
-                  </div>
-                </div>
-              )}
-            </div>
             </div>
           </div>
         );
