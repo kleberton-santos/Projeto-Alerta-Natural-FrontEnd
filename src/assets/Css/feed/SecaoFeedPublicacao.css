@@ -2,7 +2,6 @@
 .secao-feed-publicacao {
   height: 100px;
   width: 100%;
- /* background-color: #272c3ff5;*/
   border-radius: 10px;
   display: flex;
   align-items: center; /* Centraliza verticalmente os itens */
@@ -53,4 +52,164 @@
 .texto-publicacao:hover {
   background-color: rgba(10, 23, 79, 0.225);
   color: white;
+}
+
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .secao-feed-publicacao {
+    height: 120px; /* Aumenta a altura da seção */
+    padding-left: 2rem; /* Aumenta o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 6%; /* Reduz o tamanho da imagem */
+    height: 55px; /* Aumenta a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 10%; /* Reduz o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 1rem; /* Aumenta o padding interno */
+  }
+
+  .texto-publicacao {
+    height: 50px; /* Aumenta a altura do botão */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .secao-feed-publicacao {
+    height: 90px; /* Reduz a altura da seção */
+    padding-left: 0.75rem; /* Reduz o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 10%; /* Aumenta o tamanho da imagem */
+    height: 40px; /* Reduz a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 15%; /* Aumenta o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 0.4rem; /* Reduz o padding interno */
+  }
+
+  .texto-publicacao {
+    height: 35px; /* Reduz a altura do botão */
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .secao-feed-publicacao {
+    height: 80px; /* Reduz a altura da seção */
+    padding-left: 0.5rem; /* Reduz o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 12%; /* Aumenta o tamanho da imagem */
+    height: 35px; /* Reduz a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 18%; /* Aumenta o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 0.3rem; /* Reduz o padding interno */
+    margin-right: 15px; /* Reduz a margem à direita */
+  }
+
+  .texto-publicacao {
+    height: 30px; /* Reduz a altura do botão */
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .secao-feed-publicacao {
+    height: 70px; /* Reduz a altura da seção */
+    padding-left: 0.4rem; /* Reduz o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 15%; /* Aumenta o tamanho da imagem */
+    height: 30px; /* Reduz a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 20%; /* Aumenta o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 0.2rem; /* Reduz o padding interno */
+    margin-right: 10px; /* Reduz a margem à direita */
+  }
+
+  .texto-publicacao {
+    height: 25px; /* Reduz a altura do botão */
+    font-size: 10px; /* Reduz o tamanho da fonte */
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .secao-feed-publicacao {
+    height: 75px; /* Ajusta a altura da seção */
+    padding-left: 0.5rem; /* Ajusta o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 13%; /* Ajusta o tamanho da imagem */
+    height: 32px; /* Ajusta a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 18%; /* Ajusta o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 0.25rem; /* Ajusta o padding interno */
+    margin-right: 12px; /* Ajusta a margem à direita */
+  }
+
+  .texto-publicacao {
+    height: 28px; /* Ajusta a altura do botão */
+    font-size: 11px; /* Ajusta o tamanho da fonte */
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .secao-feed-publicacao {
+    height: 80px; /* Ajusta a altura da seção */
+    padding-left: 0.6rem; /* Ajusta o espaçamento à esquerda */
+  }
+
+  .img-user {
+    width: 12%; /* Ajusta o tamanho da imagem */
+    height: 35px; /* Ajusta a altura da imagem */
+  }
+
+  .img-user.padrao-feed {
+    width: 17%; /* Ajusta o tamanho da imagem padrão */
+  }
+
+  .secao-publicacao {
+    padding: 0.3rem; /* Ajusta o padding interno */
+    margin-right: 15px; /* Ajusta a margem à direita */
+  }
+
+  .texto-publicacao {
+    height: 30px; /* Ajusta a altura do botão */
+    font-size: 12px; /* Ajusta o tamanho da fonte */
+  }
 }

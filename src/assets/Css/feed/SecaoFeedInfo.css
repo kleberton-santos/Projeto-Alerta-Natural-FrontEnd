@@ -69,3 +69,142 @@
   background-color: #ccc; /* Cor de fundo cinza */
   cursor: not-allowed; /* Cursor de não permitido */
 }
+
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .seca-feed-info {
+    width: 60%; /* Reduz a largura para melhor aproveitamento do espaço */
+    margin-left: 20%; /* Centraliza o container */
+    padding: 30px; /* Aumenta o padding para melhor espaçamento */
+  }
+
+  .secao-feed-text-info {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 15%; /* Reduz o tamanho da imagem */
+    height: 50px; /* Aumenta a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 120px; /* Aumenta a largura do botão */
+    font-size: 18px; /* Aumenta o tamanho da fonte do botão */
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .seca-feed-info {
+    width: 90%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 5%; /* Centraliza o container */
+    padding: 15px; /* Ajusta o padding */
+  }
+
+  .secao-feed-text-info {
+    font-size: 18px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 20%; /* Aumenta o tamanho da imagem */
+    height: 40px; /* Aumenta a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 90px; /* Reduz a largura do botão */
+    font-size: 14px; /* Reduz o tamanho da fonte do botão */
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .seca-feed-info {
+    width: 95%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 2.5%; /* Centraliza o container */
+    padding: 10px; /* Reduz o padding */
+    height: auto; /* Ajusta a altura automaticamente */
+  }
+
+  .secao-feed-text-info {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 25%; /* Aumenta o tamanho da imagem */
+    height: 30px; /* Reduz a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 80px; /* Reduz a largura do botão */
+    font-size: 12px; /* Reduz o tamanho da fonte do botão */
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .seca-feed-info {
+    width: 100%; /* Ocupa toda a largura disponível */
+    margin-left: 0; /* Remove a margem esquerda */
+    padding: 5px; /* Reduz o padding */
+  }
+
+  .secao-feed-text-info {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 30%; /* Aumenta o tamanho da imagem */
+    height: 25px; /* Reduz a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 70px; /* Reduz a largura do botão */
+    font-size: 10px; /* Reduz o tamanho da fonte do botão */
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .seca-feed-info {
+    width: 95%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 2.5%; /* Centraliza o container */
+    padding: 10px; /* Ajusta o padding */
+  }
+
+  .secao-feed-text-info {
+    font-size: 15px; /* Ajusta o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 25%; /* Aumenta o tamanho da imagem */
+    height: 30px; /* Aumenta a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 75px; /* Ajusta a largura do botão */
+    font-size: 11px; /* Ajusta o tamanho da fonte do botão */
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .seca-feed-info {
+    width: 90%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 5%; /* Centraliza o container */
+    padding: 15px; /* Ajusta o padding */
+  }
+
+  .secao-feed-text-info {
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+  }
+
+  .topo-info img {
+    width: 20%; /* Aumenta o tamanho da imagem */
+    height: 35px; /* Aumenta a altura da imagem */
+  }
+
+  .btn-seguir {
+    width: 80px; /* Ajusta a largura do botão */
+    font-size: 12px; /* Ajusta o tamanho da fonte do botão */
+  }
+}

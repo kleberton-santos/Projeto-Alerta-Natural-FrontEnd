@@ -109,31 +109,26 @@
 .acoes-publicacao {
   display: flex;
   justify-content: space-between; /* Distribui os ícones igualmente com espaçamento entre eles */
-
 }
 
 .upload-buttons-left {
   display: flex;
   gap: 15px; /* Espaçamento entre os botões */
-  
 }
 
 .upload-buttons-comentario {
   display: flex;
   position: absolute;
-;
-    /* margin-bottom: -42px; */
-    margin-top: 103px;;
-    margin-left: 55px;
+  margin-top: 103px;
+  margin-left: 55px;
 }
-
 
 .upload-buttons-right {
   position: relative;
-    gap: 15px;
-    margin-left: 100%;
-    left: 70%;
-    display: flex;
+  gap: 15px;
+  margin-left: 100%;
+  left: 70%;
+  display: flex;
 }
 
 .upload-buttons-modalEdit {
@@ -159,12 +154,11 @@
   height: 50px;
   background-color: #1a2035;
   border-radius: 50%;
-  display: flex
-;
+  display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3sease, box-shadow 0.3sease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .upload-labelEdit {
@@ -188,10 +182,10 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
   left: 167%;
-    position: relative;
-    margin-top: -5px;
+  position: relative;
+  margin-top: -5px;
 }
 
 .upload-label:hover {
@@ -200,29 +194,24 @@
 
 .upload-label-comentario-left {
   position: fixed;
-  /* bottom: 20px; */
   left: 723px;
-  /* background-color: white; */
-  /* padding: 10px; */
-  border-radius: 5px;
   margin-top: 3px;
 }
 
 .botao-comentar {
-  display: flex
-  ;
-      margin-left: 50px;
-      margin-top: -61px;
+  display: flex;
+  margin-left: 50px;
+  margin-top: -61px;
 }
 
 .curtida-contagem {
   position: absolute;
-  top: -8px; /* Ajuste fino para posicionar o contador */
-  right: -8px; /* Ajuste fino para posicionar o contador */
+  top: -8px;
+  right: -8px;
   font-size: 12px;
   font-weight: bold;
   color: red;
-  background-color: white; /* Fundo para destacar o contador */
+  background-color: white;
   padding: 2px 5px;
   border-radius: 10px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
@@ -237,20 +226,18 @@
 }
 
 .upload-icon-line {
-  color: #ffffff; /* Cor do ícone */
-  font-size: 16px; /* Tamanho fixo para ambos os ícones */
-  width: 16px; /* Largura fixa para evitar deslocamento */
-  height: 16px; /* Altura fixa para evitar deslocamento */
+  color: #ffffff;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
-
 
 .upload-icon-container-line {
   position: relative;
-  width: 35px; /* Tamanho fixo para o contêiner */
+  width: 35px;
   height: 35px;
   background-color: #1a2035;
   border-radius: 50%;
@@ -262,14 +249,13 @@
 }
 
 .upload-icon-container-line-comentario {
-  display: flex  ;
+  display: flex;
   margin-top: 30px;
-
 }
 
 .nao-curtido {
   position: relative;
-  width: 35px; /* Tamanho fixo para o contêiner */
+  width: 35px;
   height: 35px;
   top: 2px;
   background-color: #1a2035;
@@ -279,12 +265,11 @@
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
- 
 }
 
 .curtido {
   position: relative;
-  width: 35px; /* Tamanho fixo para o contêiner */
+  width: 35px;
   height: 35px;
   background-color: #1a2035;
   border-radius: 50%;
@@ -293,80 +278,59 @@
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
 }
-
 
 .fa-heart-broken {
   margin-top: 45px;
-  
 }
 
 .upload-text {
-  margin-top: 5px; /* Espaçamento entre o ícone e o texto */
-  font-size: 14px; /* Tamanho do texto */
-  color: #ffffff; /* Cor do texto */
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ffffff;
 }
 
 .upload-text-curtir {
   display: flex;
-    margin-top: 11px;
-    font-size: 14px;
-    text-align: center;
+  margin-top: 11px;
+  font-size: 14px;
+  text-align: center;
 }
 
 /* Linha divisória */
 .linha-divisoria {
   width: 100%;
   height: 1px;
-  background-color: #3a3f58; /* Cor da linha */
-  margin: 15px 0; /* Espaçamento acima e abaixo da linha */
+  background-color: #3a3f58;
+  margin: 15px 0;
 }
 
 .comentarios {
   display: flex;
-  flex-direction: column; /* Empilha os comentários na vertical */
-  gap: 10px; /* Espaço entre os comentários */
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   margin-top: 20px;
-
   border-radius: 10px;
-  
 }
 
 .comentario {
-  display: flex
-  ;
-      align-items: center;
-      margin-bottom: 10px;
-      width: 100%;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: center;
-
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
   border-radius: 10px;
   background-color: #212839;
 }
 
 .comentarios h5 {
   display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    font-weight: bold;
-}
-.user-image-comentario {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-
-
-.comentario {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
 .user-image-comentario {
@@ -379,10 +343,6 @@
 .comentario-texto {
   flex: 1;
   margin-top: 5px;
-}
-
-.comentario-texto p {
-
 }
 
 .acoes-comentario {
@@ -421,16 +381,301 @@
 }
 
 .form-control-comentario {
-    border: 1px solid #444;
-    border-radius: 5px;
-    padding: 0.5rem;
-    width: 250%;
-    margin-bottom: 1rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 250%;
+  margin-bottom: 1rem;
 }
 
 .button-comentar {
   width: 250%;
   height: 90% !important;
   margin-bottom: -10px;
+}
 
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .secao-feed-time-line {
+    gap: 30px; /* Aumenta o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 20px; /* Aumenta o padding */
+  }
+
+  .user-image {
+    width: 60px; /* Aumenta o tamanho da imagem do usuário */
+    height: 60px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 80%; /* Aumenta o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 500px; /* Aumenta a largura do modal */
+  }
+
+  .upload-icon-container-line {
+    width: 40px; /* Aumenta o tamanho dos ícones */
+    height: 40px;
+  }
+
+  .upload-icon-line {
+    font-size: 18px; /* Aumenta o tamanho dos ícones */
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .secao-feed-time-line {
+    gap: 15px; /* Reduz o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 10px; /* Reduz o padding */
+  }
+
+  .user-image {
+    width: 45px; /* Reduz o tamanho da imagem do usuário */
+    height: 45px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 60%; /* Reduz o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 350px; /* Reduz a largura do modal */
+  }
+
+  .upload-icon-container-line {
+    width: 30px; /* Reduz o tamanho dos ícones */
+    height: 30px;
+  }
+
+  .upload-icon-line {
+    font-size: 14px; /* Reduz o tamanho dos ícones */
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .secao-feed-time-line {
+    gap: 10px; /* Reduz o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 8px; /* Reduz o padding */
+  }
+
+  .user-image {
+    width: 40px; /* Reduz o tamanho da imagem do usuário */
+    height: 40px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 50%; /* Reduz o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 90%; /* Aumenta a largura do modal para ocupar mais espaço */
+  }
+
+  .upload-icon-container-line {
+    width: 25px; /* Reduz o tamanho dos ícones */
+    height: 25px;
+  }
+
+  .upload-icon-line {
+    font-size: 12px; /* Reduz o tamanho dos ícones */
+  }
+
+  .upload-buttons-right {
+    left: 60%; /* Ajusta a posição dos botões de ação */
+  }
+
+  .upload-label-comentarios {
+    left: 140%; /* Ajusta a posição do botão de comentários */
+  }
+
+  .form-control-comentario {
+    width: 200%; /* Ajusta a largura da caixa de comentário */
+  }
+
+  .button-comentar {
+    width: 200%; /* Ajusta a largura do botão de comentar */
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .secao-feed-time-line {
+    gap: 8px; /* Reduz o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 6px; /* Reduz o padding */
+  }
+
+  .user-image {
+    width: 35px; /* Reduz o tamanho da imagem do usuário */
+    height: 35px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 11px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 45%; /* Reduz o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 95%; /* Aumenta a largura do modal para ocupar mais espaço */
+  }
+
+  .upload-icon-container-line {
+    width: 20px; /* Reduz o tamanho dos ícones */
+    height: 20px;
+  }
+
+  .upload-icon-line {
+    font-size: 10px; /* Reduz o tamanho dos ícones */
+  }
+
+  .upload-buttons-right {
+    left: 50%; /* Ajusta a posição dos botões de ação */
+  }
+
+  .upload-label-comentarios {
+    left: 120%; /* Ajusta a posição do botão de comentários */
+  }
+
+  .form-control-comentario {
+    width: 180%; /* Ajusta a largura da caixa de comentário */
+  }
+
+  .button-comentar {
+    width: 180%; /* Ajusta a largura do botão de comentar */
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .secao-feed-time-line {
+    gap: 10px; /* Reduz o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 8px; /* Reduz o padding */
+  }
+
+  .user-image {
+    width: 40px; /* Reduz o tamanho da imagem do usuário */
+    height: 40px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 50%; /* Reduz o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 90%; /* Aumenta a largura do modal para ocupar mais espaço */
+  }
+
+  .upload-icon-container-line {
+    width: 25px; /* Reduz o tamanho dos ícones */
+    height: 25px;
+  }
+
+  .upload-icon-line {
+    font-size: 12px; /* Reduz o tamanho dos ícones */
+  }
+
+  .upload-buttons-right {
+    left: 60%; /* Ajusta a posição dos botões de ação */
+  }
+
+  .upload-label-comentarios {
+    left: 140%; /* Ajusta a posição do botão de comentários */
+  }
+
+  .form-control-comentario {
+    width: 200%; /* Ajusta a largura da caixa de comentário */
+  }
+
+  .button-comentar {
+    width: 200%; /* Ajusta a largura do botão de comentar */
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .secao-feed-time-line {
+    gap: 12px; /* Reduz o espaçamento entre as publicações */
+  }
+
+  .item {
+    padding: 10px; /* Reduz o padding */
+  }
+
+  .user-image {
+    width: 45px; /* Reduz o tamanho da imagem do usuário */
+    height: 45px;
+  }
+
+  .texto-publicacao-timeline {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-feed img {
+    max-width: 60%; /* Reduz o tamanho das imagens */
+  }
+
+  .modal-conteudo {
+    width: 85%; /* Aumenta a largura do modal para ocupar mais espaço */
+  }
+
+  .upload-icon-container-line {
+    width: 30px; /* Reduz o tamanho dos ícones */
+    height: 30px;
+  }
+
+  .upload-icon-line {
+    font-size: 14px; /* Reduz o tamanho dos ícones */
+  }
+
+  .upload-buttons-right {
+    left: 70%; /* Ajusta a posição dos botões de ação */
+  }
+
+  .upload-label-comentarios {
+    left: 160%; /* Ajusta a posição do botão de comentários */
+  }
+
+  .form-control-comentario {
+    width: 220%; /* Ajusta a largura da caixa de comentário */
+  }
+
+  .button-comentar {
+    width: 220%; /* Ajusta a largura do botão de comentar */
+  }
 }

@@ -67,3 +67,183 @@
   overflow: hidden; /* Esconde o texto que ultrapassar */
   text-overflow: ellipsis; /* Adiciona "..." se o nome for muito longo */
 }
+
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .secao-feed-amigos-container {
+    height: 500px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 24px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(4, 1fr); /* Mais colunas para telas maiores */
+    gap: 20px;
+    max-height: 400px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 100px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 16px;
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .secao-feed-amigos-container {
+    height: 400px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 20px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-height: 300px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 70px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 14px;
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .secao-feed-amigos-container {
+    height: 350px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 18px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(2, 1fr); /* Menos colunas para telas pequenas */
+    gap: 8px;
+    max-height: 250px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 60px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 12px;
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .secao-feed-amigos-container {
+    height: 300px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 16px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    max-height: 200px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 50px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 10px;
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .secao-feed-amigos-container {
+    height: 320px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 17px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    max-height: 220px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 55px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 11px;
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .secao-feed-amigos-container {
+    height: 340px;
+  }
+
+  .secao-feed-amigos-titulo {
+    font-size: 18px;
+  }
+
+  .secao-feed-amigos-galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    max-height: 240px;
+  }
+
+  .secao-feed-amigos-item {
+    width: 60px;
+  }
+
+  .secao-feed-amigos-item img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .secao-feed-amigos-nome {
+    font-size: 12px;
+  }
+}

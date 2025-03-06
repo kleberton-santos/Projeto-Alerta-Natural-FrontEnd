@@ -22,7 +22,7 @@
 .galeria-fotos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5px ; /* Espaçamento reduzido entre os quadros */
+  gap: 5px; /* Espaçamento reduzido entre os quadros */
   padding: 10px;
   overflow-y: scroll; /* Permite rolagem */
   max-height: 300px;
@@ -52,4 +52,130 @@
   width: 100%; /* Ocupa 100% da largura do quadro */
   height: 100%; /* Ocupa 100% da altura do quadro */
   object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
+
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .seca-feed-time-line {
+    height: 500px; /* Aumenta a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(4, 1fr); /* Mais colunas para telas maiores */
+    gap: 10px; /* Aumenta o espaçamento entre os quadros */
+    max-height: 400px; /* Aumenta a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 120px; /* Aumenta a altura dos itens */
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .seca-feed-time-line {
+    height: 450px; /* Ajusta a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 18px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(3, 1fr); /* Mantém 3 colunas */
+    gap: 8px; /* Ajusta o espaçamento entre os quadros */
+    max-height: 350px; /* Ajusta a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 90px; /* Reduz a altura dos itens */
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .seca-feed-time-line {
+    height: 350px; /* Reduz a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(2, 1fr); /* Reduz para 2 colunas */
+    gap: 5px; /* Mantém o espaçamento reduzido */
+    max-height: 250px; /* Reduz a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 80px; /* Reduz a altura dos itens */
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .seca-feed-time-line {
+    height: 300px; /* Reduz a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    gap: 4px; /* Reduz o espaçamento entre os quadros */
+    max-height: 200px; /* Reduz a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 70px; /* Reduz a altura dos itens */
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .seca-feed-time-line {
+    height: 320px; /* Ajusta a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 15px; /* Ajusta o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    gap: 5px; /* Ajusta o espaçamento entre os quadros */
+    max-height: 220px; /* Ajusta a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 75px; /* Ajusta a altura dos itens */
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .seca-feed-time-line {
+    height: 340px; /* Ajusta a altura do container */
+  }
+
+  .secao-feed-text-foto {
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+  }
+
+  .galeria-fotos {
+    grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas */
+    gap: 6px; /* Ajusta o espaçamento entre os quadros */
+    max-height: 240px; /* Ajusta a altura máxima da galeria */
+  }
+
+  .foto-item {
+    height: 80px; /* Ajusta a altura dos itens */
+  }
 }

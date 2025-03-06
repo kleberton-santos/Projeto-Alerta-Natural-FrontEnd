@@ -476,19 +476,13 @@ const removerComentario = async (idPublicacao, idComentario) => {
               </div>
               <span className="upload-text-curtir">
                 {curtidas[publicacao.idPublicacao] ? "Deixar de curtir" : "Curtir"}
-              </span>
-
-              
-
-              
+              </span>              
         </div>
-
-  
 
       {/* Botão de comentários */}
       <div className="upload-label-comentarios" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
         <div className="upload-icon-container-line">
-          <i className="fas fa-comment upload-icon-line"></i>
+          <i className="fas fa-comments upload-icon-line"></i>
         </div>
         <span className="upload-text">
           {mostrarListaComentarios[publicacao.idPublicacao] ? "Comentários" : "Comentários"}
@@ -497,26 +491,26 @@ const removerComentario = async (idPublicacao, idComentario) => {
     </div>
   )}
 
-  {isPublicacaoDoUsuario && (
-    <div className="upload-buttons-right">
-      {/* Botão de remover publicação */}
-      <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
-        <div className="upload-icon-container-line">
-          <i className="fas fa-trash upload-icon-line"></i>
-        </div>
-        <span className="upload-text">Remover</span>
-      </div>
+                {isPublicacaoDoUsuario && (
+                  <div className="upload-buttons-right">
+                    {/* Botão de remover publicação */}
+                    <div className="upload-label" onClick={() => handleRemoverPublicacao(publicacao.idPublicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-trash upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">Remover</span>
+                    </div>
 
-      {/* Botão de editar publicação */}
-      <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
-        <div className="upload-icon-container-line">
-          <i className="fas fa-edit upload-icon-line"></i>
-        </div>
-        <span className="upload-text">Editar</span>
-      </div>
-    </div>
-  )}
-</div>
+                    {/* Botão de editar publicação */}
+                    <div className="upload-label" onClick={() => abrirModalEdicao(publicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-edit upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">Editar</span>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Lista de comentários (exibida apenas se mostrarListaComentarios for true) */}
               {mostrarListaComentarios[publicacao.idPublicacao] && (
@@ -578,44 +572,38 @@ const removerComentario = async (idPublicacao, idComentario) => {
               )}
 
 
-                                    {/* Botão para mostrar/ocultar a caixa de comentário */}
-{userId && (
-  <div className="botao-comentar">
-    <div className="" onClick={() => toggleCaixaComentario(publicacao.idPublicacao)}>
-      <div className="upload-icon-container-line">
-        <i className="fas fa-comment upload-icon-line"></i>
-      </div>
-      <span className="upload-text">
-        {mostrarCaixaComentario[publicacao.idPublicacao] ? "Comentar" : "Comentar"}
-      </span>
-    </div>
-  </div>
-)}
-
-
-
-  
+              {/* Botão para mostrar/ocultar a caixa de comentário */}
+                {userId && (
+                  <div className="botao-comentar">
+                    <div className="" onClick={() => toggleCaixaComentario(publicacao.idPublicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-comment upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">
+                        {mostrarCaixaComentario[publicacao.idPublicacao] ? "Comentar" : "Comentar"}
+                      </span>
+                    </div>
+                  </div>
+                )}
 
              {/* Caixa de comentário (exibida apenas se mostrarCaixaComentario for true) */}
-{mostrarCaixaComentario[publicacao.idPublicacao] && (
-  <div className="novo-comentario">
-    <textarea
-      className="form-control-comentario"
-      rows="2"
-      placeholder="Adicione um comentário..."
-      value={novoComentario}
-      onChange={(e) => setNovoComentario(e.target.value)}
-    ></textarea>
-    <button
-      className="button-comentar btn btn-primary btn-sm"
-      onClick={() => adicionarComentario(publicacao.idPublicacao)}
-    >
-      Comentar
-    </button>
-  </div>
-)}
-
-            
+            {mostrarCaixaComentario[publicacao.idPublicacao] && (
+              <div className="novo-comentario">
+                <textarea
+                  className="form-control-comentario"
+                  rows="2"
+                  placeholder="Adicione um comentário..."
+                  value={novoComentario}
+                  onChange={(e) => setNovoComentario(e.target.value)}
+                ></textarea>
+                <button
+                  className="button-comentar btn btn-primary btn-sm"
+                  onClick={() => adicionarComentario(publicacao.idPublicacao)}
+                >
+                  Comentar
+                </button>
+              </div>
+            )}
             </div>
           </div>
         );

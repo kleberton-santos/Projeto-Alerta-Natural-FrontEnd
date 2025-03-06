@@ -16,7 +16,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
-  color: white;;
+  color: white;
 }
 
 /* Estilo para o topo da seção, onde a foto e o nome do usuário são exibidos */
@@ -44,7 +44,6 @@
   color: aliceblue;
   margin-left: -10px;
   margin-top: 8px;
-
 }
 
 /* Estilo para os links de edição de perfil e galeria de fotos */
@@ -61,4 +60,165 @@
   text-decoration: none;
   color: white;
   margin-bottom: 0.5rem;
+}
+
+/* Responsivo para monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .seca-feed-config {
+    width: 60%; /* Reduz a largura para melhor aproveitamento do espaço */
+    margin-left: 20%; /* Centraliza o container */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 10%; /* Reduz o tamanho da imagem */
+    height: 50px; /* Aumenta a altura da imagem */
+    margin-left: 30%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 20px; /* Aumenta o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 18px; /* Aumenta o tamanho da fonte dos links */
+  }
+}
+
+/* Responsivo para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .seca-feed-config {
+    width: 90%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 5%; /* Centraliza o container */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 18px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 20%; /* Aumenta o tamanho da imagem */
+    height: 40px; /* Aumenta a altura da imagem */
+    margin-left: 20%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 14px; /* Reduz o tamanho da fonte dos links */
+  }
+}
+
+/* Responsivo para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .seca-feed-config {
+    width: 95%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 2.5%; /* Centraliza o container */
+    height: auto; /* Ajusta a altura automaticamente */
+    padding: 10px; /* Adiciona padding para melhor espaçamento */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 25%; /* Aumenta o tamanho da imagem */
+    height: 30px; /* Reduz a altura da imagem */
+    margin-left: 15%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 12px; /* Reduz o tamanho da fonte dos links */
+  }
+}
+
+/* Responsivo para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .seca-feed-config {
+    width: 100%; /* Ocupa toda a largura disponível */
+    margin-left: 0; /* Remove a margem esquerda */
+    padding: 5px; /* Adiciona padding para melhor espaçamento */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 30%; /* Aumenta o tamanho da imagem */
+    height: 25px; /* Reduz a altura da imagem */
+    margin-left: 10%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 10px; /* Reduz o tamanho da fonte dos links */
+  }
+}
+
+/* Responsivo para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .seca-feed-config {
+    width: 95%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 2.5%; /* Centraliza o container */
+    padding: 10px; /* Adiciona padding para melhor espaçamento */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 15px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 25%; /* Aumenta o tamanho da imagem */
+    height: 30px; /* Reduz a altura da imagem */
+    margin-left: 15%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 13px; /* Reduz o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 11px; /* Reduz o tamanho da fonte dos links */
+  }
+}
+
+/* Responsivo para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .seca-feed-config {
+    width: 90%; /* Aumenta a largura para melhor aproveitamento do espaço */
+    margin-left: 5%; /* Centraliza o container */
+    padding: 15px; /* Adiciona padding para melhor espaçamento */
+  }
+
+  .secao-feed-text-amigo {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .topo-config img {
+    width: 20%; /* Aumenta o tamanho da imagem */
+    height: 35px; /* Aumenta a altura da imagem */
+    margin-left: 20%; /* Ajusta o alinhamento */
+  }
+
+  .login-config {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .link-custom {
+    font-size: 12px; /* Reduz o tamanho da fonte dos links */
+  }
 }

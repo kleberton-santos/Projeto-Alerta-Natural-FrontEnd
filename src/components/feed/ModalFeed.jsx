@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import "../../assets/Css/feed/SecaoModal.css";
+import "../../assets/Css/feed/SecaoModal.css"; // Importação do arquivo CSS
 import axios from "axios";
 
 const ModalFeed = ({ onPublicacaoCriada }) => {
+  // Estados para armazenar o texto, fotos, vídeos e suas pré-visualizações
   const [texto, setTexto] = useState("");
   const [fotos, setFotos] = useState([]);
   const [videos, setVideos] = useState([]);
   const [previewFotos, setPreviewFotos] = useState([]); // URLs temporários para pré-visualização de fotos
   const [previewVideos, setPreviewVideos] = useState([]); // URLs temporários para pré-visualização de vídeos
+
+  // Obtém o usuário logado do localStorage
   const user = JSON.parse(localStorage.getItem("user"));
 
   // Função para lidar com o upload de arquivos (imagens e vídeos)
@@ -32,11 +35,13 @@ const ModalFeed = ({ onPublicacaoCriada }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Verifica se o usuário está logado
     if (!user || !user.id) {
       alert("Usuário não está logado. Faça login para criar uma publicação.");
       return;
     }
 
+    // Cria o objeto de dados da publicação
     const publicacaoData = {
       idUsuario: user.id,
       texto: texto,
@@ -45,6 +50,7 @@ const ModalFeed = ({ onPublicacaoCriada }) => {
     };
 
     try {
+      // Envia a publicação para o servidor
       const response = await axios.post("http://localhost:8080/publicacoes", publicacaoData, {
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +96,6 @@ const ModalFeed = ({ onPublicacaoCriada }) => {
         alert("Erro ao criar publicação");
       }
     } catch (error) {
-      console.error("Erro:", error);
       alert("Erro ao criar publicação");
     }
   };
