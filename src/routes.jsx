@@ -12,6 +12,9 @@ import GaleriaFoto from "./pages/GaleriaFoto";
 import Mapa from './mapa/Mapa'; 
 import NovaSenha from "./pages/NovaSenha";
 
+import Contato2 from "./pages/contato2";
+
+
 
 const AppRoutes = () => {
   return (
@@ -29,6 +32,7 @@ const AppRoutes = () => {
         <Route path="/galeriaFotos" element={<GaleriaFoto />} />
         <Route path="/mapa" element={<Mapa />} />
         <Route path="/redefinir-senha" element={<NovaSenha />} />
+        <Route path="/contato2" element={<Contato2 /> } />
       </Routes>
       </div>
     </BrowserRouter>

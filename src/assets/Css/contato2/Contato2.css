@@ -1,0 +1,208 @@
+/* Layout principal */
+.contato-container {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #212839;
+    flex-wrap: wrap;    
+    max-width: 100%;  /* Garante que o container não ultrapasse a tela */
+    width: 50%;
+}    
+    
+/* Layout do formulário e informações de contato */
+.contato-layout {
+    display:flex;
+    gap: 20px;
+    max-width: 100%;
+    width: 100%;
+    flex-wrap: wrap; /* Adicionado para melhor responsividade */
+    flex-direction: row; /* Organiza os itens em linhas*/
+    padding: 15px;
+    margin: 6% ;  
+}
+
+/* Formulário */
+.formulario-contato {
+    display:flex;
+    text-align: center;
+    background-color: #272c3ff5 ;
+    padding: 2em;
+    border-radius: 10px;
+    max-width: 100%;
+    flex-direction: column;
+    width: 100%;
+    color: rgb(236, 225, 225);
+    margin: 0 auto;
+}    
+
+/* Inputs e Textarea */
+.formulario-contato input,
+.formulario-contato textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px !important;
+    border: 1px solid #ccc;
+}
+
+/* Botão de envio */
+.formulario-contato button {
+    width: auto !important;
+    padding: 8px 20px !important;
+    margin-top: 10px;
+    background-color: #07629f;
+    color: #fcf8f8;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Modificando o botão no hover */
+.formulario-contato button:hover {
+    background-color: #217dbb;
+}
+
+/* Seção de informações de contato */
+.info-contato {
+    max-width: 100%;  color: #fcf8f8;
+    text-align: center;
+    margin-left: 0;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 12%;
+}
+
+/* Ajuste para o form-group */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Espaço entre os campos */
+    flex-direction: column; /* Ajusta os rótulos e campos para coluna */
+}
+
+/* Ajuste para o label */
+.form-group label {
+    width: 100%; /* Ajusta o rótulo para ocupar 100% em telas pequenas */
+    text-align: start;
+}
+
+/* Ajuste para o input */
+.form-group input {
+    flex: 1; /* Faz o input ocupar o restante do espaço */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.info-contato button {
+    padding: 10px;
+    background-color: #fcf8f8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Mapa */
+.mapa-container .ver-no-mapa {
+    background-color: #07629f !important;
+    color: #ffffff !important;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    width: auto; /* Para não ocupar 100% da largura */
+    max-width: 100px; /* Define um limite máximo */
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.mapa-container .ver-no-mapa:hover {
+    background-color: #217dbb !important;
+}
+.mapa-container {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.formulario-contato h2 {
+    font-size: 20px;
+}
+
+.info-contato p,
+.info-contato span {
+     font-size: 14px; /* Reduz o tamanho da fonte */
+ }
+
+.formulario-contato textarea {
+    font-size: 14px; /* Reduz o tamanho da fonte para melhor visualização */
+
+}
+
+.info-contato h2 {
+    font-size: 18px;
+
+}
+
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(213, 2, 2, 0.2);
+    z-index: 9999;
+    display: none;
+}
+
+.modal.active {
+    display: block;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(173, 209, 238, 0.5);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: gainsboro;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    display: flex;          /* Usando flexbox para centralizar */
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;     /* Alinha verticalmente */
+}
+
+.close-modal-btn:hover {
+    color: #2c2b2b;
+}
+
