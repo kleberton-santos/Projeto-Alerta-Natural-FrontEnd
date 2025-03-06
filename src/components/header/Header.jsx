@@ -8,9 +8,10 @@ import "../../assets/Css/header/logo.css";
 import PropTypes from "prop-types";
 
 const Header = ({ label }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Estado para armazenar os dados do usuário
   const navigate = useNavigate();
 
+  // Efeito para carregar os dados do usuário do localStorage e configurar o listener de atualização
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser) {
@@ -29,6 +30,7 @@ const Header = ({ label }) => {
     };
   }, []);
 
+  // Função para fazer logout
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -46,41 +48,52 @@ const Header = ({ label }) => {
 
   return (
     <div className="header-principal position-relative">
+      {/* Banner do header */}
       <img
         src={bannerHeader}
         alt="Banner Header"
         className="header-banner img-fluid w-100"
       />
+
+      {/* Logo */}
       <div className="logo">
         <img src={logo} alt="Logotipo alerta natural" className="logo-banner" />
       </div>
+
+      {/* Label principal */}
       <div className="label-principal position-absolute top-50 start-50 translate-middle text-white text-center fs-1 fw-bold">
         <label htmlFor="">{label}</label>
       </div>
+
+      {/* Área de login e perfil do usuário */}
       <div className="login-principal position-absolute top-50 end-0 translate-middle-y d-flex align-items-center gap-2 me-3">
         {user ? (
           <>
-            {/* Exibe a foto do usuário ou a imagem padrão */}
+            {/* Foto do usuário ou imagem padrão */}
             <img
-  src={userFoto}
-  alt="Foto do usuário"
-  className="login-circle"
-  onError={(e) => {
-    e.target.src = "http://localhost:8080/fotos/padrao";
-    e.target.classList.add("foto-padrao"); // Adiciona a classe quando a imagem padrão for carregada
-  }}
-  onLoad={(e) => {
-    if (e.target.src.includes("padrao")) {
-      e.target.classList.add("foto-padrao");
-    } else {
-      e.target.classList.remove("foto-padrao");
-    }
-  }}
-/>
+              src={userFoto}
+              alt="Foto do usuário"
+              className="login-circle"
+              onError={(e) => {
+                e.target.src = "http://localhost:8080/fotos/padrao";
+                e.target.classList.add("foto-padrao"); // Adiciona classe para imagem padrão
+              }}
+              onLoad={(e) => {
+                if (e.target.src.includes("padrao")) {
+                  e.target.classList.add("foto-padrao");
+                } else {
+                  e.target.classList.remove("foto-padrao");
+                }
+              }}
+            />
+
+            {/* Nome do usuário */}
             <span className="text-light fs-5">{user.nome}</span>
+
+            {/* Dropdown para editar perfil e logout */}
             <Dropdown>
               <Dropdown.Toggle variant="link" className="text-light border-0">
-                {/* Removida a seta extra */}
+                {/* Ícone do dropdown (pode ser adicionado aqui) */}
               </Dropdown.Toggle>
               <Dropdown.Menu
                 style={{
@@ -108,6 +121,7 @@ const Header = ({ label }) => {
             </Dropdown>
           </>
         ) : (
+          // Link para a página de login
           <Link to="/login" className="login-text text-light text-decoration-none fs-5">
             Faça seu Login
           </Link>
@@ -117,6 +131,7 @@ const Header = ({ label }) => {
   );
 };
 
+// Validação das props
 Header.propTypes = {
   label: PropTypes.string.isRequired,
 };

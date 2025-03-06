@@ -52,3 +52,24 @@
 .app-container::after {
     animation: glow 3s infinite alternate;
 }
+
+/* Responsividade: Oculta as faixas laterais em telas menores */
+@media (max-width: 768px) {
+    .app-container::before,
+    .app-container::after {
+        display: none; /* Oculta as faixas laterais */
+    }
+
+    .app-container {
+        padding-left: 2%; /* Reduz o padding para telas menores */
+        padding-right: 2%;
+    }
+}
+
+/* Ajustes para telas muito pequenas (ex.: smartphones pequenos) */
+@media (max-width: 480px) {
+    .app-container {
+        padding-left: 1%; /* Reduz ainda mais o padding */
+        padding-right: 1%;
+    }
+}

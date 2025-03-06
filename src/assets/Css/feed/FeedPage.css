@@ -90,3 +90,125 @@
 .content-amigos {
   height: 400px;
 }
+
+/* Media Queries para responsividade */
+
+/* Monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .container-principal {
+    padding: 3% 20%; /* Aumenta o padding para telas maiores */
+  }
+
+  .publicacoes-titulo {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 1000px; /* Aumenta a altura da seção de publicações */
+  }
+
+  .SecaoBar {
+    max-width: 1400px; /* Aumenta a largura máxima da barra de busca */
+  }
+}
+
+
+
+/* Tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .container-principal {
+    padding: 3% 5%; /* Reduz o padding para tablets */
+  }
+
+  .publicacoes-titulo {
+    font-size: 20px; /* Mantém o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 800px; /* Reduz a altura da seção de publicações */
+  }
+
+  .SecaoBar {
+    max-width: 900px; /* Reduz a largura máxima da barra de busca */
+  }
+}
+
+/* Telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .container-principal {
+    padding: 3% 2%; /* Reduz o padding para telas pequenas */
+  }
+
+  .publicacoes-titulo {
+    font-size: 18px; /* Reduz o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 700px; /* Reduz a altura da seção de publicações */
+  }
+
+  .SecaoBar {
+    max-width: 100%; /* A barra de busca ocupa toda a largura */
+  }
+
+  .login-prompt p {
+    font-size: 16px; /* Reduz o tamanho da fonte do prompt de login */
+  }
+}
+
+/* Dispositivos móveis pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .container-principal {
+    padding: 3% 1%; /* Reduz ainda mais o padding */
+  }
+
+  .publicacoes-titulo {
+    font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 600px; /* Reduz a altura da seção de publicações */
+  }
+
+  .login-prompt p {
+    font-size: 14px; /* Reduz o tamanho da fonte do prompt de login */
+  }
+}
+
+/* Dispositivos móveis médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .container-principal {
+    padding: 3% 2%; /* Ajusta o padding */
+  }
+
+  .publicacoes-titulo {
+    font-size: 17px; /* Ajusta o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 650px; /* Ajusta a altura da seção de publicações */
+  }
+
+  .login-prompt p {
+    font-size: 15px; /* Ajusta o tamanho da fonte do prompt de login */
+  }
+}
+
+/* Dispositivos móveis grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .container-principal {
+    padding: 3% 3%; /* Ajusta o padding */
+  }
+
+  .publicacoes-titulo {
+    font-size: 18px; /* Ajusta o tamanho da fonte */
+  }
+
+  .content-pubicacoes {
+    height: 700px; /* Ajusta a altura da seção de publicações */
+  }
+
+  .login-prompt p {
+    font-size: 16px; /* Ajusta o tamanho da fonte do prompt de login */
+  }
+}

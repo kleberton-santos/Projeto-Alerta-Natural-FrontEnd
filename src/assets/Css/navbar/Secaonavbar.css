@@ -1,3 +1,4 @@
+/* Estilos gerais da navbar */
 .secao-navbar {
     width: 100%;
     height: 50px;
@@ -8,21 +9,118 @@
     justify-content: center;
     position: relative;
     z-index: 100;
-}
-
-.secao-navbar nav {
+  }
+  
+  /* Estilos para os links da navbar */
+  .secao-navbar .nav-links {
     display: flex;
     gap: 130px;
-}
-
-.secao-navbar a {
+  }
+  
+  .secao-navbar a {
     text-decoration: none;
     color: white;
     font-size: 17px;
     padding: 5px 10px;
     transition: all 0.3s ease;
-}
-
-.secao-navbar a:hover {
+  }
+  
+  .secao-navbar a:hover {
     opacity: 0.8; /* Efeito simples de opacidade */
-}
+  }
+  
+  /* Estilos para o botão do menu hamburguer */
+  .hamburguer-button {
+    display: none; /* Escondido por padrão */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px; /* Posiciona o botão à direita */
+  }
+  
+  /* Media Queries para responsividade */
+  
+  /* Monitores 4K (2560px e acima) */
+  @media (min-width: 2560px) {
+    .secao-navbar .nav-links {
+      gap: 200px; /* Aumenta o espaçamento entre os links */
+    }
+  
+    .secao-navbar a {
+      font-size: 20px; /* Aumenta o tamanho da fonte */
+    }
+  }
+  
+  /* Telas maiores (1024px e acima) */
+  @media (min-width: 1024px) {
+    .secao-navbar .nav-links {
+      gap: 150px; /* Ajusta o espaçamento entre os links */
+    }
+  
+    .secao-navbar a {
+      font-size: 18px; /* Ajusta o tamanho da fonte */
+    }
+  }
+  
+  /* Tablets (600px a 1024px) */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .secao-navbar .nav-links {
+      gap: 80px; /* Reduz o espaçamento entre os links */
+    }
+  
+    .secao-navbar a {
+      font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+  }
+  
+  /* Telas pequenas (até 600px) */
+  @media (max-width: 600px) {
+    .hamburguer-button {
+      display: block; /* Exibe o botão do menu hamburguer */
+    }
+  
+    .secao-navbar .nav-links {
+      display: none; /* Esconde os links por padrão */
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      top: 50px;
+      right: 0; /* Alinha o menu à direita */
+      width: 100%;
+      background-color: #246878;
+      padding: 10px 0;
+    }
+  
+    .secao-navbar .nav-links.open {
+      display: flex; /* Exibe os links quando o menu está aberto */
+    }
+  
+    .secao-navbar a {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  
+  /* Dispositivos móveis pequenos (320px a 375px) */
+  @media (min-width: 320px) and (max-width: 375px) {
+    .secao-navbar a {
+      font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+  }
+  
+  /* Dispositivos móveis médios (375px a 414px) */
+  @media (min-width: 375px) and (max-width: 414px) {
+    .secao-navbar a {
+      font-size: 15px; /* Ajusta o tamanho da fonte */
+    }
+  }
+  
+  /* Dispositivos móveis grandes (414px a 480px) */
+  @media (min-width: 414px) and (max-width: 480px) {
+    .secao-navbar a {
+      font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
+  }

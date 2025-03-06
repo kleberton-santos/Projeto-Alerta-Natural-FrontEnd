@@ -1,23 +1,33 @@
-
+/* Estilos gerais do header */
 .header-banner {
     height: 110px;
     object-fit: cover;
     filter: brightness(55%);
-    
+    width: 100%; /* Garante que a imagem ocupe toda a largura */
 }
+
 .header-principal {
     position: relative;
     z-index: 101; /* Maior que o z-index da .secao-navbar */
 }
 
 .label-principal {
-    height: auto; 
+    height: auto;
+    font-size: 1.5rem; /* Tamanho padrão para o label */
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .login-text {
     display: flex;
-    align-items: center;  /* Alinha os itens verticalmente no centro */
+    align-items: center; /* Alinha os itens verticalmente no centro */
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 
 .login-text:hover {
@@ -41,8 +51,184 @@
     margin-right: -10px;
 }
 
-
 .login-text span {
-    font-size: 1.25rem; /* Ajuste o tamanho da fonte conforme necessário */
-    margin-left: 10px; /* Pode ser usado para garantir que o texto não fique muito colado à imagem */
-  }
+    font-size: 1.25rem; /* Tamanho padrão para o texto */
+    margin-left: 10px; /* Espaçamento entre a imagem e o texto */
+}
+
+/* Media Queries para resoluções específicas */
+
+/* Monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+    .header-banner {
+        height: 150px; /* Aumenta a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 2.5rem; /* Aumenta o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 50px;
+        height: 50px; /* Aumenta o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 1.75rem; /* Aumenta o tamanho da fonte do texto */
+    }
+}
+
+/* Telas maiores (1024px e acima) */
+@media (min-width: 1024px) {
+    .header-banner {
+        height: 120px; /* Mantém a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 1.75rem; /* Aumenta o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 40px;
+        height: 40px; /* Aumenta o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 1.5rem; /* Aumenta o tamanho da fonte do texto */
+    }
+}
+
+/* Tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .header-banner {
+        height: 100px; /* Reduz a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 1.25rem; /* Reduz o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 30px;
+        height: 30px; /* Reduz o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 1rem; /* Reduz o tamanho da fonte do texto */
+    }
+}
+
+/* Telas pequenas (até 480px) */
+@media (max-width: 480px) {
+    .header-banner {
+        height: 80px; /* Reduz a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 1rem; /* Reduz o tamanho da fonte do label */
+        top: 40%; /* Ajusta a posição vertical */
+    }
+
+    .login-circle {
+        width: 25px;
+        height: 25px; /* Reduz o tamanho da foto do usuário */
+        margin-right: 5px; /* Reduz o espaçamento à direita */
+    }
+
+    .login-text span {
+        font-size: 0.875rem; /* Reduz o tamanho da fonte do texto */
+    }
+
+    .foto-padrao {
+        width: 50px !important;
+        height: 30px !important; /* Ajusta o tamanho da imagem padrão */
+    }
+
+    .login-principal {
+        right: 10px; /* Move o conteúdo de login mais para a direita */
+    }
+}
+
+/* Dispositivos móveis pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+    .header-banner {
+        height: 70px; /* Reduz ainda mais a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 0.875rem; /* Reduz o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 20px;
+        height: 20px; /* Reduz ainda mais o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 0.75rem; /* Reduz o tamanho da fonte do texto */
+    }
+
+    .logo {
+        width: 50px; /* Reduz o tamanho da logo */
+    }
+
+    .login-principal {
+        right: 5px; /* Move o conteúdo de login ainda mais para a direita */
+    }
+}
+
+/* Dispositivos móveis médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    .header-banner {
+        height: 75px; /* Ajusta a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 1rem; /* Mantém o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 25px;
+        height: 25px; /* Mantém o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 0.875rem; /* Mantém o tamanho da fonte do texto */
+    }
+
+    .logo {
+        width: 60px; /* Ajusta o tamanho da logo */
+    }
+
+    .login-principal {
+        right: 10px; /* Mantém o posicionamento do login */
+    }
+}
+
+/* Dispositivos móveis grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+    .header-banner {
+        height: 80px; /* Ajusta a altura do banner */
+    }
+
+    .label-principal {
+        font-size: 1.1rem; /* Aumenta levemente o tamanho da fonte do label */
+    }
+
+    .login-circle {
+        width: 30px;
+        height: 30px; /* Aumenta levemente o tamanho da foto do usuário */
+    }
+
+    .login-text span {
+        font-size: 1rem; /* Aumenta levemente o tamanho da fonte do texto */
+    }
+
+    .logo {
+        width: 70px; /* Aumenta levemente o tamanho da logo */
+    }
+
+    .login-principal {
+        right: 15px; /* Move o conteúdo de login mais para a direita */
+    }
+}

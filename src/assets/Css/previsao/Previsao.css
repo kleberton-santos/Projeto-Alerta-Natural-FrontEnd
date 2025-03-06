@@ -1,41 +1,42 @@
+/* Estilos globais */
 .previsao-principal {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Garante que o container principal ocupe a altura total da tela */
     background-color: #212839;
-}
-
-.content-previsao {
+  }
+  
+  .content-previsao {
     flex: 1; /* Faz o conteúdo expandir para preencher o espaço entre o header e o footer */
-}
-
-.footer-previsao {
+  }
+  
+  .footer-previsao {
     margin-top: auto; /* Empurra o footer para o final do container */
-}
-
-.busca-previsao {
+  }
+  
+  .busca-previsao {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
-}
-
-.previsao-busca {
+  }
+  
+  .previsao-busca {
     text-align: center;
     margin: 1.5rem;
-}
-
-div.previsao-busca div.busca-group input {
+  }
+  
+  div.previsao-busca div.busca-group input {
     width: 30rem;
     border-radius: 5px 0 0px 5px;
     outline: none;
     border: none;
     padding: 4px 10px;
     text-align: center;
-}
-
-button {
+  }
+  
+  button {
     text-decoration: none;
     color: white;
     font-size: 17px;
@@ -43,57 +44,57 @@ button {
     outline: none;
     border: none;
     background-color: inherit;
-}
-
-.button-busca {
+  }
+  
+  .button-busca {
     background-color: white;
-}
-
-/* Container principal */
-.previsao-container {
+  }
+  
+  /* Container principal */
+  .previsao-container {
     max-width: 65%;
     margin: 0 auto;
     padding: 20px;
-}
-
-/* Primeira linha: CardPrevisao e CardMapaDados */
-.primeira-linha {
+  }
+  
+  /* Primeira linha: CardPrevisao e CardMapaDados */
+  .primeira-linha {
     display: flex;
     margin-bottom: 20px;
     border: 5px solid #272c3ff5;
     border-radius: 10px;
-}
-
-.primeira-linha .card-principal,
-.primeira-linha .card-mapa-dados {
+  }
+  
+  .primeira-linha .card-principal,
+  .primeira-linha .card-mapa-dados {
     flex: 1; /* Cada card ocupa metade do espaço */
     background-color: #272c3ff5;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 10px; /* Reduzi o padding para diminuir a altura */
     height: 100%; /* Altura automática */
-}
-
-/* Ajustes para o conteúdo interno dos cards */
-.primeira-linha .card-principal p {
+  }
+  
+  /* Ajustes para o conteúdo interno dos cards */
+  .primeira-linha .card-principal p {
     margin: 0;
     font-size: 20px;
     margin-bottom: -10px;
-}
-
-/* Ajustes para o CardMapaDados */
-.primeira-linha .card-mapa-dados {
+  }
+  
+  /* Ajustes para o CardMapaDados */
+  .primeira-linha .card-mapa-dados {
     display: flex;
     justify-content: center; /* Centraliza o conteúdo horizontalmente */
-}
-
-/* Segunda linha: CardPrevisaoSecundario */
-.segunda-linha {
+  }
+  
+  /* Segunda linha: CardPrevisaoSecundario */
+  .segunda-linha {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px; /* Espaço entre as linhas */
-}
-
-.segunda-linha .card-secundario {
+  }
+  
+  .segunda-linha .card-secundario {
     width: 35%;
     background: linear-gradient(135deg, #272c3f, #3b435a); /* Degradê suave */
     border-radius: 10px;
@@ -101,34 +102,147 @@ button {
     padding: 20px;
     height: 105px;
     color: white;
-}
-
-/* Outras páginas (amanhã, 7 dias, 15 dias) */
-.outras-paginas {
+  }
+  
+  /* Outras páginas (amanhã, 7 dias, 15 dias) */
+  .outras-paginas {
     display: flex;
     flex-wrap: wrap;
     gap: 16px; /* Espaçamento entre os cards */
-}
-
-.outras-paginas .card-secundario {
+  }
+  
+  .outras-paginas .card-secundario {
     flex: 1 1 calc(50% - 8px); /* Dois cards por linha */
     background: linear-gradient(135deg, #272c3f, #3b435a);
     color: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 15px;
-}
-
-/* Ajustes para responsividade */
-@media (max-width: 768px) {
-    .primeira-linha, .segunda-linha, .outras-paginas {
-        flex-direction: column; /* Uma coluna em telas menores */
+  }
+  
+  /* Media Queries para responsividade */
+  
+  /* Monitores 4K (2560px e acima) */
+  @media (min-width: 2560px) {
+    .previsao-container {
+      max-width: 70%; /* Aumenta a largura máxima do container */
     }
-
+  
+    .primeira-linha .card-principal p {
+      font-size: 24px; /* Aumenta o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 120px; /* Aumenta a altura dos cards secundários */
+    }
+  }
+  
+  /* Telas maiores (1024px e acima) */
+  @media (min-width: 1024px) {
+    .previsao-container {
+      max-width: 75%; /* Ajusta a largura máxima do container */
+    }
+  
+    .primeira-linha .card-principal p {
+      font-size: 22px; /* Ajusta o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 110px; /* Ajusta a altura dos cards secundários */
+    }
+  }
+  
+  /* Tablets (600px a 1024px) */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .previsao-container {
+      max-width: 90%; /* Aumenta a largura máxima do container */
+    }
+  
+    .primeira-linha .card-principal p {
+      font-size: 20px; /* Mantém o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 100px; /* Mantém a altura dos cards secundários */
+    }
+  }
+  
+  /* Telas pequenas (até 480px) */
+  @media (max-width: 480px) {
+    .previsao-container {
+      max-width: 100%; /* O container ocupa toda a largura */
+      padding: 10px; /* Reduz o padding */
+    }
+  
+    .primeira-linha {
+      flex-direction: column; /* Uma coluna em telas menores */
+    }
+  
     .primeira-linha .card-principal,
-    .primeira-linha .card-mapa-dados,
-    .segunda-linha .card-secundario,
-    .outras-paginas .card-secundario {
-        flex: 1 1 100%; /* Cards ocupam 100% da largura em telas menores */
+    .primeira-linha .card-mapa-dados {
+      width: 100%; /* Cards ocupam 100% da largura */
+      margin-bottom: 10px; /* Espaço entre os cards */
     }
-}
+  
+    .segunda-linha {
+      flex-direction: column; /* Uma coluna em telas menores */
+    }
+  
+    .segunda-linha .card-secundario {
+      width: 100%; /* Cards ocupam 100% da largura */
+      margin-bottom: 10px; /* Espaço entre os cards */
+    }
+  
+    .outras-paginas .card-secundario {
+      flex: 1 1 100%; /* Cards ocupam 100% da largura */
+    }
+  
+    div.previsao-busca div.busca-group input {
+      width: 100%; /* A barra de busca ocupa toda a largura */
+    }
+  }
+  
+  /* Dispositivos móveis pequenos (320px a 375px) */
+  @media (min-width: 320px) and (max-width: 375px) {
+    .previsao-container {
+      padding: 5px; /* Reduz ainda mais o padding */
+    }
+  
+    .primeira-linha .card-principal p {
+      font-size: 18px; /* Reduz o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 90px; /* Reduz a altura dos cards secundários */
+    }
+  }
+  
+  /* Dispositivos móveis médios (375px a 414px) */
+  @media (min-width: 375px) and (max-width: 414px) {
+    .previsao-container {
+      padding: 10px; /* Ajusta o padding */
+    }
+  
+    .primeira-linha .card-principal p {
+      font-size: 19px; /* Ajusta o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 95px; /* Ajusta a altura dos cards secundários */
+    }
+  }
+  
+  /* Dispositivos móveis grandes (414px a 480px) */
+  @media (min-width: 414px) and (max-width: 480px) {
+    .previsao-container {
+      padding: 15px; /* Ajusta o padding */
+    }
+  
+    .primeira-linha .card-principal p {
+      font-size: 20px; /* Ajusta o tamanho da fonte */
+    }
+  
+    .segunda-linha .card-secundario {
+      height: 100px; /* Ajusta a altura dos cards secundários */
+    }
+  }
