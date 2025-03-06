@@ -81,9 +81,11 @@
   }
 
   .upload-buttons {
-    display: flex;
-    gap: 1.5rem; /* Espaçamento entre os botões */
-    margin-left: 165%;
+    position: fixed;
+    gap: 15px;
+    margin-left: 162%;
+    right: 36%;
+    display: flex;    
   }
   
   .upload-label {

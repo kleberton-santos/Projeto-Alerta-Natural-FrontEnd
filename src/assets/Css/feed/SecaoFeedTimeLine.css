@@ -22,6 +22,7 @@
   border-radius: 10px;
   padding: 15px;
   color: white;
+  padding-bottom: 35px;
 }
 
 /* Estilo para o topo da publicação (foto do usuário e nome) */
@@ -113,13 +114,26 @@
 
 .upload-buttons-left {
   display: flex;
-  gap: 1.5rem; /* Espaçamento entre os botões */
+  gap: 15px; /* Espaçamento entre os botões */
   
 }
 
-.upload-buttons-right {
+.upload-buttons-comentario {
   display: flex;
-  gap: 1.5rem; /* Espaçamento entre os botões */
+  position: absolute;
+;
+    /* margin-bottom: -42px; */
+    margin-top: 103px;;
+    margin-left: 55px;
+}
+
+
+.upload-buttons-right {
+  position: relative;
+    gap: 15px;
+    margin-left: 100%;
+    left: 70%;
+    display: flex;
 }
 
 .upload-buttons-modalEdit {
@@ -169,36 +183,136 @@
   transition: transform 0.3s ease; /* Efeito de zoom ao passar o mouse */
 }
 
+.upload-label-comentarios {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; 
+  left: 167%;
+    position: relative;
+    margin-top: -5px;
+}
+
 .upload-label:hover {
   transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
 }
 
-.upload-icon-container-line {
-  width: 35px; /* Tamanho do círculo */
-  height: 35px; /* Tamanho do círculo */
-  background-color: #1a2035; /* Cor de fundo */
-  border-radius: 50%; /* Formato circular */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+.upload-label-comentario-left {
+  position: fixed;
+  /* bottom: 20px; */
+  left: 723px;
+  /* background-color: white; */
+  /* padding: 10px; */
+  border-radius: 5px;
+  margin-top: 3px;
+}
+
+.botao-comentar {
+  display: flex
+  ;
+      margin-left: 50px;
+      margin-top: -61px;
+}
+
+.curtida-contagem {
+  position: absolute;
+  top: -8px; /* Ajuste fino para posicionar o contador */
+  right: -8px; /* Ajuste fino para posicionar o contador */
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+  background-color: white; /* Fundo para destacar o contador */
+  padding: 2px 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 .upload-icon-container-line:hover {
-  background-color: #2a324f; /* Cor de fundo ao passar o mouse */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Efeito de zoom ao passar o mouse */
 }
 
 .upload-icon-line {
   color: #ffffff; /* Cor do ícone */
-  font-size: 14px; /* Tamanho do ícone */
+  font-size: 16px; /* Tamanho fixo para ambos os ícones */
+  width: 16px; /* Largura fixa para evitar deslocamento */
+  height: 16px; /* Altura fixa para evitar deslocamento */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.upload-icon-container-line {
+  position: relative;
+  width: 35px; /* Tamanho fixo para o contêiner */
+  height: 35px;
+  background-color: #1a2035;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-icon-container-line-comentario {
+  display: flex  ;
+  margin-top: 30px;
+
+}
+
+.nao-curtido {
+  position: relative;
+  width: 35px; /* Tamanho fixo para o contêiner */
+  height: 35px;
+  top: 2px;
+  background-color: #1a2035;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+ 
+}
+
+.curtido {
+  position: relative;
+  width: 35px; /* Tamanho fixo para o contêiner */
+  height: 35px;
+  background-color: #1a2035;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
+.fa-heart-broken {
+  margin-top: 45px;
+  
 }
 
 .upload-text {
   margin-top: 5px; /* Espaçamento entre o ícone e o texto */
   font-size: 14px; /* Tamanho do texto */
   color: #ffffff; /* Cor do texto */
+}
+
+.upload-text-curtir {
+  display: flex;
+    margin-top: 11px;
+    font-size: 14px;
+    text-align: center;
 }
 
 /* Linha divisória */
@@ -210,15 +324,36 @@
 }
 
 .comentarios {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* Empilha os comentários na vertical */
+  gap: 10px; /* Espaço entre os comentários */
+  width: 100%;
+  margin-top: 20px;
+
+  border-radius: 10px;
+  
 }
 
 .comentario {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
+  display: flex
+  ;
+      align-items: center;
+      margin-bottom: 10px;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+
+  border-radius: 10px;
+  background-color: #212839;
 }
 
+.comentarios h5 {
+  display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
 .user-image-comentario {
   width: 30px;
   height: 30px;
@@ -226,11 +361,7 @@
   margin-right: 10px;
 }
 
-.comentarios {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
+
 
 .comentario {
   display: flex;
@@ -247,10 +378,15 @@
 
 .comentario-texto {
   flex: 1;
+  margin-top: 5px;
+}
+
+.comentario-texto p {
+
 }
 
 .acoes-comentario {
-  margin-top: 5px;
+  margin-top: -20px;
 }
 
 .acoes-comentario button {
@@ -282,4 +418,19 @@
 
 .adicionar-comentario button:hover {
   background-color: #0056b3;
+}
+
+.form-control-comentario {
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 250%;
+    margin-bottom: 1rem;
+}
+
+.button-comentar {
+  width: 250%;
+  height: 90% !important;
+  margin-bottom: -10px;
+
 }
