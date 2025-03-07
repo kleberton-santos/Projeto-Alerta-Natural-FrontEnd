@@ -65,7 +65,7 @@ const Home = () => {
             <div className="card-body">
                               {/* Título e descrição sobre alertas de desastres */}
               <h5 className="card-title text-white">Alerta de Desastres</h5>
-              <p className="card-text text-white">Receba alerta de desastres, furacões e mais.</p>
+              <p className="card-text text-white">Receba alerta de desastres, tempestades, alagamentos e mais.</p>
             </div>
           </div>        
         </div>

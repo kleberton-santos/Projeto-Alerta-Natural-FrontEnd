@@ -2,19 +2,24 @@
   display: flex;
   flex-direction: column; /* Garante que a foto principal fique acima */
   align-items: center; /* Centraliza o conteúdo */
-  margin-top: 20px;
+  margin-top: 71px;
 }
 
 .foto-principal {
-  width: 60%;  /* Reduz o tamanho da foto principal */
-  margin-bottom: 20px; /* Espaço entre a foto principal e as miniaturas */
+  width: 60%;
+  height: 400px; /* Defina uma altura fixa */
+  margin-bottom: 20px;
   display: flex;
-  justify-content: center; /* Centraliza a imagem dentro do contêiner */
+  justify-content: center;
+  align-items: center; /* Centraliza a imagem verticalmente */
+  overflow: hidden; /* Evita que a imagem ultrapasse o contêiner */
 }
 
 .foto-principal img {
   max-width: 100%;
+  max-height: 100%;
   height: auto;
+  object-fit: cover; /* Garante que a imagem cubra o contêiner sem distorcer */
 }
 
 .miniaturas {
@@ -37,4 +42,102 @@
 .miniatura img:hover {
   opacity: 0.8; /* Diminui a opacidade ao passar o mouse */
   transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
+}
+
+/* Media Queries para responsividade */
+
+/* Monitores 4K (2560px e acima) */
+@media (min-width: 2560px) {
+  .foto-principal {
+    width: 50%; /* Reduz ainda mais o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 50%; /* Reduz o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 80px; /* Aumenta o tamanho das miniaturas */
+    height: 80px;
+  }
+}
+
+/* Tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .foto-principal {
+    width: 70%; /* Aumenta o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 70%; /* Aumenta o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 70px; /* Aumenta o tamanho das miniaturas */
+    height: 70px;
+  }
+}
+
+/* Telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .foto-principal {
+    width: 90%; /* Aumenta o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 90%; /* Aumenta o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 50px; /* Reduz o tamanho das miniaturas */
+    height: 50px;
+  }
+}
+
+/* Dispositivos móveis pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .foto-principal {
+    width: 95%; /* Aumenta o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 95%; /* Aumenta o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 45px; /* Reduz o tamanho das miniaturas */
+    height: 45px;
+  }
+}
+
+/* Dispositivos móveis médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .foto-principal {
+    width: 90%; /* Aumenta o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 90%; /* Aumenta o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 50px; /* Reduz o tamanho das miniaturas */
+    height: 50px;
+  }
+}
+
+/* Dispositivos móveis grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .foto-principal {
+    width: 85%; /* Aumenta o tamanho da foto principal */
+  }
+
+  .miniaturas {
+    width: 85%; /* Aumenta o tamanho do contêiner de miniaturas */
+  }
+
+  .miniatura img {
+    width: 55px; /* Reduz o tamanho das miniaturas */
+    height: 55px;
+  }
 }

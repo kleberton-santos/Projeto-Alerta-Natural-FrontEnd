@@ -25,7 +25,13 @@ const CardMapaDados = ({ infos }) => {
         <div className="card-mapa-dados">
             {/* Mapa Interativo */}
             <div className="mapa-container-mapa">
-                <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{ height: "215px", width: "100%" }}>
+                <MapContainer 
+                    key={`${position[0]}-${position[1]}`} // Adicionando a chave para forçar a atualização
+                    center={position} 
+                    zoom={13} 
+                    scrollWheelZoom={false} 
+                    style={{ height: "215px", width: "100%" }}
+                >
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
