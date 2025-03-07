@@ -1,0 +1,150 @@
+/* Geral do contêiner de contato */
+.contato-principal {
+    display: flex;
+    flex-direction: column;
+    background-color: #212839;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Layout do formulário e da informação de contato */
+.contato-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contato-layout {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 40px;
+}
+
+/* Estilização do formulário de contato */
+.formulario-contato {
+    background-color: #272c3ff5; 
+    border-radius: 8px;
+    width: 45%; /* Para telas grandes */
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.formulario-contato h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+/* Campos do formulário */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Botão de envio do formulário */
+.btn-enviar {
+    background-color: #07629f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #217dbb;
+}
+
+/* Mensagem de status após envio */
+.status-message {
+    margin-top: 20px;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Informações de contato */
+.info-contato {
+    justify-content: center;
+    width: 45%;
+    background-color: #272c3ff5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.info-contato h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info-contato p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.info-contato .instagram,
+.info-contato .endereco {
+    font-weight: bold;
+}
+
+.info-contato span {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .formulario-contato {
+        width: 90%;
+    }
+
+    .info-contato {
+        width: 90%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario-contato,
+    .info-contato {
+        width: 100%;
+    }
+
+    .btn-enviar {
+        padding: 12px 20px;
+    }
+}
