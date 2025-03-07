@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "../../config/axiosConfig"; // Importa o Axios configurado
+import axios from "../../config/axiosConfig";
 import "../../assets/Css/feed/SecaoFeedTimeLine.css";
 import imgUser from "../../assets/images/icon_user.png";
 import ModalFeed from "./ModalFeed";
-import Carousel from "react-bootstrap/Carousel"; // Importe o Carousel do Bootstrap
+import Carousel from "react-bootstrap/Carousel";
 
 const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [publicacoes, setPublicacoes] = useState([]);
@@ -14,13 +14,13 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   const [novasFotos, setNovasFotos] = useState([]);
   const [novosVideos, setNovosVideos] = useState([]);
   const [textoEditado, setTextoEditado] = useState("");
-  const [comentarios, setComentarios] = useState({}); // Estado para armazenar comentários por publicação
-  const [novoComentario, setNovoComentario] = useState(""); // Estado para o novo comentário
-  const [mostrarCaixaComentario, setMostrarCaixaComentario] = useState({}); // Estado para controlar a visibilidade da caixa de comentário
-  const [mostrarListaComentarios, setMostrarListaComentarios] = useState({}); // Estado para controlar a visibilidade da lista de comentários
-  const [editarComentarioId, setEditarComentarioId] = useState(null); // Estado para controlar o comentário sendo editado
-  const [textoComentarioEditado, setTextoComentarioEditado] = useState(""); // Estado para o texto do comentário sendo editado
-  const [curtidas, setCurtidas] = useState({}); 
+  const [comentarios, setComentarios] = useState({});
+  const [novoComentario, setNovoComentario] = useState("");
+  const [mostrarCaixaComentario, setMostrarCaixaComentario] = useState({});
+  const [mostrarListaComentarios, setMostrarListaComentarios] = useState({});
+  const [editarComentarioId, setEditarComentarioId] = useState(null);
+  const [textoComentarioEditado, setTextoComentarioEditado] = useState("");
+  const [curtidas, setCurtidas] = useState({});
   const textareaRef = useRef(null);
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = idUsuario || user?.idusuario || user?.id;
@@ -152,7 +152,7 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
     setShowModalEdicao(true);
 
     const fotosPreviews = publicacao.fotos?.map((foto) => `http://localhost:8080/fotos/${foto.split("\\").pop()}`) || [];
-    const videosPreviews = publicacao.videos?.map((video) => `http://localhost:8080/videos/${video}`) || [];
+    const videosPreviews = publicacao.videos?.map((video) => `http://localhost:8080/fotos/video/${video}`) || [];
 
     setPreviewFotos(fotosPreviews);
     setPreviewVideos(videosPreviews);
@@ -176,7 +176,7 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
   };
 
   // Função para lidar com o upload de arquivos (imagens e vídeos)
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     const imageFiles = files.filter((file) => file.type.startsWith("image/"));
     const videoFiles = files.filter((file) => file.type.startsWith("video/"));
@@ -189,6 +189,44 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
 
     setPreviewFotos((prevPreviews) => [...prevPreviews, ...imagePreviews]);
     setPreviewVideos((prevPreviews) => [...prevPreviews, ...videoPreviews]);
+
+    try {
+      if (imageFiles.length > 0) {
+        const formDataImages = new FormData();
+        imageFiles.forEach((image) => formDataImages.append("file", image));
+
+        const responseImages = await axios.post(
+          "http://localhost:8080/fotos/upload",
+          formDataImages,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log("Imagens enviadas com sucesso:", responseImages.data);
+      }
+
+      if (videoFiles.length > 0) {
+        const formDataVideos = new FormData();
+        videoFiles.forEach((video) => formDataVideos.append("file", video));
+
+        const responseVideos = await axios.post(
+          "http://localhost:8080/fotos/upload-video",
+          formDataVideos,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log("Vídeos enviados com sucesso:", responseVideos.data);
+      }
+    } catch (error) {
+      console.error("Erro ao enviar arquivos para o backend:", error);
+    }
   };
 
   // Função para renderizar o texto com quebras de linha
@@ -221,11 +259,11 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
       );
 
       if (response.status === 201) {
-        setNovoComentario(""); // Limpa o campo de comentário
-        fetchComentarios(idPublicacao); // Atualiza a lista de comentários
+        setNovoComentario("");
+        fetchComentarios(idPublicacao);
         setMostrarCaixaComentario((prevState) => ({
           ...prevState,
-          [idPublicacao]: false, // Oculta a caixa de comentário após o envio
+          [idPublicacao]: false,
         }));
       }
     } catch (error) {
@@ -246,52 +284,50 @@ const SecaoFeedTimeLine = ({ idUsuario }) => {
     }
   };
 
-// Função para editar um comentário
-const editarComentario = async (idPublicacao, idComentario) => {
-  try {
-    const response = await axios.put(
-      `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
-      null,
-      {
-        params: {
-          novoTexto: textoComentarioEditado,
-          idUsuario: userId,
-        },
-      }
-    );
+  // Função para editar um comentário
+  const editarComentario = async (idPublicacao, idComentario) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
+        null,
+        {
+          params: {
+            novoTexto: textoComentarioEditado,
+            idUsuario: userId,
+          },
+        }
+      );
 
-    if (response.status === 200) {
-      fetchComentarios(idPublicacao);
-      setEditarComentarioId(null);
-      setTextoComentarioEditado("");
+      if (response.status === 200) {
+        fetchComentarios(idPublicacao);
+        setEditarComentarioId(null);
+        setTextoComentarioEditado("");
+      }
+    } catch (error) {
+      console.error("Erro ao editar o comentário:", error);
     }
-  } catch (error) {
-    console.error("Erro ao editar o comentário:", error);
-  }
-};
+  };
 
-// Função para remover um comentário
-const removerComentario = async (idPublicacao, idComentario) => {
-  try {
-    const confirmacao = window.confirm("Tem certeza que deseja remover o comentário?");
-    if (!confirmacao) return;
+  // Função para remover um comentário
+  const removerComentario = async (idPublicacao, idComentario) => {
+    try {
+      const confirmacao = window.confirm("Tem certeza que deseja remover o comentário?");
+      if (!confirmacao) return;
 
-    await axios.delete(
-      `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
-      {
-        params: {
-          idUsuario: userId,
-        },
-      }
-    );
+      await axios.delete(
+        `http://localhost:8080/publicacoes/${idPublicacao}/comentarios/${idComentario}`,
+        {
+          params: {
+            idUsuario: userId,
+          },
+        }
+      );
 
-    // Recarrega a página após a remoção bem-sucedida
-    window.location.reload();
-  } catch (error) {
-    console.error("Erro ao remover o comentário:", error);
-  }
-};
-
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao remover o comentário:", error);
+    }
+  };
 
   // Função para alternar a visibilidade da lista de comentários
   const toggleListaComentarios = (idPublicacao) => {
@@ -300,7 +336,6 @@ const removerComentario = async (idPublicacao, idComentario) => {
       [idPublicacao]: !prevState[idPublicacao],
     }));
 
-    // Se a lista de comentários estiver sendo exibida, busca os comentários
     if (!mostrarListaComentarios[idPublicacao]) {
       fetchComentarios(idPublicacao);
     }
@@ -425,13 +460,13 @@ const removerComentario = async (idPublicacao, idComentario) => {
 
               {/* Carrossel de fotos e vídeos */}
               {(publicacao.fotos?.length > 0 || publicacao.videos?.length > 0) && (
-                <Carousel indicators={false}>
+                <Carousel indicators={false} className="carousel">
                   {publicacao.fotos?.map((caminhoFoto, index) => {
                     if (!caminhoFoto) return null;
                     const nomeArquivo = caminhoFoto.split("\\").pop();
 
                     return (
-                      <Carousel.Item key={index}>
+                      <Carousel.Item key={index} className="carousel-item">
                         <img
                           src={`http://localhost:8080/fotos/${nomeArquivo}`}
                           alt={`Foto ${index}`}
@@ -443,14 +478,17 @@ const removerComentario = async (idPublicacao, idComentario) => {
                       </Carousel.Item>
                     );
                   })}
-                  {publicacao.videos?.map((video, index) => (
-                    <Carousel.Item key={index + publicacao.fotos?.length}>
-                      <video controls className="d-block w-100">
-                        <source src={`http://localhost:8080/videos/${video}`} type="video/mp4" />
-                        Seu navegador não suporta o elemento de vídeo.
-                      </video>
-                    </Carousel.Item>
-                  ))}
+                  {publicacao.videos?.map((video, index) => {
+                    const nomeArquivo = video.split("\\").pop(); // Extrai o nome do arquivo do caminho completo
+                    return (
+                      <Carousel.Item key={index + publicacao.fotos?.length} className="carousel-item">
+                        <video controls className="d-block w-100">
+                          <source src={`http://localhost:8080/fotos/video/${nomeArquivo}`} type="video/mp4" />
+                          Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                      </Carousel.Item>
+                    );
+                  })}
                 </Carousel>
               )}
 
@@ -458,38 +496,38 @@ const removerComentario = async (idPublicacao, idComentario) => {
               <div className="linha-divisoria"></div>
 
               {/* Botão para mostrar/ocultar a lista de comentários */}
-        <div className="acoes-publicacao">
-          {userId && (
-            <div className="upload-buttons-left">
-              {/* Botão de curtir/descurtir */}
-              <div 
-                    className={`upload-label ${curtidas[publicacao.idPublicacao] ? "curtido" : "nao-curtido"}`} 
-                    onClick={() => handleCurtirPublicacao(publicacao.idPublicacao)}
-                  >
-              <div className="upload-icon-container-line-comentario">
-                <span className="curtida-contagem">{curtidas[publicacao.idPublicacao] || 0}</span>
-                {curtidas[publicacao.idPublicacao] ? (
-                  <i className="fas fa-heart-broken upload-icon-line"></i> // Ícone de "Deixar de curtir"
-                ) : (
-                  <i className="fas fa-heart upload-icon-line"></i> // Ícone de "Curtir"
-                )}
-              </div>
-              <span className="upload-text-curtir">
-                {curtidas[publicacao.idPublicacao] ? "Deixar de curtir" : "Curtir"}
-              </span>              
-        </div>
+              <div className="acoes-publicacao">
+                {userId && (
+                  <div className="upload-buttons-left">
+                    {/* Botão de curtir/descurtir */}
+                    <div 
+                      className={`upload-label ${curtidas[publicacao.idPublicacao] ? "curtido" : "nao-curtido"}`} 
+                      onClick={() => handleCurtirPublicacao(publicacao.idPublicacao)}
+                    >
+                      <div className="upload-icon-container-line-comentario">
+                        <span className="curtida-contagem">{curtidas[publicacao.idPublicacao] || 0}</span>
+                        {curtidas[publicacao.idPublicacao] ? (
+                          <i className="fas fa-heart-broken upload-icon-line"></i> // Ícone de "Deixar de curtir"
+                        ) : (
+                          <i className="fas fa-heart upload-icon-line"></i> // Ícone de "Curtir"
+                        )}
+                      </div>
+                      <span className="upload-text-curtir">
+                        {curtidas[publicacao.idPublicacao] ? "Deixar de curtir" : "Curtir"}
+                      </span>              
+                    </div>
 
-      {/* Botão de comentários */}
-      <div className="upload-label-comentarios" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
-        <div className="upload-icon-container-line">
-          <i className="fas fa-comments upload-icon-line"></i>
-        </div>
-        <span className="upload-text">
-          {mostrarListaComentarios[publicacao.idPublicacao] ? "Comentários" : "Comentários"}
-        </span>
-      </div>
-    </div>
-  )}
+                    {/* Botão de comentários */}
+                    <div className="upload-label-comentarios" onClick={() => toggleListaComentarios(publicacao.idPublicacao)}>
+                      <div className="upload-icon-container-line">
+                        <i className="fas fa-comments upload-icon-line"></i>
+                      </div>
+                      <span className="upload-text">
+                        {mostrarListaComentarios[publicacao.idPublicacao] ? "Comentários" : "Comentários"}
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 {isPublicacaoDoUsuario && (
                   <div className="upload-buttons-right">
@@ -571,39 +609,38 @@ const removerComentario = async (idPublicacao, idComentario) => {
                 </div>
               )}
 
-
               {/* Botão para mostrar/ocultar a caixa de comentário */}
-                {userId && (
-                  <div className="botao-comentar">
-                    <div className="" onClick={() => toggleCaixaComentario(publicacao.idPublicacao)}>
-                      <div className="upload-icon-container-line">
-                        <i className="fas fa-comment upload-icon-line"></i>
-                      </div>
-                      <span className="upload-text">
-                        {mostrarCaixaComentario[publicacao.idPublicacao] ? "Comentar" : "Comentar"}
-                      </span>
+              {userId && (
+                <div className="botao-comentar">
+                  <div className="" onClick={() => toggleCaixaComentario(publicacao.idPublicacao)}>
+                    <div className="upload-icon-container-line">
+                      <i className="fas fa-comment upload-icon-line"></i>
                     </div>
+                    <span className="upload-text">
+                      {mostrarCaixaComentario[publicacao.idPublicacao] ? "Comentar" : "Comentar"}
+                    </span>
                   </div>
-                )}
+                </div>
+              )}
 
-             {/* Caixa de comentário (exibida apenas se mostrarCaixaComentario for true) */}
-            {mostrarCaixaComentario[publicacao.idPublicacao] && (
-              <div className="novo-comentario">
-                <textarea
-                  className="form-control-comentario"
-                  rows="2"
-                  placeholder="Adicione um comentário..."
-                  value={novoComentario}
-                  onChange={(e) => setNovoComentario(e.target.value)}
-                ></textarea>
-                <button
-                  className="button-comentar btn btn-secondary btn-sm"
-                  onClick={() => adicionarComentario(publicacao.idPublicacao)}
-                >
-                  Comentar
-                </button>
-              </div>
-            )}
+              {/* Caixa de comentário (exibida apenas se mostrarCaixaComentario for true) */}
+              {mostrarCaixaComentario[publicacao.idPublicacao] && (
+                <div className="novo-comentario">
+                  <textarea
+                    className="form-control-comentario"
+                    rows="2"
+                    placeholder="Adicione um comentário..."
+                    value={novoComentario}
+                    onChange={(e) => setNovoComentario(e.target.value)}
+                  ></textarea>
+                  <button
+                    className="button-comentar btn btn-secondary btn-sm"
+                    onClick={() => adicionarComentario(publicacao.idPublicacao)}
+                  >
+                    Comentar
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         );

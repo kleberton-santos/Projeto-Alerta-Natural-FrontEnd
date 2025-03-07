@@ -9,6 +9,7 @@
   overflow-y: scroll; /* Permite rolagem */
   scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
   -ms-overflow-style: none; /* Oculta a barra de rolagem no IE e Edge */
+  
 }
 
 /* Oculta a barra de rolagem no Chrome, Safari e Opera */
@@ -340,7 +341,40 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+/* Estilo para o carrossel */
+.carousel {
+  display: flex;
+  justify-content: center; /* Centraliza o carrossel horizontalmente */
+  align-items: center; /* Centraliza verticalmente (opcional) */
+  width: 100%; /* Ocupa toda a largura disponível */
+  margin-left: -4px;
+}
 
+/* Estilo para os itens do carrossel */
+.carousel-item {
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  text-align: center; /* Centraliza o texto (se houver) */
+}
+
+/* Estilo para as imagens no carrossel */
+.carousel-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 500px;
+  margin: 0 auto;
+}
+
+/* Estilo para os vídeos no carrossel */
+.carousel-item video {
+  max-width: 100%; /* Garante que o vídeo não ultrapasse a largura do container */
+  max-height: 400px; /* Define uma altura máxima para os vídeos */
+  width: auto; /* Mantém a proporção do vídeo */
+  height: auto; /* Mantém a proporção do vídeo */
+  margin: 0 auto; /* Centraliza o vídeo horizontalmente */
+}
 .comentario-texto {
   flex: 1;
   margin-top: 5px;
