@@ -14,7 +14,6 @@ import hail from "../../assets/images/icones-previsao/hail.png";
 import wind from "../../assets/images/icones-previsao/wind.png";
 
 const CardPrevisaoSecundario = ({ diaAtual, horaAtual }) => {
-    console.log("Dados recebidos da API:", diaAtual, horaAtual);
 
     // Se horaAtual for null, usamos os dados de diaAtual
     const dados = horaAtual || diaAtual;

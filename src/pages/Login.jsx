@@ -40,8 +40,6 @@ const Login = () => {
         withCredentials: true, // Envia credenciais (cookies, tokens)
       });
 
-      console.log("Resposta completa da API:", response);
-
       // Salva o token JWT no localStorage
       localStorage.setItem("token", response.data.accessToken);
 
@@ -52,7 +50,6 @@ const Login = () => {
         id: response.data.id,
       };
       localStorage.setItem("user", JSON.stringify(userData));
-      console.log("Dados do usuário no localStorage:", userData);
 
       // Dispara um evento personalizado para atualizar o header
       window.dispatchEvent(new Event("userUpdate"));

@@ -10,3 +10,64 @@
     opacity: 0.4; /* Define 50% de transparência */
     border-radius: 10px;
 }
+
+@media (min-width: 2560px) {
+    .logo {
+        top: 10px; /* Ajusta a distância do topo */
+        left: 20px; /* Ajusta a distância da esquerda */
+    }
+
+    .logo-banner {
+        width: 150px; /* Aumenta o tamanho do logotipo */
+        opacity: 0.4; /* Mantém a transparência */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .logo {
+        top: 6px; /* Ajusta a distância do topo */
+        left: 15px; /* Ajusta a distância da esquerda */
+    }
+
+    .logo-banner {
+        width: 120px; /* Ajusta o tamanho do logotipo */
+        opacity: 0.4; /* Mantém a transparência */
+    }
+}
+
+@media (max-width: 375px) {
+    .logo {
+        top: 3px; /* Reduz a distância do topo */
+        left: 5px; /* Reduz a distância da esquerda */
+    }
+
+    .logo-banner {
+        width: 80px; /* Reduz o tamanho do logotipo */
+        opacity: 0.4; /* Mantém a transparência */
+    }
+}
+
+@media (min-width: 375px) and (max-width: 414px) {
+    .logo {
+        top: 4px; /* Ajusta a distância do topo */
+        left: 8px; /* Ajusta a distância da esquerda */
+    }
+
+    .logo-banner {
+        width: 78px;
+        opacity: 0.4;
+        height: 70px;
+    }
+}
+
+@media (min-width: 414px) and (max-width: 480px) {
+    .logo {
+        top: 5px; /* Ajusta a distância do topo */
+        left: 10px; /* Ajusta a distância da esquerda */
+    }
+
+    .logo-banner {
+        width: 100px; /* Mantém o tamanho do logotipo */
+        opacity: 0.4; /* Mantém a transparência */
+    }
+}

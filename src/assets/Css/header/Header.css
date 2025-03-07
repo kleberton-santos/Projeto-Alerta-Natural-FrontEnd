@@ -201,8 +201,10 @@
     }
 
     .login-principal {
-        right: 10px; /* Mantém o posicionamento do login */
+        right: -20px !important;
+        gap: 0% !important;
     }
+
 }
 
 /* Dispositivos móveis grandes (414px a 480px) */

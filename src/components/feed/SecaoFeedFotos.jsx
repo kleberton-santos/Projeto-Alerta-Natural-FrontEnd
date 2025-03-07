@@ -12,7 +12,6 @@ const SecaoFeedFotos = ({ idUsuario }) => {
 
   // Efeito para buscar as fotos do usuário quando o componente é montado ou o ID do usuário muda
   useEffect(() => {
-    console.log("Renderizando SecaoFeedFotos... ID Usuário:", usuarioId);
     
     if (usuarioId) {
       fetchFotos(usuarioId);
@@ -22,7 +21,6 @@ const SecaoFeedFotos = ({ idUsuario }) => {
   // Função para buscar as fotos do usuário na API
   const fetchFotos = async (usuarioId) => {
     try {
-      console.log("Buscando fotos para o usuário:", usuarioId);
       const response = await axios.get(`http://localhost:8080/fotos/usuario/${usuarioId}`);
       setFotos(response.data);
     } catch (error) {

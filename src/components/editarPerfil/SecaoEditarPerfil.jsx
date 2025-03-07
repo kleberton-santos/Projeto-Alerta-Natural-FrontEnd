@@ -27,7 +27,6 @@ export const SecaoEditarPerfil = () => {
     const carregarDadosUsuario = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/usuarios/${usuarioId}`);
-        console.log("Dados do usuário:", response.data);
 
         setFormData({
           name: response.data.nome || "",

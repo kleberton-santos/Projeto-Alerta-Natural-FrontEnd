@@ -49,9 +49,6 @@ const CardPrevisao = ({ data }) => {
     const condicaoPortugues = infos.currentConditions.conditions.trim().toLowerCase();
     const condicaoIngles = traducaoCondicoes[condicaoPortugues] || "clear-day"; // Se não encontrar, usa 'clear-day'
 
-    console.log("Condição climática original:", condicaoPortugues);
-    console.log("Condição traduzida:", condicaoIngles);
-
     // 🔹 Obtendo o ícone correspondente
     const iconeAtual = iconesPrevisao[condicaoIngles] || clearDay;
 

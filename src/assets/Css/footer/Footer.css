@@ -39,3 +39,147 @@
     width: 23px; /* Ajusta o tamanho dos ícones */
     height: auto;
 }
+
+@media (min-width: 2560px) {
+    .footer-global {
+        height: 150px; /* Aumenta a altura do footer */
+    }
+
+    .conta-telefone, .telefone {
+        font-size: 24px; /* Aumenta o tamanho da fonte */
+    }
+
+    .direitos-autorais {
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+        margin-top: 100px; /* Ajusta a margem superior */
+    }
+
+    .icons-social {
+        margin-left: 15%; /* Ajusta a margem dos ícones */
+        margin-bottom: 35px; /* Ajusta a margem inferior */
+    }
+
+    .icon-item p {
+        font-size: 18px; /* Aumenta o tamanho da fonte */
+    }
+
+    .icons-social img {
+        width: 30px; /* Aumenta o tamanho dos ícones */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .footer-global {
+        height: 120px; /* Ajusta a altura do footer */
+    }
+
+    .conta-telefone, .telefone {
+        font-size: 18px; /* Ajusta o tamanho da fonte */
+    }
+
+    .direitos-autorais {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+        margin-top: 60px; /* Ajusta a margem superior */
+    }
+
+    .icons-social {
+        margin-left: 5%; /* Ajusta a margem dos ícones */
+        margin-bottom: 20px; /* Ajusta a margem inferior */
+    }
+
+    .icon-item p {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+    }
+
+    .icons-social img {
+        width: 20px; /* Ajusta o tamanho dos ícones */
+    }
+}
+
+@media (max-width: 375px) {
+    .footer-global {
+        height: 80px; /* Reduz a altura do footer */
+    }
+
+    .conta-telefone, .telefone {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    .direitos-autorais {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+        margin-top: 40px; /* Ajusta a margem superior */
+    }
+
+    .icons-social {
+        margin-left: 2%; /* Ajusta a margem dos ícones */
+        margin-bottom: 10px; /* Ajusta a margem inferior */
+        gap: 10px; /* Reduz o espaçamento entre os ícones */
+    }
+
+    .icon-item p {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    .icons-social img {
+        width: 15px; /* Reduz o tamanho dos ícones */
+    }
+}
+
+@media (min-width: 375px) and (max-width: 414px) {
+    .footer-global {
+        height: 90px; /* Ajusta a altura do footer */
+    }
+
+    .conta-telefone, .telefone {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
+
+    .direitos-autorais {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+        margin-top: 50px; /* Ajusta a margem superior */
+    }
+
+    .icons-social {
+        margin-left: 3%; /* Ajusta a margem dos ícones */
+        margin-bottom: 40px; /* Ajusta a margem inferior */
+        gap: 15px; /* Ajusta o espaçamento entre os ícones */
+    }
+
+    .icon-item p {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+        display: none;
+    }
+
+    .icons-social img {
+        width: 18px; /* Ajusta o tamanho dos ícones */
+    }
+}
+
+@media (min-width: 414px) and (max-width: 480px) {
+    .footer-global {
+        height: 100px; /* Ajusta a altura do footer */
+    }
+
+    .conta-telefone, .telefone {
+        font-size: 18px; /* Ajusta o tamanho da fonte */
+    }
+
+    .direitos-autorais {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+        margin-top: 60px; /* Ajusta a margem superior */
+    }
+
+    .icons-social {
+        margin-left: 5%; /* Ajusta a margem dos ícones */
+        margin-bottom: 20px; /* Ajusta a margem inferior */
+        gap: 20px; /* Ajusta o espaçamento entre os ícones */
+    }
+
+    .icon-item p {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
+
+    .icons-social img {
+        width: 20px; /* Ajusta o tamanho dos ícones */
+    }
+}

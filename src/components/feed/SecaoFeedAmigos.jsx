@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../../assets/Css/feed/SecaoFeedAmigos.css";
 import imgamigo from "../../assets/images/icon_user.png";
 
-const SecaoFeedAmigos = ({ amigos, onAmigoClick }) => { // Adiciona a prop onAmigoClick
+const SecaoFeedAmigos = ({ amigos, onAmigoClick }) => {
     const [amigosComFotos, setAmigosComFotos] = useState([]);
 
     useEffect(() => {
-        // Função para buscar o idUsuario do amigo usando o idAmigo
         const buscarIdUsuarioPorAmigo = async (idAmigo) => {
             try {
                 const resposta = await fetch(`http://localhost:8080/amigos/buscar-idusuario/${idAmigo}`);
@@ -15,40 +14,46 @@ const SecaoFeedAmigos = ({ amigos, onAmigoClick }) => { // Adiciona a prop onAmi
                     return null;
                 }
                 const dados = await resposta.json();
-                return dados; // Retorna o idUsuario do amigo
+                return dados;
             } catch (erro) {
                 console.error("Erro ao buscar idUsuario do amigo:", erro);
                 return null;
             }
         };
 
-        // Função para buscar a foto do amigo usando o idUsuario
         const buscarFotos = async () => {
             const amigosAtualizados = await Promise.all(
                 amigos.map(async (amigo) => {
                     try {
-                        // Verifica se o amigo tem um idAmigo válido
                         if (!amigo.idAmigo) {
                             console.error("idAmigo não encontrado para:", amigo);
                             return { ...amigo, foto: null };
                         }
 
-                        // Busca o idUsuario do amigo com base no idAmigo
                         const idUsuario = await buscarIdUsuarioPorAmigo(amigo.idAmigo);
                         if (!idUsuario) {
                             console.error(`idUsuario não encontrado para o amigo ${amigo.idAmigo}`);
                             return { ...amigo, foto: null };
                         }
 
-                        // Busca os dados do amigo pelo idUsuario
                         const resposta = await fetch(`http://localhost:8080/usuarios/${idUsuario}`);
+                        const textoResposta = await resposta.text();
+
                         if (!resposta.ok) {
-                            console.error(`Erro ao buscar foto do amigo ${idUsuario}: ${resposta.status}`);
-                            return { ...amigo, foto: null };
+                            console.error(`Erro ao buscar dados do usuário ${idUsuario}: ${resposta.status}`);
+                            console.error("Resposta do servidor:", textoResposta);
+                            return { ...amigo, foto: null, nome: null };
                         }
 
-                        const dadosUsuario = await resposta.json();
-                        // Supondo que a foto do usuário esteja no campo "foto"
+                        let dadosUsuario;
+                        try {
+                            dadosUsuario = JSON.parse(textoResposta); // Tenta parsear o JSON
+                        } catch (erro) {
+                            console.error("Erro ao parsear JSON:", erro);
+                            console.error("Resposta malformada:", textoResposta);
+                            return { ...amigo, foto: null, nome: null };
+                        }
+
                         return { ...amigo, foto: dadosUsuario.foto ? dadosUsuario.foto : null, nome: dadosUsuario.nome };
 
                     } catch (erro) {
@@ -76,15 +81,15 @@ const SecaoFeedAmigos = ({ amigos, onAmigoClick }) => { // Adiciona a prop onAmi
                         <div
                             key={index}
                             className="secao-feed-amigos-item"
-                            onClick={() => onAmigoClick(amigo.nome)} // Chama a função onAmigoClick ao clicar no quadro
-                            style={{ cursor: "pointer" }} // Muda o cursor para indicar que é clicável
+                            onClick={() => onAmigoClick(amigo.nome)}
+                            style={{ cursor: "pointer" }}
                         >
                             <img
-                                src={fotoUrl} // Usando a URL correta da foto
+                                src={fotoUrl}
                                 alt="Amigo"
-                                onError={(e) => { e.target.src = imgamigo; }} // Fallback para imagem padrão em caso de erro
+                                onError={(e) => { e.target.src = imgamigo; }}
                             />
-                            <p className="secao-feed-amigos-nome">{amigo.nome}</p> {/* Exibe o nome do amigo */}
+                            <p className="secao-feed-amigos-nome">{amigo.nome}</p>
                         </div>
                     );
                 })}

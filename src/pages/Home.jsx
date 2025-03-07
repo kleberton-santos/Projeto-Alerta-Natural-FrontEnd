@@ -49,7 +49,7 @@ const Home = () => {
             <div className="card-body">
                               {/* Título e descrição da previsão do tempo */}
               <h5 className="card-title text-white">Previsão do Tempo</h5>
-              <h6 className="card-text mb-2 text-white">Informações atualizadas sobre o clima em sua região.</h6>
+              <p className="card-text mb-2 text-white">Informações atualizadas sobre o clima em sua região.</p>
             </div>
           </div>
 
@@ -70,8 +70,6 @@ const Home = () => {
           </div>        
         </div>
       </div>
-
-      
 
       {/* Footer */}
       <div className="footer-home">

@@ -16,11 +16,8 @@ import "../../assets/Css/previsao/GradePrevisao.css"; // Importe o CSS específi
 const GradePrevisao = ({ dados }) => {
     // Verifica se os dados estão corretos
     if (!dados || !dados.days || !Array.isArray(dados.days) || dados.days.length === 0 || !dados.days[0].hours) {
-        console.log("Dados inválidos ou ausentes:", dados);
         return <p>Carregando dados...</p>; // Mensagem de fallback
     }
-
-    console.log("Dados recebidos:", dados); // Log para depuração
 
     // Lista de informações que cada card deve exibir
     const informacoes = [
@@ -40,7 +37,6 @@ const GradePrevisao = ({ dados }) => {
 
     // Extrai os dados horários do primeiro dia
     const horasDoDia = dados.days[0].hours;
-    console.log("Horas do dia:", horasDoDia); // Log para depuração
 
     return (
         <div className="grade-previsao">
@@ -53,8 +49,6 @@ const GradePrevisao = ({ dados }) => {
                         const indiceDado = linhaIndex * 4 + colunaIndex;
                         const horaAtual = horasDoDia[indiceDado];
                         const informacao = informacoes[indiceDado % informacoes.length];
-
-                        console.log(`Card ${indiceDado}:`, horaAtual); // Log para depuração
 
                         return (
                             <div className="coluna" key={colunaIndex}>
