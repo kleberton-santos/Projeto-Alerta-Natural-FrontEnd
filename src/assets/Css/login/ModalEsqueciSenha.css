@@ -94,3 +94,164 @@
     background-color: #d9d9d9; /* Mantém a mesma cor de fundo */
     opacity: 1; /* Garante que não haja transparência */
   }
+
+  @media (min-width: 2560px) {
+    .modal-content {
+      max-width: 800px; /* Aumenta o tamanho máximo do modal */
+      margin: 0 auto; /* Centraliza o modal */
+    }
+  
+    .modal-title {
+      font-size: 1.5rem; /* Aumenta o tamanho da fonte do título */
+      margin-left: 40%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 35%; /* Ajusta o alinhamento do texto */
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte do input */
+      padding: 0.75rem; /* Aumenta o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte do botão */
+      padding: 0.75rem 1.5rem; /* Aumenta o padding do botão */
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .modal-content {
+      max-width: 90%; /* Reduz o tamanho máximo do modal */
+    }
+  
+    .modal-title {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+      margin-left: 30%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 25%; /* Ajusta o alinhamento do texto */
+      font-size: 1rem; /* Reduz o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do input */
+      padding: 0.5rem; /* Reduz o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do botão */
+      padding: 0.5rem 1rem; /* Reduz o padding do botão */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modal-content {
+      max-width: 95%; /* Reduz o tamanho máximo do modal */
+      border-radius: 8px; /* Reduz o raio da borda */
+    }
+  
+    .modal-title {
+      font-size: 1rem; /* Reduz o tamanho da fonte do título */
+      margin-left: 20%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 10%; /* Ajusta o alinhamento do texto */
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do input */
+      padding: 0.4rem; /* Reduz o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do botão */
+      padding: 0.4rem 0.8rem; /* Reduz o padding do botão */
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    .modal-content {
+      max-width: 100%; /* Ocupa toda a largura disponível */
+      border-radius: 5px; /* Reduz o raio da borda */
+    }
+  
+    .modal-title {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do título */
+      margin-left: 15%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 5%; /* Ajusta o alinhamento do texto */
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 0.75rem; /* Reduz o tamanho da fonte do input */
+      padding: 0.3rem; /* Reduz o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 0.75rem; /* Reduz o tamanho da fonte do botão */
+      padding: 0.3rem 0.6rem; /* Reduz o padding do botão */
+    }
+  }
+
+  @media (min-width: 375px) and (max-width: 414px) {
+    .modal-content {
+      max-width: 95%; /* Reduz o tamanho máximo do modal */
+      border-radius: 8px; /* Reduz o raio da borda */
+    }
+  
+    .modal-title {
+      font-size: 1rem; /* Reduz o tamanho da fonte do título */
+      margin-left: 20%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 18%; /* Ajusta o alinhamento do texto */
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 0.85rem; /* Reduz o tamanho da fonte do input */
+      padding: 0.4rem; /* Reduz o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 0.85rem; /* Reduz o tamanho da fonte do botão */
+      padding: 0.4rem 0.8rem; /* Reduz o padding do botão */
+    }
+  }
+
+  @media (min-width: 414px) and (max-width: 480px) {
+    .modal-content {
+      max-width: 90%; /* Reduz o tamanho máximo do modal */
+      border-radius: 10px; /* Mantém o raio da borda */
+    }
+  
+    .modal-title {
+      font-size: 1.1rem; /* Reduz o tamanho da fonte do título */
+      margin-left: 25%; /* Ajusta o alinhamento do título */
+    }
+  
+    .modal-body p {
+      margin-left: 15%; /* Ajusta o alinhamento do texto */
+      font-size: 1rem; /* Reduz o tamanho da fonte do texto */
+    }
+  
+    .form-control {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do input */
+      padding: 0.5rem; /* Reduz o padding do input */
+    }
+  
+    .btn-publicar {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do botão */
+      padding: 0.5rem 1rem; /* Reduz o padding do botão */
+    }
+  }

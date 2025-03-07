@@ -26,3 +26,154 @@
     text-align: center;
     font-size: 20px;
 }
+
+.btn {
+    height: 35px;
+}
+
+@media (min-width: 2560px) {
+    .content-senha-redefinir {
+      max-width: 1200px; /* Ajusta o tamanho máximo do container */
+      margin: 0 auto; /* Centraliza o container */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 15%; /* Ajusta a margem superior */
+      padding: 40px; /* Aumenta o padding interno */
+    }
+  
+    .card-title {
+      font-size: 2rem; /* Aumenta o tamanho da fonte do título */
+    }
+  
+    .label-redefinir {
+      font-size: 1.5rem; /* Aumenta o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -30px; /* Ajusta a margem superior do formulário */
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .content-senha-redefinir {
+      padding: 0 20px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 20%; /* Ajusta a margem superior */
+      padding: 20px; /* Reduz o padding interno */
+    }
+  
+    .card-title {
+      font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .label-redefinir {
+      font-size: 1rem; /* Reduz o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -15px; /* Ajusta a margem superior do formulário */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content-senha-redefinir {
+      padding: 0 10px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 30%; /* Ajusta a margem superior */
+      padding: 15px; /* Reduz o padding interno */
+      border-radius: 15px; /* Reduz o raio da borda */
+    }
+  
+    .card-title {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+      margin-top: 10px; /* Ajusta a margem superior do título */
+    }
+  
+    .label-redefinir {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -10px; /* Ajusta a margem superior do formulário */
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    .content-senha-redefinir {
+      padding: 0 5px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 35%; /* Ajusta a margem superior */
+      padding: 10px; /* Reduz o padding interno */
+      border-radius: 10px; /* Reduz o raio da borda */
+    }
+  
+    .card-title {
+      font-size: 1rem; /* Reduz o tamanho da fonte do título */
+      margin-top: 5px; /* Ajusta a margem superior do título */
+    }
+  
+    .label-redefinir {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -5px; /* Ajusta a margem superior do formulário */
+    }
+  }
+
+  @media (min-width: 375px) and (max-width: 414px) {
+    .content-senha-redefinir {
+      padding: 0 10px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 30%; /* Ajusta a margem superior */
+      padding: 15px; /* Reduz o padding interno */
+      border-radius: 15px; /* Reduz o raio da borda */
+    }
+  
+    .card-title {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+      margin-top: 10px; /* Ajusta a margem superior do título */
+    }
+  
+    .label-redefinir {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -10px; /* Ajusta a margem superior do formulário */
+    }
+  }
+
+  @media (min-width: 414px) and (max-width: 480px) {
+    .content-senha-redefinir {
+      padding: 0 15px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .card-senha-redefinir {
+      margin-top: 25%; /* Ajusta a margem superior */
+      padding: 20px; /* Reduz o padding interno */
+      border-radius: 20px; /* Mantém o raio da borda */
+    }
+  
+    .card-title {
+      font-size: 1.3rem; /* Reduz o tamanho da fonte do título */
+      margin-top: 15px; /* Ajusta a margem superior do título */
+    }
+  
+    .label-redefinir {
+      font-size: 1rem; /* Reduz o tamanho da fonte dos labels */
+    }
+  
+    .form-redefinir-senha {
+      margin-top: -15px; /* Ajusta a margem superior do formulário */
+    }
+  }

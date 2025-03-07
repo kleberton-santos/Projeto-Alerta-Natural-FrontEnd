@@ -60,7 +60,7 @@ const RedefinirSenha = () => {
                   />
                 </div>
                 <div className="d-grid">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-secondary">
                     Redefinir Senha
                   </button>
                 </div>

@@ -93,3 +93,225 @@
     position: relative;
     top: 10%;
   }
+
+  @media (min-width: 2560px) {
+    .container {
+      max-width: 1200px; /* Ajuste o tamanho máximo do container */
+      margin: 0 auto; /* Centraliza o container */
+    }
+  
+    .logo-login-principal {
+      width: 400px; /* Aumenta o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte dos botões */
+      padding: 10px 20px; /* Aumenta o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 2rem; /* Aumenta o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 1.2rem; /* Aumenta o tamanho da fonte do link de recuperação de senha */
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .container {
+      padding: 0 20px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 200px; /* Reduz o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 8px 16px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 10px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 150px; /* Reduz o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 6px 12px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  
+    .row {
+      flex-direction: column; /* Altera a direção do flex para coluna */
+    }
+  
+    .col-md-6 {
+      width: 100%; /* Faz com que as colunas ocupem 100% da largura */
+    }
+  
+    .w-75 {
+      width: 100% !important; /* Faz com que o formulário ocupe 100% da largura */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 10px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 150px; /* Reduz o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 6px 12px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  
+    .row {
+      flex-direction: column; /* Altera a direção do flex para coluna */
+    }
+  
+    .col-md-6 {
+      width: 100%; /* Faz com que as colunas ocupem 100% da largura */
+    }
+  
+    .w-75 {
+      width: 100% !important; /* Faz com que o formulário ocupe 100% da largura */
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 375px) {
+    .container {
+      padding: 0 5px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 120px; /* Reduz o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 0.7rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.7rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 5px 10px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.7rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  }
+
+  @media (min-width: 375px) and (max-width: 414px) {
+    .container {
+      padding: 0 10px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 70%;
+      height: auto;
+      margin-left: 55px;
+    }
+  
+    .form-control {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 6px 12px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.8rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  }
+
+  @media (min-width: 414px) and (max-width: 480px) {
+    .container {
+      padding: 0 15px; /* Adiciona padding para evitar que o conteúdo fique muito próximo das bordas */
+    }
+  
+    .logo-login-principal {
+      width: 160px; /* Reduz o tamanho do logo */
+      height: auto;
+    }
+  
+    .form-control {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos inputs */
+    }
+  
+    .btn {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte dos botões */
+      padding: 8px 16px; /* Reduz o padding dos botões */
+    }
+  
+    .label-login {
+      font-size: 1.3rem; /* Reduz o tamanho da fonte do título */
+    }
+  
+    .text-esqueceu-senha {
+      font-size: 0.9rem; /* Reduz o tamanho da fonte do link de recuperação de senha */
+    }
+  }
