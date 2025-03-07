@@ -71,3 +71,89 @@
 }
 
 
+/* Responsividade para monitores 4K */
+@media (min-width: 2560px) {
+  .secao-bar-previsao {
+    max-width: 800px;
+    font-size: 20px;
+  }
+  .secao-input-previsao {
+    font-size: 20px;
+  }
+  .suggestions-list li {
+    font-size: 18px;
+  }
+}
+
+/* Responsividade para tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .secao-bar-previsao {
+    max-width: 90%;
+  }
+  .secao-input-previsao {
+    font-size: 14px;
+  }
+  .suggestions-list li {
+    font-size: 14px;
+  }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+  .secao-bar-previsao {
+    max-width: 90%;
+    padding: 5px;
+  }
+  .secao-input-previsao {
+    font-size: 14px;
+    padding: 5px;
+  }
+  .secao-button-previsao {
+    padding: 3px;
+  }
+  .suggestions-list {
+    max-height: 150px;
+  }
+  .suggestions-list li {
+    font-size: 12px;
+  }
+}
+
+/* Responsividade para dispositivos pequenos (320px a 375px) */
+@media (max-width: 375px) {
+  .secao-bar-previsao {
+    max-width: 95%;
+  }
+  .secao-input-previsao {
+    font-size: 12px;
+  }
+  .suggestions-list li {
+    font-size: 12px;
+  }
+}
+
+/* Responsividade para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .secao-bar-previsao {
+    max-width: 92%;
+  }
+  .secao-input-previsao {
+    font-size: 14px;
+  }
+  .suggestions-list li {
+    font-size: 13px;
+  }
+}
+
+/* Responsividade para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .secao-bar-previsao {
+    max-width: 90%;
+  }
+  .secao-input-previsao {
+    font-size: 16px;
+  }
+  .suggestions-list li {
+    font-size: 14px;
+  }
+}

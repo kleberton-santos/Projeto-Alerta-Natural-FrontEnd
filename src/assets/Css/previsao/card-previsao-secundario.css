@@ -3,7 +3,6 @@ div.cards {
     width: 100%;
     height: 100%;
     padding: 10px;
-
 }
 
 div.cartao {
@@ -17,7 +16,6 @@ header.cartao-sec-header {
     text-align: center;
     margin-bottom: -46px;
 }
-
 
 div.cartao-sec-body {
     display: flex;
@@ -66,10 +64,166 @@ div.cartao-detalhes p {
     div.cartao-sec-detalhes {
         flex-direction: column; /* Altera para coluna em telas menores */
         align-items: flex-start; /* Alinha os elementos à esquerda */
+        margin-top: -15px;
     }
 
     div.cartao-info-direita {
         text-align: left; /* Alinha os detalhes à esquerda */
         margin-top: 10px; /* Espaçamento entre os elementos */
+    }
+
+}
+
+/* Ajustes para monitores 4K */
+@media (min-width: 2560px) {
+    div.cards {
+        padding: 20px;
+    }
+
+    img.cartao-icone {
+        width: 80px;
+        height: 80px;
+    }
+
+    h2.cartao-temp {
+        font-size: 32px;
+    }
+
+    p.cartao-condicao {
+        font-size: 20px;
+    }
+
+    div.cartao-detalhes p {
+        font-size: 18px;
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+    div.cards {
+        padding: 15px;
+    }
+
+    img.cartao-icone {
+        width: 70px;
+        height: 70px;
+    }
+
+    h2.cartao-temp {
+        font-size: 28px;
+    }
+
+    p.cartao-condicao {
+        font-size: 18px;
+    }
+
+    div.cartao-detalhes p {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 480px) {
+    div.cards {
+        padding: 5px;
+    }
+
+    img.cartao-icone {
+        width: 50px;
+        height: 50px;
+    }
+
+    h2.cartao-temp {
+        font-size: 20px;
+    }
+
+    p.cartao-condicao {
+        font-size: 14px;
+    }
+
+    div.cartao-detalhes p {
+        font-size: 12px;
+    }
+}
+
+/* Pequenos: 320px a 375px (ex.: iPhone SE, Galaxy Fold) */
+@media (min-width: 320px) and (max-width: 375px) {
+    div.cards {
+        padding: 5px;
+    }
+
+    img.cartao-icone {
+        width: 40px;
+        height: 40px;
+    }
+
+    h2.cartao-temp {
+        font-size: 18px;
+    }
+
+    p.cartao-condicao {
+        font-size: 12px;
+    }
+
+    div.cartao-detalhes p {
+        font-size: 10px;
+    }
+}
+
+/* Médios: 375px a 414px (ex.: iPhone 11, Galaxy S21) */
+@media (min-width: 375px) and (max-width: 414px) {
+    div.cards {
+        padding: 8px;
+    }
+
+    img.cartao-icone {
+        width: 45px;
+        height: 45px;
+    }
+
+    h2.cartao-temp {
+        font-size: 20px;
+    }
+
+    p.cartao-condicao {
+        font-size: 14px;
+        margin-left: 185px;
+        margin-top: -40px;
+    }
+
+    .lista-detalhes {
+        gap: 15px;
+    }
+    
+    }
+
+    div.cartao-detalhes p {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+
+/* Grandes: 414px a 480px (ex.: iPhone 14 Pro Max, Pixel 7) */
+@media (min-width: 414px) and (max-width: 480px) {
+    div.cards {
+        padding: 10px;
+    }
+
+    img.cartao-icone {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    h2.cartao-temp {
+        font-size: 22px;
+    }
+
+    p.cartao-condicao {
+        font-size: 16px;
+    }
+
+    div.cartao-detalhes p {
+        font-size: 14px;
     }
 }

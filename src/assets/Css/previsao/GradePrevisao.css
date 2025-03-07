@@ -27,6 +27,7 @@
     justify-content: center;
     text-align: center;
 }
+
 .card-grade p {
     margin-left: 20px;
 }
@@ -37,7 +38,6 @@
     margin-bottom: 10px; /* Espaçamento entre o ícone e o texto */
 }
 
-
 /* Responsividade */
 @media (max-width: 768px) {
     .linha {
@@ -46,5 +46,159 @@
 
     .coluna {
         flex: 1 1 100%; /* Cada coluna ocupa 100% da largura em telas menores */
+    }
+}
+
+/* Responsividade para monitores 4K (2560px) */
+@media (min-width: 2560px) {
+    .grade-previsao {
+        gap: 24px; /* Aumenta o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 24px; /* Aumenta o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 200px; /* Aumenta a altura do card */
+        padding: 30px; /* Aumenta o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+    }
+
+    .card-grade-icone img {
+        width: 60px; /* Aumenta o tamanho do ícone */
+        height: 60px;
+    }
+}
+
+/* Responsividade para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .grade-previsao {
+        gap: 20px; /* Ajusta o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 20px; /* Ajusta o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 180px; /* Ajusta a altura do card */
+        padding: 25px; /* Ajusta o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 18px; /* Ajusta o tamanho da fonte */
+    }
+
+    .card-grade-icone img {
+        width: 50px; /* Ajusta o tamanho do ícone */
+        height: 50px;
+    }
+}
+
+/* Responsividade para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+    .grade-previsao {
+        gap: 12px; /* Reduz o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 12px; /* Reduz o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 120px; /* Reduz a altura do card */
+        padding: 15px; /* Reduz o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+        margin-left: 10px; /* Reduz a margem esquerda */
+    }
+
+    .card-grade-icone img {
+        width: 35px; /* Reduz o tamanho do ícone */
+        height: 35px;
+    }
+}
+
+/* Responsividade para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+    .grade-previsao {
+        gap: 10px; /* Reduz o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 10px; /* Reduz o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 100px; /* Reduz a altura do card */
+        padding: 10px; /* Reduz o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+        margin-left: 5px; /* Reduz a margem esquerda */
+    }
+
+    .card-grade-icone img {
+        width: 30px; /* Reduz o tamanho do ícone */
+        height: 30px;
+    }
+}
+
+/* Responsividade para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    .grade-previsao {
+        gap: 12px; /* Ajusta o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 12px; /* Ajusta o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 110px; /* Ajusta a altura do card */
+        padding: 12px; /* Ajusta o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 13px; /* Ajusta o tamanho da fonte */
+        margin-left: 8px; /* Ajusta a margem esquerda */
+    }
+
+    .card-grade-icone img {
+        width: 32px; /* Ajusta o tamanho do ícone */
+        height: 32px;
+    }
+}
+
+/* Responsividade para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+    .grade-previsao {
+        gap: 14px; /* Ajusta o espaçamento entre as linhas */
+    }
+
+    .linha {
+        gap: 14px; /* Ajusta o espaçamento entre as colunas */
+    }
+
+    .card-grade {
+        height: 130px; /* Ajusta a altura do card */
+        padding: 14px; /* Ajusta o padding interno */
+    }
+
+    .card-grade p {
+        font-size: 15px; /* Ajusta o tamanho da fonte */
+        margin-left: 10px; /* Ajusta a margem esquerda */
+    }
+
+    .card-grade-icone img {
+        width: 38px; /* Ajusta o tamanho do ícone */
+        height: 38px;
     }
 }

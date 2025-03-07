@@ -1,46 +1,140 @@
+/* Estilos para a barra de amigo */
 .secao-bar-amigo {
-    display: flex;
-    align-items: center;
-    background-color: #f5dcdc;
-    border-radius: 25px;
-    padding: 5px 10px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative; /* Adicionado para garantir que o input fique acima de outros elementos */
-    height: 60%;
+  display: flex;
+  align-items: center;
+  background-color: #f5dcdc;
+  border-radius: 25px;
+  padding: 5px 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative; /* Adicionado para garantir que o input fique acima de outros elementos */
+  height: 60%;
+}
+
+.secao-input-amigo {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  text-align: center; /* Centraliza o texto no input */
+  width: 100%;
+  z-index: 1; /* Garante que o input fique acima de outros elementos */
+}
+
+.secao-input::placeholder {
+  color: #333;
+  opacity: 0.8;
+}
+
+.secao-button-amigo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Garante que o botão fique acima do input */
+}
+
+.secao-button span {
+  font-size: 18px;
+  color: #000;
+}
+
+/* Responsividade para monitores 4K (2560px) */
+@media (min-width: 2560px) {
+  .secao-bar-amigo {
+      max-width: 700px; /* Aumenta a largura máxima */
+      padding: 10px 20px; /* Aumenta o padding */
   }
-  
+
   .secao-input-amigo {
-    flex: 1;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    padding: 10px;
-    font-size: 16px;
-    color: #333;
-    text-align: center; /* Centraliza o texto no input */
-    width: 100%;
-    z-index: 1; /* Garante que o input fique acima de outros elementos */
+      font-size: 20px; /* Aumenta o tamanho da fonte */
   }
-  
-  .secao-input::placeholder {
-    color: #333;
-    opacity: 0.8;
-  }
-  
-  .secao-button-amigo {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2; /* Garante que o botão fique acima do input */
-  }
-  
+
   .secao-button span {
-    font-size: 18px;
-    color: #000;
+      font-size: 24px; /* Aumenta o tamanho do ícone */
   }
+}
+
+/* Responsividade para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .secao-bar-amigo {
+      max-width: 600px; /* Ajusta a largura máxima */
+      padding: 8px 15px; /* Ajusta o padding */
+  }
+
+  .secao-input-amigo {
+      font-size: 18px; /* Ajusta o tamanho da fonte */
+  }
+
+  .secao-button span {
+      font-size: 20px; /* Ajusta o tamanho do ícone */
+  }
+}
+
+/* Responsividade para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+  .secao-bar-amigo {
+      max-width: 100%; /* Ocupa 100% da largura */
+      padding: 5px 10px; /* Reduz o padding */
+  }
+
+  .secao-input-amigo {
+      font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+
+  .secao-button span {
+      font-size: 16px; /* Reduz o tamanho do ícone */
+  }
+}
+
+/* Responsividade para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+  .secao-bar-amigo {
+      padding: 4px 8px; /* Reduz o padding */
+  }
+
+  .secao-input-amigo {
+      font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .secao-button span {
+      font-size: 14px; /* Reduz o tamanho do ícone */
+  }
+}
+
+/* Responsividade para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+  .secao-bar-amigo {
+      padding: 5px 10px; /* Ajusta o padding */
+  }
+
+  .secao-input-amigo {
+      font-size: 14px; /* Ajusta o tamanho da fonte */
+  }
+
+  .secao-button span {
+      font-size: 16px; /* Ajusta o tamanho do ícone */
+  }
+}
+
+/* Responsividade para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+  .secao-bar-amigo {
+      padding: 6px 12px; /* Ajusta o padding */
+  }
+
+  .secao-input-amigo {
+      font-size: 15px; /* Ajusta o tamanho da fonte */
+  }
+
+  .secao-button span {
+      font-size: 18px; /* Ajusta o tamanho do ícone */
+  }
+}

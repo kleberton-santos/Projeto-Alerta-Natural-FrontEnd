@@ -125,3 +125,252 @@
     font-weight: bold;
     color: #498F9F;
 }
+
+/* Responsividade para monitores 4K (2560px) */
+@media (min-width: 2560px) {
+    .card-moderno {
+        max-width: 80%;
+    }
+
+    .card-localizacao {
+        font-size: 24px;
+    }
+
+    .card-data {
+        font-size: 18px;
+    }
+
+    .card-icone {
+        width: 90px;
+        height: 90px;
+    }
+
+    .card-temp {
+        font-size: 60px;
+    }
+
+    .card-condicao {
+        font-size: 22px;
+    }
+
+    .card-descricao-sub {
+        font-size: 20px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 22px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 20px;
+    }
+}
+
+/* Responsividade para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .card-moderno {
+        max-width: 90%;
+    }
+
+    .card-localizacao {
+        font-size: 20px;
+    }
+
+    .card-data {
+        font-size: 16px;
+    }
+
+    .card-icone {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-temp {
+        font-size: 50px;
+    }
+
+    .card-condicao {
+        font-size: 20px;
+    }
+
+    .card-descricao-sub {
+        font-size: 18px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 20px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 18px;
+    }
+}
+
+/* Responsividade para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+    .card-moderno {
+        max-width: 100%;
+    }
+
+    .card-localizacao {
+        font-size: 16px;
+    }
+
+    .card-data {
+        font-size: 12px;
+    }
+
+    .card-icone {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-temp {
+        font-size: 35px;
+    }
+
+    .card-condicao {
+        font-size: 14px;
+    }
+
+    .card-descricao-sub {
+        font-size: 14px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 16px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 14px;
+    }
+
+    .card-body {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card-temperatura {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .card-info-direita {
+        margin-left: 0;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .card-descricao-principal {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Responsividade para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+    .card-localizacao {
+        font-size: 14px;
+    }
+
+    .card-data {
+        font-size: 10px;
+    }
+
+    .card-icone {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-temp {
+        font-size: 30px;
+    }
+
+    .card-condicao {
+        font-size: 12px;
+    }
+
+    .card-descricao-sub {
+        font-size: 12px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 14px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 12px;
+    }
+}
+
+/* Responsividade para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    .card-localizacao {
+        font-size: 16px;
+    }
+
+    .card-data {
+        font-size: 12px;
+    }
+
+    .card-icone {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-temp {
+        font-size: 35px;
+    }
+
+    .card-condicao {
+        font-size: 14px;
+    }
+
+    .card-descricao-sub {
+        font-size: 14px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 16px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 14px;
+    }
+}
+
+/* Responsividade para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+    .card-localizacao {
+        font-size: 18px;
+    }
+
+    .card-data {
+        font-size: 14px;
+    }
+
+    .card-icone {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-temp {
+        font-size: 40px;
+    }
+
+    .card-condicao {
+        font-size: 16px;
+    }
+
+    .card-descricao-sub {
+        font-size: 16px !important;
+    }
+
+    .card-detalhes p {
+        font-size: 18px !important;
+    }
+
+    .lista-detalhes li {
+        font-size: 16px;
+    }
+}

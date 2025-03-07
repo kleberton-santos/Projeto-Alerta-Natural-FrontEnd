@@ -1,3 +1,4 @@
+/* Estilos para a seção de navegação */
 .secao-previsao-nav {
     width: 100%;
     height: 50px;
@@ -6,30 +7,29 @@
     display: flex;
 }
 
-.secao-previsao-nav nav{
+.secao-previsao-nav nav {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.secao-previsao-nav nav ul{
+.secao-previsao-nav nav ul {
     display: flex;
     width: 90%;
     justify-content: space-around;
     list-style: none;
     margin: 0;
-    
 }
 
-.secao-previsao-nav nav ul li{
+.secao-previsao-nav nav ul li {
     text-decoration: none;
     color: white;
     font-size: 17px;
     transition: all 0.3s ease;
 }
 
-.secao-previsao-nav nav ul button{
+.secao-previsao-nav nav ul button {
     text-decoration: none;
     color: white;
     font-size: 17px;
@@ -37,4 +37,94 @@
     outline: none;
     border: none;
     background-color: inherit;
+}
+
+/* Responsividade para monitores 4K (2560px) */
+@media (min-width: 2560px) {
+    .secao-previsao-nav {
+        height: 70px; /* Aumenta a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 24px; /* Aumenta o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 24px; /* Aumenta o tamanho da fonte */
+    }
+}
+
+/* Responsividade para tablets (600px a 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .secao-previsao-nav {
+        height: 60px; /* Aumenta a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+    }
+}
+
+/* Responsividade para telas pequenas (até 480px) */
+@media (max-width: 480px) {
+    .secao-previsao-nav {
+        height: 40px; /* Reduz a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Responsividade para dispositivos pequenos (320px a 375px) */
+@media (min-width: 320px) and (max-width: 375px) {
+    .secao-previsao-nav {
+        height: 35px; /* Reduz a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Responsividade para dispositivos médios (375px a 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    .secao-previsao-nav {
+        height: 40px; /* Ajusta a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+    }
+}
+
+/* Responsividade para dispositivos grandes (414px a 480px) */
+@media (min-width: 414px) and (max-width: 480px) {
+    .secao-previsao-nav {
+        height: 45px; /* Ajusta a altura da barra de navegação */
+    }
+
+    .secao-previsao-nav nav ul li {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
+
+    .secao-previsao-nav nav ul button {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
 }
