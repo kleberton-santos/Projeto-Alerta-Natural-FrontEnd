@@ -7,13 +7,8 @@ import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import Mapa from "../mapa/Mapa";
 
-
-
 const Contato = () => {
     const form = useRef();
-
-
-
     const [status, setStatus] = useState('');
 
     const enviarEmail = (e) => {
@@ -71,8 +66,8 @@ const Contato = () => {
                     <div className="formulario-contato">
                         <h2>Mande uma mensagem para nós</h2>
 
-                        <form ref={form} onSubmit={enviarEmail}>
-                            <div className="form-group">
+                        <form ref={form} onSubmit={enviarEmail} className="form-contato">
+                            <div className="form form-group">
                                 <label htmlFor="nome">Nome:</label>
                                 <input type="text" id="nome" name="from_name" required />
                             </div>
@@ -103,7 +98,7 @@ const Contato = () => {
                     <div className="info-contato">
                         <h2>CONTATO</h2>
                         <p>Telefone:</p>
-                        <span>(11) 97559-1458</span>
+                        <span>(11) 5566-8899 </span>
 
                         <p>E-mail:</p>
                         <span>alertanatural@gmail.com.br</span>

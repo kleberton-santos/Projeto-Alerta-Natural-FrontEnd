@@ -99,7 +99,9 @@
     background-color: #272c3ff5;
     padding: 20px;
     border-radius: 8px;
-    margin-top: 20px;
+    position: relative;
+    top: -95px;
+    right: 53px;
 }
 
 .info-contato h2 {
@@ -142,6 +144,8 @@
     .formulario-contato,
     .info-contato {
         width: 100%;
+        position: relative;
+        top: -10px;
     }
 
     .btn-enviar {

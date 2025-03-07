@@ -48,6 +48,10 @@
   text-align: center; /* Centraliza o texto */
 }
 
+.form-contato {
+  
+}
+
 /* Efeito de hover no input */
 .form-control:hover {
   border-color: #888; /* Borda mais escura ao passar o mouse */
