@@ -22,7 +22,7 @@
   border-radius: 10px;
   padding: 15px;
   color: white;
-  padding-bottom: 35px;
+  padding-bottom: 40px;
 }
 
 /* Estilo para o topo da publicação (foto do usuário e nome) */
@@ -126,7 +126,7 @@
 .upload-buttons-right {
   position: relative;
   gap: 15px;
-  margin-left: 100%;
+  margin-left: 120%;
   left: 70%;
   display: flex;
 }
@@ -285,8 +285,9 @@
 }
 
 .upload-text {
-  margin-top: 5px;
-  font-size: 14px;
+  margin-top: 6px;
+    margin-left: -6px;
+    font-size: 14px;
   color: #ffffff;
 }
 
@@ -602,8 +603,8 @@
   }
 
   .upload-icon-container-line {
-    width: 25px; /* Reduz o tamanho dos ícones */
-    height: 25px;
+    width: 35px;
+        height: 35px;
   }
 
   .upload-icon-line {
@@ -611,20 +612,31 @@
   }
 
   .upload-buttons-right {
-    left: 60%; /* Ajusta a posição dos botões de ação */
+    left: -48%; /* Ajusta a posição dos botões de ação */
+    margin-top: -8px;
   }
 
   .upload-label-comentarios {
-    left: 140%; /* Ajusta a posição do botão de comentários */
+    left: 80%;
+  }
+
+  .botao-comentar  {
+    margin-top: -60px;
+  }
+
+  .nao-curtido {
+    margin-top: -4px;
   }
 
   .form-control-comentario {
-    width: 200%; /* Ajusta a largura da caixa de comentário */
+    width: 160%;
   }
 
   .button-comentar {
-    width: 200%; /* Ajusta a largura do botão de comentar */
+    width: 160%; /* Ajusta a largura do botão de comentar */
   }
+
+  
 }
 
 /* Responsivo para dispositivos grandes (414px a 480px) */

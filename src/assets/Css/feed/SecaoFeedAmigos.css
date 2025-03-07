@@ -202,6 +202,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     max-height: 220px;
+    display: flex;
   }
 
   .secao-feed-amigos-item {

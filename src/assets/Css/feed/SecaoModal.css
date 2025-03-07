@@ -329,7 +329,7 @@ video.preview-media {
 /* Responsivo para dispositivos médios (375px a 414px) */
 @media (min-width: 375px) and (max-width: 414px) {
   .modal-title {
-    margin-left: 20%;
+    margin-left: 20% !important;
     font-size: 1rem;
   }
 

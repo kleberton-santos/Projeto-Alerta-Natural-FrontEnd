@@ -182,9 +182,9 @@
   }
 
   .topo-config img {
-    width: 25%; /* Aumenta o tamanho da imagem */
-    height: 30px; /* Reduz a altura da imagem */
-    margin-left: 15%; /* Ajusta o alinhamento */
+    width: 12%;
+    height: 35px;
+    margin-left: 35%;
   }
 
   .login-config {

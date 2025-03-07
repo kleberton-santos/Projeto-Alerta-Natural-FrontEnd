@@ -176,8 +176,9 @@
   }
 
   .topo-info img {
-    width: 25%; /* Aumenta o tamanho da imagem */
-    height: 30px; /* Aumenta a altura da imagem */
+    width: 12%;
+    height: 35px;
+    margin-left: -2%;
   }
 
   .btn-seguir {

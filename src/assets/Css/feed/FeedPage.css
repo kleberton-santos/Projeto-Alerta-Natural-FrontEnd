@@ -192,6 +192,10 @@
   .login-prompt p {
     font-size: 15px; /* Ajusta o tamanho da fonte do prompt de login */
   }
+
+  .content-noticias{
+    height: 100%;
+  }
 }
 
 /* Dispositivos móveis grandes (414px a 480px) */

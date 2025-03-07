@@ -597,7 +597,7 @@ const removerComentario = async (idPublicacao, idComentario) => {
                   onChange={(e) => setNovoComentario(e.target.value)}
                 ></textarea>
                 <button
-                  className="button-comentar btn btn-primary btn-sm"
+                  className="button-comentar btn btn-secondary btn-sm"
                   onClick={() => adicionarComentario(publicacao.idPublicacao)}
                 >
                   Comentar
