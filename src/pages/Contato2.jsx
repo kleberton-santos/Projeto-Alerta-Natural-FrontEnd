@@ -1,19 +1,14 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import "../../src/index.css";
-import "../assets/css/contato/Contato.css";
+import "../assets/css/contato2/Contato2.css";
 import HeaderContato from "../components/header/HeaderContato";
 import FooterGlobal from "../components/footer/FooterGlobal";
 import Secaonavbar from "../components/navbar/Secaonavbar";
 import Mapa from "../mapa/Mapa";
 
-
-
-const Contato2= () => {
+const Contato2 = () => {
     const form = useRef();
-
-
-
     const [status, setStatus] = useState('');
 
     const enviarEmail = (e) => {
@@ -134,4 +129,4 @@ const Contato2= () => {
     );
 };
 
-export default Contato2
+export default Contato2;

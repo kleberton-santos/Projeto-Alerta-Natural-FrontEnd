@@ -1,208 +1,150 @@
-/* Layout principal */
+/* Geral do contêiner de contato */
+.contato-principal {
+    display: flex;
+    flex-direction: column;
+    background-color: #212839;
+    min-height: 100vh;
+    color: white;
+}
+
+/* Layout do formulário e da informação de contato */
 .contato-container {
-    flex-direction: row;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    background-color: #212839;
-    flex-wrap: wrap;    
-    max-width: 100%;  /* Garante que o container não ultrapasse a tela */
-    width: 50%;
-}    
-    
-/* Layout do formulário e informações de contato */
+    padding: 20px;
+}
+
 .contato-layout {
-    display:flex;
-    gap: 20px;
-    max-width: 100%;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    flex-wrap: wrap; /* Adicionado para melhor responsividade */
-    flex-direction: row; /* Organiza os itens em linhas*/
-    padding: 15px;
-    margin: 6% ;  
+    max-width: 1200px;
+    gap: 40px;
 }
 
-/* Formulário */
+/* Estilização do formulário de contato */
 .formulario-contato {
-    display:flex;
-    text-align: center;
-    background-color: #272c3ff5 ;
-    padding: 2em;
-    border-radius: 10px;
-    max-width: 100%;
-    flex-direction: column;
-    width: 100%;
-    color: rgb(236, 225, 225);
-    margin: 0 auto;
-}    
-
-/* Inputs e Textarea */
-.formulario-contato input,
-.formulario-contato textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 10px !important;
-    border: 1px solid #ccc;
-}
-
-/* Botão de envio */
-.formulario-contato button {
-    width: auto !important;
-    padding: 8px 20px !important;
-    margin-top: 10px;
-    background-color: #07629f;
-    color: #fcf8f8;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-/* Modificando o botão no hover */
-.formulario-contato button:hover {
-    background-color: #217dbb;
-}
-
-/* Seção de informações de contato */
-.info-contato {
-    max-width: 100%;  color: #fcf8f8;
-    text-align: center;
-    margin-left: 0;
-    align-items: center;
-    font-size: 14px;
-    width: 100%;
-    margin-top: 12%;
-}
-
-/* Ajuste para o form-group */
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px; /* Espaço entre os campos */
-    flex-direction: column; /* Ajusta os rótulos e campos para coluna */
-}
-
-/* Ajuste para o label */
-.form-group label {
-    width: 100%; /* Ajusta o rótulo para ocupar 100% em telas pequenas */
-    text-align: start;
-}
-
-/* Ajuste para o input */
-.form-group input {
-    flex: 1; /* Faz o input ocupar o restante do espaço */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-
-.info-contato button {
-    padding: 10px;
-    background-color: #fcf8f8;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-/* Mapa */
-.mapa-container .ver-no-mapa {
-    background-color: #07629f !important;
-    color: #ffffff !important;
-    padding: 10px 35px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
-    width: auto; /* Para não ocupar 100% da largura */
-    max-width: 100px; /* Define um limite máximo */
-    text-align: center;
-    display: inline-block;
+    background-color: #272c3ff5; 
+    border-radius: 8px;
+    width: 45%; /* Para telas grandes */
     margin-top: 20px;
-}
-
-.mapa-container .ver-no-mapa:hover {
-    background-color: #217dbb !important;
-}
-.mapa-container {
-    display: flex;
-    justify-content: center; /* Centraliza o conteúdo */
-    align-items: center; /* Alinha verticalmente */
+    box-sizing: border-box;
 }
 
 .formulario-contato h2 {
-    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+
 }
 
-.info-contato p,
-.info-contato span {
-     font-size: 14px; /* Reduz o tamanho da fonte */
- }
+/* Campos do formulário */
+.form-group {
+    margin-bottom: 15px;
+}
 
-.formulario-contato textarea {
-    font-size: 14px; /* Reduz o tamanho da fonte para melhor visualização */
+.form-group label {
+    display: block;
+    color: white;
+    font-weight: bold;
+}
 
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Botão de envio do formulário */
+.btn-enviar {
+    background-color: #07629f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #217dbb;
+}
+
+/* Mensagem de status após envio */
+.status-message {
+    margin-top: 20px;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Informações de contato */
+.info-contato {
+    justify-content: center;
+    width: 45%;
+    background-color: #272c3ff5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
 .info-contato h2 {
-    font-size: 18px;
-
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-
-/* Modal */
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(213, 2, 2, 0.2);
-    z-index: 9999;
-    display: none;
+.info-contato p {
+    font-size: 1rem;
+    margin: 5px 0;
 }
 
-.modal.active {
+.info-contato .instagram,
+.info-contato .endereco {
+    font-weight: bold;
+}
+
+.info-contato span {
     display: block;
+    margin-top: 10px;
 }
 
-/* Modal Overlay */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(173, 209, 238, 0.5);
-    z-index: 9998;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Responsividade */
+@media (max-width: 768px) {
+    .formulario-contato {
+        width: 90%;
+    }
+
+    .info-contato {
+        width: 90%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
 }
 
-.close-modal-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background: gainsboro;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #000;
-    display: flex;          /* Usando flexbox para centralizar */
-    justify-content: center; /* Alinha horizontalmente */
-    align-items: center;     /* Alinha verticalmente */
-}
+@media (max-width: 480px) {
+    .formulario-contato,
+    .info-contato {
+        width: 100%;
+    }
 
-.close-modal-btn:hover {
-    color: #2c2b2b;
+    .btn-enviar {
+        padding: 12px 20px;
+    }
 }
-
