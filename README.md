@@ -94,6 +94,22 @@ https://github.com/kleberton-santos/Projeto-Alerta-Natural-Backend.git
 
 ---
 
+### 📌 Funcionalidades Gerais:
+
+**Acompanhar eventos climaticos em tempo real**  
+- **Previão do tempo**  
+- **Cadastro e edição de usuario**  
+- **Login com google**  
+- **Esqueci minha senha (Redefinição de senha)**  
+- **Publicação (Postar, Editar e remover)**  
+- **Comentarios (comentar, editar e remover)**  
+- **Curtir publicações**  
+- **Seguir amigos**  
+- **Galeria de fotos**  
+- **Pagina de Contato**
+
+---
+
 ### 📌 Endpoints Principais   
 - Acesse o projeto backend para ter acesso aos endpoints.
 
