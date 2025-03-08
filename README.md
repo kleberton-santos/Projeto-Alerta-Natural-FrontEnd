@@ -1,183 +1,111 @@
-# React + Vite
+# 🌍 Projeto Alerta Natural
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
-# Projeto Alerta Natural - Frontend
-
-Bem-vindo ao repositório do **Projeto Alerta Natural**! Este projeto é um sistema que visa informar e alertar a população sobre eventos naturais, com um frontend desenvolvido em React.
+O **Alerta Natural** é uma plataforma inovadora para o acompanhamento de desastres naturais, como enchentes e tempestades. Além de fornecer previsões meteorológicas em tempo real, o sistema conta com uma rede social integrada, permitindo que os usuários compartilhem fotos e vídeos das ocorrências em suas regiões.
 
 ---
 
-## Estrutura do Projeto
+## 🚀 Tecnologias Utilizadas
 
-### Diretório Principal
+- **React**  
+- **Vite** 
+- **HTML + CSS**
+- **bootstrap**
+- **emailjs/browser**
+- **react-oauth/google**
+- **axios**
+- **emailjs**
+- **jwt-decode**
+- **leaflet**
+- **node**
+--- 
 
-- **`.gitignore`**: Arquivos e pastas que o Git deve ignorar.
-- **`README.md`**: Documentação do projeto.
-- **`eslint.config.js`**: Configuração do ESLint para padronização de código.
-- **`index.html`**: Arquivo principal HTML usado pelo Vite.
-- **`package.json`**: Lista as dependências e scripts do projeto.
-- **`vite.config.js`**: Configuração do Vite para o projeto.
+## 🚀 APIS Externas Utilizadas
+- https://openweathermap.org/  
+- https://www.visualcrossing.com/
+- https://leafletjs.com/
 
-### Pasta `src`
+## 📦 Estrutura do Projeto
 
-- **`App.jsx`**: Componente principal do aplicativo.
-- **`assets/`**: Contém recursos como imagens, ícones ou outros arquivos estáticos.
-- **`components/`**: Reúne componentes reutilizáveis da interface.
-- **`hooks/`**: Contém hooks personalizados para gerenciar lógicas específicas.
-- **`index.css`**: Estilos globais da aplicação.
-- **`main.jsx`**: Arquivo de entrada para renderizar a aplicação React.
-- **`routes.jsx`**: Configuração de rotas para a navegação.
-
----
-
-## Tecnologias Utilizadas
-
-- **Frontend**: React, Vite
-- **Estilização**: CSS
-- **Ferramentas**: ESLint, React Router
-
----
-
-## Como Rodar o Projeto Localmente
-
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/projeto-alerta-natural.git
-   ```
-2. Acesse o diretório do projeto:
-   ```bash
-   cd projeto-alerta-natural
-   ```
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
-4. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-5. Abra o navegador e acesse:
-   ```
-   http://localhost:3000
-   ```
-
----
-
-## Exemplos de Códigos
-
-### `App.jsx`
-
-Este é o componente principal que define a estrutura básica da aplicação:
-
-```jsx
-import React from 'react';
-import Routes from './routes';
-import './index.css';
-
-function App() {
-  return (
-    <div className="App">
-      <Routes />
-    </div>
-  );
-}
-
-export default App;
+```plaintext
+/projeto-Alerta-Natural-FrontEnd 
+│── src/  
+│   ├── assets/  
+│   ├── componentes/  
+│   ├── config/  
+│   ├── pages/  
+│   ├── service/  
+│   ├── utils/    
+│── App.jsx
+│── index.css
+│── Main.jsx
+│── routes.jsx
+│── .env  
+│── README.md
+│── vite.config.js
 ```
+---
+### 📖 Como Rodar o Projeto  
 
-### `index.css`
+### 🖥️ Pré-requisitos  
+* Antes de começar, certifique-se de ter instalado:
+* VS code
+* Node  
+---
+### 🔧 Configuração do Ambiente  
 
-Estilização global da aplicação:
-
-```css
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-.App {
-  text-align: center;
-}
+### Clone o repositório:
 ```
-
-### `routes.jsx`
-
-Configuração de rotas utilizando React Router:
-
-```jsx
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AlertsPage from './pages/AlertsPage';
-
-function AppRoutes() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/alerts" element={<AlertsPage />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default AppRoutes;
+ https://github.com/kleberton-santos/Projeto-Alerta-Natural-FrontEnd.git
 ```
+### Abra o Vscode:
+* File / Openfolder / Selecione a pasta do projeto
+
+### Abra o Terminal direto no vscode mesmo:
+* Instale as dependencias:
+```
+ npm install
+```
+* Configure a Key da API no arquivo Env:
+```
+E_API_KEY= (key da API)
+```
+---
+### Rodando o Projeto:  
+* Basta iniciar o projeto com o npm run dev
+
+### Rodando o Back End:  
+* Acesse o link do repositorio back end e siga as instruçoes:
+```
+https://github.com/kleberton-santos/Projeto-Alerta-Natural-Backend.git
+```
+### 📌 Funcionalidades Principais:
 
 ---
 
-## Funcionalidades Planejadas
+🔴 Monitoramento de Desastres: Acompanhe eventos como enchentes e tempestades em tempo real.
 
--Monitoramento Climático em Tempo Real:
-O sistema permitirá que os usuários acessem informações atualizadas sobre as condições climáticas em diversas cidades, facilitando a tomada de decisões rápidas e informadas.
+🌦 Previsão do Tempo: Consulte as condições climáticas de sua região.
 
-Publicações de Conteúdo Multimídia:
-Os usuários poderão compartilhar fotos, vídeos e textos relacionados às condições climáticas ou eventos naturais em sua região.
+📸 Rede Social: Poste fotos e vídeos sobre ocorrências e interaja com outros usuários.
 
-Interação Social:
-Será possível interagir com publicações de outros usuários por meio de curtidas e comentários, criando uma comunidade ativa e colaborativa.
+❤️ Interação Social: Curta e comente publicações de outros usuários.
 
-Sistema de Login e Cadastro:
-Para garantir segurança e personalização, o acesso às funcionalidades de postagem será restrito a usuários registrados e autenticados.
-
-Busca Personalizada:
-Os usuários poderão pesquisar o clima em cidades específicas e acompanhar previsões detalhadas.
-
-Notificações de Emergência:
-O sistema enviará alertas em tempo real sobre desastres naturais iminentes, como tempestades, enchentes e ondas de calor.
-
-Interface Intuitiva e Responsiva:
-O projeto será projetado para oferecer uma navegação simples e eficiente, com design adaptável para diferentes dispositivos.
+🤝 Adição de Amigos: Conecte-se com outras pessoas para compartilhar informações.
 
 ---
 
-## Contribuições
-
-Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para sua funcionalidade:
-   ```bash
-   git checkout -b minha-nova-funcionalidade
-   ```
-3. Faça as modificações desejadas e adicione os commits.
-4. Envie um pull request para este repositório.
+### 📌 Endpoints Principais   
+- Acesse o projeto backend para ter acesso aos endpoints.
 
 ---
+### 📜 Licença
 
-## Licença
-
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
-
+Este projeto está licenciado sob a MIT License 
 ---
-
-##
+#### 📌 Desenvolvido por Kleberton Santos, Dislene Portela, Julio, Leon e Marcelo.
+---
+### 🌟 Contribuições são bem-vindas!
+#### Se você quiser contribuir para o projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+---
+### 📌 Contato
+#### Para mais informações, entre em contato com os desenvolvedores ou visite o repositório do projeto.
