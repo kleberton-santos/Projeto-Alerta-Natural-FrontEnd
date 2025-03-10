@@ -66,6 +66,7 @@ O **Alerta Natural** é uma plataforma inovadora para o acompanhamento de desast
  npm install
 ```
 * Configure a Key da API no arquivo Env:
+* Necessario fazer o cadastro no https://openweathermap.org, gerar a Key para colocar no arquivo .env
 ```
 E_API_KEY= (key da API)
 ```
